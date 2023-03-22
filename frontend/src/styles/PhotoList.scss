@@ -1,0 +1,15 @@
+.photo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+// TODO: Revisit this
+// The Last Item In A Flexbox Container
+.photo-list:after {
+  content: "";
+  flex: 0 1 64%;
+}
