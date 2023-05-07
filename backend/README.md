@@ -15,7 +15,7 @@ Copy the `.env.example` file to `.env.development` and fill in the necessary Pos
 ```
 PGHOST=localhost
 PGUSER=development
-PGDATABASE=scheduler_development
+PGDATABASE=photolabs_development
 PGPASSWORD=development
 PGPORT=5432
 ```
