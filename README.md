@@ -1,13 +1,24 @@
 # react-photolabs
 The PhotoLabs project for the Web Development React course programming.
 
-## status
-- [x] frontend
-  - [x] revisit styling
-  - [x] add useEffect code (when backend ready)
-  - [ ] update mock data (when backend ready)
+# Photolabs
 
-- [x] backend (re-use of scheduler-api)
-  - [x] add mock data for now
-    - [ ] update mock data to use stored images locally
-  - [ ] setup and use postgres
+## Setup
+
+Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
+
+## [Frontend] Running Webpack Development Server
+
+```sh
+cd frontend
+npm start
+```
+
+## [Backend] Running Backend Servier
+
+Read `backend/readme` for further setup details.
+
+```sh
+cd backend
+npm start
+```
