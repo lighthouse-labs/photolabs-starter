@@ -1,15 +1,15 @@
-INSERT INTO USER_ACCOUNT (ID, FULLNAME, USERNAME)
+INSERT INTO USER_ACCOUNT (ID, FULLNAME, USERNAME, PROFILE_URL)
 VALUES 
-  (1, 'John Doe', 'jdoe'),
-  (2, 'Alice Wonderland', 'awond'),
-  (3, 'Sita Dennis', 'sitad'),
-  (4, 'Sasha Mateo', 'matte'),
-  (5, 'Anita Austi', 'anita'),
-  (6, 'Lukas Souza', 'lsouza'),
-  (7, 'Jose Alejandro', 'josea'),
-  (8, 'Dwayne Jacob', 'jdwayne'),
-  (9, 'Allison Saeng', 'saeng'),
-  (10, 'Adrea Santos', 'santa');
+  (1, 'John Doe', 'jdoe', 'profile-1.jpg'),
+  (2, 'Alice Wonderland', 'awond', 'profile-2.jpg'),
+  (3, 'Sita Dennis', 'sitad', 'profile-3.jpg'),
+  (4, 'Sasha Mateo', 'matte', 'profile-4.jpg'),
+  (5, 'Anita Austi', 'anita', 'profile-5.jpg'),
+  (6, 'Lukas Souza', 'lsouza', 'profile-6.jpg'),
+  (7, 'Jose Alejandro', 'josea', 'profile-7.jpg'),
+  (8, 'Dwayne Jacob', 'jdwayne', 'profile-8.jpg'),
+  (9, 'Allison Saeng', 'saeng', 'profile-9.jpg'),
+  (10, 'Adrea Santos', 'santa', 'profile-10.jpg');
 
 INSERT INTO TOPIC (ID, TITLE, SLUG)
 VALUES 

@@ -19,7 +19,8 @@ module.exports = db => {
             ),
             'user', json_build_object(
               'username', user_account.username,
-              'name', user_account.fullname
+              'name', user_account.fullname,
+              'profile', concat('${serverUrl}/images/', user_account.profile_url)
             ),
             'location', json_build_object(
               'city', photo.city,
