@@ -1,12 +1,15 @@
 import React from "react";
-
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
   const { id, imageSource, username } = props;
   return (
-    <div key={id}>
-      <img src={imageSource} alt={`${username}'s photo`} />
+    <div key={id} className="photo-list--item">
+      <img
+        src={imageSource}
+        alt={`${username}'s photo`}
+        className="photo-list--image"
+      />
     </div>
   );
 };
