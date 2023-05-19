@@ -29,8 +29,6 @@ Both of these achieve the same result.
 - Make a `GET` request to `/api/debug/reset` with `curl http://localhost:8001/api/debug/reset`.
 - Use the browser to navigate to `http://localhost:8001/api/debug/reset`.
 
-The `development` data is random. Each time we seed we expect to see different appointments.
-
 ## Run The Server
 
 Running the server normally
