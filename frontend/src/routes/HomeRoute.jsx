@@ -1,16 +1,15 @@
 import React, { useState, useReducer } from "react";
+import PhotoListItem from "../components/PhotoListItem";
 import PhotoList from "../components/PhotoList";
 import TopNavigationBar from "../components/TopNavigationBar";
-import "../styles/HomeRoute.scss";
 import PhotoFavButton from "../components/PhotoFavButton";
-import PhotoListItem from "../components/PhotoListItem";
-
-import mockPhotos from "../mocks/photos";
+import "../styles/HomeRoute.scss";
 
 const HomeRoute = (props) => {
   const [favouritePhotos, setFavouritePhotos] = useState([]);
+
   const addFavouritePhoto = (id) => {
-    const filteredPhoto = mockPhotos.filter((photo) => photo.id === id);
+    const filteredPhoto = props.mockPhotos.filter((photo) => photo.id === id);
     setFavouritePhotos((favouritePhotos) => [
       ...favouritePhotos,
       filteredPhoto,
@@ -21,9 +20,11 @@ const HomeRoute = (props) => {
     <div className="home-route">
       <TopNavigationBar favouritePhotos={favouritePhotos} />
       <PhotoList
-        mockPhotos={mockPhotos}
+        mockPhotos={props.mockPhotos}
         favouritePhotos={favouritePhotos}
         addFavouritePhoto={addFavouritePhoto}
+        openModal={props.openModal}
+        profile={props.profile}
       />
     </div>
   );
