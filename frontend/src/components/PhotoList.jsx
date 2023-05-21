@@ -1,40 +1,26 @@
 import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
+import mockPhotos from "../mocks/photos";
 
 const PhotoList = (props) => {
-  const renderPhotos = props.photos.map((photo) => (
+  console.log("mockPhotos", mockPhotos);
+  const renderPhotos = mockPhotos.map((photo) => (
     <PhotoListItem
       key={photo.id}
-      imageSource={photo.imageSource}
-      username={photo.username}
+      imageSource={photo.urls.regular}
+      username={photo.user.username}
+      city={photo.location.city}
+      country={photo.location.country}
+      thumbnail={photo.user.profile}
+      dispatch={props.dispatch}
+      handleFavClick={props.handleFavClick}
+      isFav={props.isFav}
+      id={photo.id}
     />
   ));
 
   return <ul className="photo-list">{renderPhotos}</ul>;
-};
-
-PhotoList.defaultProps = {
-  photos: [
-    {
-      username: "Jacob",
-      imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
-      id: 1,
-      hideUserName: false,
-    },
-    {
-      username: "Jacob",
-      imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
-      id: 2,
-      hideUserName: false,
-    },
-    {
-      username: "Jacob",
-      imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
-      id: 3,
-      hideUserName: false,
-    },
-  ],
 };
 
 export default PhotoList;
