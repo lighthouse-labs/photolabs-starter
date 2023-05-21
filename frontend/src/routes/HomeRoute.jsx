@@ -19,7 +19,7 @@ const HomeRoute = (props) => {
 
   return (
     <div className="home-route">
-      {/* <TopNavigationBar countFavourite={props.countFavourite} />*/}
+      <TopNavigationBar favouritePhotos={favouritePhotos} />
       <PhotoList
         mockPhotos={mockPhotos}
         favouritePhotos={favouritePhotos}

@@ -5,6 +5,9 @@ import { FavIcon } from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
 function PhotoFavButton(props) {
+  // const isFavPhotoExist = props.favouritePhotos.length > 0;
+  const isFavourite = props.isFav ? "#C80000" : "transparent";
+
   const handleIconClick = (id) => {
     props.handleFavClick(id);
   };
@@ -15,7 +18,7 @@ function PhotoFavButton(props) {
       onClick={() => handleIconClick(props.photoId)}
     >
       <div className="photo-list--fav-icon-svg">
-        <FavBadge isFav={props.isFav} />
+        <FavBadge isFavourite={isFavourite} />
       </div>
     </div>
   );

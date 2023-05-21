@@ -18,6 +18,7 @@ const PhotoListItem = (props) => {
         photoId={props.id}
         isFav={isFav}
         handleFavClick={handleFavClick}
+        favouritePhotos={props.favouritePhotos}
       />
       <img
         src={props.imageSource}
