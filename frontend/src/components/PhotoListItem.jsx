@@ -5,8 +5,6 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
   const [isFav, setIsFav] = useState(false);
 
-  // console.log("props", props.imageSource);
-
   const handleFavClick = (id) => {
     setIsFav(!isFav);
     if (!isFav) {
@@ -21,7 +19,8 @@ const PhotoListItem = (props) => {
   return (
     <div
       key={props.id}
-      className="photo-list--item"
+      className={props.imageContainerClassName}
+      // className={`${props.className}`}
       onClick={() => handleModalClick(props.id)}
     >
       <PhotoFavButton
@@ -33,9 +32,10 @@ const PhotoListItem = (props) => {
       <img
         src={props.imageSource}
         alt={`${props.username}'s photo`}
-        className="photo-list--image"
+        // className="photo-list--image"
+        className={props.imageClassName}
       />
-      {props.profile && (
+      {props.showProfile && (
         <div className="photo-list--user-details">
           <img
             src={props.thumbnail}

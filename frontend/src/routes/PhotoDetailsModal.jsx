@@ -7,21 +7,13 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from "../components/PhotoList";
 
 export const PhotoDetailsModal = (props) => {
-  // console.log("props", props);
   const similarPhotos = props.detail[0].similar_photos;
-  console.log("similarPhotos", similarPhotos);
 
   const keys = Object.keys(similarPhotos);
   const similarPhotosArray = [];
   for (const key of keys) {
     similarPhotosArray.push(similarPhotos[key]);
   }
-  // const photos = similarPhotosArray.map((photo) => {
-  //   // return <img key={Math.random()} src={photo} alt="photo" />;
-  //   // return <PhotoListItem key={Math.random() + 1} imageSource={photo} />;
-  //   return <PhotoList key={Math.random() + 1} mockPhotos={photo} />;
-  // });
-  console.log("similarPhotosArray", similarPhotosArray);
 
   return (
     <div className="photo-details-modal">
@@ -57,16 +49,21 @@ export const PhotoDetailsModal = (props) => {
           </defs>
         </svg>
       </button>
-      <div className="photo-details-modal--images">
+      <div className="modal-container">
         <PhotoFavButton />
         <img
           src={props.detail[0].urls.full}
           alt={`${props.detail[0].user.name}'s photo`}
           className="photo-details-modal--image"
         />
-        {/* {props.detail[0].similarPhotos} */}
-        {/* {photos} */}
-        <PhotoList mockPhotos={similarPhotosArray} profile={props.profile} />
+        <h2 className="photo-details-modal--header">Similar Photos</h2>
+
+        <PhotoList
+          mockPhotos={similarPhotosArray}
+          showProfile={props.showProfile}
+          imageClassName={props.imageClassName}
+          imageContainerClassName={props.imageContainerClassName}
+        />
       </div>
     </div>
   );

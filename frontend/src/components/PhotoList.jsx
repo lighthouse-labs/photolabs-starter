@@ -3,7 +3,6 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
-  console.log("props", props);
   const renderPhotos = props.mockPhotos.map((photo) => (
     <PhotoListItem
       key={photo.id}
@@ -16,7 +15,9 @@ const PhotoList = (props) => {
       addFavouritePhoto={props.addFavouritePhoto}
       id={photo.id}
       openModal={props.openModal}
-      profile={props.profile}
+      showProfile={props.showProfile}
+      imageContainerClassName={props.imageContainerClassName}
+      imageClassName={props.imageClassName}
     />
   ));
 

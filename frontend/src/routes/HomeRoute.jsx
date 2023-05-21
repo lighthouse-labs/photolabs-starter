@@ -24,7 +24,9 @@ const HomeRoute = (props) => {
         favouritePhotos={favouritePhotos}
         addFavouritePhoto={addFavouritePhoto}
         openModal={props.openModal}
-        profile={props.profile}
+        showProfile={props.showProfile}
+        imageContainerClassName={props.imageContainerClassName}
+        imageClassName={props.imageClassName}
       />
     </div>
   );

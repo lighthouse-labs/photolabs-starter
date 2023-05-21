@@ -11,10 +11,9 @@ const App = () => {
   // console.log("favouritePhotos", favouritePhotos);
   const [showModal, setShowModal] = useState(false);
   const [detail, setDetail] = useState();
-  const [profile, setProfile] = useState(true);
+  const [showProfile, setShowProfile] = useState(true);
 
   const openModal = (id) => {
-    console.log("Modal was clicked");
     setDetail(mockPhotos.filter((photo) => photo.id === id));
     setShowModal(!showModal);
   };
@@ -26,13 +25,17 @@ const App = () => {
         // addFavouritePhoto={addFavouritePhoto}
         openModal={openModal}
         mockPhotos={mockPhotos}
-        profile={profile}
+        showProfile={showProfile}
+        imageContainerClassName="photo-list--item"
+        imageClassName="photo-list--image"
       />
       {showModal && (
         <PhotoDetailsModal
           openModal={openModal}
           detail={detail}
-          profile={!profile}
+          showProfile={!showProfile}
+          imageContainerClassName="photo-details-modal--images-wrapper"
+          imageClassName="photo-details-modal--images"
         />
       )}
     </div>
