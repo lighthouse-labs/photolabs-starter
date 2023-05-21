@@ -3,28 +3,28 @@ import PhotoList from "../components/PhotoList";
 import TopNavigationBar from "../components/TopNavigationBar";
 import "../styles/HomeRoute.scss";
 import PhotoFavButton from "../components/PhotoFavButton";
+import PhotoListItem from "../components/PhotoListItem";
+
+import mockPhotos from "../mocks/photos";
 
 const HomeRoute = (props) => {
-  const [favouritePhoto, setFavouritePhoto] = useState([]);
-  const [isFav, setIsFav] = useState(false);
-
-  const handleFavClick = (e) => {
-    //   console.log("e.target", e.target);
-    //   // handleIconClick();
-    // setFavouritePhoto(...favouritePhoto);
-    setIsFav(!isFav);
-    //   if (!fav) {
-    //     dispatch(1);
-    //   } else {
-    //     dispatch(-1);
-    //   }
+  const [favouritePhotos, setFavouritePhotos] = useState([]);
+  const addFavouritePhoto = (id) => {
+    const filteredPhoto = mockPhotos.filter((photo) => photo.id === id);
+    setFavouritePhotos((favouritePhotos) => [
+      ...favouritePhotos,
+      filteredPhoto,
+    ]);
   };
 
   return (
     <div className="home-route">
-      {/* <TopNavigationBar countFavourite={props.countFavourite} />
-      <PhotoList dispatch={props.dispatch} handleFavClick={handleFavClick} /> */}
-      <PhotoFavButton handleFavClick={handleFavClick} isFav={isFav} />
+      {/* <TopNavigationBar countFavourite={props.countFavourite} />*/}
+      <PhotoList
+        mockPhotos={mockPhotos}
+        favouritePhotos={favouritePhotos}
+        addFavouritePhoto={addFavouritePhoto}
+      />
     </div>
   );
 };

@@ -3,16 +3,21 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  console.log("props.id", props.id);
+  const [isFav, setIsFav] = useState(false);
+
+  const handleFavClick = (id) => {
+    setIsFav(!isFav);
+    if (!isFav) {
+      props.addFavouritePhoto(id);
+    }
+  };
+
   return (
     <div key={props.id} className="photo-list--item">
       <PhotoFavButton
-        // handleIconClick={handleIconClick}
-        // fav={fav}
-        dispatch={props.dispatch}
-        id={props.id}
-        isFav={props.isFav}
-        handleFavClick={props.handleFavClick}
+        photoId={props.id}
+        isFav={isFav}
+        handleFavClick={handleFavClick}
       />
       <img
         src={props.imageSource}

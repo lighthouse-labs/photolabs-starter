@@ -5,7 +5,6 @@ import "../styles/FavBadge.scss";
 
 export const FavBadge = (props) => {
   const isFavourite = props.isFav ? "#C80000" : "transparent";
-  console.log("fav?", props.isFav);
 
   return (
     <div className="fav-badge">
