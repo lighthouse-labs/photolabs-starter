@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../styles/PhotoDetailsModal.scss";
 import mockPhotos from "../mocks/photos";
@@ -7,8 +7,9 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from "../components/PhotoList";
 
 export const PhotoDetailsModal = (props) => {
-  const similarPhotos = props.detail[0].similar_photos;
+  const selectedPhoto = props.selectedPhoto;
 
+  const similarPhotos = props.selectedPhoto[0].similar_photos;
   const keys = Object.keys(similarPhotos);
   const similarPhotosArray = [];
   for (const key of keys) {
@@ -19,7 +20,7 @@ export const PhotoDetailsModal = (props) => {
     <div className="photo-details-modal">
       <button
         className="photo-details-modal--close-button"
-        onClick={props.openModal}
+        onClick={props.closeModal}
       >
         <svg
           width="24"
@@ -50,19 +51,23 @@ export const PhotoDetailsModal = (props) => {
         </svg>
       </button>
       <div className="modal-container">
-        <PhotoFavButton />
-        <img
-          src={props.detail[0].urls.full}
-          alt={`${props.detail[0].user.name}'s photo`}
-          className="photo-details-modal--image"
-        />
-        <h2 className="photo-details-modal--header">Similar Photos</h2>
-
         <PhotoList
-          mockPhotos={similarPhotosArray}
-          showProfile={props.showProfile}
+          mockPhotos={selectedPhoto}
           imageClassName={props.imageClassName}
           imageContainerClassName={props.imageContainerClassName}
+          isFavourite={props.isFavourite}
+          addToLike={props.addToLike}
+          openModal={props.openModal}
+        />
+
+        <h2 className="photo-details-modal--header">Similar Photos</h2>
+        <PhotoList
+          mockPhotos={similarPhotosArray}
+          imageClassName={props.imageClassName}
+          imageContainerClassName={props.imageContainerClassName}
+          isFavourite={props.isFavourite}
+          addToLike={props.addToLike}
+          openModal={props.openModal}
         />
       </div>
     </div>

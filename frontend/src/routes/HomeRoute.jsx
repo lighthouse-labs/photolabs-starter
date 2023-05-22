@@ -6,29 +6,23 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import "../styles/HomeRoute.scss";
 
 const HomeRoute = (props) => {
-  const [favouritePhotos, setFavouritePhotos] = useState([]);
-
-  const addFavouritePhoto = (id) => {
-    const filteredPhoto = props.mockPhotos.filter((photo) => photo.id === id);
-    setFavouritePhotos((favouritePhotos) => [
-      ...favouritePhotos,
-      filteredPhoto,
-    ]);
-  };
-
   return (
-    <div className="home-route">
-      <TopNavigationBar favouritePhotos={favouritePhotos} />
-      <PhotoList
-        mockPhotos={props.mockPhotos}
-        favouritePhotos={favouritePhotos}
-        addFavouritePhoto={addFavouritePhoto}
-        openModal={props.openModal}
-        showProfile={props.showProfile}
-        imageContainerClassName={props.imageContainerClassName}
-        imageClassName={props.imageClassName}
-      />
-    </div>
+    <>
+      <TopNavigationBar favouritePhotos={props.favouritePhotos} />
+      <div className="home-route">
+        <PhotoList
+          mockPhotos={props.mockPhotos}
+          favouritePhotos={props.favouritePhotos}
+          addFavouritePhoto={props.addFavouritePhoto}
+          imageContainerClassName={props.imageContainerClassName}
+          imageClassName={props.imageClassName}
+          isFavourite={props.isFavourite}
+          showModal={props.showModal}
+          openModal={props.openModal}
+          addToLike={props.addToLike}
+        />
+      </div>
+    </>
   );
 };
 

@@ -13,11 +13,16 @@ const PhotoList = (props) => {
       thumbnail={photo.user.profile}
       favouritePhotos={props.favouritePhotos}
       addFavouritePhoto={props.addFavouritePhoto}
+      addToLike={props.addToLike}
       id={photo.id}
-      openModal={props.openModal}
+      // openModal={props.openModal}
       showProfile={props.showProfile}
       imageContainerClassName={props.imageContainerClassName}
       imageClassName={props.imageClassName}
+      showModal={props.showModal}
+      isFavourite={props.isFavourite}
+      handleFavClick={props.handleFavClick}
+      openModal={props.openModal}
     />
   ));
 

@@ -3,17 +3,11 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  const [isFav, setIsFav] = useState(false);
-
-  const handleFavClick = (id) => {
-    setIsFav(!isFav);
-    if (!isFav) {
-      props.addFavouritePhoto(id);
-    }
-  };
-
+  // console.log("props", props);
   const handleModalClick = (id) => {
-    props.openModal(id);
+    if (!props.showModal) {
+      props.openModal(id);
+    }
   };
 
   return (
@@ -21,13 +15,15 @@ const PhotoListItem = (props) => {
       key={props.id}
       className={props.imageContainerClassName}
       // className={`${props.className}`}
-      onClick={() => handleModalClick(props.id)}
+      // onClick={() => handleModalClick(props.id)} //Modal Open
+      onClick={() => handleModalClick(props.id)} //Modal Open
     >
       <PhotoFavButton
         photoId={props.id}
-        isFav={isFav}
-        handleFavClick={handleFavClick}
+        isFavourite={props.isFavourite}
         favouritePhotos={props.favouritePhotos}
+        addToLike={props.addToLike}
+        // isFavourite={props.isFavourite}
       />
       <img
         src={props.imageSource}
@@ -35,22 +31,21 @@ const PhotoListItem = (props) => {
         // className="photo-list--image"
         className={props.imageClassName}
       />
-      {props.showProfile && (
-        <div className="photo-list--user-details">
-          <img
-            src={props.thumbnail}
-            alt={props.username}
-            className="photo-list--user-profile"
-          />
-          <div className="photo-list--user-info">
-            <span>{props.username}</span>
-            <br />
-            <span className="photo-list--user-location">
-              {props.city}, {props.country}
-            </span>
-          </div>
+
+      <div className="photo-list--user-details">
+        <img
+          src={props.thumbnail}
+          alt={props.username}
+          className="photo-list--user-profile"
+        />
+        <div className="photo-list--user-info">
+          <span>{props.username}</span>
+          <br />
+          <span className="photo-list--user-location">
+            {props.city}, {props.country}
+          </span>
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -9,8 +9,7 @@ export const FavBadge = (props) => {
       <FavIcon
         width={20}
         height={30}
-        // fill={isFavourite}
-        fill={props.isFavourite ? props.isFavourite : "#C80000"}
+        fill={props.isFavourite ? "#C80000" : "transparent"}
         displayAlert={!!props.isFavPhotoExist}
       />
     </div>
