@@ -3,6 +3,7 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
+  console.log(props);
   // const render = props.mockPhotos.map((photo) => photo);
   // const favPhotos = props.favouritePhotos.map((el, i) => {
   //   // console.log("test", el[i].id);
@@ -20,6 +21,14 @@ const PhotoList = (props) => {
   //   });
   // }
 
+  function isPhotoFavourite(photoListItem) {
+    const foundPhoto = props.favouritePhotos.find((favouritePhoto) => {
+      return photoListItem.id === favouritePhoto.id;
+    });
+
+    return !!foundPhoto;
+  }
+
   const renderPhotos = props.mockPhotos.map((photo) => (
     <PhotoListItem
       key={photo.id}
@@ -33,7 +42,7 @@ const PhotoList = (props) => {
       imageContainerClassName={props.imageContainerClassName}
       imageClassName={props.imageClassName}
       showModal={props.showModal}
-      isFavourite={props.isFavourite}
+      isFavourite={isPhotoFavourite(photo)}
       favouritePhotos={props.favouritePhotos}
     />
   ));

@@ -30,16 +30,23 @@ const useApplicationData = () => {
         }
       case "FAV_PHOTO_ADDED":
         console.log("FAV_PHOTO_ADDED was clicked");
-        const likedPhoto = mockPhotos.filter((photo) => {
+        const likedPhoto = mockPhotos.find((photo) => {
           return photo.id === action.payload;
         });
-        const removedFromFavourite = initialState.favouritePhotos.filter(
+        console.log(likedPhoto);
+        console.log(state.favouritePhotos);
+
+        const removedFromFavourite = state.favouritePhotos.filter(
           (photo) => {
             return photo.id !== action.payload;
           }
         );
 
-        if (!initialState.isFavourite) {
+        const foundPhoto = state.favouritePhotos.find((favouritePhoto) => {
+          return likedPhoto.id === favouritePhoto.id;
+        });
+
+        if (!foundPhoto) {
           return {
             ...state,
             isFavourite: !state.isFavourite,
@@ -49,7 +56,7 @@ const useApplicationData = () => {
           return {
             ...state,
             isFavourite: !state.isFavourite,
-            favouritePhotos: [removedFromFavourite],
+            favouritePhotos: removedFromFavourite,
           };
         }
       case "CLOSE_MODAL":
