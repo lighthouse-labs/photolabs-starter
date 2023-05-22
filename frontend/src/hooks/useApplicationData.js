@@ -17,10 +17,10 @@ const useApplicationData = () => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "SELECT_PHOTO":
+        console.log("SELECT_PHOTO was clicked");
         const selected = mockPhotos.filter((photo) => {
           return photo.id === action.payload;
         });
-        // console.log("selected", selected);
         if (!state.showModal) {
           return {
             ...state,
@@ -29,13 +29,14 @@ const useApplicationData = () => {
           };
         }
       case "FAV_PHOTO_ADDED":
+        console.log("FAV_PHOTO_ADDED was clicked");
         const likedPhoto = mockPhotos.filter((photo) => {
           return photo.id === action.payload;
         });
-        // console.log("likedPhoto", likedPhoto);
-        console.log("FAV_PHOTO_ADDED");
-        // console.log("action.payload: ", action.payload);
-        // console.log("favourite photo", initialState.favouritePhotos);
+        // const removedFromFavourite = initialState.favouritePhotos.filter(
+        //     (photo) => photo.id === id
+        //   );
+        // )}
 
         if (!initialState.isFavourite) {
           return {
@@ -43,43 +44,52 @@ const useApplicationData = () => {
             isFavourite: !state.isFavourite,
             favouritePhotos: [...state.favouritePhotos, likedPhoto],
           };
+        } else {
+          return {
+            ...state,
+            isFavourite: !prevState.isFavourite,
+            favouritePhotos: [removedFromFavourite],
+          };
         }
-      // When our photolabs/backend successfully returns our request with the application data
+
+      // ?? When our photolabs/backend successfully returns our request with the application data
       default:
         return state;
     }
   };
 
-  const updateToFavPhotoIds = (id) => {
-    const photo = mockPhotos.filter((photo) => photo.id === id);
-    const removedFromFavourite = initialState.favouritePhotos.filter(
-      (photo) => photo.id === id
-    );
+  // Old FAV_PHOTO_ADDED
+  // const updateToFavPhotoIds = (id) => {
+  //   const photo = mockPhotos.filter((photo) => photo.id === id);
+  //   const removedFromFavourite = initialState.favouritePhotos.filter(
+  //     (photo) => photo.id === id
+  //   );
 
-    if (!initialState.isFavourite) {
-      setInitialState((prevState) => ({
-        ...prevState,
-        isFavourite: !prevState.isFavourite,
-        favouritePhotos: [...prevState.favouritePhotos, photo],
-      }));
-    } else {
-      setInitialState((prevState) => ({
-        ...prevState,
-        isFavourite: !prevState.isFavourite,
-        favouritePhotos: [removedFromFavourite],
-      }));
-    }
-  };
+  //   if (!initialState.isFavourite) {
+  //     setInitialState((prevState) => ({
+  //       ...prevState,
+  //       isFavourite: !prevState.isFavourite,
+  //       favouritePhotos: [...prevState.favouritePhotos, photo],
+  //     }));
+  //   } else {
+  //     setInitialState((prevState) => ({
+  //       ...prevState,
+  //       isFavourite: !prevState.isFavourite,
+  //       favouritePhotos: [removedFromFavourite],
+  //     }));
+  //   }
+  // };
 
-  const setPhotoSelected = (id) => {
-    const photo = mockPhotos.filter((photo) => photo.id === id);
+  // Old SELECT_PHOTO
+  // const setPhotoSelected = (id) => {
+  //   const photo = mockPhotos.filter((photo) => photo.id === id);
 
-    setInitialState((prevState) => ({
-      ...prevState,
-      showModal: !prevState.showModal,
-      selectedPhoto: photo,
-    }));
-  };
+  //   setInitialState((prevState) => ({
+  //     ...prevState,
+  //     showModal: !prevState.showModal,
+  //     selectedPhoto: photo,
+  //   }));
+  // };
 
   const onClosePhotoDetailsModal = () => {
     console.log("Close modal - console from custom hooks");
@@ -93,8 +103,6 @@ const useApplicationData = () => {
   return {
     initialState,
     reducer,
-    updateToFavPhotoIds,
-    setPhotoSelected,
     onClosePhotoDetailsModal,
   };
 };

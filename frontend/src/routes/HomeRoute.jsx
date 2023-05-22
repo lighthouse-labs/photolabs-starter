@@ -8,7 +8,7 @@ import "../styles/HomeRoute.scss";
 const HomeRoute = (props) => {
   return (
     <>
-      <TopNavigationBar favouritePhotos={props.favouritePhotos} />
+      <TopNavigationBar favouritePhotos={props.favouritePhotos} isFavourite={props.isFavourite} />
       <div className="home-route">
         <PhotoList
           mockPhotos={props.mockPhotos}
