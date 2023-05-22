@@ -15,6 +15,7 @@ export const PhotoDetailsModal = (props) => {
   for (const key of keys) {
     similarPhotosArray.push(similarPhotos[key]);
   }
+  console.log(props.closeModal);
 
   return (
     <div className="photo-details-modal">
@@ -53,11 +54,12 @@ export const PhotoDetailsModal = (props) => {
       <div className="modal-container">
         <PhotoList
           mockPhotos={selectedPhoto}
-          imageClassName={props.imageClassName}
-          imageContainerClassName={props.imageContainerClassName}
+          imageClassName="photo-details-modal--image"
+          imageContainerClassName="photo-details-large-image"
           isFavourite={props.isFavourite}
           addToLike={props.addToLike}
-          openModal={props.openModal}
+          // openModal={props.openModal}
+          dispatch={props.dispatch}
         />
 
         <h2 className="photo-details-modal--header">Similar Photos</h2>
@@ -67,7 +69,8 @@ export const PhotoDetailsModal = (props) => {
           imageContainerClassName={props.imageContainerClassName}
           isFavourite={props.isFavourite}
           addToLike={props.addToLike}
-          openModal={props.openModal}
+          // openModal={props.openModal}
+          dispatch={props.dispatch}
         />
       </div>
     </div>

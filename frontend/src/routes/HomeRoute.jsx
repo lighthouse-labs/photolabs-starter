@@ -18,8 +18,8 @@ const HomeRoute = (props) => {
           imageClassName={props.imageClassName}
           isFavourite={props.isFavourite}
           showModal={props.showModal}
-          openModal={props.openModal}
           addToLike={props.addToLike}
+          dispatch={props.dispatch}
         />
       </div>
     </>

@@ -15,6 +15,7 @@ const PhotoList = (props) => {
       addFavouritePhoto={props.addFavouritePhoto}
       addToLike={props.addToLike}
       id={photo.id}
+      dispatch={props.dispatch}
       // openModal={props.openModal}
       showProfile={props.showProfile}
       imageContainerClassName={props.imageContainerClassName}
@@ -22,7 +23,7 @@ const PhotoList = (props) => {
       showModal={props.showModal}
       isFavourite={props.isFavourite}
       handleFavClick={props.handleFavClick}
-      openModal={props.openModal}
+      // openModal={props.openModal}
     />
   ));
 
