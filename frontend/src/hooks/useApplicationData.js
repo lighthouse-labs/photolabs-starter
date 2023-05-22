@@ -6,7 +6,7 @@ const useApplicationData = () => {
     showModal: false,
     selectedPhoto: null,
     favouritePhotos: [],
-    isFavourite: false,
+    // isFavourite: false,
     count: 0,
   });
 
@@ -52,6 +52,14 @@ const useApplicationData = () => {
             favouritePhotos: [removedFromFavourite],
           };
         }
+      case "CLOSE_MODAL":
+        if (state.showModal) {
+          return {
+            ...state,
+            showModal: false,
+            selectedPhoto: null,
+          };
+        }
 
       // ?? When our photolabs/backend successfully returns our request with the application data
       default:
@@ -92,19 +100,22 @@ const useApplicationData = () => {
   //   }));
   // };
 
-  const onClosePhotoDetailsModal = () => {
-    console.log("Close modal - console from custom hooks");
-    setInitialState((prevState) => ({
-      ...prevState,
-      showModal: initialState.showModal,
-      selectedPhoto: null,
-    }));
-  };
+  // Old showModal
+  // const onClosePhotoDetailsModal = () => {
+  //   console.log("Close modal - console from custom hooks");
+  //   setInitialState((prevState) => ({
+  //     ...prevState,
+  //     showModal: !prevState.showModal,
+  //     selectedPhoto: null,
+  //   }));
+  //   // !setShow;
+  //   console.log("click finished");
+  // };
 
   return {
     initialState,
     reducer,
-    onClosePhotoDetailsModal,
+    // onClosePhotoDetailsModal,
   };
 };
 

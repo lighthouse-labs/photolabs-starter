@@ -6,21 +6,11 @@ import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import useApplicationData from "./hooks/useApplicationData";
 
-// const initialState = {
-//   count: 2,
-// };
-
 const App = () => {
   const { initialState, reducer, onClosePhotoDetailsModal } =
     useApplicationData();
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log("state.favouritePhotos", state.favouritePhotos);
-
-  const closeModal = () => {
-    console.log("closed was clicked");
-    onClosePhotoDetailsModal();
-  };
 
   return (
     <div className="App">
@@ -31,15 +21,14 @@ const App = () => {
         isFavourite={state.isFavourite}
         favouritePhotos={state.favouritePhotos}
         showModal={state.showModal}
-        closeModal={closeModal}
         dispatch={dispatch}
       />
       {state.showModal && (
         <PhotoDetailsModal
           imageContainerClassName="photo-list--item photo-details-modal--images-wrapper"
           imageClassName="photo-details-modal--images"
+          favouritePhotos={state.favouritePhotos}
           showModal={state.showModal}
-          closeModal={closeModal}
           selectedPhoto={state.selectedPhoto}
           isFavourite={state.isFavourite}
           dispatch={dispatch}

@@ -8,6 +8,7 @@ import PhotoList from "../components/PhotoList";
 
 export const PhotoDetailsModal = (props) => {
   const selectedPhoto = props.selectedPhoto;
+  console.log("close modal props", props.closeModal);
 
   const similarPhotos = props.selectedPhoto[0].similar_photos;
   const keys = Object.keys(similarPhotos);
@@ -16,11 +17,18 @@ export const PhotoDetailsModal = (props) => {
     similarPhotosArray.push(similarPhotos[key]);
   }
 
+  const onCloseModal = (e) => {
+    props.dispatch({
+      type: "CLOSE_MODAL",
+      // payload: props.photoId,
+    });
+  };
+
   return (
     <div className="photo-details-modal">
       <button
         className="photo-details-modal--close-button"
-        onClick={props.closeModal}
+        onClick={onCloseModal}
       >
         <svg
           width="24"

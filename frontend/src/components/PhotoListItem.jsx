@@ -3,22 +3,28 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
+  const onSelectPhoto = () => {
+    props.dispatch({
+      type: "SELECT_PHOTO",
+      payload: props.id,
+    });
+  };
+
+
   return (
     <div key={props.id} className={`${props.imageContainerClassName}`}>
       <PhotoFavButton
         photoId={props.id}
         isFavourite={props.isFavourite}
         favouritePhotos={props.favouritePhotos}
-        addToLike={props.addToLike}
         dispatch={props.dispatch}
+        id={props.id}
       />
       <img
         src={props.imageSource}
         alt={`${props.username}'s photo`}
         className={props.imageClassName}
-        onClick={() =>
-          props.dispatch({ type: "SELECT_PHOTO", payload: props.id })
-        }
+        onClick={onSelectPhoto}
       />
 
       <div className="photo-list--user-details">

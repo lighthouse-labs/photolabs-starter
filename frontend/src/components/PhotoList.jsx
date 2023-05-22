@@ -3,6 +3,23 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
+  // const render = props.mockPhotos.map((photo) => photo);
+  // const favPhotos = props.favouritePhotos.map((el, i) => {
+  //   // console.log("test", el[i].id);
+  //   console.log("Favourite photo item: ", el[i]);
+  //   // console.log("el", el);
+  //   // console.log("i", i);
+  // });
+
+  // console.log("render", render);
+  // console.log("favouritePhotos", props.favouritePhotos);
+  // if (props.favouritePhotos.length > 0) {
+  //   props.favouritePhotos.map((photo) => {
+  //     return photo.id === props.id;
+  //     // console.log("photo", photo);
+  //   });
+  // }
+
   const renderPhotos = props.mockPhotos.map((photo) => (
     <PhotoListItem
       key={photo.id}
@@ -11,19 +28,13 @@ const PhotoList = (props) => {
       city={photo.location.city}
       country={photo.location.country}
       thumbnail={photo.user.profile}
-      favouritePhotos={props.favouritePhotos}
-      addFavouritePhoto={props.addFavouritePhoto}
-      addToLike={props.addToLike}
       id={photo.id}
       dispatch={props.dispatch}
-      // openModal={props.openModal}
-      showProfile={props.showProfile}
       imageContainerClassName={props.imageContainerClassName}
       imageClassName={props.imageClassName}
       showModal={props.showModal}
       isFavourite={props.isFavourite}
-      handleFavClick={props.handleFavClick}
-      // openModal={props.openModal}
+      favouritePhotos={props.favouritePhotos}
     />
   ));
 
