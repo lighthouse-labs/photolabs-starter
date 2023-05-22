@@ -24,7 +24,7 @@ const useApplicationData = () => {
         if (!state.showModal) {
           return {
             ...state,
-            showModal: true,
+            showModal: !initialState.showModal,
             selectedPhoto: selected.length > 0 ? selected : "",
           };
         }
@@ -33,10 +33,11 @@ const useApplicationData = () => {
         const likedPhoto = mockPhotos.filter((photo) => {
           return photo.id === action.payload;
         });
-        // const removedFromFavourite = initialState.favouritePhotos.filter(
-        //     (photo) => photo.id === id
-        //   );
-        // )}
+        const removedFromFavourite = initialState.favouritePhotos.filter(
+          (photo) => {
+            return photo.id !== action.payload;
+          }
+        );
 
         if (!initialState.isFavourite) {
           return {
@@ -47,7 +48,7 @@ const useApplicationData = () => {
         } else {
           return {
             ...state,
-            isFavourite: !prevState.isFavourite,
+            isFavourite: !state.isFavourite,
             favouritePhotos: [removedFromFavourite],
           };
         }
@@ -95,7 +96,7 @@ const useApplicationData = () => {
     console.log("Close modal - console from custom hooks");
     setInitialState((prevState) => ({
       ...prevState,
-      showModal: false,
+      showModal: initialState.showModal,
       selectedPhoto: null,
     }));
   };
