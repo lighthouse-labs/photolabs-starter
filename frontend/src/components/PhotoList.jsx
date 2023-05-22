@@ -3,24 +3,6 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
-  console.log(props);
-  // const render = props.mockPhotos.map((photo) => photo);
-  // const favPhotos = props.favouritePhotos.map((el, i) => {
-  //   // console.log("test", el[i].id);
-  //   console.log("Favourite photo item: ", el[i]);
-  //   // console.log("el", el);
-  //   // console.log("i", i);
-  // });
-
-  // console.log("render", render);
-  // console.log("favouritePhotos", props.favouritePhotos);
-  // if (props.favouritePhotos.length > 0) {
-  //   props.favouritePhotos.map((photo) => {
-  //     return photo.id === props.id;
-  //     // console.log("photo", photo);
-  //   });
-  // }
-
   function isPhotoFavourite(photoListItem) {
     const foundPhoto = props.favouritePhotos.find((favouritePhoto) => {
       return photoListItem.id === favouritePhoto.id;
@@ -29,7 +11,7 @@ const PhotoList = (props) => {
     return !!foundPhoto;
   }
 
-  const renderPhotos = props.mockPhotos.map((photo) => (
+  const renderPhotos = props.photos.map((photo) => (
     <PhotoListItem
       key={photo.id}
       imageSource={photo.urls.regular}

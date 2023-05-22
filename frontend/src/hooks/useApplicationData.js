@@ -1,24 +1,25 @@
 import { useState, useEffect } from "react";
-import mockPhotos from "../mocks/photos";
+import axios from "axios";
+// import photos from "../mocks/photos";
 
 const useApplicationData = () => {
   const [initialState, setInitialState] = useState({
     showModal: false,
     selectedPhoto: null,
     favouritePhotos: [],
-    // isFavourite: false,
-    count: 0,
+    photos: [],
   });
 
   useEffect(() => {
-    //
+    axios("/api/photos").then((response) =>
+      setInitialState({ ...initialState, photos: response.data })
+    );
   }, []);
 
   const reducer = (state, action) => {
     switch (action.type) {
       case "SELECT_PHOTO":
-        console.log("SELECT_PHOTO was clicked");
-        const selected = mockPhotos.filter((photo) => {
+        const selected = state.photos.filter((photo) => {
           return photo.id === action.payload;
         });
         if (!state.showModal) {
@@ -29,18 +30,13 @@ const useApplicationData = () => {
           };
         }
       case "FAV_PHOTO_ADDED":
-        console.log("FAV_PHOTO_ADDED was clicked");
-        const likedPhoto = mockPhotos.find((photo) => {
+        const likedPhoto = state.photos.find((photo) => {
           return photo.id === action.payload;
         });
-        console.log(likedPhoto);
-        console.log(state.favouritePhotos);
 
-        const removedFromFavourite = state.favouritePhotos.filter(
-          (photo) => {
-            return photo.id !== action.payload;
-          }
-        );
+        const removedFromFavourite = state.favouritePhotos.filter((photo) => {
+          return photo.id !== action.payload;
+        });
 
         const foundPhoto = state.favouritePhotos.find((favouritePhoto) => {
           return likedPhoto.id === favouritePhoto.id;
@@ -76,7 +72,7 @@ const useApplicationData = () => {
 
   // Old FAV_PHOTO_ADDED
   // const updateToFavPhotoIds = (id) => {
-  //   const photo = mockPhotos.filter((photo) => photo.id === id);
+  //   const photo = photos.filter((photo) => photo.id === id);
   //   const removedFromFavourite = initialState.favouritePhotos.filter(
   //     (photo) => photo.id === id
   //   );
@@ -98,7 +94,7 @@ const useApplicationData = () => {
 
   // Old SELECT_PHOTO
   // const setPhotoSelected = (id) => {
-  //   const photo = mockPhotos.filter((photo) => photo.id === id);
+  //   const photo = photos.filter((photo) => photo.id === id);
 
   //   setInitialState((prevState) => ({
   //     ...prevState,

@@ -10,7 +10,6 @@ const PhotoListItem = (props) => {
     });
   };
 
-
   return (
     <div key={props.id} className={`${props.imageContainerClassName}`}>
       <PhotoFavButton

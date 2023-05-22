@@ -1,7 +1,7 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useState } from "react";
 import "./App.scss";
-
-import mockPhotos from "./mocks/photos";
+// import axios from "axios";
+// import mockPhotos from "./mocks/photos";
 import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import useApplicationData from "./hooks/useApplicationData";
@@ -11,11 +11,19 @@ const App = () => {
     useApplicationData();
 
   const [state, dispatch] = useReducer(reducer, initialState);
+  // const [photos, setPhotos] = useState([]);
+
+  console.log("initialState.photos", initialState.photos);
+  // console.log("photos", photos);
+
+  // useEffect(() => {
+  //   axios("/api/photos").then((response) => setPhotos(response.data));
+  // }, []);
 
   return (
     <div className="App">
       <HomeRoute
-        mockPhotos={mockPhotos}
+        photos={initialState.photos}
         imageContainerClassName="photo-list--item"
         imageClassName="photo-list--image"
         isFavourite={state.isFavourite}

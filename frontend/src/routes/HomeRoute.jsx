@@ -14,7 +14,7 @@ const HomeRoute = (props) => {
       />
       <div className="home-route">
         <PhotoList
-          mockPhotos={props.mockPhotos}
+          photos={props.photos}
           favouritePhotos={props.favouritePhotos}
           addFavouritePhoto={props.addFavouritePhoto}
           imageContainerClassName={props.imageContainerClassName}
