@@ -34,6 +34,7 @@ module.exports = function application(
   app.use(cors());
   app.use(helmet());
   app.use(bodyparser.json());
+  app.use(express.static(path.join(__dirname, 'public')));
 
   // TODO: update to topics and photos
   app.use("/api", photos(db));
