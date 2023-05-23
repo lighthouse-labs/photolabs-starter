@@ -10,9 +10,6 @@ const App = () => {
 
   const [state, dispatch] = useReducer(reducer, applicationState);
 
-  console.log("state", state);
-  // console.log("applicationState.photos", applicationState.photos);
-
   return (
     <div className="App">
       <HomeRoute
@@ -20,7 +17,6 @@ const App = () => {
         topics={applicationState.topics}
         imageContainerClassName="photo-list--item"
         imageClassName="photo-list--image"
-        // isFavourite={state.isFavourite}
         favouritePhotos={state.favouritePhotos}
         showModal={state.showModal}
         dispatch={dispatch}

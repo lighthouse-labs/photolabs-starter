@@ -30,7 +30,6 @@ const useApplicationData = () => {
         const selected = applicationState.photos.filter((photo) => {
           return photo.id === action.payload;
         });
-        console.log("selected", selected);
         if (!state.showModal) {
           return {
             ...state,
@@ -54,18 +53,14 @@ const useApplicationData = () => {
         if (!foundPhoto) {
           return {
             ...state,
-            // isFavourite: !state.isFavourite,
             favouritePhotos: [...state.favouritePhotos, likedPhoto],
           };
         } else {
           return {
             ...state,
-            // isFavourite: !state.isFavourite,
             favouritePhotos: removedFromFavourite,
           };
         }
-      case "CHANGE_CATEGORY":
-        console.log("Category name", action.payload);
       case "CLOSE_MODAL":
         if (state.showModal) {
           return {

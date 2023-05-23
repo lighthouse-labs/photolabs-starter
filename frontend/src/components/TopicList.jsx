@@ -10,6 +10,7 @@ const TopicList = (props) => {
         title={topic.title}
         slug={topic.slug}
         dispatch={props.dispatch}
+        id={topic.id}
       />
     );
   });

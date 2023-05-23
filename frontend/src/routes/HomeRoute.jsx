@@ -20,7 +20,6 @@ const HomeRoute = (props) => {
           addFavouritePhoto={props.addFavouritePhoto}
           imageContainerClassName={props.imageContainerClassName}
           imageClassName={props.imageClassName}
-          // isFavourite={props.isFavourite}
           showModal={props.showModal}
           dispatch={props.dispatch}
         />

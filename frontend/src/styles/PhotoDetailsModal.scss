@@ -2,10 +2,9 @@
   background-color: white;
   box-shadow: 0 0 0 50vmax rgba(0, 0, 0, 0.5);
   position: absolute;
-  top: 55%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -40%);
-  // height: 80vh;
   width: 80vw;
   overflow-y: scroll;
   border-radius: 12px;
@@ -38,6 +37,8 @@
 }
 .photo-details-modal--images-wrapper {
   width: 28.5%;
+  max-width: none;
+  margin: 0 0 16px 0;
 }
 .photo-details-modal--images {
   border-radius: 8px 8px 0 0;
