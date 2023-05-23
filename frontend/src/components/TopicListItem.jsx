@@ -4,10 +4,13 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
   const { title } = props;
+  console.log("props", props);
 
   return (
     <div className="topic-list--item">
-      <span>{title}</span>
+      <a href={`/api/topics/photos/1`}>
+        <span>{title}</span>
+      </a>
     </div>
   );
 };

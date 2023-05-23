@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
@@ -9,12 +9,12 @@ const PhotoListItem = (props) => {
       payload: props.id,
     });
   };
-
+  console.log("props.id", props.id);
   return (
     <div key={props.id} className={`${props.imageContainerClassName}`}>
       <PhotoFavButton
         photoId={props.id}
-        isFavourite={props.isFavourite}
+        // isFavourite={props.isFavourite}
         favouritePhotos={props.favouritePhotos}
         dispatch={props.dispatch}
         id={props.id}

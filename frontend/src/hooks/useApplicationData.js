@@ -1,124 +1,130 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import axios from "axios";
-// import photos from "../mocks/photos";
+import reducer from "../reducer/reducer";
 
 const useApplicationData = () => {
-  const [initialState, setInitialState] = useState({
+  // const [applicationState, setApplicationState] = useState({
+  //   showModal: false,
+  //   selectedPhoto: [],
+  //   favouritePhotos: [],
+  //   photos: [],
+  //   topics: [],
+  // });
+
+  const SET_PHOTO_DATA = "SET_PHOTO_DATA";
+  const SET_TOPIC_DATA = "SET_TOPIC_DATA";
+
+  const applicationState = {
     showModal: false,
-    selectedPhoto: null,
+    selectedPhoto: [],
     favouritePhotos: [],
     photos: [],
-  });
-
-  useEffect(() => {
-    axios("/api/photos").then((response) =>
-      setInitialState({ ...initialState, photos: response.data })
-    );
-  }, []);
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "SELECT_PHOTO":
-        const selected = state.photos.filter((photo) => {
-          return photo.id === action.payload;
-        });
-        if (!state.showModal) {
-          return {
-            ...state,
-            showModal: !initialState.showModal,
-            selectedPhoto: selected.length > 0 ? selected : "",
-          };
-        }
-      case "FAV_PHOTO_ADDED":
-        const likedPhoto = state.photos.find((photo) => {
-          return photo.id === action.payload;
-        });
-
-        const removedFromFavourite = state.favouritePhotos.filter((photo) => {
-          return photo.id !== action.payload;
-        });
-
-        const foundPhoto = state.favouritePhotos.find((favouritePhoto) => {
-          return likedPhoto.id === favouritePhoto.id;
-        });
-
-        if (!foundPhoto) {
-          return {
-            ...state,
-            isFavourite: !state.isFavourite,
-            favouritePhotos: [...state.favouritePhotos, likedPhoto],
-          };
-        } else {
-          return {
-            ...state,
-            isFavourite: !state.isFavourite,
-            favouritePhotos: removedFromFavourite,
-          };
-        }
-      case "CLOSE_MODAL":
-        if (state.showModal) {
-          return {
-            ...state,
-            showModal: false,
-            selectedPhoto: null,
-          };
-        }
-
-      // ?? When our photolabs/backend successfully returns our request with the application data
-      default:
-        return state;
-    }
+    topics: [],
   };
 
-  // Old FAV_PHOTO_ADDED
-  // const updateToFavPhotoIds = (id) => {
-  //   const photo = photos.filter((photo) => photo.id === id);
-  //   const removedFromFavourite = initialState.favouritePhotos.filter(
-  //     (photo) => photo.id === id
-  //   );
+  const [state, dispatch] = useReducer(reducer, applicationState);
 
-  //   if (!initialState.isFavourite) {
-  //     setInitialState((prevState) => ({
-  //       ...prevState,
-  //       isFavourite: !prevState.isFavourite,
-  //       favouritePhotos: [...prevState.favouritePhotos, photo],
-  //     }));
-  //   } else {
-  //     setInitialState((prevState) => ({
-  //       ...prevState,
-  //       isFavourite: !prevState.isFavourite,
-  //       favouritePhotos: [removedFromFavourite],
-  //     }));
+  useEffect(() => {
+    const fetchData = async () => {
+      const photos = await axios("/api/photos");
+      dispatch({
+        type: SET_PHOTO_DATA,
+        payload: photos.data,
+      });
+      // const topics = await axios("/api/topics");
+
+      // setApplicationState({
+      //   ...applicationState,
+      //   photos: photos.data,
+      //   topics: topics.data,
+      // });
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const topics = await axios("/api/topics");
+      dispatch({
+        type: SET_TOPIC_DATA,
+        payload: topics.data,
+      });
+      // const topics = await axios("/api/topics");
+
+      // setApplicationState({
+      //   ...applicationState,
+      //   photos: photos.data,
+      //   topics: topics.data,
+      // });
+    };
+    fetchData();
+  }, []);
+
+  // const reducer = (state, action) => {
+  //   switch (action.type) {
+  //     case "SET_PHOTO_DATA":
+  //       const photos = {
+  //         ...state,
+  //         photos: action.payload,
+  //       };
+  //       return photos;
+  //     case "SELECT_PHOTO":
+  //       console.log("state.photos", state.photos);
+  //       console.log("applicationState.photos", applicationState.photos);
+  //       const selected = applicationState.photos.filter((photo) => {
+  //         return photo.id === action.payload;
+  //       });
+  //       console.log("selected", selected);
+  //       if (!state.showModal) {
+  //         return {
+  //           ...state,
+  //           showModal: !applicationState.showModal,
+  //           selectedPhoto: selected.length > 0 ? selected : "",
+  //         };
+  //       }
+  //     case "FAV_PHOTO_ADDED":
+  //       const likedPhoto = applicationState.photos.find((photo) => {
+  //         return photo.id === action.payload;
+  //       });
+
+  //       const removedFromFavourite = state.favouritePhotos.filter((photo) => {
+  //         return photo.id !== action.payload;
+  //       });
+
+  //       const foundPhoto = state.favouritePhotos.find((favouritePhoto) => {
+  //         return likedPhoto.id === favouritePhoto.id;
+  //       });
+
+  //       if (!foundPhoto) {
+  //         return {
+  //           ...state,
+  //           // isFavourite: !state.isFavourite,
+  //           favouritePhotos: [...state.favouritePhotos, likedPhoto],
+  //         };
+  //       } else {
+  //         return {
+  //           ...state,
+  //           // isFavourite: !state.isFavourite,
+  //           favouritePhotos: removedFromFavourite,
+  //         };
+  //       }
+  //     case "CLOSE_MODAL":
+  //       if (state.showModal) {
+  //         return {
+  //           ...state,
+  //           showModal: false,
+  //           selectedPhoto: null,
+  //         };
+  //       }
+  //     default:
+  //       return state;
   //   }
   // };
 
-  // Old SELECT_PHOTO
-  // const setPhotoSelected = (id) => {
-  //   const photo = photos.filter((photo) => photo.id === id);
-
-  //   setInitialState((prevState) => ({
-  //     ...prevState,
-  //     showModal: !prevState.showModal,
-  //     selectedPhoto: photo,
-  //   }));
-  // };
-
-  // Old showModal
-  // const onClosePhotoDetailsModal = () => {
-  //   console.log("Close modal - console from custom hooks");
-  //   setInitialState((prevState) => ({
-  //     ...prevState,
-  //     showModal: !prevState.showModal,
-  //     selectedPhoto: null,
-  //   }));
-  //   // !setShow;
-  //   console.log("click finished");
-  // };
-
   return {
-    initialState,
-    reducer,
-    // onClosePhotoDetailsModal,
+    // applicationState,
+    state,
+    // reducer,
+    dispatch,
   };
 };
 

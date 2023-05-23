@@ -1,32 +1,29 @@
-import React, { useReducer, useEffect, useState } from "react";
+import React, { useReducer } from "react";
 import "./App.scss";
-// import axios from "axios";
-// import mockPhotos from "./mocks/photos";
 import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import useApplicationData from "./hooks/useApplicationData";
 
 const App = () => {
-  const { initialState, reducer, onClosePhotoDetailsModal } =
+  // const { applicationState, reducer, onClosePhotoDetailsModal } =
+  const { state, reducer, onClosePhotoDetailsModal, dispatch } =
     useApplicationData();
 
-  const [state, dispatch] = useReducer(reducer, initialState);
-  // const [photos, setPhotos] = useState([]);
+  // const [state, dispatch] = useReducer(reducer, applicationState);
 
-  console.log("initialState.photos", initialState.photos);
-  // console.log("photos", photos);
-
-  // useEffect(() => {
-  //   axios("/api/photos").then((response) => setPhotos(response.data));
-  // }, []);
+  // console.log("applicationState", applicationState);
+  // console.log("applicationState.photos", applicationState.photos);
 
   return (
     <div className="App">
       <HomeRoute
-        photos={initialState.photos}
+        // photos={applicationState.photos}
+        // topics={applicationState.topics}
+        photos={state.photos}
+        topics={state.topics}
         imageContainerClassName="photo-list--item"
         imageClassName="photo-list--image"
-        isFavourite={state.isFavourite}
+        // isFavourite={state.isFavourite}
         favouritePhotos={state.favouritePhotos}
         showModal={state.showModal}
         dispatch={dispatch}

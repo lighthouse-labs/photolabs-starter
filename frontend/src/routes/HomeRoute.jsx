@@ -10,7 +10,7 @@ const HomeRoute = (props) => {
     <>
       <TopNavigationBar
         favouritePhotos={props.favouritePhotos}
-        isFavourite={props.isFavourite}
+        topics={props.topics}
       />
       <div className="home-route">
         <PhotoList
@@ -19,7 +19,7 @@ const HomeRoute = (props) => {
           addFavouritePhoto={props.addFavouritePhoto}
           imageContainerClassName={props.imageContainerClassName}
           imageClassName={props.imageClassName}
-          isFavourite={props.isFavourite}
+          // isFavourite={props.isFavourite}
           showModal={props.showModal}
           dispatch={props.dispatch}
         />

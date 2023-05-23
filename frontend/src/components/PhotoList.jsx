@@ -7,7 +7,6 @@ const PhotoList = (props) => {
     const foundPhoto = props.favouritePhotos.find((favouritePhoto) => {
       return photoListItem.id === favouritePhoto.id;
     });
-
     return !!foundPhoto;
   }
 

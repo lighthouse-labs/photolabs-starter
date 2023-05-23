@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import "../styles/PhotoDetailsModal.scss";
 import mockPhotos from "../mocks/photos";
 import PhotoListItem from "../components/PhotoListItem";
@@ -8,8 +7,7 @@ import PhotoList from "../components/PhotoList";
 
 export const PhotoDetailsModal = (props) => {
   const selectedPhoto = props.selectedPhoto;
-  console.log("close modal props", props.closeModal);
-
+  console.log("selectedPhoto", selectedPhoto);
   const similarPhotos = props.selectedPhoto[0].similar_photos;
   const keys = Object.keys(similarPhotos);
   const similarPhotosArray = [];
@@ -17,10 +15,9 @@ export const PhotoDetailsModal = (props) => {
     similarPhotosArray.push(similarPhotos[key]);
   }
 
-  const onCloseModal = (e) => {
+  const onCloseModal = () => {
     props.dispatch({
       type: "CLOSE_MODAL",
-      // payload: props.photoId,
     });
   };
 
@@ -60,7 +57,7 @@ export const PhotoDetailsModal = (props) => {
       </button>
       <div className="modal-container">
         <PhotoList
-          mockPhotos={selectedPhoto}
+          photos={selectedPhoto}
           imageClassName="photo-details-modal--image"
           imageContainerClassName="photo-details-large-image"
           isFavourite={props.isFavourite}
@@ -70,10 +67,10 @@ export const PhotoDetailsModal = (props) => {
 
         <h2 className="photo-details-modal--header">Similar Photos</h2>
         <PhotoList
-          mockPhotos={similarPhotosArray}
+          photos={similarPhotosArray}
           imageClassName={props.imageClassName}
           imageContainerClassName={props.imageContainerClassName}
-          isFavourite={props.isFavourite}
+          // isFavourite={props.isFavourite}
           dispatch={props.dispatch}
           favouritePhotos={props.favouritePhotos}
         />
