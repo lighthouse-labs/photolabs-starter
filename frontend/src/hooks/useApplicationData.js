@@ -64,6 +64,8 @@ const useApplicationData = () => {
             favouritePhotos: removedFromFavourite,
           };
         }
+      case "CHANGE_CATEGORY":
+        console.log("Category name", action.payload);
       case "CLOSE_MODAL":
         if (state.showModal) {
           return {

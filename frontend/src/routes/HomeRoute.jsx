@@ -11,6 +11,7 @@ const HomeRoute = (props) => {
       <TopNavigationBar
         favouritePhotos={props.favouritePhotos}
         topics={props.topics}
+        dispatch={props.dispatch}
       />
       <div className="home-route">
         <PhotoList
