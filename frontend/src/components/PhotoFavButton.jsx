@@ -5,7 +5,7 @@ import { FavIcon } from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
 function PhotoFavButton(props) {
-  const onFavClick = (e) => {
+  const onFavClick = () => {
     props.dispatch({
       type: "FAV_PHOTO_ADDED",
       payload: props.photoId,

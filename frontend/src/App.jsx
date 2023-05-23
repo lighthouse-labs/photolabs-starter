@@ -5,22 +5,19 @@ import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import useApplicationData from "./hooks/useApplicationData";
 
 const App = () => {
-  // const { applicationState, reducer, onClosePhotoDetailsModal } =
-  const { state, reducer, onClosePhotoDetailsModal, dispatch } =
+  const { applicationState, reducer, onClosePhotoDetailsModal } =
     useApplicationData();
 
-  // const [state, dispatch] = useReducer(reducer, applicationState);
+  const [state, dispatch] = useReducer(reducer, applicationState);
 
-  // console.log("applicationState", applicationState);
+  console.log("state", state);
   // console.log("applicationState.photos", applicationState.photos);
 
   return (
     <div className="App">
       <HomeRoute
-        // photos={applicationState.photos}
-        // topics={applicationState.topics}
-        photos={state.photos}
-        topics={state.topics}
+        photos={applicationState.photos}
+        topics={applicationState.topics}
         imageContainerClassName="photo-list--item"
         imageClassName="photo-list--image"
         // isFavourite={state.isFavourite}

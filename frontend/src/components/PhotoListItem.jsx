@@ -9,15 +9,15 @@ const PhotoListItem = (props) => {
       payload: props.id,
     });
   };
-  console.log("props.id", props.id);
+
   return (
     <div key={props.id} className={`${props.imageContainerClassName}`}>
       <PhotoFavButton
         photoId={props.id}
-        // isFavourite={props.isFavourite}
         favouritePhotos={props.favouritePhotos}
         dispatch={props.dispatch}
         id={props.id}
+        isFavourite={props.isFavourite}
       />
       <img
         src={props.imageSource}

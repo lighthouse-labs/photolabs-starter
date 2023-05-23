@@ -7,7 +7,6 @@ import PhotoList from "../components/PhotoList";
 
 export const PhotoDetailsModal = (props) => {
   const selectedPhoto = props.selectedPhoto;
-  console.log("selectedPhoto", selectedPhoto);
   const similarPhotos = props.selectedPhoto[0].similar_photos;
   const keys = Object.keys(similarPhotos);
   const similarPhotosArray = [];
@@ -70,7 +69,6 @@ export const PhotoDetailsModal = (props) => {
           photos={similarPhotosArray}
           imageClassName={props.imageClassName}
           imageContainerClassName={props.imageContainerClassName}
-          // isFavourite={props.isFavourite}
           dispatch={props.dispatch}
           favouritePhotos={props.favouritePhotos}
         />
