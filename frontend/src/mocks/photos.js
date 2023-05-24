@@ -19,7 +19,7 @@ const photo1 = {
 const photo2 = {
   "id": "2",
   "location": {
-    "city": "Montreal",
+    "city": "Toronto",
     "country": "Canada"
   },
   "urls": {
@@ -37,7 +37,7 @@ const photo2 = {
 const photo3 = {
   "id": "3",
   "location": {
-    "city": "Montreal",
+    "city": "Ottawa",
     "country": "Canada"
   },
   "urls": {
@@ -55,7 +55,7 @@ const photo3 = {
 const photo4 = {
   "id": "4",
   "location": {
-    "city": "Montreal",
+    "city": "Quebec",
     "country": "Canada"
   },
   "urls": {
@@ -74,7 +74,7 @@ const photo4 = {
 const photo5 = {
   "id": "5",
   "location": {
-    "city": "Montreal",
+    "city": "Vancouver",
     "country": "Canada"
   },
   "urls": {
@@ -110,7 +110,7 @@ const photo6 =  {
 const photo7 = {
   "id": "7",
   "location": {
-    "city": "Montreal",
+    "city": "Calgary",
     "country": "Canada"
   },
   "urls": {
@@ -128,7 +128,7 @@ const photo7 = {
 const photo8 = {
   "id": "8",
   "location": {
-    "city": "Montreal",
+    "city": "Ottawa",
     "country": "Canada"
   },
   "urls": {
@@ -146,7 +146,7 @@ const photo8 = {
 const photo9 = {
   "id": "9",
   "location": {
-    "city": "Montreal",
+    "city": "Nova Scotia",
     "country": "Canada"
   },
   "urls": {
@@ -164,7 +164,7 @@ const photo9 = {
 const photo10 = {
   "id": "10",
   "location": {
-    "city": "Montreal",
+    "city": "Edmonton",
     "country": "Canada"
   },
   "urls": {
