@@ -6,27 +6,10 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from "../components/PhotoList";
 
 export const PhotoDetailsModal = (props) => {
-  // console.log("props.selectedPhoto", props.selectedPhoto);
-
-  // console.log("photos", props.photos);
   const mainPhoto = props.photos.filter(
     (photo) => photo.id === props.selectedPhoto
   );
-  // console.log("photo", photo);
-  // const selectedPhoto = props.selectedPhoto;
   const similarPhotos = mainPhoto[0].similar_photos;
-  console.log("similarPhotos", similarPhotos);
-  // const keys = Object.keys(similarPhotos);
-  // const similarPhotosArray = [];
-  // for (const key of keys) {
-  //   similarPhotosArray.push(similarPhotos[key]);
-  // }
-
-  // const onCloseModal = () => {
-  //   props.dispatch({
-  //     type: "CLOSE_MODAL",
-  //   });
-  // };
 
   return (
     <div className="photo-details-modal">
@@ -68,8 +51,8 @@ export const PhotoDetailsModal = (props) => {
           imageClassName="photo-details-modal--image"
           imageContainerClassName="photo-details-large-image"
           isFavourite={props.isFavourite}
-          // dispatch={props.dispatch}
           favouritePhotos={props.favouritePhotos}
+          addToFavourite={props.addToFavourite}
         />
 
         <h2 className="photo-details-modal--header">Similar Photos</h2>
@@ -77,8 +60,8 @@ export const PhotoDetailsModal = (props) => {
           photos={similarPhotos}
           imageClassName={props.imageClassName}
           imageContainerClassName={props.imageContainerClassName}
-          // dispatch={props.dispatch}
           favouritePhotos={props.favouritePhotos}
+          addToFavourite={props.addToFavourite}
         />
       </div>
     </div>

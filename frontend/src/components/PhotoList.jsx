@@ -5,7 +5,8 @@ import "../styles/PhotoList.scss";
 const PhotoList = (props) => {
   function isPhotoFavourite(photoListItem) {
     const foundPhoto = props.favouritePhotos.find((favouritePhoto) => {
-      return photoListItem.id === favouritePhoto.id;
+      // console.log("favouritePhoto", favouritePhoto);
+      // return photoListItem.id === favouritePhoto.id;
     });
     return !!foundPhoto;
   }
@@ -28,6 +29,7 @@ const PhotoList = (props) => {
       openModal={props.openModal}
       selectTopic={props.selectTopic}
       setModalPhoto={props.setModalPhoto}
+      addToFavourite={props.addToFavourite}
     />
   ));
 

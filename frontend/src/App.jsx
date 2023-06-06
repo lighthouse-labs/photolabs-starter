@@ -9,6 +9,7 @@ const App = () => {
   const {
     showModal,
     openModal,
+    addToFavourite,
     favouritePhotos,
     selectedPhoto,
     setModalPhoto,
@@ -72,6 +73,7 @@ const App = () => {
         openModal={openModal}
         selectTopic={selectTopic}
         setModalPhoto={setModalPhoto}
+        addToFavourite={addToFavourite}
       />
       {showModal && (
         <PhotoDetailsModal
@@ -82,9 +84,7 @@ const App = () => {
           closeModal={closeModal}
           selectedPhoto={selectedPhoto}
           photos={photos}
-          // selectedPhoto={selectedPhoto}
-          // isFavourite={isFavourite}
-          // dispatch={dispatch}
+          addToFavourite={addToFavourite}
         />
       )}
     </div>

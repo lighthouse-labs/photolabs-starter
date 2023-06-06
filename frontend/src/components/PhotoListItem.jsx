@@ -3,13 +3,6 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  // const onSelectPhoto = () => {
-  //   props.dispatch({
-  //     type: "SELECT_PHOTO",
-  //     payload: props.id,
-  //   });
-  // };
-
   const handleClick = (id) => {
     props.openModal();
     props.setModalPhoto(id);
@@ -20,7 +13,7 @@ const PhotoListItem = (props) => {
       <PhotoFavButton
         photoId={props.id}
         favouritePhotos={props.favouritePhotos}
-        dispatch={props.dispatch}
+        addToFavourite={props.addToFavourite}
         id={props.id}
         isFavourite={props.isFavourite}
       />

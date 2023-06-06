@@ -11,7 +11,6 @@ const HomeRoute = (props) => {
       <TopNavigationBar
         favouritePhotos={props.favouritePhotos}
         topics={props.topics}
-        dispatch={props.dispatch}
         selectTopic={props.selectTopic}
       />
       <div className="home-route">
@@ -22,9 +21,9 @@ const HomeRoute = (props) => {
           imageContainerClassName={props.imageContainerClassName}
           imageClassName={props.imageClassName}
           showModal={props.showModal}
-          // dispatch={props.dispatch}
           openModal={props.openModal}
           setModalPhoto={props.setModalPhoto}
+          addToFavourite={props.addToFavourite}
         />
       </div>
     </>

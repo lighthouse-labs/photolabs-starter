@@ -12,7 +12,6 @@ const TopNavigation = (props) => {
       <span className="top-nav-bar--logo">PhotoLabs</span>
       <TopicList
         topics={props.topics}
-        dispatch={props.dispatch}
         selectTopic={props.selectTopic}
       />
       <FavBadge
