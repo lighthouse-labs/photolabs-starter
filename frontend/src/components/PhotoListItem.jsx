@@ -3,12 +3,12 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  const onSelectPhoto = () => {
-    props.dispatch({
-      type: "SELECT_PHOTO",
-      payload: props.id,
-    });
-  };
+  // const onSelectPhoto = () => {
+  //   props.dispatch({
+  //     type: "SELECT_PHOTO",
+  //     payload: props.id,
+  //   });
+  // };
 
   return (
     <div key={props.id} className={`${props.imageContainerClassName}`}>
@@ -23,7 +23,7 @@ const PhotoListItem = (props) => {
         src={props.imageSource}
         alt={`${props.username}'s photo`}
         className={props.imageClassName}
-        onClick={onSelectPhoto}
+        onClick={props.openModal}
       />
 
       <div className="photo-list--user-details">

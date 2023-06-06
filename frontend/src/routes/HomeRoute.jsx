@@ -22,7 +22,8 @@ const HomeRoute = (props) => {
           imageContainerClassName={props.imageContainerClassName}
           imageClassName={props.imageClassName}
           showModal={props.showModal}
-          dispatch={props.dispatch}
+          // dispatch={props.dispatch}
+          openModal={props.openModal}
         />
       </div>
     </>

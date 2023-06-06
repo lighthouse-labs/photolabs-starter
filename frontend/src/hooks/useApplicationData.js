@@ -34,6 +34,10 @@ const useApplicationData = () => {
     }
   };
 
+  const openModal = () => {
+    setShowModal(true);
+  };
+
   const setModalPhoto = () => {
     const selected = applicationState.photos.filter((photo) => {
       return photo.id === action.payload;
@@ -51,14 +55,8 @@ const useApplicationData = () => {
 
   const closeModal = () => {
     if (showModal) {
-      // return {
-      //   ...state,
-      //   showModal: false,
-      //   selectedPhoto: null,
-      // };
-
-      setShowModal(!showModal);
-      setSelectedPhoto(null);
+      setShowModal(false);
+      // setSelectedPhoto(null);
     }
   };
 
@@ -92,6 +90,7 @@ const useApplicationData = () => {
 
   return {
     showModal,
+    openModal,
     favouritePhotos,
     setModalPhoto,
     closeModal,

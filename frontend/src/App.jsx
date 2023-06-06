@@ -6,7 +6,7 @@ import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import useApplicationData from "./hooks/useApplicationData";
 
 const App = () => {
-  const { showModal, favouritePhotos, setModalPhoto, closeModal } =
+  const { showModal, openModal, favouritePhotos, setModalPhoto, closeModal } =
     useApplicationData();
 
   const [topics, setTopics] = useState([]);
@@ -63,7 +63,7 @@ const App = () => {
         imageClassName="photo-list--image"
         favouritePhotos={favouritePhotos}
         showModal={showModal}
-        // dispatch={dispatch}
+        openModal={openModal}
         selectTopic={selectTopic}
       />
       {showModal && (
@@ -72,9 +72,10 @@ const App = () => {
           imageClassName="photo-details-modal--images"
           favouritePhotos={favouritePhotos}
           showModal={showModal}
-          selectedPhoto={selectedPhoto}
-          isFavourite={isFavourite}
-          dispatch={dispatch}
+          closeModal={closeModal}
+          // selectedPhoto={selectedPhoto}
+          // isFavourite={isFavourite}
+          // dispatch={dispatch}
         />
       )}
     </div>

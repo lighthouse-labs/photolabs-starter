@@ -25,6 +25,7 @@ const PhotoList = (props) => {
       showModal={props.showModal}
       isFavourite={isPhotoFavourite(photo)}
       favouritePhotos={props.favouritePhotos}
+      openModal={props.openModal}
       selectTopic={props.selectTopic}
     />
   ));

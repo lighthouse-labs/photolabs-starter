@@ -6,25 +6,25 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from "../components/PhotoList";
 
 export const PhotoDetailsModal = (props) => {
-  const selectedPhoto = props.selectedPhoto;
-  const similarPhotos = props.selectedPhoto[0].similar_photos;
-  const keys = Object.keys(similarPhotos);
-  const similarPhotosArray = [];
-  for (const key of keys) {
-    similarPhotosArray.push(similarPhotos[key]);
-  }
+  // const selectedPhoto = props.selectedPhoto;
+  // const similarPhotos = props.selectedPhoto[0].similar_photos;
+  // const keys = Object.keys(similarPhotos);
+  // const similarPhotosArray = [];
+  // for (const key of keys) {
+  //   similarPhotosArray.push(similarPhotos[key]);
+  // }
 
-  const onCloseModal = () => {
-    props.dispatch({
-      type: "CLOSE_MODAL",
-    });
-  };
+  // const onCloseModal = () => {
+  //   props.dispatch({
+  //     type: "CLOSE_MODAL",
+  //   });
+  // };
 
   return (
     <div className="photo-details-modal">
       <button
         className="photo-details-modal--close-button"
-        onClick={onCloseModal}
+        onClick={props.closeModal}
       >
         <svg
           width="24"
@@ -55,23 +55,23 @@ export const PhotoDetailsModal = (props) => {
         </svg>
       </button>
       <div className="modal-container">
-        <PhotoList
+        {/* <PhotoList
           photos={selectedPhoto}
           imageClassName="photo-details-modal--image"
           imageContainerClassName="photo-details-large-image"
           isFavourite={props.isFavourite}
           dispatch={props.dispatch}
           favouritePhotos={props.favouritePhotos}
-        />
+        /> */}
 
         <h2 className="photo-details-modal--header">Similar Photos</h2>
-        <PhotoList
+        {/* <PhotoList
           photos={similarPhotosArray}
           imageClassName={props.imageClassName}
           imageContainerClassName={props.imageContainerClassName}
           dispatch={props.dispatch}
           favouritePhotos={props.favouritePhotos}
-        />
+        /> */}
       </div>
     </div>
   );
