@@ -6,6 +6,13 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from "../components/PhotoList";
 
 export const PhotoDetailsModal = (props) => {
+  console.log("props.selectedPhoto", props.selectedPhoto);
+
+  console.log("photos", props.photos);
+  const mainpPhoto = props.photos.filter(
+    (photo) => photo.id === props.selectedPhoto
+  );
+  // console.log("photo", photo);
   // const selectedPhoto = props.selectedPhoto;
   // const similarPhotos = props.selectedPhoto[0].similar_photos;
   // const keys = Object.keys(similarPhotos);
@@ -55,14 +62,14 @@ export const PhotoDetailsModal = (props) => {
         </svg>
       </button>
       <div className="modal-container">
-        {/* <PhotoList
-          photos={selectedPhoto}
+        <PhotoList
+          photos={mainpPhoto}
           imageClassName="photo-details-modal--image"
           imageContainerClassName="photo-details-large-image"
           isFavourite={props.isFavourite}
-          dispatch={props.dispatch}
+          // dispatch={props.dispatch}
           favouritePhotos={props.favouritePhotos}
-        /> */}
+        />
 
         <h2 className="photo-details-modal--header">Similar Photos</h2>
         {/* <PhotoList

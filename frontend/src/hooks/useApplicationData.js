@@ -4,7 +4,7 @@ import axios from "axios";
 const useApplicationData = () => {
   const [showModal, setShowModal] = useState(false);
   const [favouritePhotos, setFavouritePhotos] = useState([]);
-  const [selectedPhoto, setSelectedPhoto] = useState([]);
+  const [selectedPhoto, setSelectedPhoto] = useState("");
 
   const favoritePhoto = () => {
     const likedPhoto = applicationState.photos.find((photo) => {
@@ -38,19 +38,21 @@ const useApplicationData = () => {
     setShowModal(true);
   };
 
-  const setModalPhoto = () => {
-    const selected = applicationState.photos.filter((photo) => {
-      return photo.id === action.payload;
-    });
-    if (!state.showModal) {
-      // return {
-      //   ...state,
-      //   showModal: !applicationState.showModal,
-      //   selectedPhoto: selected.length > 0 ? selected : "",
-      // };
-      setShowModal(!showModal);
-      setSelectedPhoto(selected.length > 0 ? selected : "");
-    }
+  const setModalPhoto = (id) => {
+    setSelectedPhoto(id);
+    console.log("selectedPhoto", selectedPhoto);
+    // const selected = applicationState.photos.filter((photo) => {
+    //   return photo.id === action.payload;
+    // });
+    // if (!state.showModal) {
+    //   // return {
+    //   //   ...state,
+    //   //   showModal: !applicationState.showModal,
+    //   //   selectedPhoto: selected.length > 0 ? selected : "",
+    //   // };
+    //   setShowModal(!showModal);
+    //   setSelectedPhoto(selected.length > 0 ? selected : "");
+    // }
   };
 
   const closeModal = () => {
@@ -92,6 +94,7 @@ const useApplicationData = () => {
     showModal,
     openModal,
     favouritePhotos,
+    selectedPhoto,
     setModalPhoto,
     closeModal,
   };

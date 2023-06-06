@@ -24,6 +24,7 @@ const HomeRoute = (props) => {
           showModal={props.showModal}
           // dispatch={props.dispatch}
           openModal={props.openModal}
+          setModalPhoto={props.setModalPhoto}
         />
       </div>
     </>

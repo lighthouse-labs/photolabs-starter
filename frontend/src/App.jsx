@@ -6,8 +6,14 @@ import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import useApplicationData from "./hooks/useApplicationData";
 
 const App = () => {
-  const { showModal, openModal, favouritePhotos, setModalPhoto, closeModal } =
-    useApplicationData();
+  const {
+    showModal,
+    openModal,
+    favouritePhotos,
+    selectedPhoto,
+    setModalPhoto,
+    closeModal,
+  } = useApplicationData();
 
   const [topics, setTopics] = useState([]);
   const [photos, setPhotos] = useState([]);
@@ -65,6 +71,7 @@ const App = () => {
         showModal={showModal}
         openModal={openModal}
         selectTopic={selectTopic}
+        setModalPhoto={setModalPhoto}
       />
       {showModal && (
         <PhotoDetailsModal
@@ -73,6 +80,8 @@ const App = () => {
           favouritePhotos={favouritePhotos}
           showModal={showModal}
           closeModal={closeModal}
+          selectedPhoto={selectedPhoto}
+          photos={photos}
           // selectedPhoto={selectedPhoto}
           // isFavourite={isFavourite}
           // dispatch={dispatch}

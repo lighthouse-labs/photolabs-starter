@@ -10,6 +10,11 @@ const PhotoListItem = (props) => {
   //   });
   // };
 
+  const handleClick = (id) => {
+    props.openModal();
+    props.setModalPhoto(id);
+  };
+
   return (
     <div key={props.id} className={`${props.imageContainerClassName}`}>
       <PhotoFavButton
@@ -23,7 +28,7 @@ const PhotoListItem = (props) => {
         src={props.imageSource}
         alt={`${props.username}'s photo`}
         className={props.imageClassName}
-        onClick={props.openModal}
+        onClick={() => handleClick(props.id)}
       />
 
       <div className="photo-list--user-details">
