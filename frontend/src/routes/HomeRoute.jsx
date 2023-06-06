@@ -12,6 +12,7 @@ const HomeRoute = (props) => {
         favouritePhotos={props.favouritePhotos}
         topics={props.topics}
         dispatch={props.dispatch}
+        selectTopic={props.selectTopic}
       />
       <div className="home-route">
         <PhotoList

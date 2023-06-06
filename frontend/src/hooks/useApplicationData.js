@@ -10,19 +10,7 @@ const useApplicationData = () => {
     topics: [],
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const photos = await axios("/api/photos");
-      const topics = await axios("/api/topics");
 
-      setApplicationState({
-        ...applicationState,
-        photos: photos.data,
-        topics: topics.data,
-      });
-    };
-    fetchData();
-  }, []);
 
   const reducer = (state, action) => {
     switch (action.type) {

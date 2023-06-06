@@ -11,6 +11,7 @@ const TopicList = (props) => {
         slug={topic.slug}
         dispatch={props.dispatch}
         id={topic.id}
+        selectTopic={props.selectTopic}
       />
     );
   });
