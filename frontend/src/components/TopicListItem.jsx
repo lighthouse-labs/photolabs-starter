@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/TopicListItem'
 
 const TopicListItem = () => {
-  <div className="topic-list--item">
+  <div className="topic-list__item">
     {/* Insert React */}
   </div>
 }

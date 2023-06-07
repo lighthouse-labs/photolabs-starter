@@ -11,7 +11,7 @@
   border-radius: 12px;
 }
 
-.photo-details-modal--close-button {
+.photo-details-modal__close-button {
   background-color: white;
   border: none;
   color: white;
@@ -24,17 +24,17 @@
   margin-top: 16px;
 }
 
-.photo-details-modal--images {
+.photo-details-modal__images {
   margin-left: 36px;
   margin-top: 8px;
 }
 
-.photo-details-modal--image {
+.photo-details-modal__image {
   max-width: 95%;
   border-radius: 8px;
 }
 
-.photo-details-modal--top-bar {
+.photo-details-modal__top-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -43,12 +43,12 @@
   align-items: center;
 }
 
-.photo-details-modal--photographer-details {
+.photo-details-modal__photographer-details {
   display: flex;
   font-size: 16px;
 }
 
-.photo-details-modal--header {
+.photo-details-modal__header {
   font-size: 18px;
   font-weight: 500;
   color: #1e1e1e;
