@@ -36,7 +36,6 @@ module.exports = function application(
   app.use(bodyparser.json());
   app.use(express.static(path.join(__dirname, 'public')));
 
-  // TODO: update to topics and photos
   app.use("/api", photos(db));
   app.use("/api", topics(db));
 
