@@ -182,7 +182,7 @@ const photo10 = {
 
 
 
-const mockPhotos = [
+const photos = [
   {
     ...photo1,
     similar_photos: {
