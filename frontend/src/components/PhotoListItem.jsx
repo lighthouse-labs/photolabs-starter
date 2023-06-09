@@ -8,10 +8,14 @@ const PhotoListItem = () => {
 }
 
 PhotoListItem.defaultProps = {
-  username: 'Jacob',
-  imageSource: `${process.env.PUBLIC_URL}/Image.jpg`,
-  id: 1,
-  hideUserName: false,
+  "id": "1",
+  "location": {
+    "city": "Montreal",
+    "country": "Canada"
+  },
+  "imageSource": `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
+  "username": "Joe Example",
+  "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
 }
 
 export default PhotoListItem

@@ -11,19 +11,19 @@ const TopicList = () => {
 TopicList.defaultProps = {
   topics: [
     {
-      id: 1,
-      label: 'Nature',
-      link: 'link placeholder' 
-    },
-    { 
-      id: 2, 
-      label: 'Food',
-      link: 'link placeholder' 
+      "id": "1",
+      "slug": "topic-1",
+      "title": "Nature"
+    },  
+    {
+      "id": "2",
+      "slug": "topic-2",
+      "title": "Travel"
     },
     {
-      id: 3,
-      label: 'People',
-      link: 'link placeholder' 
+      "id": "3",
+      "slug": "topic-3",
+      "title": "People"
     },
   ]
 }
