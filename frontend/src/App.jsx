@@ -1,13 +1,18 @@
 import React from 'react';
-
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
-const App = () => (
-  <div className="App">
-    <PhotoListItem/>
-  </div>
-)
+const App = () => {
+  const photos = Array.from({ length: 3 });
 
-export default App
+  return (
+    <div>
+      {photos.map((_, index) => (
+        <PhotoListItem key={index} />
+      ))}
+    </div>
+  );
+};
+
+export default App;
