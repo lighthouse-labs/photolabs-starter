@@ -3,10 +3,12 @@ import React from 'react';
 import '../styles/PhotoList.scss';
 
 const PhotoList = () => {
-  <ul className="photo-list">
-    {/* Insert React */}
-  </ul>
-}
+  return (
+    <ul className="photo-list">
+      {/* Insert React */}
+    </ul>
+  );
+};
 
 PhotoList.defaultProps = {
   photos: [
@@ -62,6 +64,6 @@ PhotoList.defaultProps = {
       }
     }
    ]
-}
+};
 
-export default PhotoList
+export default PhotoList;

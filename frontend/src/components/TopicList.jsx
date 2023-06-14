@@ -3,10 +3,12 @@ import React from 'react';
 import './TopicList.scss';
 
 const TopicList = () => {
-  <div className="top-nav-bar__topic-list">
-    {/* Insert React */}
-  </div>
-}
+  return (
+    <div className="top-nav-bar__topic-list">
+      {/* Insert React */}
+    </div>
+  );
+};
 
 TopicList.defaultProps = {
   topics: [
