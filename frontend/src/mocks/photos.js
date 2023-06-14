@@ -78,8 +78,8 @@ const photo5 = {
     "country": "Canada"
   },
   "urls": {
-    "full": `${process.env.PUBLIC_URL}/Image-3-Full.jpeg`,
-    "regular": `${process.env.PUBLIC_URL}/Image-3-Regular.jpeg`
+    "full": `${process.env.PUBLIC_URL}/Image-5-Full.jpg`,
+    "regular": `${process.env.PUBLIC_URL}/Image-5-Regular.jpg`
   },
   "user": {
     "id": "5",
@@ -96,8 +96,8 @@ const photo6 =  {
     "country": "Canada"
   },
   "urls": {
-    "full": `${process.env.PUBLIC_URL}/Image-4-Full.jpg`,
-    "regular": `${process.env.PUBLIC_URL}/Image-4-Regular.jpg`
+    "full": `${process.env.PUBLIC_URL}/Image-6-Full.jpg`,
+    "regular": `${process.env.PUBLIC_URL}/Image-6-Regular.jpg`
   },
   "user": {
     "id": "6",
@@ -114,8 +114,8 @@ const photo7 = {
     "country": "Canada"
   },
   "urls": {
-    "full": `${process.env.PUBLIC_URL}/Image-2-Full.jpeg`,
-    "regular": `${process.env.PUBLIC_URL}/Image-2-Regular.jpeg`
+    "full": `${process.env.PUBLIC_URL}/Image-7-Full.jpg`,
+    "regular": `${process.env.PUBLIC_URL}/Image-7-Regular.jpg`
   },
   "user": {
     "id": "7",
@@ -150,8 +150,8 @@ const photo9 = {
     "country": "Canada"
   },
   "urls": {
-    "full": `${process.env.PUBLIC_URL}/Image-1-Full.jpeg`,
-    "regular": `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`
+    "full": `${process.env.PUBLIC_URL}/Image-9-Full.jpg`,
+    "regular": `${process.env.PUBLIC_URL}/Image-9-Regular.jpg`
   },
   "user": {
     "id": "9",
@@ -168,8 +168,8 @@ const photo10 = {
     "country": "Canada"
   },
   "urls": {
-    "full": `${process.env.PUBLIC_URL}/Image-8-Full.jpg`,
-    "regular": `${process.env.PUBLIC_URL}/Image-8-Regular.jpg`
+    "full": `${process.env.PUBLIC_URL}/Image-10-Full.jpg`,
+    "regular": `${process.env.PUBLIC_URL}/Image-10-Regular.jpg`
   },
   "user": {
     "id": "10",
