@@ -61,7 +61,7 @@ PhotoList.defaultProps = {
         "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
       }
     }
-   ]
+  ]
 }
 
 export default PhotoList
