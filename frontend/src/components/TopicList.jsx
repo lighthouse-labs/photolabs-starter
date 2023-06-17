@@ -1,22 +1,30 @@
 import React from "react";
-import TopicListItem from "./TopicListItem";
+
 import "../styles/TopicList.scss";
 
-const TopicList = (props) => {
-  const { getPhotosByTopic } = props;
-
-  const topicItems = props.topics.map((topic, index) => {
+  const TopicList = ({ topics }) => {
     return (
-      <TopicListItem
-        key={`${topic.id}_${index}`}
-        label={topic.title}
-        link={topic.link}
-        className="topic-list__item"
-        onClick={() => getPhotosByTopic(topic.id)}
-      />
+      <ul className="topic-list">
+        {/* Map over the topics array and render a TopicListItem for each topic */}
+        {topics.map((topic, index) => (
+          <TopicListItem
+            key={`${topic.id}_${index}`}
+            label={topic.title}
+            link={topic.link}
+            className="topic-list__item"
+          />
+        ))}
+      </ul>
     );
-  });
-  return <div className="top-nav-bar__topic-list">{topicItems}</div>;
-};
-
+  };
+  
+  // TopicListItem component
+  const TopicListItem = ({ label, link, className }) => {
+    return (
+      <li className={className}>
+        <a href={link}>{label}</a>
+      </li>
+    );
+  };
+  
 export default TopicList;

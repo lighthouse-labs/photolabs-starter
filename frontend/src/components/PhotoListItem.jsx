@@ -1,46 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react";
+import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
-import '../styles/PhotoListItem.scss';
+const PhotoListItem = ({
+  username,
+  imageSource,
+  id,
+  hideUserName,
+  addFavPhoto,
+  removeFavPhoto,
+}) => {
+  const [isFavorited, setIsFavorited] = useState(false);
 
-const PhotoListItem = (props) => {
-  const { username, imageSource, id, location, profile } = props;
+  useEffect(() => {
+    // Use effect to handle adding or removing a favorite photo when isFavorited changes
+    if (isFavorited) {
+      // If the photo is favorited, call the addFavPhoto function
+      addFavPhoto(id);
+    } else {
+      // If the photo is not favorited, call the removeFavPhoto function
+      removeFavPhoto(id);
+    }
+  }, [isFavorited, addFavPhoto, removeFavPhoto, id]);
+
+  const onFavorited = (favorited) => {
+    // Callback function to update the isFavorited state
+    setIsFavorited(favorited);
+  };
 
   return (
     <div className="photo-list-item">
-      <div className="photo-list-item__image">
-        <img src={imageSource} alt={`Photo ${id}`} />
-      </div>
-      <div className="photo-list-item__info">
-        <div className="photo-list-item__info__user">
-          <img src={profile} alt={`Profile ${username}`} />
-          <span className="photo-list-item__info__user__username">{username}</span>
-        </div>
-        <div className="photo-list-item__info__location">{location.city}, {location.country}</div>
-      </div>
+      <PhotoFavButton onFavorited={onFavorited} />
+      <img src={imageSource} alt={`Photo by ${username}`} />
     </div>
   );
-};
-
-PhotoListItem.defaultProps = {
-  id: '1',
-  location: {
-    city: 'Montreal',
-    country: 'Canada'
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
- 
-};
-
-PhotoListItem.propTypes = {
-  username: PropTypes.string.isRequired,
-  imageSource: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  location: PropTypes.shape({
-    city: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired
-  }).isRequired,
-  profile: PropTypes.string.isRequired
 };
 
 export default PhotoListItem;

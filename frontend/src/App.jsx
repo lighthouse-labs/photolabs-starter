@@ -1,31 +1,20 @@
-import React from 'react';
-import PhotoListItem from './components/PhotoListItem';
-import TopNavigationBar from './components/TopNavigationBar';
+import React from "react";
+import TopNavigationBar from "./components/TopNavigationBar";
+import HomeRoute from "./routes/HomeRoute";
 import photos from "./mocks/photos.js";
 import topics from "./mocks/topics.js";
-import './App.scss';
-import PhotoList from './components/PhotoList';
-import HomeRoute from "./routes/HomeRoute";
-const App = () => {
-  const photoLists = [
-    { id: 1, photos: Array.from({ length: 3 }) },
-    { id: 2, photos: Array.from({ length: 5 }) },
-    { id: 3, photos: Array.from({ length: 2 }) }
-  ];
+import "./App.scss";
 
+// App component
+const App = () => {
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} />
+      {/* Top navigation bar component */}
       <TopNavigationBar />
-      {photoLists.map((list) => (
-        <PhotoList key={list.id} photos={list.photos} />
-      ))}
-      {photoLists.map((list) => (
-        list.photos.map((_, index) => (
-          <PhotoListItem key={index} photoId={index} />
-        ))
-      ))}
       
+      {/* Home route component */}
+      {/* Passing topics and photos as props */}
+      <HomeRoute topics={topics} photos={photos} />
     </div>
   );
 };
