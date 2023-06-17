@@ -1,5 +1,5 @@
 import React from "react";
-
+import FavBadge from "./FavBadge";
 import { FavIcon } from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
@@ -8,7 +8,7 @@ function PhotoFavButton(props) {
 
   return (
     // The parent div has the onlick handler and not the child FavIcon.
-    <div className="photo-list--fav-icon" onClick={toggleFavorite}>
+    <div className="photo-list-fav-icon" onClick={toggleFavorite}>
       <div className="photo-list--fav-icon-svg">
         {/* the color of the icon changes based on the filled state. */}
         {/* the width of the outline changes based on the filled state. */}
