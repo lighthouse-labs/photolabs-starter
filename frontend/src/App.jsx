@@ -1,6 +1,8 @@
 import React from 'react';
 import PhotoListItem from './components/PhotoListItem';
 import TopNavigationBar from './components/TopNavigationBar';
+import photos from "./mocks/photos.js";
+import topics from "./mocks/topics.js";
 import './App.scss';
 import PhotoList from './components/PhotoList';
 import HomeRoute from "./routes/HomeRoute";
@@ -13,6 +15,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <HomeRoute topics={topics} photos={photos} />
       <TopNavigationBar />
       {photoLists.map((list) => (
         <PhotoList key={list.id} photos={list.photos} />
@@ -22,7 +25,7 @@ const App = () => {
           <PhotoListItem key={index} photoId={index} />
         ))
       ))}
-      <HomeRoute />
+      
     </div>
   );
 };
