@@ -29,10 +29,10 @@ const PhotoListItem = ({
   };
 
   return (
-    <div className="photo-list-item">
+    <li className="photo-list-item">
       <PhotoFavButton onFavorited={onFavorited} />
-      <img src={imageSource} alt={`Photo by ${username}`} />
-    </div>
+      <img className= "photo-list__image" src={imageSource} alt={`Photo by ${username}`} />
+    </li>
   );
 };
 

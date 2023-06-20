@@ -18,7 +18,7 @@ const PhotoList = ({ photos, addFavPhoto, removeFavPhoto }) => {
   };
 
   // Render the photo items inside a <div> element
-  return <div>{renderPhotoItems()}</div>;
+  return <ul className='photo-list'> {renderPhotoItems()}</ul>;
 };
 
 export default PhotoList;

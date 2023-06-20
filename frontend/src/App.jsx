@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div className="App">
       {/* Top navigation bar component */}
-      <TopNavigationBar />
+      {/* <TopNavigationBar />  */}
       
       {/* Home route component */}
       {/* Passing topics and photos as props */}

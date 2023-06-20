@@ -27,7 +27,7 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       {/* Render the top navigation bar */}
-      <TopNavigationBar topics={topics} hasFavoritedPhoto={favPhotos.length} />
+      <TopNavigationBar topics={topics} hasFavoritedPhoto={favPhotos.length} /> 
       {/* Render the list of photos */}
       <PhotoList
         photos={photos}
