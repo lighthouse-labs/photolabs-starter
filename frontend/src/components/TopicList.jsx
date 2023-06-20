@@ -1,30 +1,30 @@
-import React from 'react';
+import React from "react";
 
-import './TopicList.scss';
+import "../styles/TopicList.scss";
 
-const TopicList = () => {
-  <div className="top-nav-bar__topic-list">
-    {/* Insert React */}
-  </div>
-}
-
-TopicList.defaultProps = {
-  topics: [
-    {
-      "id": "1",
-      "slug": "topic-1",
-      "title": "Nature"
-    },  
-    {
-      "id": "2",
-      "slug": "topic-2",
-      "title": "Travel"
-    },
-    {
-      "id": "3",
-      "slug": "topic-3",
-      "title": "People"
-    },
-  ]
-}
-export default TopicList
+  const TopicList = ({ topics }) => {
+    return (
+      <ul className="topic-list">
+        {/* Map over the topics array and render a TopicListItem for each topic */}
+        {topics.map((topic, index) => (
+          <TopicListItem
+            key={`${topic.id}_${index}`}
+            label={topic.title}
+            link={topic.link}
+            className="topic-list__item"
+          />
+        ))}
+      </ul>
+    );
+  };
+  
+  // TopicListItem component
+  const TopicListItem = ({ label, link, className }) => {
+    return (
+      <li className={className}>
+        <a href={link}>{label}</a>
+      </li>
+    );
+  };
+  
+export default TopicList;
