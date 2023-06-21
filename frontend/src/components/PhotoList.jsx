@@ -12,6 +12,8 @@ const PhotoList = (props) => {
     return (
       <PhotoListItem
         key={`${photo.id}_${index}`}
+        username={photo.user.username}
+        imageSource={photo.urls.full}
         addFavPhoto={addFavPhoto}
         removeFavPhoto={removeFavPhoto}
         id={photo.id}

@@ -4,14 +4,14 @@ import "../styles/TopicList.scss";
 
   const TopicList = ({ topics }) => {
     return (
-      <ul className="topic-list">
+      <ul className="top-nav-bar">
         {/* Map over the topics array and render a TopicListItem for each topic */}
         {topics.map((topic, index) => (
           <TopicListItem
             key={`${topic.id}_${index}`}
             label={topic.title}
             link={topic.link}
-            className="topic-list__item"
+            className="top-nav-bar"
           />
         ))}
       </ul>

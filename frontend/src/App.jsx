@@ -14,7 +14,7 @@ const App = () => {
   // State variables for managing modal state and clicked photo
   const [openModal, setOpenModal] = useState(false);
   const [clickedPhoto, setClickedPhoto] = useState(null);
-
+console.log("these are photos:", photos)
   // Event handler for when a photo is clicked
   const photoClickHandler = (photo) => {
     setClickedPhoto(photo); // Set the clicked photo
