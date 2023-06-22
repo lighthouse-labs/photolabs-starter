@@ -1,29 +1,39 @@
 import React, { useState } from "react";
+
 import { FavIcon } from "./FavIcon";
 import "../styles/PhotoFavButton.scss";
 
 function PhotoFavButton(props) {
-  const { onFavorited } = props;
-  const [filled, setFilled] = useState(false);
+  const { toggleFavorite, filled } = props;
+  // declaring the states.
+  // const [filled, setFilled] = useState(false);
 
-  const handleFavClick = () => {
-    console.log("fav icon was clicked");
-    setFilled((prevFilled) => {
-      // Toggle the filled state by negating the previous filled value
-      const newState = !prevFilled;
-
-      // Call the onFavorited callback with the new state value
-      onFavorited(newState);
-
-      // Return the new state value to update the filled state
-      return newState;
-    });
-  };
+  // const handleFavClick = () => {
+  //   // console.log("fav icon was clicked");
+  //   // setting the value of filled to true on click of the FavIcon.
+  //   // using (preFilled) => !preFilled helps to toggle between clicked state and unclicked state.
+  //   setFilled((prevFilled) => {
+  //     if (prevFilled === true) {
+  //       onFavorited(false);
+  //       return false;
+  //     } else if (prevFilled === false) {
+  //       onFavorited(true);
+  //       return true;
+  //     }
+  //   });
+  // };
 
   return (
-    <div>
-      {/* Render the FavIcon component, passing the filled state and the handleFavClick function */}
-      <FavIcon filled={filled} onClick={handleFavClick} />
+    // The parent div has the onlick handler and not the child FavIcon.
+    <div className="photo-list__fav-icon" onClick={toggleFavorite}>
+      <div className="photo-list__fav-icon-svg">
+        {/* the color of the icon changes based on the filled state. */}
+        {/* the width of the outline changes based on the filled state. */}
+        <FavIcon
+          fill={filled === true ? "#C80000" : "#EEEEEE"}
+          outlineWidth={filled === true ? 4 : 2}
+        />
+      </div>
     </div>
   );
 }

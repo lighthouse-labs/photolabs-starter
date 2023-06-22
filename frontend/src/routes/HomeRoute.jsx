@@ -1,44 +1,76 @@
 import React, { useState } from "react";
+
 import "../styles/HomeRoute.scss";
 import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
+import PhotoDetailsModal from "./PhotoDetailsModal";
+import PhotoFavButton from "../components/PhotoFavButton";
+
 
 const HomeRoute = (props) => {
-  const { topics, photos, onPhotoClick } = props;
+  const { topics, photos } = props;
+  
   const [favPhotos, setFavPhotos] = useState([]);
 
-  // Add a photo to the favorites list
+  
   const addFavPhoto = (photoId) => {
     if (!favPhotos.includes(photoId)) {
-      // Use the functional form of setFavPhotos to update the state
-      setFavPhotos((prevFavPhotos) => [...prevFavPhotos, photoId]);
+      setFavPhotos((prev) => [...prev, photoId]);
     }
   };
 
-  // Remove a photo from the favorites list
+ 
   const removeFavPhoto = (photoId) => {
     if (favPhotos.includes(photoId)) {
-      // Use the functional form of setFavPhotos to update the state
-      setFavPhotos((prevFavPhotos) =>
-        prevFavPhotos.filter((id) => id !== photoId)
-      );
+      setFavPhotos(favPhotos.filter((id) => id !== photoId));
     }
   };
 
-  console.log("has favorited photo", favPhotos);
+  const toggleFavorite = (photoId) => {
+    if (favPhotos.includes(photoId)) {
+      setFavPhotos(favPhotos.filter((id) => id !== photoId));
+    } else {
+      setFavPhotos((prev) => [...prev, photoId]);
+    }
+  };
+
+ 
+  const [openModal, setOpenModal] = useState(false);
+ 
+  const [clickedPhoto, setClickedPhoto] = useState(null);
+
+  
+
+  const photoClickHandler = (photoProps) => {
+    setClickedPhoto(photoProps);
+    setOpenModal(true);
+
+  };
+
+  const closeModal = () => {
+    setOpenModal(false);
+    setClickedPhoto(null);
+  };
 
   return (
     <div className="home-route">
-      {/* Render the top navigation bar with topics and the count of favorite photos */}
       <TopNavigationBar topics={topics} hasFavoritedPhoto={favPhotos.length} />
-
-      {/* Render the photo list component */}
       <PhotoList
         photos={photos}
-        addFavPhoto={addFavPhoto}
-        removeFavPhoto={removeFavPhoto}
-        onPhotoClick={onPhotoClick}
+        onPhotoClick={photoClickHandler}
+        toggleFavorite={toggleFavorite}
+        favPhotos={favPhotos}
       />
+      {openModal && (
+        <PhotoDetailsModal
+          photos={photos} 
+          photo={clickedPhoto}
+          onClose={closeModal}
+          toggleFavorite={toggleFavorite}
+          favorited={favPhotos.includes(clickedPhoto.id)}
+          favPhotos={favPhotos}
+        />
+      )}
     </div>
   );
 };

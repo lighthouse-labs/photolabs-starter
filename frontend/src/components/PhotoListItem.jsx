@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
@@ -6,37 +6,27 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = ({
   username,
   imageSource,
+  description,
   id,
   hideUsername,
-  addFavPhoto,
-  removeFavPhoto,
+  toggleFavorite,
+  favorited,
   onPhotoClick,
 }) => {
-  const [isFavorited, setIsFavorited] = useState(false);
-
-  useEffect(() => {
-    // When the `isFavorited` state changes, add or remove the photo from favorites accordingly
-    if (isFavorited) {
-      addFavPhoto(id); // Add photo to favorites
-    } else {
-      removeFavPhoto(id); // Remove photo from favorites
-    }
-  }, [isFavorited, addFavPhoto, removeFavPhoto, id]);
-
-  const handleFavorited = (favorited) => {
-    setIsFavorited(favorited); // Update the `isFavorited` state based on the favorited value
-  };
-
   return (
     <div className="photo-list-item">
-      <PhotoFavButton onFavorited={handleFavorited} /> {/* Render the favorite button */}
+      <PhotoFavButton filled={favorited} toggleFavorite={() => toggleFavorite(id)} />
       <img
         src={imageSource}
-        alt={`Photo by ${username}`}
+        alt={description}
         className="photo-list__image"
-        onClick={onPhotoClick}
+        onClick={() => onPhotoClick(id)}
       />
-      {!hideUsername && <p>{username}</p>} {/* Render the username if not hidden */}
+      {!hideUsername && (
+        <p className="photo-list__user-profile photo-list__user-info">
+          {username}
+        </p>
+      )}
     </div>
   );
 };
@@ -44,10 +34,11 @@ const PhotoListItem = ({
 PhotoListItem.propTypes = {
   username: PropTypes.string.isRequired,
   imageSource: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   hideUsername: PropTypes.bool,
-  addFavPhoto: PropTypes.func.isRequired,
-  removeFavPhoto: PropTypes.func.isRequired,
+  toggleFavorite: PropTypes.func.isRequired,
+  favorited: PropTypes.bool.isRequired,
   onPhotoClick: PropTypes.func.isRequired,
 };
 

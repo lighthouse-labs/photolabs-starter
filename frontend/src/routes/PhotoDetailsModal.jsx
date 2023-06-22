@@ -1,15 +1,27 @@
 import React from "react";
-import PropTypes from "prop-types";
-import "../styles/PhotoDetailsModal.scss";
 
-// PhotoDetailsModal component
-const PhotoDetailsModal = ({ photo, onClose, imageSource, username, description }) => {
+import "../styles/PhotoDetailsModal.scss";
+import PhotoList from "../components/PhotoList";
+import PhotoFavButton from "../components/PhotoFavButton";
+import PhotoListItem from "../components/PhotoListItem";
+
+const PhotoDetailsModal = (props) => {
+  const { onClose, photo, photos, toggleFavorite, favorited, favPhotos } =
+    props;
+
+  const { imageSource, description, username, id } = photo;
+
   return (
     <div className="photo-details-modal">
       {/* Close button */}
       <button className="photo-details-modal__close-button" onClick={onClose}>
-        {/* Close icon */}
-        <svg width="24" height="24" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 18 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <g clipPath="url(#clip0_428_287)">
             <path
               d="M14.0625 3.9375L3.9375 14.0625"
@@ -31,25 +43,36 @@ const PhotoDetailsModal = ({ photo, onClose, imageSource, username, description 
           </defs>
         </svg>
       </button>
-      {/* Display the image */}
-      <img
-        src={imageSource}
-        alt={description}
-        className="photo-details-modal__image"
-      />
-      {/* Display the description */}
-      <h3>{description}</h3>
+      {/* Image section */}
+      <div className="photo-details-modal__content">
+        <div className="photo-details-modal__image-section">
+          {/* Favorite button */}
+          <PhotoFavButton
+            filled={favorited}
+            toggleFavorite={() => toggleFavorite(id)}
+          />
+          {/* Image */}
+          <img
+            className="photo-details-modal__image"
+            src={imageSource}
+            alt={description}
+          />
+          {/* Photo credit */}
+          <h3>photo by {username}</h3>
+        </div>
+        {/* Similar photos section */}
+        <div className="photo-details-modal__similar-photos-section">
+          <h4 className="photo-details-modal__header">Similar Photos</h4>
+          {/* List of similar photos */}
+          <PhotoList
+            photos={[photos[0], photos[1], photos[3], photos[4]]}
+            toggleFavorite={toggleFavorite}
+            favPhotos={favPhotos}
+          />
+        </div>
+      </div>
     </div>
   );
-};
-
-// Prop types validation
-PhotoDetailsModal.propTypes = {
-  photo: PropTypes.object,
-  onClose: PropTypes.func,
-  imageSource: PropTypes.string,
-  username: PropTypes.string,
-  description: PropTypes.string
 };
 
 export default PhotoDetailsModal;
