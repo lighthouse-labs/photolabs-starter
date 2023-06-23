@@ -59,7 +59,7 @@ module.exports = function application(
       });
   }
 
-  app.close = function() {
+  app.close = function () {
     return db.end();
   };
 

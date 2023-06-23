@@ -46,3 +46,8 @@
 .photo-list__user-location {
   color: #838383;
 }
+.photo-details-modal__image {
+  vertical-align: middle;
+  width: 35%; /* Adjust the width as needed */
+  height: 300px; /* Maintain the aspect ratio */
+}

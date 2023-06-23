@@ -3,13 +3,12 @@ import React from "react";
 import "../styles/PhotoDetailsModal.scss";
 import PhotoList from "../components/PhotoList";
 import PhotoFavButton from "../components/PhotoFavButton";
-import PhotoListItem from "../components/PhotoListItem";
 
-const PhotoDetailsModal = (props) => {
-  const { onClose, photo, photos, toggleFavorite, favorited, favPhotos } =
-    props;
+// Component for displaying photo details in a modal
+export const PhotoDetailsModal = (props) => {
+  const { onClose, photo, photos, toggleFavorite, favorited, favPhotos } = props;
 
-  const { imageSource, description, username, id } = photo;
+  const { imageSource, description, username, id, city, country, profile } = photo;
 
   return (
     <div className="photo-details-modal">
@@ -43,27 +42,39 @@ const PhotoDetailsModal = (props) => {
           </defs>
         </svg>
       </button>
-      {/* Image section */}
-      <div className="photo-details-modal__content">
-        <div className="photo-details-modal__image-section">
-          {/* Favorite button */}
-          <PhotoFavButton
-            filled={favorited}
-            toggleFavorite={() => toggleFavorite(id)}
-          />
-          {/* Image */}
+
+      <div>
+        {/* Favorite button */}
+        <PhotoFavButton
+          className='fav-badge'
+          filled={favorited}
+          toggleFavorite={() => toggleFavorite(id)}
+        />
+        {/* Display the main photo */}
+        <img
+          src={imageSource}
+          alt={description}
+          className="photo-list__image"
+        />
+        <div className="photo-list-details__parent">
+          {/* Display the user profile photo */}
           <img
-            className="photo-details-modal__image"
-            src={imageSource}
-            alt={description}
+            src={profile}
+            className="photo-list__user-profile"
+            alt="user-photo"
           />
-          {/* Photo credit */}
-          <h3>photo by {username}</h3>
         </div>
-        {/* Similar photos section */}
-        <div className="photo-details-modal__similar-photos-section">
-          <h4 className="photo-details-modal__header">Similar Photos</h4>
-          {/* List of similar photos */}
+        <div>
+          {/* Display the username and location */}
+          <h1 className="photo-list__user-info">{username}</h1>
+          <p className="photo-list__user-location">{city}, {country}</p>
+        </div>
+      </div>
+
+      <div>
+        {/* Display similar photos */}
+        <h4>Similar Photos</h4>
+        <div className="photo-details-modal__images">
           <PhotoList
             photos={[photos[0], photos[1], photos[3], photos[4]]}
             toggleFavorite={toggleFavorite}

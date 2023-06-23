@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-
-import PhotoList from "./components/PhotoList";
-import TopicList from "./components/TopicList";
-import TopNavigationBar from "./components/TopNavigationBar";
 import HomeRoute from "./routes/HomeRoute";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
-
-import photos from "./mocks/photos.js";
-import topics from "./mocks/topics.js";
+import useApplicationData from "./hooks/useApplicationData";
 
 // Main application component
 const App = () => {
+  const {photos,
+    getPhotosByTopic,topics
+  } = useApplicationData();
   // State variables for managing modal state and clicked photo
   const [openModal, setOpenModal] = useState(false);
   const [clickedPhoto, setClickedPhoto] = useState(null);
@@ -26,7 +23,9 @@ console.log("these are photos:", photos)
     setOpenModal(false); // Close the modal
     setClickedPhoto(null); // Reset the clicked photo
   };
+  
 
+  
   // Render the application
   return (
     <div className="App">
@@ -34,10 +33,12 @@ console.log("these are photos:", photos)
         topics={topics}
         photos={photos}
         onPhotoClick={photoClickHandler}
+        getPhotosByTopic={getPhotosByTopic}
       />
       {openModal && (
         <PhotoDetailsModal photo={clickedPhoto} onClose={closeModal} />
       )}
+      
     </div>
   );
 };

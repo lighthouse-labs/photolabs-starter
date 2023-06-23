@@ -10,7 +10,7 @@ const photo1 = {
   },
   "user": {
     "id": "1",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -28,7 +28,7 @@ const photo2 = {
   },
   "user": {
     "id": "2",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -46,7 +46,7 @@ const photo3 = {
   },
   "user": {
     "id": "3",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -65,7 +65,7 @@ const photo4 = {
   "user": {
     "id": "4",
     "updated_at": "2016-07-10T11:00:01-05:00",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -83,7 +83,7 @@ const photo5 = {
   },
   "user": {
     "id": "5",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -101,7 +101,7 @@ const photo6 = {
   },
   "user": {
     "id": "6",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -119,7 +119,7 @@ const photo7 = {
   },
   "user": {
     "id": "7",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -137,7 +137,7 @@ const photo8 = {
   },
   "user": {
     "id": "8",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -155,7 +155,7 @@ const photo9 = {
   },
   "user": {
     "id": "9",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }
@@ -173,7 +173,7 @@ const photo10 = {
   },
   "user": {
     "id": "10",
-    "username": "exampleuser",
+    "username": "Joe Example",
     "name": "Joe Example",
     "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
   }

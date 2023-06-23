@@ -8,7 +8,7 @@ import PhotoFavButton from "../components/PhotoFavButton";
 
 
 const HomeRoute = (props) => {
-  const { topics, photos } = props;
+  const { topics, photos ,getPhotosByTopic} = props;
   
   const [favPhotos, setFavPhotos] = useState([]);
 
@@ -54,12 +54,13 @@ const HomeRoute = (props) => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} hasFavoritedPhoto={favPhotos.length} />
+      <TopNavigationBar topics={topics} hasFavoritedPhoto={favPhotos.length} getPhotosByTopic={getPhotosByTopic}/>
       <PhotoList
         photos={photos}
         onPhotoClick={photoClickHandler}
         toggleFavorite={toggleFavorite}
         favPhotos={favPhotos}
+        
       />
       {openModal && (
         <PhotoDetailsModal
