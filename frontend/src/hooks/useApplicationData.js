@@ -121,7 +121,7 @@ const useApplicationData = () => {
         dispatch({ type: ACTIONS.SET_PHOTOS, payload: data })
       })
       .catch(error => {
-        console.log(`Error fetching photos for topic ${topicId}: ${error}`);
+        console.error(`Error fetching photos for topic ${topicId}: ${error}`);
 
         return [];
       });
