@@ -9,7 +9,6 @@ const PhotoList = (props) => {
 
   // Map over the photos array and create a PhotoListItem component for each photo
   const photoItems = photos.map((photo, index) => {
-    //console.log(photo, photo.similar_photos,"insidephotolistitem")
     return (
       <PhotoListItem
       similarPhotos={photo.similar_photos}

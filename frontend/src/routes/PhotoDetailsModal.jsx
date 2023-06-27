@@ -1,5 +1,5 @@
 import React from "react";
-import useApplicationData from "../hooks/useApplicationData";
+
 import PhotoList from "../components/PhotoList";
 import PhotoFavButton from "../components/PhotoFavButton";
 import "../styles/PhotoDetailsModal.scss";
@@ -8,10 +8,6 @@ export const PhotoDetailsModal = (props) => {
   const { onClose, photo, photos, toggleFavorite, favorited, favPhotos } = props;
 
   const { imageSource, description, username, id, city, country, profile } = photo;
-// console.log(Object.keys(photo))
-//const {getPhotosByTopic} = useApplicationData ();
-//const topicPhotos =
-console.log(photo,'photos')   
   return (
     <div className="photo-details-modal">
       {/* Close button */}
