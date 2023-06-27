@@ -1,13 +1,47 @@
-import React from 'react';
+import React, { useState } from "react";
+import HomeRoute from "./routes/HomeRoute";
+import PhotoDetailsModal from "./routes/PhotoDetailsModal";
+import useApplicationData from "./hooks/useApplicationData";
 
-import PhotoListItem from './components/PhotoListItem';
-import './App.scss';
+// Main application component
+const App = () => {
+  const {photos,
+    getPhotosByTopic,topics
+  } = useApplicationData();
+  // State variables for managing modal state and clicked photo
+  const [openModal, setOpenModal] = useState(false);
+  const [clickedPhoto, setClickedPhoto] = useState(null);
+//console.log("these are photos:", photos)
+  // Event handler for when a photo is clicked
+  const photoClickHandler = (photo) => {
+    setClickedPhoto(photo); // Set the clicked photo
+    setOpenModal(true); // Open the modal
+    console.log(photo,'insideofphotoclickhandler')
+  };
 
-// Note: Rendering a single component to build components in isolation
-const App = () => (
-  <div className="App">
-    <PhotoListItem/>
-  </div>
-)
+  // Function to close the modal
+  const closeModal = () => {
+    setOpenModal(false); // Close the modal
+    setClickedPhoto(null); // Reset the clicked photo
+  };
+  
 
-export default App
+  console.log(clickedPhoto)
+  // Render the application
+  return (
+    <div className="App">
+      <HomeRoute
+        topics={topics}
+        photos={photos}
+        onPhotoClick={photoClickHandler}
+        getPhotosByTopic={getPhotosByTopic}
+      />
+      {openModal && (
+        <PhotoDetailsModal  photo={clickedPhoto} onClose={closeModal} />
+      )}
+      
+    </div>
+  );
+};
+
+export default App;
