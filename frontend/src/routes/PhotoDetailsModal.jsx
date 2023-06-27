@@ -1,15 +1,17 @@
 import React from "react";
-
-import "../styles/PhotoDetailsModal.scss";
+import useApplicationData from "../hooks/useApplicationData";
 import PhotoList from "../components/PhotoList";
 import PhotoFavButton from "../components/PhotoFavButton";
-
+import "../styles/PhotoDetailsModal.scss";
 // Component for displaying photo details in a modal
 export const PhotoDetailsModal = (props) => {
   const { onClose, photo, photos, toggleFavorite, favorited, favPhotos } = props;
 
   const { imageSource, description, username, id, city, country, profile } = photo;
-
+// console.log(Object.keys(photo))
+//const {getPhotosByTopic} = useApplicationData ();
+//const topicPhotos =
+console.log(photo,'photos')   
   return (
     <div className="photo-details-modal">
       {/* Close button */}
@@ -54,7 +56,7 @@ export const PhotoDetailsModal = (props) => {
         <img
           src={imageSource}
           alt={description}
-          className="photo-list__image"
+          className="photo-details-modal__images"
         />
         <div className="photo-list-details__parent">
           {/* Display the user profile photo */}
@@ -76,7 +78,7 @@ export const PhotoDetailsModal = (props) => {
         <h4>Similar Photos</h4>
         <div className="photo-details-modal__images">
           <PhotoList
-            photos={[photos[0], photos[1], photos[3], photos[4]]}
+            photos={photo.similarPhotos}
             toggleFavorite={toggleFavorite}
             favPhotos={favPhotos}
           />

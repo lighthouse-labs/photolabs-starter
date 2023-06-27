@@ -14,6 +14,7 @@ const PhotoListItem = ({
   onPhotoClick,
   city,
   country,
+  similarPhotos
 }) => {
   // Handle toggle favorite event
   const handleToggleFavorite = () => {
@@ -22,7 +23,7 @@ const PhotoListItem = ({
 
   // Handle photo click event
   const handlePhotoClick = () => {
-    onPhotoClick({ username, imageSource, description, id, profile });
+    onPhotoClick({ username, imageSource, description, id, profile, similarPhotos });
   };
 
   return (
@@ -58,12 +59,12 @@ const PhotoListItem = ({
 PhotoListItem.propTypes = {
   username: PropTypes.string.isRequired,
   imageSource: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
+  //description: PropTypes.string.isRequired,
+  //id: PropTypes.string.isRequired,
   profile: PropTypes.string.isRequired,
   toggleFavorite: PropTypes.func.isRequired,
   favorited: PropTypes.bool.isRequired,
-  onPhotoClick: PropTypes.func.isRequired,
+ // onPhotoClick: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,
 };

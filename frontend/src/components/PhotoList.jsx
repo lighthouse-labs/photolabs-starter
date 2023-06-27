@@ -5,12 +5,14 @@ import PhotoListItem from "./PhotoListItem";
 
 // Component that renders a list of photos
 const PhotoList = (props) => {
-  const { photos, onPhotoClick, toggleFavorite, favPhotos } = props;
+  const { photos, onPhotoClick, toggleFavorite, favPhotos,  } = props;
 
   // Map over the photos array and create a PhotoListItem component for each photo
   const photoItems = photos.map((photo, index) => {
+    //console.log(photo, photo.similar_photos,"insidephotolistitem")
     return (
       <PhotoListItem
+      similarPhotos={photo.similar_photos}
         key={`${photo.id}_${index}`}
         photo={photo}
         username={photo.user.username}

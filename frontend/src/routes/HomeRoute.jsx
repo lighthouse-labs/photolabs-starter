@@ -4,7 +4,7 @@ import "../styles/HomeRoute.scss";
 import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
 import PhotoDetailsModal from "./PhotoDetailsModal";
-import PhotoFavButton from "../components/PhotoFavButton";
+
 
 
 const HomeRoute = (props) => {
@@ -12,19 +12,7 @@ const HomeRoute = (props) => {
   
   const [favPhotos, setFavPhotos] = useState([]);
 
-  
-  const addFavPhoto = (photoId) => {
-    if (!favPhotos.includes(photoId)) {
-      setFavPhotos((prev) => [...prev, photoId]);
-    }
-  };
-
  
-  const removeFavPhoto = (photoId) => {
-    if (favPhotos.includes(photoId)) {
-      setFavPhotos(favPhotos.filter((id) => id !== photoId));
-    }
-  };
 
   const toggleFavorite = (photoId) => {
     if (favPhotos.includes(photoId)) {
