@@ -1,67 +1,39 @@
-import React from 'react';
+import React from "react";
 
-import '../styles/PhotoList.scss';
+import "../styles/PhotoList.scss";
+import PhotoListItem from "./PhotoListItem";
 
-const PhotoList = () => {
-  <ul className="photo-list">
-    {/* Insert React */}
-  </ul>
-}
+// Component that renders a list of photos
+const PhotoList = (props) => {
+  const { photos, onPhotoClick, toggleFavorite, favPhotos,  } = props;
 
-PhotoList.defaultProps = {
-  photos: [
-    {
-      "id": "1",
-      "location": {
-        "city": "Montreal",
-        "country": "Canada"
-      },
-      "urls": {
-        "full": `${process.env.PUBLIC_URL}/Image-1-Full.jpeg`,
-        "regular": `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`
-      },
-      "user": {
-        "id": "1",
-        "username": "exampleuser",
-        "name": "Joe Example",
-        "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
-      }
-    },
-    {
-      "id": "2",
-      "location": {
-        "city": "Toronto",
-        "country": "Canada"
-      },
-      "urls": {
-        "full": `${process.env.PUBLIC_URL}/Image-2-Full.jpeg`,
-        "regular": `${process.env.PUBLIC_URL}/Image-2-Regular.jpeg`
-      },
-      "user": {
-        "id": "2",
-        "username": "exampleuser",
-        "name": "Joe Example",
-        "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
-      }
-    },
-    {
-      "id": "3",
-      "location": {
-        "city": "Ottawa",
-        "country": "Canada"
-      },
-      "urls": {
-        "full": `${process.env.PUBLIC_URL}/Image-3-Full.jpeg`,
-        "regular": `${process.env.PUBLIC_URL}/Image-3-Regular.jpeg`
-      },
-      "user": {
-        "id": "3",
-        "username": "exampleuser",
-        "name": "Joe Example",
-        "profile": `${process.env.PUBLIC_URL}/profile-1.jpg`
-      }
-    }
-   ]
-}
+  // Map over the photos array and create a PhotoListItem component for each photo
+  const photoItems = photos.map((photo, index) => {
+    return (
+      <PhotoListItem
+      similarPhotos={photo.similar_photos}
+        key={`${photo.id}_${index}`}
+        photo={photo}
+        username={photo.user.username}
+        profile={photo.user.profile}
+        imageSource={photo.urls.regular}
+        hideUsername={photo.hideUsername}
+        city={photo.location.city}
+        country={photo.location.country}
+        toggleFavorite={toggleFavorite}
+        favorited={favPhotos.includes(photo.id)}
+        id={photo.id}
+        description={photo.description}
+        onPhotoClick={onPhotoClick}
+      />
+    );
+  });
 
-export default PhotoList
+  return (
+    <div>
+      <ul className="photo-list">{photoItems}</ul>
+    </div>
+  );
+};
+
+export default PhotoList;
