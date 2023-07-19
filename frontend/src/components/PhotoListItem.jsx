@@ -3,7 +3,7 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 
 
-const photo = {
+const sampleDataForPhotoListItem = {
   id: "1",
   location: {
     city: "Montreal",
