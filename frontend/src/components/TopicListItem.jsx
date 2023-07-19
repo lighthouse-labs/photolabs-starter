@@ -1,6 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import '../styles/TopicListItem';
+import "../styles/TopicListItem";
+
+const topic = {
+  id: "1",
+  slug: "topic-1",
+  label: "Nature",
+};
 
 const TopicListItem = () => {
   return (
@@ -8,12 +14,6 @@ const TopicListItem = () => {
       {/* Insert React */}
     </div>
   );
-};
-
-TopicListItem.defaultProps =   {
-  "id": "1",
-  "slug": "topic-1",
-  "label": "Nature"
 };
 
 export default TopicListItem;
