@@ -21,9 +21,11 @@ const topics = [
 ];
 
 const TopicList = () => {
-  <div className="top-nav-bar__topic-list">
-    {/* Insert React */}
-  </div>
+  return (
+    <div className="top-nav-bar__topic-list">
+      {/* Insert React */}
+    </div>
+  );
 };
 
 export default TopicList;

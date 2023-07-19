@@ -9,9 +9,11 @@ const topic = {
 };
 
 const TopicListItem = () => {
-  <div className="topic-list__item">
-    {/* Insert React */}
-  </div>
+  return (
+    <div className="topic-list__item">
+      {/* Insert React */}
+    </div>
+  );
 };
 
 export default TopicListItem;
