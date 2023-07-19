@@ -2,6 +2,7 @@ import React from "react";
 
 import "../styles/PhotoListItem.scss";
 
+
 const photo = {
   id: "1",
   location: {
