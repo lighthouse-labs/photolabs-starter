@@ -2,7 +2,7 @@ import React from "react";
 
 import "./TopicList.scss";
 
-const topics = [
+const sampleDataForTopicList = [
   {
     id: "1",
     slug: "topic-1",
