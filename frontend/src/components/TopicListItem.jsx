@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/TopicListItem";
+import "../styles/TopicListItem.scss";
 
 const sampleDataForTopicListItem = {
   id: "1",
