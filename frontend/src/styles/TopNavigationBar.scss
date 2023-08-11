@@ -19,13 +19,16 @@
   margin-left: 24px;
 }
 
+.top-nav-bar__right {
+  display: flex;
+  align-items: center;
+}
+
+
 .nav-topics {
-  // position: absolute;
-  // right: 700px;
 }
 
 .nav-fav {
- position: absolute;
- right: 680px;
- top: -20px;
+  margin-right:20px;
+  margin-bottom: 150px;
 }
