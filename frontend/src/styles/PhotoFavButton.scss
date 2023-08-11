@@ -12,7 +12,18 @@
   border-radius: 100%;
 }
 
+.fav-position {
+  position: absolute;
+  top: 10px;
+  bottom: 20px;
+}
+
+.photo-list__fav-icon.solid {
+  background-color: #C80000; 
+}
+
 .photo-list__fav-icon-svg {
+  position: relative;
   padding: 7px;
   top: 2px;
 }
