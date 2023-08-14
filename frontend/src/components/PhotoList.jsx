@@ -3,11 +3,16 @@ import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoList.scss';
 import photos from "../mocks/photos";
 
-const PhotoList = () => {
+const PhotoList = (props) => {
   return (
     <ul className="photo-list">
       {photos.map(photoData => (
-        <PhotoListItem key={photoData.id} data={photoData} />
+        <PhotoListItem
+          key={photoData.id}
+          data={photoData}
+          favoritedPhotoIds={props.favoritedPhotoIds}
+          toggleFavorite={props.toggleFavorite}
+        />
       ))}
     </ul>
   );

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import FavIcon from './FavIcon';
 
-const PhotoFavButton = ({ displayAlert }) => {
-  const [Favorite, setFavorite] = useState(false);
+const PhotoFavButton = ({ displayAlert, favoritedPhotoIds, toggleFavorite, photoId}) => {
 
+  const Favorite = favoritedPhotoIds.includes(photoId); //Check global favorite state
   const handleIconClick = () => {
-    setFavorite(!Favorite);
     console.log('Favorite button clicked!');
+    toggleFavorite(photoId); //Add it to favorite ids
   };
 
   return (
