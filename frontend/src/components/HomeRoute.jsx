@@ -17,7 +17,8 @@ const HomeRoute = () => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar favoritedCount={favoritedPhotoIds.length}/>
+      <TopNavigationBar favoritedCount={favoritedPhotoIds.length} favoritedPhotoIds={favoritedPhotoIds}
+        toggleFavorite={toggleFavorite}/>
       <PhotoList favoritedPhotoIds={favoritedPhotoIds}
         toggleFavorite={toggleFavorite}/>
     </div>
