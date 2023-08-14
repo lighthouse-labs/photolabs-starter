@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/PhotoDetailsModal.scss'
+import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = () => {
@@ -10,7 +10,7 @@ const PhotoDetailsModal = () => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
     </div>
-  )
+  );
 };
 
 export default PhotoDetailsModal;

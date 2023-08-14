@@ -12,6 +12,7 @@ const PhotoList = (props) => {
           data={photoData}
           favoritedPhotoIds={props.favoritedPhotoIds}
           toggleFavorite={props.toggleFavorite}
+          openModal={props.openModal}
         />
       ))}
     </ul>

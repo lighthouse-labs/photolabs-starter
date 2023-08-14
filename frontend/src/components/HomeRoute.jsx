@@ -3,7 +3,7 @@ import PhotoList from './PhotoList';
 import TopNavigationBar from './TopNavigationBar';
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = () => {
+const HomeRoute = (props) => {
   const [favoritedPhotoIds, setFavoritedPhotoIds] = useState([]);
 
   const toggleFavorite = (photoId) => {
@@ -20,7 +20,7 @@ const HomeRoute = () => {
       <TopNavigationBar favoritedCount={favoritedPhotoIds.length} favoritedPhotoIds={favoritedPhotoIds}
         toggleFavorite={toggleFavorite}/>
       <PhotoList favoritedPhotoIds={favoritedPhotoIds}
-        toggleFavorite={toggleFavorite}/>
+        toggleFavorite={toggleFavorite} openModal={props.openModal}/>
     </div>
   );
 };
