@@ -6,21 +6,32 @@ import './App.scss';
 
 const App = () => {
   const [isModalVisible, setModalVisible] = useState(false); //Show and do not show modal
-  // const [largerImageUrl, setLargerImageUrl] = useState(''); //Set larger image url for modal click
+  const [selectedPhotoData, setSelectedPhotoData] = useState(null);
+  const [favoritedPhotoIds, setFavoritedPhotoIds] = useState([]);
+
+  const toggleFavorite = (photoId) => {
+    console.log("Toggling favorite for photo ID:", photoId);
+    if (favoritedPhotoIds.includes(photoId)) {
+      setFavoritedPhotoIds(favoritedPhotoIds.filter((id) => id !== photoId));
+    } else {
+      setFavoritedPhotoIds([...favoritedPhotoIds, photoId]);
+    }
+  };
 
   //Showing and not showing the modals
-  const openModal = () => {
+  const openModal = (photoData) => {
+    setSelectedPhotoData(photoData);
     setModalVisible(true);
-    // setLargerImageUrl(urls.full);
   };
 
   const closeModal = () => {
+    setSelectedPhotoData(null);
     setModalVisible(false);
   };
   return (
     <div className="App">
-      <HomeRoute openModal={openModal}/>
-      {isModalVisible && <PhotoDetailsModal />}
+      <HomeRoute openModal={openModal} closeModal={closeModal} isModalVisible={isModalVisible} favoritedPhotoIds={favoritedPhotoIds} setFavoritedPhotoIds={setFavoritedPhotoIds} toggleFavorite={toggleFavorite}/>
+      {isModalVisible && <PhotoDetailsModal closeModal={closeModal} isModalVisible={isModalVisible} selectedPhotoData={selectedPhotoData} favoritedPhotoIds={favoritedPhotoIds} setFavoritedPhotoIds={setFavoritedPhotoIds} toggleFavorite={toggleFavorite}/>}
     </div>
   );
 };

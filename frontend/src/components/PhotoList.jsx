@@ -13,6 +13,8 @@ const PhotoList = (props) => {
           favoritedPhotoIds={props.favoritedPhotoIds}
           toggleFavorite={props.toggleFavorite}
           openModal={props.openModal}
+          closeModal={props.closeModal}
+          isModalVisible={props.isModalVisible}
         />
       ))}
     </ul>

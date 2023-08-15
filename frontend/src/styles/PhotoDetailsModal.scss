@@ -56,3 +56,10 @@
   margin-bottom: 24px;
   width: 90%;
 }
+
+.photo-details-model__profile-image {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}

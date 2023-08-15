@@ -4,23 +4,15 @@ import TopNavigationBar from './TopNavigationBar';
 import "../styles/HomeRoute.scss";
 
 const HomeRoute = (props) => {
-  const [favoritedPhotoIds, setFavoritedPhotoIds] = useState([]);
-
-  const toggleFavorite = (photoId) => {
-    console.log("Toggling favorite for photo ID:", photoId);
-    if (favoritedPhotoIds.includes(photoId)) {
-      setFavoritedPhotoIds(favoritedPhotoIds.filter((id) => id !== photoId));
-    } else {
-      setFavoritedPhotoIds([...favoritedPhotoIds, photoId]);
-    }
-  };
+  
+  const {favoritedPhotoIds, toggleFavorite} = props;
 
   return (
     <div className="home-route">
       <TopNavigationBar favoritedCount={favoritedPhotoIds.length} favoritedPhotoIds={favoritedPhotoIds}
         toggleFavorite={toggleFavorite}/>
       <PhotoList favoritedPhotoIds={favoritedPhotoIds}
-        toggleFavorite={toggleFavorite} openModal={props.openModal}/>
+        toggleFavorite={toggleFavorite} openModal={props.openModal} closeModal={props.closeModal} isModalVisible={props.isModalVisible}/>
     </div>
   );
 };
