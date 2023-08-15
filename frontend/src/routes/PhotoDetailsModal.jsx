@@ -27,12 +27,15 @@ const PhotoDetailsModal = ({ closeModal, isModalVisible, selectedPhotoData, favo
       {/* Display the selected photo with PhotoFavButton */}
       <div className="photo-details-modal__images">
         <img src={selectedPhotoData.urls.full} alt={`Selected Photo`} className="photo-details-modal__image" />
-        <PhotoFavButton
-          displayAlert={true}
-          favoritedPhotoIds={favoritedPhotoIds}
-          toggleFavorite={toggleFavorite}
-          photoId={selectedPhotoData.id}
-        />
+        <div className="photo-details-modal__fav">
+          <PhotoFavButton
+            displayAlert={true}
+            favoritedPhotoIds={favoritedPhotoIds}
+            toggleFavorite={toggleFavorite}
+            photoId={selectedPhotoData.id}
+            className="photo-details-modal__fav"
+          />
+        </div>
         <div className="photo-details-modal__photographer-details">
           <img src={user.profile} alt={`Profile of ${user.username}`} className="photo-details-model__profile-image" />
           <div className="text-info">
