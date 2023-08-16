@@ -6,12 +6,12 @@ import "../styles/TopicList.scss";
 const TopicList = (props) => {
   return (
     <div className="top-nav-bar__topic-list">
-      {props.topicListData.map((element) =>{
+      {props.topicListData.map((e) =>{
         return (
           <TopicListItem 
-          key={element.id}
-          slug={element.slug}
-          title={element.title} />
+          key={e.id}
+          slug={e.slug}
+          title={e.title} />
         )
       })}
     </div>

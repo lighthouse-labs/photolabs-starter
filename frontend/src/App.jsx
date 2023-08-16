@@ -1,23 +1,23 @@
 import React from 'react';
 
-import PhotoList from './components/PhotoList';
-import TopicList from 'components/TopicList';
 import './App.scss';
+
+import HomeRoute from 'components/HomeRoute';
+
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   return (
     <div className="App">
-      <TopicList topicListData={sampleDataForTopicList}/>
-      <PhotoList photoListData={sampleDataForPhotoList} />
+      <HomeRoute 
+        topicListData={sampleDataForTopicList}
+        photoListData={sampleDataForPhotoList}
+        />
+
 
     </div>
   );
 };
-
-
-
-
 
 
 const sampleDataForTopicList = [
@@ -123,9 +123,6 @@ const sampleDataForPhotoList = [
     },
   },
 ];
-
-
-
 
 
 export default App;
