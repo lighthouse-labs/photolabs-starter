@@ -1,8 +1,57 @@
 import React from 'react';
 
 import PhotoList from './components/PhotoList';
+import TopicList from 'components/TopicList';
 import './App.scss';
 
+// Note: Rendering a single component to build components in isolation
+const App = () => {
+  return (
+    <div className="App">
+      <TopicList topicListData={sampleDataForTopicList}/>
+      <PhotoList photoListData={sampleDataForPhotoList} />
+
+    </div>
+  );
+};
+
+
+
+
+
+
+const sampleDataForTopicList = [
+  {
+    id: "1",
+    slug: "topic-1",
+    title: "Nature",
+  },
+  {
+    id: "2",
+    slug: "topic-2",
+    title: "Travel",
+  },
+  {
+    id: "3",
+    slug: "topic-3",
+    title: "People",
+  },
+  {
+    id: "4",
+    slug: "topic-4",
+    title: "Food",
+  },
+  {
+    id: "5",
+    slug: "topic-5",
+    title: "Amimals",
+  },
+  {
+    id: "6",
+    slug: "topic-6",
+    title: "Autumn",
+  },
+];
 
 const sampleDataForPhotoList = [
   {
@@ -56,17 +105,27 @@ const sampleDataForPhotoList = [
       profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
     },
   },
+  {
+    id: "4",
+    location: {
+      city: "Victoria",
+      country: "Canada",
+    },
+    urls: {
+      full: `${process.env.PUBLIC_URL}/Image-3-Full.jpeg`,
+      regular: `${process.env.PUBLIC_URL}/Image-3-Regular.jpeg`,
+    },
+    user: {
+      id: "4",
+      username: "exampleuser",
+      name: "Joe Example",
+      profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
+    },
+  },
 ];
 
 
-// Note: Rendering a single component to build components in isolation
-const App = () => {
-  return (
-    <div className="App">
-      <PhotoList photoListData={sampleDataForPhotoList} />
 
-    </div>
-  );
-};
+
 
 export default App;
