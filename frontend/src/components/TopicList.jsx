@@ -1,12 +1,16 @@
 import React from "react";
+
+// Styling
+import "../styles/TopicList.scss";
+
+// Components
 import TopicListItem from "./TopicListItem";
 
-import "../styles/TopicList.scss";
 
 const TopicList = (props) => {
   return (
     <div className="top-nav-bar__topic-list">
-      {props.topicListData.map((e) =>{
+      {props.topics.map((e) =>{
         return (
           <TopicListItem 
           key={e.id}

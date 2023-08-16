@@ -1,21 +1,34 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 
+// Styling
 import FavIcon from './FavIcon';
+
+// Components
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
+// Hooks
+import useIsFav from 'hooks/useIsFav'
 
-  const [isFav, setIsFav] = useState(false);
 
+function PhotoFavButton(props) {
+
+  const { photoID, favPhotos, isAFavPhoto, addFavourite, removeFavourite } = props;
+
+  // const [isFav, setIsFav] = useState(false);
+  
   const handleFavClick = ()=> { 
-    console.log(`set isFav as: ${!isFav}`);
-    {isFav === true ? setIsFav(false) : setIsFav(true)}
-  }
+    {isAFavPhoto === true ? removeFavourite(photoID) : addFavourite(photoID)}
+  };
+
+
+
+
+  //const {isFav, handleFavClick} = useIsFav();
 
   return (
     <div className="photo-list__fav-icon" onClick={ handleFavClick }>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon fill={isFav === true ? "#C80000" : "#EEEEEE"} />
+        <FavIcon fill={!!isAFavPhoto ? "#C80000" : "#EEEEEE"} />
       </div>
     </div>
   );
