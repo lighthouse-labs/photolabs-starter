@@ -10,7 +10,7 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
 
-  const { photos, topics, openModal, closeModal } = props;
+  const { photos, topics, openModal } = props;
 
   const [favPhotos, setFavPhotos] = useState([]);
 
@@ -41,7 +41,6 @@ const HomeRoute = (props) => {
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
         openModal={openModal}
-        closeModal={closeModal}
       />
     </div>
   );

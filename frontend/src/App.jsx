@@ -31,13 +31,11 @@ const App = () => {
         topics={topics}
         photos={photos}
         openModal={openModal}
-        closeModal={closeModal}
         />
 
       {!!clickedPhoto ? 
         <PhotoDetailsModal 
           photo={clickedPhoto} 
-          openModal={openModal}
           closeModal={closeModal} 
         /> 
         : null}
