@@ -7,7 +7,11 @@ import PhotoFavButton from "./PhotoFavButton.jsx";
 
 const PhotoListItem = (props) => {
 
-  const { photos, photoID, favPhotos, isAFavPhoto, addFavourite, removeFavourite, favPhotosExist } = props;
+  const { photos, photoID, favPhotos, isAFavPhoto, addFavourite, removeFavourite, favPhotosExist, openModal } = props;
+
+  const handlePhotoClick = (photo) => {
+    openModal(photo);
+  };
 
   return (
     <div className="photo-list__item">  
@@ -19,7 +23,7 @@ const PhotoListItem = (props) => {
         removeFavourite={removeFavourite}
         favPhotosExist={favPhotosExist}
       />    
-      <img className="photo-list__image" alt="Image" src={props.imageSource} />
+      <img className="photo-list__image" alt="Image" src={props.imageSource} onClick={handlePhotoClick} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" alt="Profile Image" src={props.profile} />
          <span className="photo-list__user-info">
