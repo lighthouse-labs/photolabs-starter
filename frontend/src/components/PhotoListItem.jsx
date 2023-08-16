@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
 
 const sampleDataForPhotoListItem = {
@@ -13,11 +14,10 @@ const sampleDataForPhotoListItem = {
   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
 
-const PhotoListItem = (props) => {
-  console.log("props here", props)
-  
+const PhotoListItem = (props) => {  
   return (
     <div className="photo-list__item">
+      <PhotoFavButton />
       <img src={props.sampleImage.imageSource} className="photo-list__image"/>
       <div className="photo-list__user-details">
         <img src={props.sampleImage.profile} className="photo-list__user-profile photo-list__user-details"/>

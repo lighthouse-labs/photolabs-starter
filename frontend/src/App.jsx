@@ -1,4 +1,5 @@
 import React from 'react';
+import PhotoList from 'components/PhotoList';
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 
@@ -14,13 +15,19 @@ const sampleDataForPhotoListItem = {
   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
 
-console.log(sampleDataForPhotoListItem)
-
 const App = () => {
-    
+  const photos = [sampleDataForPhotoListItem, sampleDataForPhotoListItem, sampleDataForPhotoListItem];
+
+  const photoList = photos.map((photo, index) =>
+    <PhotoListItem
+      key={index}
+      sampleImage={photo}
+    />
+  )
+
   return (
     <div className="App">
-      <PhotoListItem sampleImage={sampleDataForPhotoListItem}/>
+      {photoList}
     </div>
   );
 };
