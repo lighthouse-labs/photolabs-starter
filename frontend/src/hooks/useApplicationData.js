@@ -1,38 +1,61 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 
-const useApplicationData = () => {
+const initialState = {
+  isModalVisible: false,
+  selectedPhotoData: null,
+  favoritedPhotoIds: [],
+};
 
-  const [isModalVisible, setModalVisible] = useState(false); //Show and do not show modal
-  const [selectedPhotoData, setSelectedPhotoData] = useState(null);
-  const [favoritedPhotoIds, setFavoritedPhotoIds] = useState([]);
-
-  const toggleFavorite = (photoId) => {
-    console.log("Toggling favorite for photo ID:", photoId);
-    if (favoritedPhotoIds.includes(photoId)) {
-      setFavoritedPhotoIds(favoritedPhotoIds.filter((id) => id !== photoId));
-    } else {
-      setFavoritedPhotoIds([...favoritedPhotoIds, photoId]);
-    }
+const reducer = (state, action) => {
+  const actionHandlers = {
+    TOGGLE_FAVORITE: () => {
+      const photoId = action.photoId;
+      if (state.favoritedPhotoIds.includes(photoId)) {
+        return {
+          ...state,
+          favoritedPhotoIds: state.favoritedPhotoIds.filter((id) => id !== photoId),
+        };
+      } else {
+        return {
+          ...state,
+          favoritedPhotoIds: [...state.favoritedPhotoIds, photoId],
+        };
+      }
+    },
+    OPEN_MODAL: () => ({
+      ...state,
+      selectedPhotoData: action.photoData,
+      isModalVisible: true,
+    }),
+    CLOSE_MODAL: () => ({
+      ...state,
+      selectedPhotoData: null,
+      isModalVisible: false,
+    }),
+    default: () => state,
   };
 
+  const handler = actionHandlers[action.type] || actionHandlers.default;
+  return handler();
+};
+
+const useApplicationData = ()=> {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const toggleFavorite = (photoId) => {
+    dispatch({ type: 'TOGGLE_FAVORITE', photoId });
+  };
 
   const openModal = (photoData) => {
-    setSelectedPhotoData(photoData);
-    setModalVisible(true);
+    dispatch({ type: 'OPEN_MODAL', photoData });
   };
 
   const closeModal = () => {
-    setSelectedPhotoData(null);
-    setModalVisible(false);
+    dispatch({ type: 'CLOSE_MODAL' });
   };
 
   return {
-    isModalVisible,
-    setModalVisible,
-    selectedPhotoData,
-    setSelectedPhotoData,
-    favoritedPhotoIds,
-    setFavoritedPhotoIds,
+    ...state,
     toggleFavorite,
     openModal,
     closeModal,
