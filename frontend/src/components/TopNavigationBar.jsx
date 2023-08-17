@@ -6,9 +6,6 @@ import FavBadge from './FavBadge';
 import FavIcon from './FavIcon';
 import PhotoFavButton from './PhotoFavButton';
 
-const iconStyle={
-  color: 'red'
-}
 
 const TopNavigation = () => {
   
