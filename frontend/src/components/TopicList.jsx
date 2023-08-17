@@ -1,6 +1,8 @@
 import React from "react";
 
 import "../styles/TopicList.scss";
+import "../styles/TopicListItem.scss"
+import TopicListItem from "./TopicListItem";
 
 const sampleDataForTopicList = [
   {
@@ -21,11 +23,34 @@ const sampleDataForTopicList = [
 ];
 
 const TopicList = () => {
+  const topics = sampleDataForTopicList.map((topic) => 
+    <TopicListItem 
+      key={topic.id}
+      sampleTitle={topic}
+    />
+  )
+  
   return (
     <div className="top-nav-bar__topic-list">
-      {/* Insert React */}
+      {topics}
     </div>
   );
 };
+
+// const PhotoList = () => {
+//   const photos = sampleDataForPhotoList.map((photo) =>
+//     <PhotoListItem 
+//       key = {photo.id}
+//       sampleImage={photo}
+//     />
+//   )
+
+//   return (
+//     <ul className="photo-list">
+//       {photos}
+//     </ul>
+//   );
+// };
+
 
 export default TopicList;
