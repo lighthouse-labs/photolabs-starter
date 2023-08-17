@@ -4,25 +4,15 @@ import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 import TopicList from 'components/TopicList';
 import TopicListItem from 'components/TopicListItem';
+import TopNavigation from 'components/TopNavigationBar';
+import HomeRoute from 'routes/HomeRoute';
 
 const App = () => {
   return (
     <div className="App">
-      <TopicList />
-      <PhotoList />
+      <HomeRoute />
     </div>
   );
-
-  // const photos = [sampleDataForPhotoListItem, sampleDataForPhotoListItem, sampleDataForPhotoListItem];
-
-  //Code from before Building PhotoList
-  // const photoList = photos.map((photo, index) =>
-  //   <PhotoListItem
-  //     key={index}
-  //     sampleImage={photo}
-  //   />
-  // )
-
 };
 
 export default App;
