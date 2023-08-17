@@ -23,7 +23,7 @@ const PhotoListItem = (props) => {
         removeFavourite={removeFavourite}
         favPhotosExist={favPhotosExist}
       />    
-      <img className="photo-list__image" alt="Image" src={props.imageSource} onClick={handlePhotoClick} />
+      <img className="photo-list__image" alt="Image" src={props.imageSource} id={photoID} onClick={handlePhotoClick} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" alt="Profile Image" src={props.profile} />
          <span className="photo-list__user-info">

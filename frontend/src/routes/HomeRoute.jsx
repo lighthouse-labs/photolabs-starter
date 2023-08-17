@@ -10,21 +10,7 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
 
-  const { photos, topics, openModal } = props;
-
-  const [favPhotos, setFavPhotos] = useState([]);
-
-  const addFavourite = (photoID) => {
-    if (!favPhotos.includes(photoID)) {
-      setFavPhotos([...favPhotos, photoID]);
-    }
-  };
-
-  const removeFavourite = (photoID) => {
-    if (favPhotos.includes(photoID)) {
-      setFavPhotos(favPhotos.filter((id) => id !== photoID));
-    }
-  };
+  const { photos, topics, openModal, favPhotos, addFavourite, removeFavourite } = props;
 
   return (
     <div className="home-route">
