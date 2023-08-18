@@ -11,34 +11,22 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import photos from 'mocks/photos.js'
 import topics from 'mocks/topics.js'
 
+// Hooks
+import useApplicationData from 'hooks/useApplicationData'
+
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  
-  const [favPhotos, setFavPhotos] = useState([]);
+  const { 
+    favPhotos, addFavourite, removeFavourite, 
+    clickedPhoto, openModal, closeModal, handlePhotoClick, handleCloseClick,
+    isFav, handleFavClick,
+    
+    similarPhotos, clickedPhotoInfo,
+    }  
+    = useApplicationData();
 
-  const addFavourite = (photoID) => {
-    if (!favPhotos.includes(photoID)) {
-      setFavPhotos([...favPhotos, photoID]);
-    }
-  };
-
-  const removeFavourite = (photoID) => {
-    if (favPhotos.includes(photoID)) {
-      setFavPhotos(favPhotos.filter((id) => id !== photoID));
-    }
-  };
-
-  const [clickedPhoto, setClickedPhoto] = useState(null);
-
-  const openModal = (photo) => {
-    setClickedPhoto(photo)
-  };
-
-  const closeModal = () => {
-    setClickedPhoto(null)
-  };
 
   return (
     <div className="App">
@@ -46,9 +34,12 @@ const App = () => {
         topics={topics}
         photos={photos}
         openModal={openModal}
+        handlePhotoClick={handlePhotoClick}
         favPhotos={favPhotos}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
+        isFav={isFav}
+        handleFavClick={handleFavClick}
         />
 
       {clickedPhoto && 
@@ -60,6 +51,12 @@ const App = () => {
           removeFavourite={removeFavourite}
           photo={clickedPhoto} 
           closeModal={closeModal} 
+          handlePhotoClick={handlePhotoClick}
+          handleCloseClick={handleCloseClick}
+          clickedPhoto={clickedPhoto}
+        
+          // similarPhotos={similarPhotos}
+          // clickedPhotoInfo={clickedPhotoInfo}      
         />}
 
     </div>

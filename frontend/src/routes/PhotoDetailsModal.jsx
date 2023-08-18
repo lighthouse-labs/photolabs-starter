@@ -3,41 +3,31 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
-import FavIcon from 'components/FavIcon';
 import PhotoListItem from 'components/PhotoListItem';
-import PhotoFavButton from 'components/PhotoFavButton';
+
 
 const PhotoDetailsModal = (props) => {
 
-  const { photos, favPhotos, favPhotosExist, addFavourite, removeFavourite, photo, closeModal, isAFavPhoto } = props
+  const { targetId, clickedPhoto, handleCloseClick, photos, favPhotos, favPhotosExist, addFavourite, removeFavourite, photo, closeModal, isAFavPhoto } = props
 
 
-  const handleCloseClick = () => {
-    closeModal();
-  };
+  // get selected photo information and similar photos information
 
-
-
-
-const selectPhoto = function(pics) {
-  const targetID = (photo.target.id);
-  let selectedPhotoInfo = {};
-  for(const p of pics) {
-    if (p.id === targetID) {
-      selectedPhotoInfo = {...p}
+  const selectPhoto = function(pics) {
+    const targetID = (photo.target.id);
+    let selectedPhotoInfo = {};
+    for(const p of pics) {
+      if (p.id === targetID) {
+        selectedPhotoInfo = {...p}
+      }
     }
+    return selectedPhotoInfo
   }
-  return selectedPhotoInfo
-}
 
-const selectedPhoto = selectPhoto(photos)
-const similar = (Object.values(selectedPhoto.similar_photos))
-similar.map((e) => {
-  console.log("E", e.urls.regular)
-})
+  console.log(clickedPhoto.target.id)
 
-//const similarPhoto = function()
-
+  const selectedPhoto = selectPhoto(photos)
+  const similarPhotos = (Object.values(selectedPhoto.similar_photos))
 
   return (
 
@@ -68,6 +58,7 @@ similar.map((e) => {
         favPhotosExist={favPhotosExist}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
+        handlePhotoClick={null}
       />
 
     </div>
@@ -77,7 +68,7 @@ similar.map((e) => {
       </div>
       <div className='photo-detail-modal__images'>
         <PhotoList 
-          photos={similar} 
+          photos={similarPhotos} 
           favPhotos={favPhotos}
           favPhotosExist={favPhotos.length > 0}
           addFavourite={addFavourite}

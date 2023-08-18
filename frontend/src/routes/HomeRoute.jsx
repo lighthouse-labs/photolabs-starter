@@ -10,7 +10,7 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
 
-  const { photos, topics, openModal, favPhotos, addFavourite, removeFavourite } = props;
+  const { isFav, handleFavClick, photos, topics, openModal, handlePhotoClick, favPhotos, addFavourite, removeFavourite } = props;
 
   return (
     <div className="home-route">
@@ -27,6 +27,9 @@ const HomeRoute = (props) => {
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
         openModal={openModal}
+        handlePhotoClick={handlePhotoClick}
+        isFav={isFav}
+        handleFavClick={handleFavClick}
       />
     </div>
   );
