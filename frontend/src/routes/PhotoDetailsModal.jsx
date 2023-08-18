@@ -9,14 +9,35 @@ import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
 
-  const { photos,favPhotos, favPhotosExist, addFavourite, removeFavourite, photo, closeModal } = props
+  const { photos, favPhotos, favPhotosExist, addFavourite, removeFavourite, photo, closeModal, isAFavPhoto } = props
+
 
   const handleCloseClick = () => {
     closeModal();
   };
 
-  const photoID = photo.target.id;
-  console.log(photoID)
+
+
+
+const selectPhoto = function(pics) {
+  const targetID = (photo.target.id);
+  let selectedPhotoInfo = {};
+  for(const p of pics) {
+    if (p.id === targetID) {
+      selectedPhotoInfo = {...p}
+    }
+  }
+  return selectedPhotoInfo
+}
+
+const selectedPhoto = selectPhoto(photos)
+const similar = (Object.values(selectedPhoto.similar_photos))
+similar.map((e) => {
+  console.log("E", e.urls.regular)
+})
+
+//const similarPhoto = function()
+
 
   return (
 
@@ -27,29 +48,45 @@ const PhotoDetailsModal = (props) => {
         </button>
       </div>
 
+    <section className="photo-details-modal__images-container" >
       <div className="photo-details-modal__image-container">
-      <div className='photo-details-modal__fav-button'>
-      <PhotoFavButton />
+      <PhotoListItem 
+        key={selectedPhoto.id}
+        photoID={selectedPhoto.id}
+        imageSource={selectedPhoto.urls.regular} 
+        imageSourceFull={selectedPhoto.urls.full}
+        profile={selectedPhoto.user.profile}
+        name={selectedPhoto.user.name}
+        userName={selectedPhoto.user.username}
+        city={selectedPhoto.location.city}
+        country={selectedPhoto.location.country}
+        imagesStyle={"photo-details-modal__image"} 
+        photographerDetails={"photo-details-modal__photographer-details"} 
+        
+        favPhotos={favPhotos}
+        isAFavPhoto={favPhotos.includes(selectedPhoto.id)}
+        favPhotosExist={favPhotosExist}
+        addFavourite={addFavourite}
+        removeFavourite={removeFavourite}
+      />
 
-      </div>
+    </div>
 
-      <img src={photo.target.src} className="photo-details-modal__image"/>
       <div className='photo-details-modal__header'>
         Similar Photos
       </div>
       <div className='photo-detail-modal__images'>
         <PhotoList 
-          photos={photos} 
+          photos={similar} 
           favPhotos={favPhotos}
           favPhotosExist={favPhotos.length > 0}
           addFavourite={addFavourite}
           removeFavourite={removeFavourite}
         />
-    
-
+  
       </div>
 
-      </div>
+      </section>
      
       
       

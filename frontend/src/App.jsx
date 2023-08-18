@@ -51,7 +51,7 @@ const App = () => {
         removeFavourite={removeFavourite}
         />
 
-      {!!clickedPhoto ? 
+      {clickedPhoto && 
         <PhotoDetailsModal 
           photos={photos} 
           favPhotos={favPhotos}
@@ -60,8 +60,7 @@ const App = () => {
           removeFavourite={removeFavourite}
           photo={clickedPhoto} 
           closeModal={closeModal} 
-        /> 
-        : null}
+        />}
 
     </div>
   );
