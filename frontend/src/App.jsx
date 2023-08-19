@@ -23,7 +23,8 @@ const App = () => {
     clickedPhoto, openModal, closeModal, handlePhotoClick, handleCloseClick,
     isFav, handleFavClick,
     
-    similarPhotos, clickedPhotoInfo,
+    similarPhotos,
+    clickedPhotoInfo,
     }  
     = useApplicationData();
 
@@ -55,8 +56,8 @@ const App = () => {
           handleCloseClick={handleCloseClick}
           clickedPhoto={clickedPhoto}
         
-          // similarPhotos={similarPhotos}
-          // clickedPhotoInfo={clickedPhotoInfo}      
+          similarPhotos={similarPhotos}
+          clickedPhotoInfo={clickedPhotoInfo}      
         />}
 
     </div>

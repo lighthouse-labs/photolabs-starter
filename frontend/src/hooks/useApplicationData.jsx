@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 
 import photos from 'mocks/photos.js'
 
@@ -15,13 +15,32 @@ import photos from 'mocks/photos.js'
 // isFav = set photos state as favourited or not
 // handleFavClick = onClick event toggles between favourited state or not 
 
+export const ACTIONS = {
+  FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
+  FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
+  OPEN_MODAL: 'OPEN_MODAL',
+  CLOSE_MODAL: 'CLOSE_MODAL'
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case OPEN_MODAL:
+      return 
+  }
+}
+
 const useApplicationData = () => {
 
 const allPhotos = photos;
 
-  // set state of favourite/not favourite photos
+const [favPhotos, setFavPhotos] = useState([]);
+const [clickedPhoto, setClickedPhoto] = useState(null);
+const [clickedPhotoInfo, setClickedPhotoInfo] = useState({});
+const [similarPhotos, setSimilarPhotos] = useState([]);
+const [isFav, setIsFav] = useState(false);
 
-  const [favPhotos, setFavPhotos] = useState([]);
+
+  // set state of favourite/not favourite photos
 
   const addFavourite = (photoID) => {
     if (!favPhotos.includes(photoID)) {
@@ -35,13 +54,22 @@ const allPhotos = photos;
     }
   };
 
+
   // set state of clicked photo to open modal/set clicked photo state to null to close modal
-
-  const [clickedPhoto, setClickedPhoto] = useState(null);
-
-  const openModal = async (photo) => {
-    setClickedPhoto(photo)
+  
+  const openModal = (photo) => {
+    setClickedPhoto(photo);
   };
+
+  const getPhotoInfo = (data, target) => {
+    let info = {};
+    for (const p of data) {
+      if (p.id === target) {
+        info = {...p}
+      }
+    }
+    return info;
+  }
 
   const closeModal = () => {
     setClickedPhoto(null)
@@ -49,6 +77,18 @@ const allPhotos = photos;
 
   const handlePhotoClick = (photo) => {
     openModal(photo);
+
+
+    // set information about clicked photo
+
+    const info = getPhotoInfo(allPhotos, photo.target.id)
+    setClickedPhotoInfo(info)
+
+
+    // set value for similar photos to clicked photo
+
+    const simPhotos = Object.values(info.similar_photos)
+    setSimilarPhotos(simPhotos)
   };
 
   const handleCloseClick = () => {
@@ -56,46 +96,18 @@ const allPhotos = photos;
   };
 
   // set state of a favourite button
-
-  const [isFav, setIsFav] = useState(false);
-  
+ 
   const handleFavClick = ()=> { 
     {isFav === true ? setIsFav(false) : setIsFav(true)}
   };
-
-  
-  // get selected photo information and similar photos information
-  
-  // const selectPhoto = async function(pics) {
-  //   const photo = await clickedPhoto
-  //   const targetID = await (photo.target.id);
-  //   let selectedPhotoInfo = {};
-  //   for(const p of pics) {
-  //     if (p.id === targetID) {
-  //       selectedPhotoInfo = {...p}
-  //     }
-  //   }
-  //   return selectedPhotoInfo
-  // }
-
-  // const clickedPhotoInfo = selectPhoto(photos)
-
-  // const getSimilarPhotos = async () => {
-  //   const info = await selectPhoto(photos)
-  //   return (Object.values(info.similar_photos))
-  // }
-  
-  // const similarPhotos = getSimilarPhotos()
-
- 
   
  
   return { 
     favPhotos, addFavourite, removeFavourite, 
-    clickedPhoto, openModal, closeModal, handlePhotoClick, handleCloseClick,
+    clickedPhoto, openModal, closeModal, 
+    handlePhotoClick, handleCloseClick,
+    clickedPhotoInfo, similarPhotos, 
     isFav, handleFavClick,
-  
-    // similarPhotos, clickedPhotoInfo,
     }
 
 };

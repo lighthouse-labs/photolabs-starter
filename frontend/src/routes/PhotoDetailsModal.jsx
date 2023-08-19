@@ -8,26 +8,28 @@ import PhotoListItem from 'components/PhotoListItem';
 
 const PhotoDetailsModal = (props) => {
 
-  const { targetId, clickedPhoto, handleCloseClick, photos, favPhotos, favPhotosExist, addFavourite, removeFavourite, photo, closeModal, isAFavPhoto } = props
+  const { similarPhotos, clickedPhotoInfo, clickedPhoto, handleCloseClick, photos, favPhotos, favPhotosExist, addFavourite, removeFavourite, photo, closeModal, isAFavPhoto } = props
+  
+
+ // console.log("sim photos", similarPhotos)
+
+  // // get selected photo information and similar photos information
+
+  // const selectPhoto = function(pics) {
+  //   const targetID = (photo.target.id);
+  //   let selectedPhotoInfo = {};
+  //   for(const p of pics) {
+  //     if (p.id === targetID) {
+  //       selectedPhotoInfo = {...p}
+  //     }
+  //   }
+  //   return selectedPhotoInfo
+  // }
 
 
-  // get selected photo information and similar photos information
+  // const selectedPhoto = selectPhoto(photos)
+  // const similarPhotos = (Object.values(selectedPhoto.similar_photos))
 
-  const selectPhoto = function(pics) {
-    const targetID = (photo.target.id);
-    let selectedPhotoInfo = {};
-    for(const p of pics) {
-      if (p.id === targetID) {
-        selectedPhotoInfo = {...p}
-      }
-    }
-    return selectedPhotoInfo
-  }
-
-  console.log(clickedPhoto.target.id)
-
-  const selectedPhoto = selectPhoto(photos)
-  const similarPhotos = (Object.values(selectedPhoto.similar_photos))
 
   return (
 
@@ -41,20 +43,20 @@ const PhotoDetailsModal = (props) => {
     <section className="photo-details-modal__images-container" >
       <div className="photo-details-modal__image-container">
       <PhotoListItem 
-        key={selectedPhoto.id}
-        photoID={selectedPhoto.id}
-        imageSource={selectedPhoto.urls.regular} 
-        imageSourceFull={selectedPhoto.urls.full}
-        profile={selectedPhoto.user.profile}
-        name={selectedPhoto.user.name}
-        userName={selectedPhoto.user.username}
-        city={selectedPhoto.location.city}
-        country={selectedPhoto.location.country}
+        key={clickedPhotoInfo.id}
+        photoID={clickedPhotoInfo.id}
+        imageSource={clickedPhotoInfo.urls.regular} 
+        imageSourceFull={clickedPhotoInfo.urls.full}
+        profile={clickedPhotoInfo.user.profile}
+        name={clickedPhotoInfo.user.name}
+        userName={clickedPhotoInfo.user.username}
+        city={clickedPhotoInfo.location.city}
+        country={clickedPhotoInfo.location.country}
         imagesStyle={"photo-details-modal__image"} 
         photographerDetails={"photo-details-modal__photographer-details"} 
         
         favPhotos={favPhotos}
-        isAFavPhoto={favPhotos.includes(selectedPhoto.id)}
+        isAFavPhoto={favPhotos.includes(clickedPhotoInfo.id)}
         favPhotosExist={favPhotosExist}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
