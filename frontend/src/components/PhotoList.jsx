@@ -62,7 +62,7 @@ const PhotoList = (props) => {
   return (
     <ul className="photo-list">
       {/* Insert React */}
-    {props.photos.map((item) => <PhotoListItem key={item.id} sampleDataForPhotoListItem={item}  favourite={props.favourite} toggleFavourite={props.toggleFavourite} setSidePeek={props.setSidePeek} sidePeek={props.sidePeek} setSampleDataForPhotoListItem={props.setSampleDataForPhotoListItem} ></PhotoListItem>)}
+    {props.photos.map((item) => <PhotoListItem key={item.id} sampleDataForPhotoListItem={item}  favourite={props.favourite} toggleFavourite={props.toggleFavourite} setSidePeek={props.setSidePeek} sidePeek={props.sidePeek} setSampleDataForPhotoListItem={props.setSampleDataForPhotoListItem} Clickable={props.Clickable} ></PhotoListItem>)}
     </ul>
   );
 };

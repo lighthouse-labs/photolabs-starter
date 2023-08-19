@@ -28,7 +28,7 @@ const App = () => {
     <div className="App">
       <HomeRoute photos={photos} topics={topics}  setSidePeek={setSidePeek} sidePeek={sidePeek} setSampleDataForPhotoListItem={setSampleDataForPhotoListItem} favourite={favourite} toggleFavourite={toggleFavourite} />
 
-      {sidePeek && <PhotoDetailsModal setSidePeek={setSidePeek} sampleDataForPhotoListItem={sampleDataForPhotoListItem} photos={photos}  favourite={favourite} toggleFavourite={toggleFavourite}  />}
+      {sidePeek && <PhotoDetailsModal  setSidePeek={setSidePeek} sampleDataForPhotoListItem={sampleDataForPhotoListItem} photos={photos}  favourite={favourite} toggleFavourite={toggleFavourite}  />}
     </div>
   );
 };

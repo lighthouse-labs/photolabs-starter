@@ -5,18 +5,21 @@ import '../styles/PhotoFavButton.scss';
 
 
 function PhotoFavButton(props) {
-  const[selected, setSelected] = useState(false);
+ 
  
   const toggleFavourite = props.toggleFavourite;
   const favourite = props.favourite;
   const photoId = props.photoId;
+  const[selected, setSelected] = useState(favourite.includes(photoId));
+
   return (
     <div className="photo-list__fav-icon" onClick={() => {
-      toggleFavourite(photoId);
       
-      setSelected(favourite.includes(photoId)? true: false) 
+      
+      setSelected(favourite.includes(photoId)? false: true) 
     
-      setSelected(selected? false: true);  
+      //setSelected(selected? false: true);  
+      toggleFavourite(photoId);
    
       
      
@@ -27,7 +30,8 @@ function PhotoFavButton(props) {
       <div>
        
         {/* Insert React */}
-        <FavIcon selected={selected} ></FavIcon>
+      
+        <FavIcon selected={selected}   ></FavIcon>
       </div>
     </div>
   );

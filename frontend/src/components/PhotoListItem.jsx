@@ -4,16 +4,27 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   const {id, location,  urls, user} = props.sampleDataForPhotoListItem;
+  let src;
+  let displayDetails;
+    if(!props.Clickable) {
+      src =  urls.full;
+      displayDetails = "none";
+    } else {
+      src = urls.regular
+      displayDetails = "true";
+    }
+   
+    
   
   return(
     <div className="photo-list__item" key={id} >
       <PhotoFavButton photoId={id} favourite={props.favourite} toggleFavourite={props.toggleFavourite} ></PhotoFavButton>
-      <img className="photo-list__image photo-details-modal--images" src={ urls.regular} onClick={() => {
-        props.setSidePeek(true);
-        props.setSampleDataForPhotoListItem(props.sampleDataForPhotoListItem)
+      <img className="photo-list__image photo-details-modal--images" src={ src} onClick={() => {
+        props.Clickable && props.setSidePeek(true);
+        props.Clickable && props.setSampleDataForPhotoListItem(props.sampleDataForPhotoListItem)
         }} />
 
-      <section className="photo-list__user-details">
+      <section className="photo-list__user-details" style={{display: displayDetails}}>
         
         <img className="photo-list__user-profile" src={user.profile} alt=""></img>
         <section className="photo-list__user-info" >
