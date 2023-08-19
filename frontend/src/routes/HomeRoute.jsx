@@ -6,6 +6,7 @@ import "../styles/HomeRoute.scss";
 // Components
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
+import useApplicationData from 'hooks/useApplicationData';
 
 
 const HomeRoute = (props) => {
