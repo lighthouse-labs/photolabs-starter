@@ -26,6 +26,8 @@ const SET_CLICKED_PHOTO = 'SET_CLICKED_PHOTO';
 const SET_CLICKED_PHOTO_INFO = 'SET_CLICKED_PHOTO_INFO';
 const SET_SIMILAR_PHOTOS = 'SET_SIMILAR_PHOTOS';
 
+const SET_PHOTO_LIST_TOPIC = 'SET_PHOTO_LIST_TOPIC';
+
 
 
 function reducer(state, action) {
@@ -55,6 +57,9 @@ function reducer(state, action) {
     case SET_IS_FAV:
       return { ...state, isFav: action.payload };
 
+    case SET_PHOTO_LIST_TOPIC:
+      return {...state, setTopic: action.payload };
+
   
   default:
     throw new Error (
@@ -70,7 +75,8 @@ const initialState = {
   clickedPhoto: null,
   clickedPhotoInfo: {},
   similarPhotos: [],
-  isFav: false
+  isFav: false,
+  setTopic: null,
 };
 
 const useApplicationData = () => {
@@ -93,6 +99,9 @@ const useApplicationData = () => {
 
         dispatch({ type: 'SET_PHOTO_DATA', payload: photos})
         dispatch({ type: 'SET_TOPIC_DATA', payload: topics })
+      })
+      .catch((err) => {
+        console.error("ERROR GETTING DATA:", err)
       })
   }, []);
 
@@ -125,36 +134,20 @@ const useApplicationData = () => {
   const handlePhotoClick = (photo) => {
     openModal(photo);
 
-    const photos = state.photos;
-    const targetId = photo.target.id;
+    const targetId = Number(photo.target.id);
+    const photos = state.photos;  
 
+    // get similar photos and set information about clicked photo
 
-    // get and set information about clicked photo
-
-    const getPhotoInfo = async (pho, tarid) => {
-      let info = {};
-      for (const p of pho) {
-        if (p.id === tarid) {  
-          console.log("p", p)        
-          info = {...p};
-        }
-      }
-      return info;
-    };
-
-    const setPhotoInfo = async () => {
-      const infoOb = await getPhotoInfo(photos, targetId)
-      dispatch({ type: 'SET_CLICKED_PHOTO_INFO', payload: infoOb })
-    }
-
-    
-  
-
-
-    // set value for similar photos to clicked photo
-
-    const simPhotos = Object.values(state.clickedPhotoInfo.similar_photos)
-    dispatch({ type: 'SET_SIMILAR_PHOTOS', payload: simPhotos });
+    for(const p of photos) {
+      if (p.id === targetId) {
+        const info = {...p};
+        console.log(info)
+        const simPhotos = Object.values(info.similar_photos);
+        dispatch({ type: 'SET_CLICKED_PHOTO_INFO', payload: info });
+        dispatch({ type: 'SET_SIMILAR_PHOTOS', payload: simPhotos});
+      } 
+    }   
   };
 
   const handleCloseClick = () => {
@@ -169,6 +162,14 @@ const useApplicationData = () => {
       dispatch({ type: 'SET_IS_FAV', payload: true })
     }
   };
+
+  const handleTopicClick = () => {null}
+  // const handleTopicClick = (topicID) => {
+  //   if (topicID) {
+  //     axios.get(`/api/topics/photos/animals`)
+  //     .then((res) => console.log(res.data))
+  //   }
+  // }
   
  
   return { 
@@ -180,6 +181,7 @@ const useApplicationData = () => {
       removeFavourite,
       handleFavClick
     },
+    //handleTopicClick,
     handlePhotoClick, 
     handleCloseClick,
     photos: state.photos,

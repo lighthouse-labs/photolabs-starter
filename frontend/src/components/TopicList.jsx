@@ -15,7 +15,9 @@ const TopicList = (props) => {
           <TopicListItem 
           key={e.id}
           slug={e.slug}
-          title={e.title} />
+          title={e.title}
+          //handleTopicClick={props.handleTopicClick} 
+          />
         )
       })}
     </div>

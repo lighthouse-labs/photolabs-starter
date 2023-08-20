@@ -6,12 +6,11 @@ import "../styles/HomeRoute.scss";
 // Components
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
-import useApplicationData from 'hooks/useApplicationData';
 
 
 const HomeRoute = (props) => {
 
-  const { isFav, handleFavClick, photos, topics, openModal, handlePhotoClick, favPhotos, addFavourite, removeFavourite } = props;
+  const { handleTopicClick, isFav, handleFavClick, photos, topics, openModal, handlePhotoClick, favPhotos, addFavourite, removeFavourite } = props;
 
   return (
     <div className="home-route">
@@ -19,6 +18,7 @@ const HomeRoute = (props) => {
         topics={topics}
         favPhotos={favPhotos}
         favPhotosExist={favPhotos.length > 0}
+        // handleTopicClick={handleTopicClick}
       />
 
       <PhotoList 
