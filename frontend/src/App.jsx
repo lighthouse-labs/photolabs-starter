@@ -5,25 +5,18 @@ import HomeRoute from 'routes/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
-  const[favourite, setFavourite] = useState([]);
- 
+  const {
+    setSidePeek,
+    sidePeek,
+    setSampleDataForPhotoListItem,
+    favourite,
+    toggleFavourite,
+    sampleDataForPhotoListItem
+  } = useApplicationData();
   
-  console.log(favourite)
-  const toggleFavourite = (photoId) => {
-    if (favourite.includes(photoId)) {
-      const newFavourite = favourite.filter((id) => {
-        return id != photoId
-      })
-      setFavourite(newFavourite);
-    } else {
-      const newFavourite = [...favourite, photoId];
-      setFavourite(newFavourite);
-    }
-  }
-  const[sidePeek, setSidePeek] = useState(false);
-  const [sampleDataForPhotoListItem, setSampleDataForPhotoListItem] = useState('')
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics}  setSidePeek={setSidePeek} sidePeek={sidePeek} setSampleDataForPhotoListItem={setSampleDataForPhotoListItem} favourite={favourite} toggleFavourite={toggleFavourite} />

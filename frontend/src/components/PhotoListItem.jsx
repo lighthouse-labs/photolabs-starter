@@ -24,7 +24,7 @@ const PhotoListItem = (props) => {
         props.Clickable && props.setSampleDataForPhotoListItem(props.sampleDataForPhotoListItem)
         }} />
 
-      <section className="photo-list__user-details" style={{display: displayDetails}}>
+       <section className="photo-list__user-details">
         
         <img className="photo-list__user-profile" src={user.profile} alt=""></img>
         <section className="photo-list__user-info" >
