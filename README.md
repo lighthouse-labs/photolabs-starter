@@ -15,6 +15,7 @@ Users can sort photos by topic, favourite photos, and click on photos to open a 
 #### A modal window offers users a closer look at photos and suggests other similar photos.
 !["Photolabs Modal View Showing Clicked Photo"](https://github.com/JacquelineMG/photolabs/blob/main/docs/photolabs_modal_view.jpg)
 
+#### The modal view suggests other similar photos.
 !["Photolabs Modal View Showing Similar Photos"](https://github.com/JacquelineMG/photolabs/blob/main/docs/photolabs_modal_view_similar_photos.jpg)
 
 
