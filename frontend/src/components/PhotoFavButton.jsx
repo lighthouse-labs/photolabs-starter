@@ -6,9 +6,6 @@ import FavIcon from './FavIcon';
 // Components
 import '../styles/PhotoFavButton.scss';
 
-// Hooks
-import useIsFav from 'hooks/useIsFav'
-
 
 function PhotoFavButton(props) {
 

@@ -9,7 +9,7 @@ import FavBadge from './FavBadge';
 
 const TopNavigation = (props) => {
 
-  const { handleTopicClick, topics, favPhotos, favPhotosExist } = props;
+  const { handleAllClick, handleTopicClick, topics, favPhotos, favPhotosExist } = props;
 
   return (
     <div className="top-nav-bar">
@@ -18,7 +18,8 @@ const TopNavigation = (props) => {
         
         <TopicList 
           topics={topics} 
-          // handleTopicClick={handleTopicClick}
+          handleTopicClick={handleTopicClick}
+          handleAllClick={handleAllClick}
         />
 
         <FavBadge 

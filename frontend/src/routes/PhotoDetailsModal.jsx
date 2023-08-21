@@ -10,27 +10,6 @@ const PhotoDetailsModal = (props) => {
 
   const { similarPhotos, clickedPhotoInfo, clickedPhoto, handleCloseClick, photos, favPhotos, favPhotosExist, addFavourite, removeFavourite, photo, closeModal, isAFavPhoto } = props
   
-
- // console.log("sim photos", similarPhotos)
-
-  // // get selected photo information and similar photos information
-
-  // const selectPhoto = function(pics) {
-  //   const targetID = (photo.target.id);
-  //   let selectedPhotoInfo = {};
-  //   for(const p of pics) {
-  //     if (p.id === targetID) {
-  //       selectedPhotoInfo = {...p}
-  //     }
-  //   }
-  //   return selectedPhotoInfo
-  // }
-
-
-  // const selectedPhoto = selectPhoto(photos)
-  // const similarPhotos = (Object.values(selectedPhoto.similar_photos))
-
-
   return (
 
     <div className="photo-details-modal">
@@ -76,15 +55,9 @@ const PhotoDetailsModal = (props) => {
           addFavourite={addFavourite}
           removeFavourite={removeFavourite}
         />
-  
       </div>
-
-      </section>
-     
-      
-      
+      </section>  
     </div>
-    
   )
 };
 
