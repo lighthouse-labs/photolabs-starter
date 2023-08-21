@@ -25,7 +25,9 @@
 }
 
 .photo-details-modal__images-container {
-  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .photo-details-modal__image-container {
@@ -47,7 +49,6 @@
 
 .photo-details-modal__image {
   max-width: 95%;
-  // max-height: 100vh;
   border-radius: 8px;
 }
 
@@ -70,7 +71,8 @@
   font-weight: 500;
   color: #1e1e1e;
   margin-top: 24px;
-  margin-bottom: 24px;
-  margin-left: 24px;
+  margin-bottom: 10px;
+  margin-left: -20px;
+  margin-top: 70px;
   width: 90%;
 }
