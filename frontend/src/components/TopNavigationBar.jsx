@@ -8,12 +8,8 @@ import FavBadge from './FavBadge';
 const TopNavigation = (props) => {  
   let displayAlert;
 
-  if (props.likedPhotos.length >= 1) {
-    displayAlert = true;
-  } else {
-    displayAlert=false;
-  }
-  
+  props.likedPhotos.length >= 1 ? displayAlert = true : displayAlert = false;
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
