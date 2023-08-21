@@ -2,22 +2,13 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-
-const sampleDataForPhotoListItem = {
-  id: "1",
-  location: {
-    city: "Montreal",
-    country: "Canada",
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: "Joe Example",
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-};
-
-const PhotoListItem = (props) => {  
+const PhotoListItem = (props) => {    
   return (
     <div className="photo-list__item">
-      <PhotoFavButton />
+      <PhotoFavButton 
+      isLiked={props.isLiked}
+      handleButtonClick={props.handleButtonClick}
+      />
       <img src={props.sampleImage.urls.regular} className="photo-list__image"/>
       <div className="photo-list__user-details">
         <img src={props.sampleImage.user.profile} className="photo-list__user-profile photo-list__user-details"/>

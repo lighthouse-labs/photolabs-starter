@@ -179,9 +179,6 @@ const photo10 = {
   }
 }
 
-
-
-
 const photos = [
   {
     ...photo1,

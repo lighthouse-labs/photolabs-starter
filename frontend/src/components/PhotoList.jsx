@@ -4,12 +4,13 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 import photos from "mocks/photos";
 
-
-const PhotoList = () => {
+const PhotoList = (props) => {
   const photoList = photos.map((photo) =>
     <PhotoListItem 
       key = {photo.id}
       sampleImage={photo}
+      isLiked={props.likedPhotos.includes(photo.id)}
+      handleButtonClick={() => props.handleButtonClick(photo.id)}
     />
   )
 
