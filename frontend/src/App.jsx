@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import "./styles/PhotoList.scss";
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
@@ -14,7 +12,10 @@ const App = () => {
     setSampleDataForPhotoListItem,
     favourite,
     toggleFavourite,
-    sampleDataForPhotoListItem
+    sampleDataForPhotoListItem,
+    photos,
+    topics
+    
   } = useApplicationData();
   
   return (
