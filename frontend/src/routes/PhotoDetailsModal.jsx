@@ -52,7 +52,6 @@ const PhotoDetailsModal = (props) => {
       <PhotoFavButton photoId={id} favourite={props.favourite} toggleFavourite={props.toggleFavourite} ></PhotoFavButton>
       <img className="photo-details-modal__image" src={ urls.full}  />
       </div>
-      {/* <PhotoListItem className='photo-details-modal--image' key={item.id} sampleDataForPhotoListItem={item}  favourite={props.favourite} toggleFavourite={props.toggleFavourite} setSidePeek={props.setSidePeek} sidePeek={props.sidePeek} Clickable={false} /> */}
       <div className='photo-details-modal__header'>Similar Photos</div>
       <PhotoList photos={similar_photosArray} favourite={props.favourite} toggleFavourite={props.toggleFavourite}  setSidePeek={props.setSidePeek} sidePeek={props.sidePeek}Clickable={false} />
    
