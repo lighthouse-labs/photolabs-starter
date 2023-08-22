@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Styling
 import './App.scss';
@@ -8,45 +8,42 @@ import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 // Hooks
-import useApplicationData from 'hooks/useApplicationData'
+import useApplicationData from 'hooks/useApplicationData';
 
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const { removeFavourite, openModal, closeModal, handleFavClick, addFavourite, handleAllClick, handleTopicClick, handlePhotoClick, handleCloseClick, state, } = useApplicationData();
-  const { photos, topics, clickedPhoto, favPhotos, clickedPhotoInfo, similarPhotos, isFav, } = state;
+  const { removeFavourite, openModal, closeModal, addFavourite, handleAllClick, handleTopicClick, handlePhotoClick, handleCloseClick, state, } = useApplicationData();
+  const { photos, topics, clickedPhoto, favPhotosArray, clickedPhotoInfo, similarPhotos, } = state;
 
   return (
     <div className="App">
-      <HomeRoute 
+      <HomeRoute
         topics={topics}
         photos={photos}
         openModal={openModal}
         handlePhotoClick={handlePhotoClick}
-        favPhotos={favPhotos}
+        favPhotosArray={favPhotosArray}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
-        isFav={isFav}
-        handleFavClick={handleFavClick}
         handleTopicClick={handleTopicClick}
         handleAllClick={handleAllClick}
-        />
+      />
 
-      {clickedPhoto && 
-        <PhotoDetailsModal 
-          photos={photos} 
-          favPhotos={favPhotos}
-          favPhotosExist={favPhotos.length > 0}
+      {clickedPhoto &&
+        <PhotoDetailsModal
+          photos={photos}
+          favPhotosArray={favPhotosArray}
+          favPhotosExist={favPhotosArray.length > 0}
           addFavourite={addFavourite}
           removeFavourite={removeFavourite}
-          photo={clickedPhoto} 
-          closeModal={closeModal} 
+          photo={clickedPhoto}
+          closeModal={closeModal}
           handlePhotoClick={handlePhotoClick}
           handleCloseClick={handleCloseClick}
           clickedPhoto={clickedPhoto}
-        
           similarPhotos={similarPhotos}
-          clickedPhotoInfo={clickedPhotoInfo}      
+          clickedPhotoInfo={clickedPhotoInfo}
         />}
 
     </div>

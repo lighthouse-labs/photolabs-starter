@@ -1,13 +1,14 @@
 import React from 'react';
 
 // Styling
-import '../styles/TopNavigationBar.scss'
+import '../styles/TopNavigationBar.scss';
 
 // Components
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
-const TopNavigation = (props) => {
+
+const TopNavigationBar = (props) => {
 
   const { handleAllClick, handleTopicClick, topics, favPhotos, favPhotosExist } = props;
 
@@ -16,19 +17,20 @@ const TopNavigation = (props) => {
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <div className='top-nav-bar__right'>
         
-        <TopicList 
-          topics={topics} 
+        <TopicList
+          topics={topics}
           handleTopicClick={handleTopicClick}
           handleAllClick={handleAllClick}
         />
 
-        <FavBadge 
+        <FavBadge
           favPhotos={favPhotos}
           favPhotosExist={favPhotosExist}
-        />     
-      </div>   
+        />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default TopNavigation;
+
+export default TopNavigationBar;

@@ -1,39 +1,36 @@
 import React from "react";
 import "../styles/PhotoListItem.scss";
-// import "../styles/PhotoFavButton.scss";
 import PhotoFavButton from "./PhotoFavButton.jsx";
-
 
 
 const PhotoListItem = (props) => {
 
-  const { handlePhotoClick, photoListStyle, imagesStyle, photos, photoID, favPhotos, isAFavPhoto, addFavourite, removeFavourite, favPhotosExist, openModal } = props;
+  const { favCount, handlePhotoClick, photoListStyle, imagesStyle, photoID, favPhotosArray, isAFavPhoto, addFavourite, removeFavourite, favPhotosExist } = props;
 
   return (
-    <div className={photoListStyle}>  
-      <PhotoFavButton 
+    <div className={photoListStyle}>
+
+      <PhotoFavButton
         photoID={photoID}
-        favPhotos={favPhotos}
+        favPhotosArray={favPhotosArray}
         isAFavPhoto={isAFavPhoto}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
         favPhotosExist={favPhotosExist}
-      />    
+        favCount={favCount}
+      />
+      
       <img className={imagesStyle} alt="Image" src={props.imageSource} id={photoID} onClick={handlePhotoClick} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" alt="Profile Image" src={props.profile} />
-         <span className="photo-list__user-info">
+        <span className="photo-list__user-info">
           {props.name} <br/>
           <span className="photo-list__user-location"> {props.city}, {props.country}  </span>
-
-         </span>
-
+        </span>
       </div>
     </div>
-    
-
-  )
-
+  );
 };
+
 
 export default PhotoListItem;

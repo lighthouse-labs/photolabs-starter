@@ -6,16 +6,17 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
 
-  const { isFav, handleFavClick, photos, favPhotos, addFavourite, removeFavourite, favPhotosExist, openModal, handlePhotoClick } = props;
+  const { photos, favPhotosArray, addFavourite, removeFavourite, favPhotosExist, openModal, handlePhotoClick } = props;
 
   return (
     <ul className="photo-list">
       {photos.map((e) => {
         return (
-          <PhotoListItem 
+
+          <PhotoListItem
             key={e.id}
             photoID={e.id}
-            imageSource={e.urls.regular} 
+            imageSource={e.urls.regular}
             imageSourceFull={e.urls.full}
             profile={e.user.profile}
             name={e.user.name}
@@ -24,22 +25,20 @@ const PhotoList = (props) => {
             country={e.location.country}
             imagesStyle={"photo-list__image"}
             photoListStyle={"photo-list__item"}
-
-            favPhotos={favPhotos}
-            isAFavPhoto={favPhotos.includes(e.id)}
+            favPhotosArray={favPhotosArray}
+            isAFavPhoto={favPhotosArray.includes(e.id)}
             favPhotosExist={favPhotosExist}
             addFavourite={addFavourite}
             removeFavourite={removeFavourite}
             openModal={openModal}
             handlePhotoClick={handlePhotoClick}
-            isFav={isFav}
-            handleFavClick={handleFavClick}
           />
-        )
+          
+        );
       })}
-
     </ul>
   );
 };
+
 
 export default PhotoList;

@@ -1,14 +1,19 @@
 import React from 'react';
 
-import '../styles/PhotoDetailsModal.scss'
+// Styling
+import '../styles/PhotoDetailsModal.scss';
+
+// Assets
 import closeSymbol from '../assets/closeSymbol.svg';
+
+// Components
 import PhotoList from 'components/PhotoList';
 import PhotoListItem from 'components/PhotoListItem';
 
 
 const PhotoDetailsModal = (props) => {
 
-  const { similarPhotos, clickedPhotoInfo, clickedPhoto, handleCloseClick, photos, favPhotos, favPhotosExist, addFavourite, removeFavourite, photo, closeModal, isAFavPhoto } = props
+  const { similarPhotos, clickedPhotoInfo, handleCloseClick, favPhotosArray, favPhotosExist, addFavourite, removeFavourite } = props;
   
   return (
 
@@ -19,46 +24,46 @@ const PhotoDetailsModal = (props) => {
         </button>
       </div>
 
-    <section className="photo-details-modal__images-container" >
-      <div className="photo-details-modal__image-container">
-      <PhotoListItem 
-        key={clickedPhotoInfo.id}
-        photoID={clickedPhotoInfo.id}
-        imageSource={clickedPhotoInfo.urls.regular} 
-        imageSourceFull={clickedPhotoInfo.urls.full}
-        profile={clickedPhotoInfo.user.profile}
-        name={clickedPhotoInfo.user.name}
-        userName={clickedPhotoInfo.user.username}
-        city={clickedPhotoInfo.location.city}
-        country={clickedPhotoInfo.location.country}
-        imagesStyle={"photo-details-modal__image"} 
-        photographerDetails={"photo-details-modal__photographer-details"} 
-        
-        favPhotos={favPhotos}
-        isAFavPhoto={favPhotos.includes(clickedPhotoInfo.id)}
-        favPhotosExist={favPhotosExist}
-        addFavourite={addFavourite}
-        removeFavourite={removeFavourite}
-        handlePhotoClick={null}
-      />
+      <section className="photo-details-modal__images-container" >
+        <div className="photo-details-modal__image-container">
 
-    </div>
+          <PhotoListItem
+            key={clickedPhotoInfo.id}
+            photoID={clickedPhotoInfo.id}
+            imageSource={clickedPhotoInfo.urls.regular}
+            imageSourceFull={clickedPhotoInfo.urls.full}
+            profile={clickedPhotoInfo.user.profile}
+            name={clickedPhotoInfo.user.name}
+            userName={clickedPhotoInfo.user.username}
+            city={clickedPhotoInfo.location.city}
+            country={clickedPhotoInfo.location.country}
+            imagesStyle={"photo-details-modal__image"}
+            photographerDetails={"photo-details-modal__photographer-details"}
+            
+            favPhotosArray={favPhotosArray}
+            isAFavPhoto={favPhotosArray.includes(clickedPhotoInfo.id)}
+            favPhotosExist={favPhotosExist}
+            addFavourite={addFavourite}
+            removeFavourite={removeFavourite}
+            handlePhotoClick={null}
+          />
 
-      <div className='photo-details-modal__header'>
-        Similar Photos
-      </div>
-      <div className='photo-detail-modal__images'>
-        <PhotoList 
-          photos={similarPhotos} 
-          favPhotos={favPhotos}
-          favPhotosExist={favPhotos.length > 0}
-          addFavourite={addFavourite}
-          removeFavourite={removeFavourite}
-        />
-      </div>
-      </section>  
+        </div>
+        <div className='photo-details-modal__header'> Similar Photos </div>
+        <div className='photo-detail-modal__images'>
+
+          <PhotoList
+            photos={similarPhotos}
+            favPhotosArray={favPhotosArray}
+            favPhotosExist={favPhotosArray.length > 0}
+            addFavourite={addFavourite}
+            removeFavourite={removeFavourite}
+          />
+          
+        </div>
+      </section>
     </div>
-  )
+  );
 };
 
 export default PhotoDetailsModal;
