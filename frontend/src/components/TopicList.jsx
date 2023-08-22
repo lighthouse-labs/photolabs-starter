@@ -11,10 +11,11 @@ props.topics.map
       key={ 
 topic.id
  }
+ id={topic.id}
       title={ topic.title }
       link={ 
 topic.link
- }/>
+ } get_photo_by_topics={props.get_photo_by_topics}/>
     )
   }); 
   return (

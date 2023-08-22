@@ -14,15 +14,16 @@ const App = () => {
     toggleFavourite,
     sampleDataForPhotoListItem,
     photos,
-    topics
+    topics,
+    get_photo_by_topics
     
   } = useApplicationData();
   
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics}  setSidePeek={setSidePeek} sidePeek={sidePeek} setSampleDataForPhotoListItem={setSampleDataForPhotoListItem} favourite={favourite} toggleFavourite={toggleFavourite} />
+      <HomeRoute photos={photos} get_photo_by_topics={get_photo_by_topics} topics={topics}  setSidePeek={setSidePeek} sidePeek={sidePeek} setSampleDataForPhotoListItem={setSampleDataForPhotoListItem} favourite={favourite} toggleFavourite={toggleFavourite} />
 
-      {sidePeek && <PhotoDetailsModal  setSidePeek={setSidePeek} sampleDataForPhotoListItem={sampleDataForPhotoListItem} photos={photos}  favourite={favourite} toggleFavourite={toggleFavourite}  />}
+      {sidePeek && <PhotoDetailsModal  setSidePeek={setSidePeek} sampleDataForPhotoListItem={sampleDataForPhotoListItem} photos={photos} setSampleDataForPhotoListItem={setSampleDataForPhotoListItem}  favourite={favourite} toggleFavourite={toggleFavourite}  />}
     </div>
   );
 };

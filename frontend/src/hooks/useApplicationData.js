@@ -18,6 +18,9 @@ const reducers = {
   SET_TOPIC_DATA(state,action) {
     return {...state, topicData: action.value}
   },
+  GET_PHOTOS_BY_TOPICS(state,action) {
+    return {...state, photoData: action.value}
+  }
 }
 
 const reducer = function (state, action) {  
@@ -38,17 +41,41 @@ export default function useApplicationData () {
     dispatch({type: 'setSampleDataForPhotoListItem', value: updateSampleData})
   };
 
+  const get_photo_by_topics = function(topic_id) {
+    fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
+    .then((response) => response.json())
+    .then((data) => dispatch({ type: 'GET_PHOTOS_BY_TOPICS', value: data }))
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  
+  }
+
   useEffect(() => {
     fetch("http://localhost:8001/api/photos")
       .then((response) => response.json())
       .then((data) => dispatch({ type: 'SET_PHOTO_DATA', value: data }))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    
   }, []);
   
   useEffect(() => {
     fetch("http://localhost:8001/api/topics")
       .then((response) => response.json())
       .then((data) => dispatch({ type: 'SET_TOPIC_DATA', value: data }))
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+    
   }, []);
+  /*
+  useEffect(() => {
+    fetch("http://localhost:8001/api/topics/photos/:topic_id")
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: 'GET_PHOTOS_BY_TOPICS', value: data }))
+  }, []);*/
   
   const toggleFavourite = (photoId) => {
     if (state.favourite.includes(photoId)) {
@@ -69,6 +96,7 @@ export default function useApplicationData () {
     toggleFavourite,
     sampleDataForPhotoListItem: state.sampleDataForPhotoListItem,
     photos: state.photoData,
-    topics: state.topicData   
+    topics: state.topicData,
+    get_photo_by_topics
   }
 }

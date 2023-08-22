@@ -7,8 +7,8 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       {/* Insert React */}
-      <TopNavigation topics={props.topics} favourite={props.favourite}/>
-      <PhotoList photos={props.photos} favourite={props.favourite} toggleFavourite={props.toggleFavourite}  setSidePeek={props.setSidePeek} sidePeek={props.sidePeek} setSampleDataForPhotoListItem={props.setSampleDataForPhotoListItem} Clickable={true}  />
+      <TopNavigation topics={props.topics} favourite={props.favourite} get_photo_by_topics={props.get_photo_by_topics} />
+      <PhotoList photos={props.photos} favourite={props.favourite} toggleFavourite={props.toggleFavourite}  setSidePeek={props.setSidePeek} sidePeek={props.sidePeek} setSampleDataForPhotoListItem={props.setSampleDataForPhotoListItem} clickable={true}  />
     </div>
   );
 };
