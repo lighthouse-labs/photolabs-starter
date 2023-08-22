@@ -13,7 +13,7 @@ import useApplicationData from 'hooks/useApplicationData';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const { removeFavourite, openModal, closeModal, addFavourite, handleAllClick, handleTopicClick, handlePhotoClick, handleCloseClick, state, } = useApplicationData();
+  const { handleShowFavsClick, removeFavourite, openModal, closeModal, addFavourite, handleAllClick, handleTopicClick, handlePhotoClick, handleCloseClick, state, } = useApplicationData();
   const { photos, topics, clickedPhoto, favPhotosArray, clickedPhotoInfo, similarPhotos, } = state;
 
   return (
@@ -28,6 +28,7 @@ const App = () => {
         removeFavourite={removeFavourite}
         handleTopicClick={handleTopicClick}
         handleAllClick={handleAllClick}
+        handleShowFavsClick={handleShowFavsClick}
       />
 
       {clickedPhoto &&

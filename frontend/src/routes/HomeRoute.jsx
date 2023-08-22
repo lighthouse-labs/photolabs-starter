@@ -10,7 +10,7 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
 
-  const { handleAllClick, handleTopicClick, photos, topics, openModal, handlePhotoClick, favPhotosArray, addFavourite, removeFavourite } = props;
+  const { handleShowFavsClick, handleAllClick, handleTopicClick, photos, topics, openModal, handlePhotoClick, favPhotosArray, addFavourite, removeFavourite } = props;
 
   return (
     <div className="home-route">
@@ -21,6 +21,7 @@ const HomeRoute = (props) => {
         favPhotosExist={favPhotosArray.length > 0}
         handleTopicClick={handleTopicClick}
         handleAllClick={handleAllClick}
+        handleShowFavsClick={handleShowFavsClick}
       />
 
       <PhotoList

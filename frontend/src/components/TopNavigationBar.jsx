@@ -10,7 +10,7 @@ import FavBadge from './FavBadge';
 
 const TopNavigationBar = (props) => {
 
-  const { handleAllClick, handleTopicClick, topics, favPhotos, favPhotosExist } = props;
+  const { handleShowFavsClick, handleAllClick, handleTopicClick, topics, favPhotos, favPhotosExist } = props;
 
   return (
     <div className="top-nav-bar">
@@ -26,6 +26,7 @@ const TopNavigationBar = (props) => {
         <FavBadge
           favPhotos={favPhotos}
           favPhotosExist={favPhotosExist}
+          handleShowFavsClick={handleShowFavsClick}
         />
       </div>
     </div>

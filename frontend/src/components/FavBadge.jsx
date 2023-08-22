@@ -10,12 +10,12 @@ import FavIcon from './FavIcon';
 
 const FavBadge = (props) => {
 
-  const { favPhotosExist } = props;
+  const { handleShowFavsClick, favPhotosExist } = props;
 
   return (
     <div className='fav-badge'>
 
-      <FavIcon fill={favPhotosExist ? "#C80000" : "#FFFFFF"} displayAlert={!!favPhotosExist}/>
+      <FavIcon handleShowFavsClick={handleShowFavsClick} fill={favPhotosExist ? "#C80000" : "#FFFFFF"} displayAlert={!!favPhotosExist}/>
       
     </div>
   );

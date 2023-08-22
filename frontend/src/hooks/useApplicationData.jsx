@@ -39,6 +39,9 @@ const SET_SIMILAR_PHOTOS = 'SET_SIMILAR_PHOTOS';
 const SET_PHOTO_LIST_TOPIC = 'SET_PHOTO_LIST_TOPIC';
 const SET_TOPIC_ID = 'SET_TOPIC_ID';
 
+const SET_SHOW_FAVS = 'SET_SHOW_FAVS';
+const SET_FAV_INFO = 'SET_FAV_INFO';
+
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -72,6 +75,12 @@ const reducer = (state, action) => {
   case SET_TOPIC_ID:
     return { ...state, topicId: action.payload };
 
+  case SET_SHOW_FAVS:
+    return { ...state, showFavs: action.payload};
+
+  case SET_FAV_INFO:
+    return { ...state, favInfo: action.payload};
+
   default:
     throw new Error(
       `Tried to reduce with unsupported action type: ${action.type}`
@@ -89,6 +98,8 @@ const initialState = {
   similarPhotos: [],
   setTopic: [],
   topicId: null,
+  showFavs: false,
+  favInfo: [],
 };
 
 
@@ -212,6 +223,34 @@ const useApplicationData = () => {
     dispatch({ type: 'SET_TOPIC_ID', payload: null });
   };
 
+
+  // handles click on nav bar fav icon
+  // gets faved photos from favPhotosArray and sets them as favInfo
+  // toggles showsFavs off and on
+
+  const handleShowFavsClick = () => {
+    const favInfo = [];
+    for (const id of state.favPhotosArray) {
+      for (const photo of state.allPhotos) {
+        if (id === photo.id) {
+          favInfo.push(photo);
+          dispatch({ type: 'SET_FAV_INFO', payload: favInfo});
+        }
+      }
+    }
+    state.showFavs === true ?
+      dispatch({ type: 'SET_SHOW_FAVS', payload: false}) :
+      dispatch({ type: 'SET_SHOW_FAVS', payload: true});
+  };
+
+  // watches for change in showFavs state and displays either allPhotos or photos saved in favInfo
+  // displays no photos if showFavs is true, but there are no faved photos
+
+  useEffect(() => {
+    state.showFavs === true ?
+      dispatch({ type: 'SET_USE_PHOTOS', payload: state.favInfo }) :
+      dispatch({ type: 'SET_USE_PHOTOS', payload: state.allPhotos });
+  }, [state.showFavs]);
  
   return {
     state,
@@ -223,6 +262,7 @@ const useApplicationData = () => {
     handlePhotoClick,
     handleCloseClick,
     removeFavourite,
+    handleShowFavsClick,
     photos: state.photos,
     topics: state.topics,
     favPhotosArray: state.favPhotosArray,
