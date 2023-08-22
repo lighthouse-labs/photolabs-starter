@@ -5,7 +5,7 @@ import PhotoListItem from "./PhotoListItem";
 import photos from "mocks/photos";
 
 const PhotoList = (props) => {
-  const photoList = photos.map((photo) =>
+  const photoList = props.photos.map((photo) =>
     <PhotoListItem 
       key = {photo.id}
       sampleImage={photo}

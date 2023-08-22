@@ -7,16 +7,22 @@ import TopicListItem from 'components/TopicListItem';
 import TopNavigation from 'components/TopNavigationBar';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import photos from 'mocks/photos';
 
 const App = () => {
   const [photoModal, setPhotoModal] = useState(false)
 
-  const showModalOnClick = () => setPhotoModal(!photoModal)
+  const closeModalPhoto = () => setPhotoModal(false)
   
   return (
     <div className="App">
-      <HomeRoute onClickPhoto={showModalOnClick}/>
-      {photoModal && <PhotoDetailsModal onClickPhoto={showModalOnClick}/>}
+      <HomeRoute 
+      photos={photos}
+      onClickPhoto={(photo) => setPhotoModal(photo)}/>
+
+      {photoModal && <PhotoDetailsModal 
+      onClose={closeModalPhoto}
+      />}
     </div>
   );
 };

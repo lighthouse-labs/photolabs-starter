@@ -9,7 +9,7 @@ const PhotoListItem = (props) => {
       isLiked={props.isLiked}
       handleButtonClick={props.handleButtonClick}
       />
-      <img src={props.sampleImage.urls.regular} className="photo-list__image" onClick={props.onClickPhoto}/>
+      <img src={props.sampleImage.urls.regular} className="photo-list__image" onClick={() => props.onClickPhoto(props.sampleImage)}/>
       <div className="photo-list__user-details">
         <img src={props.sampleImage.user.profile} className="photo-list__user-profile photo-list__user-details"/>
         <div>

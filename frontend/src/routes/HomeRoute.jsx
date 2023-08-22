@@ -21,6 +21,7 @@ const HomeRoute = (props) => {
       likedPhotos={likedPhotos}
       />
       <PhotoList 
+      photos={props.photos}
       onClickPhoto={props.onClickPhoto}
       likedPhotos={likedPhotos}
       handleButtonClick={handleButtonClick}/>
