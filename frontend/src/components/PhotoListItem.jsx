@@ -4,12 +4,12 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {    
   return (
-    <div className="photo-list__item">
+    <div className="photo-list__item" >
       <PhotoFavButton 
       isLiked={props.isLiked}
       handleButtonClick={props.handleButtonClick}
       />
-      <img src={props.sampleImage.urls.regular} className="photo-list__image"/>
+      <img src={props.sampleImage.urls.regular} className="photo-list__image" onClick={props.onClickPhoto}/>
       <div className="photo-list__user-details">
         <img src={props.sampleImage.user.profile} className="photo-list__user-profile photo-list__user-details"/>
         <div>

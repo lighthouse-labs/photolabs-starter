@@ -9,6 +9,7 @@ const PhotoList = (props) => {
     <PhotoListItem 
       key = {photo.id}
       sampleImage={photo}
+      onClickPhoto={props.onClickPhoto}
       isLiked={props.likedPhotos.includes(photo.id)}
       handleButtonClick={() => props.handleButtonClick(photo.id)}
     />

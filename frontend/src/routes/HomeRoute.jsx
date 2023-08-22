@@ -4,7 +4,7 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = () => {
+const HomeRoute = (props) => {
   const [likedPhotos, setLikedPhotos] = useState([])
   
   const handleButtonClick = (photoId) => {
@@ -16,11 +16,12 @@ const HomeRoute = () => {
   }
   
   return (
-    <div className="home-route">
+    <div className="home-route" onClick={props.onClick}>
       <TopNavigation 
       likedPhotos={likedPhotos}
       />
       <PhotoList 
+      onClickPhoto={props.onClickPhoto}
       likedPhotos={likedPhotos}
       handleButtonClick={handleButtonClick}/>
     </div>
