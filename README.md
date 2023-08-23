@@ -22,3 +22,4 @@ Read `backend/readme` for further setup details.
 cd backend
 npm start
 ```
+## !["photo-topics"](https://github.com/jwanali/photolabs-starter1/blob/main/docs/photo-topics.png.png)
