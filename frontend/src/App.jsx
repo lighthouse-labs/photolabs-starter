@@ -1,28 +1,24 @@
 import React, {useState} from 'react';
-import PhotoList from 'components/PhotoList';
-import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
-import TopicList from 'components/TopicList';
-import TopicListItem from 'components/TopicListItem';
-import TopNavigation from 'components/TopNavigationBar';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import photos from 'mocks/photos';
 
 const App = () => {
-  const [photoModal, setPhotoModal] = useState(false)
+  // const [photoModal, setPhotoModal] = useState(false)
 
-  const closeModalPhoto = () => setPhotoModal(false)
+  //set the state to false which will close the modal that pops up when user clicks close
+  // const closeModalPhoto = () => setPhotoModal(false)
+
+  //track the current photo that is selected
+  // const [currentPhoto, setCurrentPhoto] = useState()
   
   return (
     <div className="App">
       <HomeRoute 
-      photos={photos}
-      onClickPhoto={(photo) => setPhotoModal(photo)}/>
+      photos={photos}/>
 
-      {photoModal && <PhotoDetailsModal 
-      onClose={closeModalPhoto}
-      />}
+      {/* {currentPhoto && <PhotoDetailsModal onClose={() => setCurrentPhoto(undefined)} photo={currentPhoto}/>} */}
     </div>
   );
 };

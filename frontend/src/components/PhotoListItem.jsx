@@ -1,13 +1,14 @@
 import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const PhotoListItem = (props) => {    
   return (
-    <div className="photo-list__item" >
+    <div className="photo-list__item">
       <PhotoFavButton 
-      isLiked={props.isLiked}
-      handleButtonClick={props.handleButtonClick}
+        isLiked={props.isLiked}
+        handleButtonClick={props.handleButtonClick}
       />
       <img src={props.sampleImage.urls.regular} className="photo-list__image" onClick={() => props.onClickPhoto(props.sampleImage)}/>
       <div className="photo-list__user-details">

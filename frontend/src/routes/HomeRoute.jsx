@@ -7,6 +7,7 @@ import PhotoList from 'components/PhotoList';
 const HomeRoute = (props) => {
   const [likedPhotos, setLikedPhotos] = useState([])
   
+  //store the liked photos globally
   const handleButtonClick = (photoId) => {
     if (!likedPhotos.includes(photoId)) {
       setLikedPhotos([...likedPhotos, photoId])
