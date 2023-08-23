@@ -1,12 +1,12 @@
 import { type } from "@testing-library/user-event/dist/type";
-import { useState ,useReducer,useEffect} from "react";
+import {useReducer, useEffect} from "react";
 
 const reducers = {
  
   setSidePeek(state,action) {
     return {...state, sidePeek: action.value};
   },
-  setSampleDataForPhotoListItem(state,action) {
+  setSampleDataForPhotoListItem(state,action) {// when click on a photo
     return {...state, sampleDataForPhotoListItem: action.value};
   },
   toggleFavourite(state,action) {
@@ -70,13 +70,6 @@ export default function useApplicationData () {
       });
     
   }, []);
-  /*
-  useEffect(() => {
-    fetch("http://localhost:8001/api/topics/photos/:topic_id")
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: 'GET_PHOTOS_BY_TOPICS', value: data }))
-  }, []);*/
-  
   const toggleFavourite = (photoId) => {
     if (state.favourite.includes(photoId)) {
       const newFavourite = state.favourite.filter((id) => {
@@ -94,7 +87,7 @@ export default function useApplicationData () {
     setSampleDataForPhotoListItem,
     favourite: state.favourite,
     toggleFavourite,
-    sampleDataForPhotoListItem: state.sampleDataForPhotoListItem,
+    sampleDataForPhotoListItem: state.sampleDataForPhotoListItem, //photo's being clicked Data
     photos: state.photoData,
     topics: state.topicData,
     get_photo_by_topics

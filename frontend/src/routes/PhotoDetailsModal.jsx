@@ -5,7 +5,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const {id, location,  urls, user} = props.sampleDataForPhotoListItem;
+  const {id, location,  urls, user} = props.sampleDataForPhotoListItem;//photo's being clicked Data
   const item = props.photos.find((item) => item.id === id);
   const keys = Object.keys(item.similar_photos);
   const  similar_photosArray = [] ;
@@ -22,7 +22,7 @@ const PhotoDetailsModal = (props) => {
       <img className="photo-details-modal__image" src={ urls.full}  />
       </div>
       <div className='photo-details-modal__header'>Similar Photos</div>
-      <PhotoList photos={similar_photosArray} setSampleDataForPhotoListItem={props.setSampleDataForPhotoListItem} favourite={props.favourite} toggleFavourite={props.toggleFavourite}  setSidePeek={props.setSidePeek} sidePeek={props.sidePeek}clickable={true} /> 
+      <PhotoList photos={similar_photosArray} setSampleDataForPhotoListItem={props.setSampleDataForPhotoListItem} favourite={props.favourite} toggleFavourite={props.toggleFavourite}  setSidePeek={props.setSidePeek} sidePeek={props.sidePeek} /> 
     </div>
   )
 };
