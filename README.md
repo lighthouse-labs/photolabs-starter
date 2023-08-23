@@ -2,7 +2,8 @@
 The PhotoLabs project for the Web Development React course programming.
 
 # Photolabs
-
+  - The goal of this project is to  Build a client-side application using the React view-layer library
+   
 ## Setup
 
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
