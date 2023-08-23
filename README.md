@@ -23,3 +23,5 @@ cd backend
 npm start
 ```
 ## !["photo-topics"](https://github.com/jwanali/photolabs-starter1/blob/main/docs/photo-topics.png.png)
+## !["photoModal"](https://github.com/jwanali/photolabs-starter1/blob/main/docs/photoModal.png?raw=true)
+## !["photos"](https://github.com/jwanali/photolabs-starter1/blob/main/docs/photos.png?raw=true)
