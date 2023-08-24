@@ -2,10 +2,13 @@ import React from 'react';
 import FavIcon from './FavIcon';
 import '../styles/FavBadge.scss';
 
-const FavBadge = ({ isFavPhotoExist }) => {
+const FavBadge = ({ isFavPhotoExist,setSidePeekForLikedPhotos }) => {
   return (
-    <div className='fav-badge'>
-      <FavIcon displayAlert={!!isFavPhotoExist} selected={true} />
+    <div className='fav-badge' onClick={() => {
+      console.log(77)
+      setSidePeekForLikedPhotos(true)
+    }}>
+      <FavIcon displayAlert={!!isFavPhotoExist} selected={true} setSidePeekForLikedPhotos={setSidePeekForLikedPhotos}/>
     </div>
   ) 
 };

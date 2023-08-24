@@ -20,6 +20,9 @@ const reducers = {
   },
   GET_PHOTOS_BY_TOPICS(state,action) {
     return {...state, photoData: action.value}
+  },
+  setSidePeekForLikedPhotos(state, action) {
+    return {...state, sidePeekForLikedPhotos: action.value}
   }
 }
 
@@ -31,7 +34,10 @@ const reducer = function (state, action) {
 
 export default function useApplicationData () {  
   const [state, dispatch] = useReducer(reducer, {sidePeek: false,sampleDataForPhotoListItem: '', favourite: [], photoData: [],
-  topicData: []});
+  topicData: [], sidePeekForLikedPhotos: false});
+  const setSidePeekForLikedPhotos = (updatesidePeekForLikedPhotos) => {
+    dispatch({type: 'setSidePeekForLikedPhotos', value: updatesidePeekForLikedPhotos})
+  }
 
   const setSidePeek = function (updatedSidePeek) {
     dispatch({type: 'setSidePeek',value:updatedSidePeek})
@@ -82,6 +88,8 @@ export default function useApplicationData () {
     }
   };
   return {
+    sidePeekForLikedPhotos: state.sidePeekForLikedPhotos,
+    setSidePeekForLikedPhotos,
     setSidePeek,
     sidePeek: state.sidePeek,
     setSampleDataForPhotoListItem,

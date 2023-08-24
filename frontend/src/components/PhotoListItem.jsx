@@ -18,7 +18,8 @@ const PhotoListItem = (props) => {
       <PhotoFavButton photoId={id} favourite={props.favourite} toggleFavourite={props.toggleFavourite} ></PhotoFavButton>
       <img className="photo-list__image photo-details-modal--images" src={ src} onClick={() => {
         props.setSidePeek(true);
-        props.setSampleDataForPhotoListItem(props.sampleDataForPhotoListItem)
+        props.setSampleDataForPhotoListItem(props.sampleDataForPhotoListItem);
+        props.setSidePeekForLikedPhotos(false);
         }} />
        <section className="photo-list__user-details">
         <img className="photo-list__user-profile" src={user.profile} alt=""></img>

@@ -22,7 +22,7 @@ const PhotoDetailsModal = (props) => {
       <img className="photo-details-modal__image" src={ urls.full}  />
       </div>
       <div className='photo-details-modal__header'>Similar Photos</div>
-      <PhotoList photos={similar_photosArray} setSampleDataForPhotoListItem={props.setSampleDataForPhotoListItem} favourite={props.favourite} toggleFavourite={props.toggleFavourite}  setSidePeek={props.setSidePeek} sidePeek={props.sidePeek} /> 
+      <PhotoList photos={similar_photosArray} setSampleDataForPhotoListItem={props.setSampleDataForPhotoListItem} favourite={props.favourite} toggleFavourite={props.toggleFavourite}  setSidePeek={props.setSidePeek} sidePeek={props.sidePeek}  setSidePeekForLikedPhotos={props.setSidePeekForLikedPhotos}  /> 
     </div>
   )
 };
