@@ -11,6 +11,10 @@
   border-radius: 12px;
 }
 
+#main-image {
+  background-color: black;
+}
+
 .photo-details-modal__close-button {
   background-color: white;
   border: none;
@@ -25,10 +29,13 @@
 }
 
 .main-photo-box {
-  margin-left: 36px;
+  margin-left: 16px;
+  margin-right: 16px;
   margin-top: 8px;
   display: flex;
   flex-direction: column;
+  border: 1px solid #E6E6E6;
+  background-color: #F5F5F5
 }
 
 
@@ -47,8 +54,9 @@
 }
 
 .photo-details-modal__image {
-  max-width: 95%;
+  max-width: 80%;
   border-radius: 8px;
+  left: 50%
 }
 
 .change-similar-photos {

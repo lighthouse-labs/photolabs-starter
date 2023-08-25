@@ -11,19 +11,20 @@ const PhotoDetailsModal = (props) => {
       <button onClick={props.onClose} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
+
       <div className='main-photo-box'>
         <PhotoFavButton 
           isLiked={props.likedPhotos.includes(props.photo.id)}
           handleButtonClick={() => props.handleButtonClick(props.photo.id)}
         />
-          <img src={props.photo.urls.regular} className="photo-details-modal__image"/>
-          <div className="photo-list__user-details">
-            <img src={props.photo.user.profile} className="photo-list__user-profile photo-list__user-details"/>
-            <div>
-              <h3 className="photo-list__user-info">{props.photo.user.username}</h3> 
-              <h3 className="photo-list__user-location photo-list__user-info">{props.photo.location.city}, {props.photo.location.country}</h3>
-            </div>
+        <img src={props.photo.urls.regular} className="photo-details-modal__image"/>
+        <div className="photo-list__user-details">
+          <img src={props.photo.user.profile} className="photo-list__user-profile photo-list__user-details"/>
+          <div>
+            <h3 className="photo-list__user-info">{props.photo.user.username}</h3> 
+            <h3 className="photo-list__user-location photo-list__user-info">{props.photo.location.city}, {props.photo.location.country}</h3>
           </div>
+        </div>
       </div>
 
       <div className='photo-details-modal__images'>
@@ -43,20 +44,29 @@ const PhotoDetailsModal = (props) => {
   )
 };
 
-//code before Make the design changes exercise
+//This code works, the modal photo is centered and the favourite button is aligned to the left
 // const PhotoDetailsModal = (props) => {
 //   return (
 //     <div className="photo-details-modal">
 //       <button onClick={props.onClose} className="photo-details-modal__close-button">
 //         <img src={closeSymbol} alt="close symbol" />
 //       </button>
-//       <PhotoFavButton 
-//         isLiked={props.likedPhotos.includes(props.photo.id)}
-//         handleButtonClick={() => props.handleButtonClick(props.photo.id)}
-//       />
-//       <div className='photo-details-modal__images'>
-//         <img src={props.photo.urls.regular} className="photo-details-modal__image"/>
+//       <div className='main-photo-box'>
+//         <PhotoFavButton 
+//           isLiked={props.likedPhotos.includes(props.photo.id)}
+//           handleButtonClick={() => props.handleButtonClick(props.photo.id)}
+//         />
+//           <img src={props.photo.urls.regular} className="photo-details-modal__image"/>
+//           <div className="photo-list__user-details">
+//             <img src={props.photo.user.profile} className="photo-list__user-profile photo-list__user-details"/>
+//             <div>
+//               <h3 className="photo-list__user-info">{props.photo.user.username}</h3> 
+//               <h3 className="photo-list__user-location photo-list__user-info">{props.photo.location.city}, {props.photo.location.country}</h3>
+//             </div>
+//           </div>
+//       </div>
 
+//       <div className='photo-details-modal__images'>
 //         <p className="photo-details-modal__header">Similar Photos</p>
 //         {Object.values(props.photo.similar_photos).map((photo) => 
 
@@ -72,5 +82,6 @@ const PhotoDetailsModal = (props) => {
 //     </div>
 //   )
 // };
+
 
 export default PhotoDetailsModal;
