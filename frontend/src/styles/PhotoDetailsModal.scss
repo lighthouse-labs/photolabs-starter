@@ -24,14 +24,36 @@
   margin-top: 16px;
 }
 
+.main-photo-box {
+  margin-left: 36px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+// The original CSS provided by compass
+// .photo-details-modal__images {
+//   margin-left: 36px;
+//   margin-top: 8px;
+// }
+
+//My added SCSS to the code
 .photo-details-modal__images {
   margin-left: 36px;
   margin-top: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
 .photo-details-modal__image {
   max-width: 95%;
   border-radius: 8px;
+}
+
+.change-similar-photos {
+  display: flex;
+  flex-direction: row;
 }
 
 .photo-details-modal__top-bar {
