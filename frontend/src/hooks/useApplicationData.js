@@ -11,7 +11,7 @@ export const ACTIONS = {
 
 export default function useApplicationData () {  
   const defaultState = {
-    currentPhoto: undefined, //change this to boolean value
+    currentPhoto: undefined, 
     likedPhotos: []
   }
 
@@ -20,12 +20,12 @@ export default function useApplicationData () {
   //outline what the reducer function should be 
   function reducer(state, action){
     switch(action.type) {
-      case "FAV_PHOTO_ADDED": //return previous state, modify favourites array so you get everything, add in new photo that's being favourited as payload
+      case "FAV_PHOTO_ADDED": 
         return {
           ...state,
           likedPhotos: [...state.likedPhotos, action.payload] 
       }
-      case "FAV_PHOTO_REMOVED": //return previous state, modify favourites array so that payload is passed in 
+      case "FAV_PHOTO_REMOVED": 
         return {
           ...state,
           likedPhotos: [...action.payload]
@@ -61,9 +61,6 @@ export default function useApplicationData () {
   }
 
   function updateToFavPhotoIds(photoId) {
-    //see if favourites includes photo id, filter it to only get to that id, dispatch favRemove
-    //if it doesn't, then add it to favourites array (dispatch favAdded)
-
     if (state.likedPhotos.includes(photoId)) {
       dispatch({type: ACTIONS.FAV_PHOTO_REMOVED,
                 payload: [...state.likedPhotos].filter((id) => id !== photoId)
@@ -88,42 +85,3 @@ export default function useApplicationData () {
     onClosePhotoDetailsModal
   }
 }
-
-//THIS CODE BELOW WORKS - FROM BEFORE WE TRIED TO ADD USEREDUCER
-// import { useState } from 'react'
-
-// export default function useApplicationData () {  
-  
-//   const defaultState = {
-//     currentPhoto: undefined,
-//     likedPhotos: []
-//   }
-
-//   const [state, setState] = useState(defaultState)
-  
-  // function setPhotoSelected(photo) {
-  //   setState({
-  //     ...state, 
-  //     currentPhoto: photo
-  //   });
-  // }
-
-//   function updateToFavPhotoIds(photoId) {
-//     if (!state.likedPhotos.includes(photoId)) {
-//       setState({...state, likedPhotos: [...state.likedPhotos, photoId]})
-//     } else {
-//       setState({...state, likedPhotos:[...state.likedPhotos].filter((id) => id !== photoId)})
-//     }
-//   }
-
-//   function onClosePhotoDetailsModal() {
-//     setState({...state, currentPhoto: undefined})
-//   }
-
-//   return {
-//     state,
-//     updateToFavPhotoIds,
-//     setPhotoSelected,
-//     onClosePhotoDetailsModal
-//   }
-// }
