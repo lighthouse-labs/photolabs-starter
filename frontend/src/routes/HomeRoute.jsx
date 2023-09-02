@@ -5,27 +5,20 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
-  const [likedPhotos, setLikedPhotos] = useState([])
-  
-  //store the liked photos globally
-  const handleButtonClick = (photoId) => {
-    if (!likedPhotos.includes(photoId)) {
-      setLikedPhotos([...likedPhotos, photoId])
-    } else {
-      setLikedPhotos([...likedPhotos].filter((id) => id !== photoId))
-    }
-  }
-  
+
   return (
     <div className="home-route" onClick={props.onClick}>
       <TopNavigation 
-      likedPhotos={likedPhotos}
+      likedPhotos={props.likedPhotos}
       />
       <PhotoList 
+      setPhotoSelected={props.setPhotoSelected}
       photos={props.photos}
       onClickPhoto={props.onClickPhoto}
-      likedPhotos={likedPhotos}
-      handleButtonClick={handleButtonClick}/>
+      currentPhoto={props.currentPhoto}
+      onClosePhotoDetailsModal={props.onClosePhotoDetailsModal}
+      likedPhotos={props.likedPhotos}
+      handleButtonClick={props.updateToFavPhotoIds}/>
     </div>
   );
 };

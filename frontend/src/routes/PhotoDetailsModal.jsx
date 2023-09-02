@@ -4,7 +4,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoListItem from 'components/PhotoListItem';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-
+//Component which shows the large photo modal when user clicks on any photo
 const PhotoDetailsModal = (props) => {
   return (
     <div className="photo-details-modal">
