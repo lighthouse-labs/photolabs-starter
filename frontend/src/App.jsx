@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
-import photos from 'mocks/photos';
 import useApplicationData from 'hooks/useApplicationData';
-
 
 const App = () => {
   const {
@@ -18,7 +16,8 @@ const App = () => {
       <HomeRoute 
       setPhotoSelected={setPhotoSelected}
       likedPhotos={state.likedPhotos}
-      photos={photos}
+      topicData={state.topicData}
+      photos={state.photoData}
       currentPhoto={state.currentPhoto}
       updateToFavPhotoIds={updateToFavPhotoIds}
       onClosePhotoDetailsModal={onClosePhotoDetailsModal}

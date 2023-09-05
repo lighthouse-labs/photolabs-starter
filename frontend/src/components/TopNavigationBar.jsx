@@ -10,11 +10,15 @@ const TopNavigation = (props) => {
 
   props.likedPhotos.length >= 1 ? displayAlert = true : displayAlert = false;
 
+  
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
         <div className='top-nav-bar'>
-          <TopicList />
+          <TopicList 
+          topicData={props.topicData}
+          />
           <FavBadge isFavPhotoExist={displayAlert}
           />
         </div>
