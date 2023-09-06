@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import useApplicationData from 'hooks/useApplicationData';
@@ -14,15 +14,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute 
-      setPhotoSelected={setPhotoSelected}
-      likedPhotos={state.likedPhotos}
-      topicData={state.topicData}
-      photos={state.photoData}
-      currentPhoto={state.currentPhoto}
-      updateToFavPhotoIds={updateToFavPhotoIds}
-      onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-      getPhotosByTopics={getPhotosByTopics}
+      <HomeRoute
+        setPhotoSelected={setPhotoSelected}
+        likedPhotos={state.likedPhotos}
+        topicData={state.topicData}
+        photos={state.photoData}
+        currentPhoto={state.currentPhoto}
+        updateToFavPhotoIds={updateToFavPhotoIds}
+        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+        getPhotosByTopics={getPhotosByTopics}
       />
     </div>
   );

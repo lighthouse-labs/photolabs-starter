@@ -16,7 +16,6 @@ export default function useApplicationData() {
     likedPhotos: [],
     photoData: [],
     topicData: [],
-    selectedTopicPhotos: [],
   };
 
   const [state, dispatch] = useReducer(reducer, defaultState);
@@ -67,10 +66,7 @@ export default function useApplicationData() {
           ...state,
           currentPhoto: action.payload,
         };
-      case "DISPLAY_PHOTO_DETAILS":
-        return {};
       case "GET_PHOTOS_BY_TOPICS":
-        console.log(action.payload)
         return {
           ...state,
           photoData: action.payload,
@@ -82,22 +78,21 @@ export default function useApplicationData() {
     }
   }
 
+  //populate the modal with the photo that is selected
   function setPhotoSelected(photo) {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   }
 
+  //when user clicks on a topic, this function gets ran which makes an API call based on the id of the topic
   function getPhotosByTopics(topic_id) {
-    console.log("topic ID here", topic_id);
-
     fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log("data", data)
-        dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data })
-      }
-    );
+        dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data });
+      });
   }
 
+  //change the id of a photo that is favourited
   function updateToFavPhotoIds(photoId) {
     if (state.likedPhotos.includes(photoId)) {
       dispatch({
@@ -109,6 +104,7 @@ export default function useApplicationData() {
     }
   }
 
+  //Allows for the modal to be closed
   function onClosePhotoDetailsModal() {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: undefined });
   }
