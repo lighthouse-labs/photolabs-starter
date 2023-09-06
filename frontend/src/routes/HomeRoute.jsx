@@ -11,6 +11,7 @@ const HomeRoute = (props) => {
       <TopNavigation 
       likedPhotos={props.likedPhotos}
       topicData={props.topicData}
+      getPhotosByTopics={props.getPhotosByTopics}
       />
       <PhotoList 
       setPhotoSelected={props.setPhotoSelected}

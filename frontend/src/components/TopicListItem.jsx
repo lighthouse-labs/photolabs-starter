@@ -1,18 +1,14 @@
 import React from "react";
 
 import "../styles/TopicListItem.scss";
-
-const sampleDataForTopicListItem = {
-  id: "1",
-  slug: "topic-1",
-  label: "Nature",
-};
+import useApplicationData from "hooks/useApplicationData";
 
 const TopicListItem = (props) => {
+
   return (
-    <div className="topic-list__item">
+    <div className="topic-list__item" onClick = {() => props.getPhotosByTopics(props.topic.id)}>
       <span>
-        {props.sampleTitle.title}
+        {props.topic.title}
       </span>
     </div>
   );

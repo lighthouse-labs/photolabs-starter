@@ -8,7 +8,8 @@ const App = () => {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
-    onClosePhotoDetailsModal
+    onClosePhotoDetailsModal,
+    getPhotosByTopics
   } = useApplicationData();
 
   return (
@@ -21,6 +22,7 @@ const App = () => {
       currentPhoto={state.currentPhoto}
       updateToFavPhotoIds={updateToFavPhotoIds}
       onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+      getPhotosByTopics={getPhotosByTopics}
       />
     </div>
   );

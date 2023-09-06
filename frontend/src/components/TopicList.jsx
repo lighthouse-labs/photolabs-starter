@@ -8,7 +8,8 @@ const TopicList = (props) => {
   const topicList = props.topicData.map((topic) => 
     <TopicListItem 
       key={topic.id}
-      sampleTitle={topic}
+      topic={topic}
+      getPhotosByTopics={props.getPhotosByTopics}
     />
   )
   

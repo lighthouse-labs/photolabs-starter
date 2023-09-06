@@ -10,7 +10,6 @@ const TopNavigation = (props) => {
 
   props.likedPhotos.length >= 1 ? displayAlert = true : displayAlert = false;
 
-  
 
   return (
     <div className="top-nav-bar">
@@ -18,6 +17,7 @@ const TopNavigation = (props) => {
         <div className='top-nav-bar'>
           <TopicList 
           topicData={props.topicData}
+          getPhotosByTopics={props.getPhotosByTopics}
           />
           <FavBadge isFavPhotoExist={displayAlert}
           />

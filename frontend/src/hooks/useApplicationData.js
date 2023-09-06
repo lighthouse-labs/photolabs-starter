@@ -7,6 +7,7 @@ export const ACTIONS = {
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
   SELECT_PHOTO: "SELECT_PHOTO",
   DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
+  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
 };
 
 export default function useApplicationData() {
@@ -15,6 +16,7 @@ export default function useApplicationData() {
     likedPhotos: [],
     photoData: [],
     topicData: [],
+    selectedTopicPhotos: [],
   };
 
   const [state, dispatch] = useReducer(reducer, defaultState);
@@ -22,16 +24,20 @@ export default function useApplicationData() {
   //set up a GET request to /api/photos
   useEffect(() => {
     fetch("http://localhost:8001/api/photos")
-    .then(res => res.json())
-    .then((data) => dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data}))
-    }, []);
+      .then((res) => res.json())
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+      );
+  }, []);
 
   //set up a GET request to /api/topics
   useEffect(() => {
     fetch("http://localhost:8001/api/topics")
-      .then(res => res.json())
-      .then((data)=> dispatch({type: ACTIONS.SET_TOPIC_DATA, payload: data}))
-    }, [])
+      .then((res) => res.json())
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
+      );
+  }, []);
 
   //outline what the reducer function should be
   function reducer(state, action) {
@@ -49,12 +55,12 @@ export default function useApplicationData() {
       case "SET_PHOTO_DATA":
         return {
           ...state,
-          photoData: action.payload
+          photoData: action.payload,
         };
       case "SET_TOPIC_DATA":
         return {
           ...state,
-          topicData: action.payload
+          topicData: action.payload,
         };
       case "SELECT_PHOTO":
         return {
@@ -63,6 +69,12 @@ export default function useApplicationData() {
         };
       case "DISPLAY_PHOTO_DETAILS":
         return {};
+      case "GET_PHOTOS_BY_TOPICS":
+        console.log(action.payload)
+        return {
+          ...state,
+          photoData: action.payload,
+        };
       default:
         throw new Error(
           `Tried to reduce with unsupported action type: ${action.type}`
@@ -72,6 +84,18 @@ export default function useApplicationData() {
 
   function setPhotoSelected(photo) {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
+  }
+
+  function getPhotosByTopics(topic_id) {
+    console.log("topic ID here", topic_id);
+
+    fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data", data)
+        dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data })
+      }
+    );
   }
 
   function updateToFavPhotoIds(photoId) {
@@ -94,5 +118,6 @@ export default function useApplicationData() {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
+    getPhotosByTopics,
   };
 }
