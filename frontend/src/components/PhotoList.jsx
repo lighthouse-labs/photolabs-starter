@@ -64,4 +64,4 @@ const PhotoList = () => {
   );
 };
 
-export default PhotoList;
+export default PhotoList; 
