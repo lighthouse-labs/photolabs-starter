@@ -18,3 +18,18 @@
   text-underline-position: auto;
   margin-left: 24px;
 }
+
+.fav-count {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}

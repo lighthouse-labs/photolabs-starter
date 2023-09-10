@@ -4,7 +4,7 @@ import photos from 'mocks/photos';
 import "../styles/PhotoList.scss";
 
 
-const PhotoList = ({ photos }) => {
+const PhotoList = ({ photos, favoritedPhotos, setFavoritedPhotos }) => {
   return (
     <ul className="photo-list">
     {photos.map(({ id, user, urls, location }) => (
@@ -15,6 +15,8 @@ const PhotoList = ({ photos }) => {
     id={id}
     location={location}
     profile={user.profile}
+    favoritedPhotos={favoritedPhotos}
+    setFavoritedPhotos={setFavoritedPhotos}
   />
 ))}
     </ul>

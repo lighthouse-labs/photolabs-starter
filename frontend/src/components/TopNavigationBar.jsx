@@ -3,8 +3,8 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 import '../styles/TopNavigationBar.scss'
 
-const TopNavigation = ({ topics }) => {
-  const isFavoritePhotoExist = true; 
+const TopNavigation = ({ topics, favoritedPhotos }) => {
+  const isFavoritePhotoExist = favoritedPhotos && favoritedPhotos.length > 0; 
 
   return (
     <div className="top-nav-bar">
@@ -12,7 +12,8 @@ const TopNavigation = ({ topics }) => {
       {/* Topics navigation */}
       <TopicList topics={topics} />
       {/* Heart icon for liked photos */}
-      <FavBadge isFavPhotoExist={isFavoritePhotoExist} />
+      <FavBadge isFavPhotoExist={isFavoritePhotoExist} favoritedCount={favoritedPhotos.length} />
+      {isFavoritePhotoExist && <span className="fav-count">{favoritedPhotos.length}</span>}
     </div>
   )
 }
