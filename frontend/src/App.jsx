@@ -1,9 +1,10 @@
 import React from 'react';
 import TopNavigationBar from './components/TopNavigationBar';
-import PhotoListItem from './components/PhotoListItem';
+
 import PhotoList from 'components/PhotoList';
 import './App.scss';
-import TopicList from 'components/TopicList';
+
+import HomeRoute from 'routes/HomeRoute';
 
 
 // Note: Rendering a single component to build components in isolation
@@ -22,9 +23,9 @@ const App = () => {
 
   return (
   <div className="App">
-    <TopNavigationBar />
     
-    <PhotoList />
+    <HomeRoute />
+    
 
   </div>
   );
