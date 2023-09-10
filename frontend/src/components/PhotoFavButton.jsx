@@ -4,13 +4,18 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton() {
+  const [isActive, setIsActive] = useState(false)
+
+  const toggleFavoriteStatus = useCallback(() => {
+    setIsActive(prevState => !prevState)
+  }, []);
   return (
-    <div className="photo-list__fav-icon">
+    <div className="photo-list__fav-icon" onClick={toggleFavoriteStatus}>
       <div className="photo-list__fav-icon-svg">
-        {/* Insert React */}
+      <FavIcon selected={isActive} />
       </div>
     </div>
   );
 }
 
-export default PhotoFavButton;
+export default PhotoFavButton; 
