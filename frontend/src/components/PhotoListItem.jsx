@@ -4,20 +4,29 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 
-const PhotoListItem = ({username, imageSource, id, location, profile, favoritedPhotos, setFavoritedPhotos}) => {
+const PhotoListItem = ({photo, favoritedPhotos, setFavoritedPhotos, openModal}) => {
+  const { username, imageSource, id, location, profile } = photo;
+  console.log('setFavoritedPhotos in PhotoListItem', typeof setFavoritedPhotos);
   return (
-    <div className="photo-list__item">
+    <div className="photo-list__item" onClick={() => openModal(photo)}>
       <PhotoFavButton photoId={id} favoritedPhotos={favoritedPhotos} setFavoritedPhotos={setFavoritedPhotos} />
-      <img src={imageSource} alt={`photo ${id}`} className="photo-list__image" />
-
+      <img 
+        src={photo.urls.regular} 
+        alt={`photo ${id}`} 
+        className="photo-list__image" 
+        onClick={(e) => { e.stopPropagation(); openModal(photo); }} 
+      />
       <div className="photo-list__user-details">
-        <img src={profile} alt={`${username} profile`} className="photo-list__user-profile" />
+      <img 
+    src={photo.user.profile} 
+    alt={`${photo.user.username} profile`} 
+    className="photo-list__user-profile" 
+/>
         <div className="photo-list__user-info">
-          <span>{username}</span>
+          <span>{photo.user.username}</span>
           <div className="photo-list__user-location">{location.city}, {location.country}</div>
         </div>
       </div>
-      
     </div>
   );
 };

@@ -4,21 +4,20 @@ import photos from 'mocks/photos';
 import "../styles/PhotoList.scss";
 
 
-const PhotoList = ({ photos, favoritedPhotos, setFavoritedPhotos }) => {
+const PhotoList = ({ photos, favoritedPhotos, setFavoritedPhotos, openModal }) => {
+  console.log('Rendering PhotoList');
+  console.log('Photos in PhotoList:', photos);
   return (
     <ul className="photo-list">
-    {photos.map(({ id, user, urls, location }) => (
-  <PhotoListItem
-    key={id}
-    username={user.username}
-    imageSource={urls.regular}
-    id={id}
-    location={location}
-    profile={user.profile}
-    favoritedPhotos={favoritedPhotos}
-    setFavoritedPhotos={setFavoritedPhotos}
-  />
-))}
+      {photos.map(photo => (
+        <PhotoListItem
+          key={photo.id}
+          photo={photo}
+          favoritedPhotos={favoritedPhotos}
+          setFavoritedPhotos={setFavoritedPhotos}
+          openModal={openModal}
+        />
+      ))}
     </ul>
   );
 };

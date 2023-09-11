@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from 'react';
 
 import FavIcon from './FavIcon';
+import PhotoListItem from './PhotoListItem';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton({ photoId, favoritedPhotos, setFavoritedPhotos }) {
-  const isActive = favoritedPhotos.includes(photoId);
-
+  const isActive = favoritedPhotos && favoritedPhotos.includes(photoId);
+  console.log('setFavoritedPhotos in PhotoFavButton', typeof setFavoritedPhotos);
   const toggleFavoriteStatus = () => {
       if (isActive) {
           setFavoritedPhotos(prevPhotos => prevPhotos.filter(id => id !== photoId));
