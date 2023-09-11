@@ -8,11 +8,19 @@ function PhotoFavButton({ photoId, favoritedPhotos, setFavoritedPhotos }) {
   const isActive = favoritedPhotos && favoritedPhotos.includes(photoId);
   console.log('setFavoritedPhotos in PhotoFavButton', typeof setFavoritedPhotos);
   const toggleFavoriteStatus = () => {
-      if (isActive) {
-          setFavoritedPhotos(prevPhotos => prevPhotos.filter(id => id !== photoId));
-      } else {
-          setFavoritedPhotos(prevPhotos => [...prevPhotos, photoId]);
-      }
+    if (isActive) {
+      setFavoritedPhotos(prevPhotos => {
+        const updatedPhotos = prevPhotos.filter(id => id !== photoId);
+        console.log('Removing photo from favorites:', photoId, updatedPhotos);
+        return updatedPhotos;
+      });
+    } else {
+      setFavoritedPhotos(prevPhotos => {
+        const updatedPhotos = [...prevPhotos, photoId];
+        console.log('Adding photo to favorites:', photoId, updatedPhotos);
+        return updatedPhotos;
+      });
+    }
   };
 
   return (

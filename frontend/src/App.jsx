@@ -10,6 +10,7 @@ import photos from 'mocks/photos';
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [favoritedPhotos, setFavoritedPhotos] = useState([]);
   const openModal = (photo) => {
     setSelectedPhoto(photo);
     setIsModalOpen(true);
@@ -21,11 +22,24 @@ const App = () => {
   };
   return (
   <div className="App">
-    {isModalOpen && <PhotoDetailsModal photo={selectedPhoto} photos={photos} onClose={closeModal} />}
-    <HomeRoute openModal={openModal} />
+    {isModalOpen && (
+  <PhotoDetailsModal 
+    photo={selectedPhoto} 
+    photos={photos} 
+    onClose={closeModal}
+    favoritedPhotos={favoritedPhotos} 
+    setFavoritedPhotos={setFavoritedPhotos}
+  />
+)}
+    <HomeRoute 
+   openModal={openModal} 
+   favoritedPhotos={favoritedPhotos}
+   setFavoritedPhotos={setFavoritedPhotos}
+/> 
     
 
   </div>
+  
   );
 };
 

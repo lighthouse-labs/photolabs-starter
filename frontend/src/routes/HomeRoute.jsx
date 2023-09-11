@@ -7,8 +7,8 @@ import '../styles/HomeRoute.scss';
 import topics from 'mocks/topics';
 import photos from 'mocks/photos';
 
-const HomeRoute = ({ openModal }) => {
-  const [favoritedPhotos, setFavoritedPhotos] = useState([]);
+const HomeRoute = ({ openModal, favoritedPhotos, setFavoritedPhotos }) => {
+  
   return (
     <div className="home-route">
     <TopNavigationBar topics={topics} favoritedPhotos={favoritedPhotos} />
