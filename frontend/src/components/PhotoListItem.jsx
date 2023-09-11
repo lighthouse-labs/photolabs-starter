@@ -6,7 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({photo, favoritedPhotos, setFavoritedPhotos, openModal}) => {
   const { username, imageSource, id, location, profile } = photo;
-  console.log('setFavoritedPhotos in PhotoListItem', typeof setFavoritedPhotos);
+  
   return (
     <div className="photo-list__item" onClick={() => openModal(photo)}>
       <PhotoFavButton photoId={id} favoritedPhotos={favoritedPhotos} setFavoritedPhotos={setFavoritedPhotos} />

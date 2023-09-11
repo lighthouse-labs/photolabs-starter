@@ -3,9 +3,9 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from '../components/PhotoList';
+import FavIcon from 'components/FavIcon';
 
 const PhotoDetailsModal = ({ photo, onClose, photos }) => {
-  console.log("Selected Photo Data:", photo);
   const similarPhotos = photos.filter(p => p.user.username === photo.user.username && p.id !== photo.id);
   return (
     <div className="photo-details-modal">
