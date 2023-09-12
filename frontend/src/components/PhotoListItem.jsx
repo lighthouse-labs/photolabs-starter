@@ -1,18 +1,20 @@
 import React from 'react';
 
 import '../styles/PhotoListItem.scss';
+import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = ({ photoData }) => {
   const { imageSource, location, username, profile } = photoData;
 
   return (
 <article className='photo-list__item'>
+<PhotoFavButton />
     <img
         src={imageSource}
         alt={`Photo taken in ${location.city}, ${location.country}`}
         className='photo-list__image'
     />
-
+    
     <footer className='Photo-footer'>
         <div className='photo-list__user-details'>
             <img
