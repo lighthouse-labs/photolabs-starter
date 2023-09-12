@@ -12,16 +12,19 @@ const PhotoDetailsModal = ({ favoritedPhotos, setFavoritedPhotos, photo, onClose
       <button className="photo-details-modal__close-button" onClick={onClose}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
+      <div className="photo-details-modal__image-container">
+      <PhotoFavButton 
+        photoId={photo.id} 
+        favoritedPhotos={favoritedPhotos} 
+        setFavoritedPhotos={setFavoritedPhotos}
+       />
       <img 
         src={photo.urls.regular} 
         alt={`photo ${photo.id}`} 
         className="photo-details-modal--image" 
       />
-       <PhotoFavButton 
-        photoId={photo.id} 
-        favoritedPhotos={favoritedPhotos} 
-        setFavoritedPhotos={setFavoritedPhotos}
-       />
+       
+       </div>
       <h2 className="photo-details-modal--header">Similar Photos</h2>
 
       <div className="photo-details-modal--images">

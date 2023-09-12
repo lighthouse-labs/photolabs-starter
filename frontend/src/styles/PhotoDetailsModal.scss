@@ -25,6 +25,25 @@
   margin-top: 16px;
 }
 
+.photo-details-modal__image-container {
+  position: relative;
+  max-width: 95%; /* adjust as necessary */
+  margin: 0 auto; /* to center it */
+}
+
+.modal-fav-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.photo-list__fav-icon-svg {
+  padding: 7px;
+  top: 2px;
+  
+}
+
 .photo-details-modal__images {
   margin-left: 36px;
   
@@ -68,3 +87,4 @@
   margin-bottom: 24px;
   width: 90%;
 }
+

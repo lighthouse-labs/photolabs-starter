@@ -1,25 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import './App.scss';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import photos from 'mocks/photos';
+import useApplicationData from 'hooks/useApplicationData';
 
 
 const App = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
-  const [favoritedPhotos, setFavoritedPhotos] = useState([]);
-  const openModal = (photo) => {
-    setSelectedPhoto(photo);
-    setIsModalOpen(true);
-  };
+  const {
+    isModalOpen,
+    selectedPhoto,
+    favoritedPhotos,
+    openModal,
+    closeModal,
+    setFavoritedPhotos
+  } = useApplicationData();
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedPhoto(null);
-  };
   return (
   <div className="App">
     {isModalOpen && (
@@ -36,8 +34,6 @@ const App = () => {
    favoritedPhotos={favoritedPhotos}
    setFavoritedPhotos={setFavoritedPhotos}
 /> 
-    
-
   </div>
   
   );

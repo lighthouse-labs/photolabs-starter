@@ -19,6 +19,11 @@
   margin-left: 24px;
 }
 
+.right-section {
+  display: flex;
+  align-items: center; /* to align items vertically */
+}
+
 .fav-count {
   position: absolute;
   top: 5px;
