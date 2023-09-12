@@ -27,7 +27,7 @@
   object-fit: cover;
   border-radius: 100%;
   vertical-align: middle;
-  margin-right: 8px;
+  margin-right: 12px;
   width: 40px;
   height: 40px;
 }
@@ -37,12 +37,12 @@
 }
 
 .photo-list__user-info {
-  margin-top: 5px;
+  margin: 0; 
   font-weight: 700;
   font-size: 12px;
-  margin-left: 8px;
 }
 
 .photo-list__user-location {
+  margin: 0;
   color: #838383;
 }
