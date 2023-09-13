@@ -10,6 +10,7 @@
   overflow-y: scroll;
   border-radius: 12px;
   z-index: 1000;
+  
 }
 
 .photo-details-modal__close-button {
@@ -29,6 +30,45 @@
   position: relative;
   max-width: 95%; /* adjust as necessary */
   margin: 0 auto; /* to center it */
+  padding-bottom: 50px; 
+  
+}
+
+.photo-details-modal--image {
+  
+  max-width: 95%;
+  max-height: 70%;  /* adjust based on your requirement */
+  border-radius: 8px;
+  display: block; /* To ensure margins work as expected */
+  margin:  auto; /* To center the image horizontally */
+}
+
+.photo-list__user-profile_modal {
+  object-fit: cover;
+  border-radius: 100%;
+  vertical-align: middle;
+  margin-right: 8px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.photo-list__user-info_modal {
+  
+  position: absolute; /* absolute positioning within the image container */
+  bottom: 10px; /* align it with the profile image */
+  left: 60px; /* this should be profile image width + a bit of margin, adjust if necessary */
+  display: flex;
+  flex-direction: row; /* stack name and location vertically */
+  align-items: center;
+}
+
+.photo-list__user-location_modal {
+  margin-left: 14px;
+  z-index: 20; /* or some higher value if necessary */
+  color: red;
 }
 
 .modal-fav-icon {
@@ -56,15 +96,6 @@
   border-radius: 8px;
 }
 
-.photo-details-modal--image {
-  max-width: 95%;
-  max-height: 70%;  /* adjust based on your requirement */
-  border-radius: 8px;
-  display: block; /* To ensure margins work as expected */
-  margin: 0 auto; /* To center the image horizontally */
-}
-
-
 .photo-details-modal__top-bar {
   display: flex;
   flex-direction: row;
@@ -74,17 +105,16 @@
   align-items: center;
 }
 
-.photo-details-modal__photographer-details {
-  display: flex;
-  font-size: 16px;
-}
-
-.photo-details-modal__header {
+.photo-details-modal--header {
   font-size: 18px;
   font-weight: 500;
   color: #1e1e1e;
   margin-top: 24px;
   margin-bottom: 24px;
   width: 90%;
+  margin: 24px auto; /* Adjusted from 24px auto to 24px left-margin auto */
+  margin-left: 50px;
 }
+
+
 
