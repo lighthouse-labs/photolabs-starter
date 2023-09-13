@@ -10,30 +10,33 @@ import useApplicationData from 'hooks/useApplicationData';
 
 const App = () => {
   const {
+    state,
     isModalOpen,
     selectedPhoto,
-    favoritedPhotos,
+
     openModal,
     closeModal,
-    setFavoritedPhotos
+    updateToFavPhotoIds
   } = useApplicationData();
 
   return (
   <div className="App">
-    {isModalOpen && (
+    {state.selectedPhoto && (
   <PhotoDetailsModal 
-    photo={selectedPhoto} 
+    photo={state.selectedPhoto} 
     photos={photos} 
     onClose={closeModal}
-    favoritedPhotos={favoritedPhotos} 
-    setFavoritedPhotos={setFavoritedPhotos}
+    favoritedPhotos={state.favoritedPhotos} 
+    updateToFavPhotoIds={updateToFavPhotoIds}
   />
 )}
     <HomeRoute 
    openModal={openModal} 
-   favoritedPhotos={favoritedPhotos}
-   setFavoritedPhotos={setFavoritedPhotos}
+   favoritedPhotos={state.favoritedPhotos}
+   setFavoritedPhotos={updateToFavPhotoIds}
+   updateToFavPhotoIds={updateToFavPhotoIds}
 /> 
+
   </div>
   
   );

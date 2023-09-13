@@ -5,7 +5,7 @@ import '../styles/HomeRoute.scss';
 import topics from 'mocks/topics';
 import photos from 'mocks/photos';
 
-const HomeRoute = ({ openModal, favoritedPhotos, setFavoritedPhotos }) => {
+const HomeRoute = ({ openModal, favoritedPhotos, setFavoritedPhotos, updateToFavPhotoIds }) => {
   
   return (
     <div className="home-route">
@@ -14,6 +14,7 @@ const HomeRoute = ({ openModal, favoritedPhotos, setFavoritedPhotos }) => {
     favoritedPhotos={favoritedPhotos} 
     setFavoritedPhotos={setFavoritedPhotos} 
     openModal={openModal}
+    updateToFavPhotoIds={updateToFavPhotoIds}
     />
     </div>
   );

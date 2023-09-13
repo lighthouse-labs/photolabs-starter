@@ -4,7 +4,7 @@ import photos from 'mocks/photos';
 import "../styles/PhotoList.scss";
 
 
-const PhotoList = ({ photos, favoritedPhotos, setFavoritedPhotos, openModal }) => {
+const PhotoList = ({ photos, favoritedPhotos, updateToFavPhotoIds, openModal }) => {
 
   return (
     <ul className="photo-list">
@@ -13,7 +13,8 @@ const PhotoList = ({ photos, favoritedPhotos, setFavoritedPhotos, openModal }) =
           key={photo.id}
           photo={photo}
           favoritedPhotos={favoritedPhotos}
-          setFavoritedPhotos={setFavoritedPhotos}
+          updateToFavPhotoIds={updateToFavPhotoIds}
+          
           openModal={openModal}
         />
       ))}

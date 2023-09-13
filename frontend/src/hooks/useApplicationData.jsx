@@ -40,20 +40,21 @@ function reducer(state, action) {
   }
 }
 
-const [state, dispatch] = useReducer(reducer, {
-  isModalOpen: false,
-  selectedPhoto: null,
-  favoritedPhotos: [],
-  photos: [],
-  topics: []
-});
+
 
 const useApplicationData = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
+  const [state, dispatch] = useReducer(reducer, {
+    isModalOpen: false,
+    selectedPhoto: null,
+    favoritedPhotos: [],
+    photos: [],
+    topics: []
+  });
+console.log("state", state);
   // Existing actions
   const openModal = (photo) => {
-    dispatch({ type: ACTIONS.OPEN_MODAL });
+    console.log("Modal open function triggered", photo);
+    // dispatch({ type: ACTIONS.OPEN_MODAL });
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   };
 
@@ -63,21 +64,24 @@ const useApplicationData = () => {
 
   // Add or remove a photo from favorites
   const updateToFavPhotoIds = (photoId) => {
+    console.log("does this", photoId);
     if (state.favoritedPhotos.includes(photoId)) {
+      console.log("if");
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photoId });
     } else {
+      console.log("else");
       dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: photoId });
     }
   };
 
-  // Other dispatchers and logic related to setting photo and topic data will also go here...
+  
 
   return {
     state, // instead of individual state values
     openModal,
     closeModal,
     updateToFavPhotoIds,
-    // and other dispatchers...
+   
   };
 };
 

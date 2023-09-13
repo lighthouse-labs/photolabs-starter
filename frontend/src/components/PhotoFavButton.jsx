@@ -4,23 +4,15 @@ import FavIcon from './FavIcon';
 
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton({ photoId, favoritedPhotos, setFavoritedPhotos }) {
+function PhotoFavButton({ photoId, favoritedPhotos, updateToFavPhotoIds }) {
+  console.log(photoId, favoritedPhotos, "Photo");
   const isActive = favoritedPhotos && favoritedPhotos.includes(photoId);
-  console.log('setFavoritedPhotos in PhotoFavButton', typeof setFavoritedPhotos);
+console.log(isActive, "is active");
   const toggleFavoriteStatus = () => {
-    if (isActive) {
-      setFavoritedPhotos(prevPhotos => {
-        const updatedPhotos = prevPhotos.filter(id => id !== photoId);
-        console.log('Removing photo from favorites:', photoId, updatedPhotos);
-        return updatedPhotos;
-      });
-    } else {
-      setFavoritedPhotos(prevPhotos => {
-        const updatedPhotos = [...prevPhotos, photoId];
-        console.log('Adding photo to favorites:', photoId, updatedPhotos);
-        return updatedPhotos;
-      });
-    }
+    
+    
+    // The hook will handle whether to add or remove it from the favorites.
+    updateToFavPhotoIds(photoId);
   };
 
   return (
