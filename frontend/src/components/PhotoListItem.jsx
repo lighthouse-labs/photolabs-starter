@@ -1,17 +1,19 @@
 import React from "react";
 
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({data}) => {
-  const { id, location, imageSource, username, profile } = data;
+  const { id, location, urls, user } = data;
 
   return (
     <li className="photo-list__item">
-      <img className="photo-list__image" src={imageSource} alt="Image photo" />
+      <PhotoFavButton />
+      <img className="photo-list__image" src={urls.full} alt="Image photo" />
       <section className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={profile} alt="Profile image"/>
+        <img className="photo-list__user-profile" src={user.profile} alt="Profile image"/>
         <div className="photo-list__user-info">
-          <span>{username}</span>
+          <span>{user.username}</span>
           <span className="photo-list__user-location">{location.city},{location.country}</span>
         </div>
       </section>
