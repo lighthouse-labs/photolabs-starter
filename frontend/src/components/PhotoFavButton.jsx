@@ -12,7 +12,6 @@ function PhotoFavButton({ displayAlert }) {
     setSelected(!selected);
   };
 
-  console.log(selected);
   return (
     <div className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg" onClick={clickHandler}>
