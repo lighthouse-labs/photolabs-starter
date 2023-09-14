@@ -1,24 +1,24 @@
 import React from 'react';
 
 import '../styles/PhotoListItem.scss';
-
-
+import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = (props) => {
-  const { data } = props;
+  const { photoData} = props;
   return (
-    <article>
+    <article key={photoData.id} className="photo-list__item">
+      <PhotoFavButton  />
       <div>
-        <img src={data.imageSource} alt="new image" />
+        <img src={photoData.imageSource} alt="new image" className="photo-list__image" />
       </div>
-      <div>
+      <div className="photo-list__user-details">
         <div>
-          <img src={data.profile} alt="profile image" />
+          <img src={photoData.profile} alt="profile image" className="photo-list__user-profile" />
         </div>
-        <div>
-          <h3>{data.username}</h3>
-          <p>
-            {data.location.city},{data.location.country}
+        <div className="photo-list__user-info">
+          <span>{photoData.username}</span>
+          <p className="photo-list__user-location">
+            {photoData.location.city},{photoData.location.country}
           </p>
         </div>
       </div>
