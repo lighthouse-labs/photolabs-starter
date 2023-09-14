@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import PhotoListItem from './components/PhotoListItem';
-import './App.scss';
+import PhotoListItem from "./components/PhotoListItem";
+import "./App.scss";
+import "./styles/PhotoList.scss";
 
 const sampleDataForPhotoListItem = {
   id: "1",
@@ -16,11 +17,13 @@ const sampleDataForPhotoListItem = {
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  return (
-    <div className="App">
-      <PhotoListItem photoListData={sampleDataForPhotoListItem}/>
-    </div>
-  );
+  const renderedPhotos = [
+    <PhotoListItem key={0} photoListData={sampleDataForPhotoListItem} />,
+    <PhotoListItem key={1} photoListData={sampleDataForPhotoListItem} />,
+    <PhotoListItem key={2} photoListData={sampleDataForPhotoListItem} />,
+  ];
+
+  return <div className="App photo-list">{renderedPhotos}</div>;
 };
 
 export default App;
