@@ -3,7 +3,7 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 import '../styles/TopNavigationBar.scss'
 
-const TopNavigation = ({ topics, favoritedPhotos }) => {
+const TopNavigation = ({ topics, favoritedPhotos, fetchPhotosByTopic }) => {
   const isFavoritePhotoExist = favoritedPhotos?.length > 0;
 
   return (
@@ -11,7 +11,7 @@ const TopNavigation = ({ topics, favoritedPhotos }) => {
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <div className="right-section">
         {/* Topics navigation */}
-        <TopicList topics={topics} />
+        <TopicList topics={topics} fetchPhotosByTopic={fetchPhotosByTopic} />
         {/* Heart icon for liked photos */}
         <FavBadge isFavPhotoExist={isFavoritePhotoExist} favoritedCount={favoritedPhotos?.length || 0} />
         {isFavoritePhotoExist && <span className="fav-count">{favoritedPhotos.length}</span>}

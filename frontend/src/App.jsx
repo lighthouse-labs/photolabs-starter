@@ -4,19 +4,17 @@ import './App.scss';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import photos from 'mocks/photos';
+
 import useApplicationData from 'hooks/useApplicationData';
 
 
 const App = () => {
   const {
     state,
-    isModalOpen,
-    selectedPhoto,
-
     openModal,
     closeModal,
-    updateToFavPhotoIds
+    updateToFavPhotoIds,
+    fetchPhotosByTopic
   } = useApplicationData();
 
   return (
@@ -24,7 +22,7 @@ const App = () => {
     {state.selectedPhoto && (
   <PhotoDetailsModal 
     photo={state.selectedPhoto} 
-    photos={photos} 
+    photos={state.photoData} 
     onClose={closeModal}
     favoritedPhotos={state.favoritedPhotos} 
     updateToFavPhotoIds={updateToFavPhotoIds}
@@ -32,9 +30,12 @@ const App = () => {
 )}
     <HomeRoute 
    openModal={openModal} 
+   photos={state.photoData}
+   topics={state.topicData}
    favoritedPhotos={state.favoritedPhotos}
    setFavoritedPhotos={updateToFavPhotoIds}
    updateToFavPhotoIds={updateToFavPhotoIds}
+   fetchPhotosByTopic={fetchPhotosByTopic}
 /> 
 
   </div>

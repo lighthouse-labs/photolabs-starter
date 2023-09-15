@@ -1,10 +1,12 @@
 import { useReducer } from 'react';
+import { useEffect } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  FETCH_BY_TOPIC: 'FETCH_BY_TOPIC',
   SELECT_PHOTO: 'SELECT_PHOTO',
   OPEN_MODAL: 'OPEN_MODAL',
   CLOSE_MODAL: 'CLOSE_MODAL'
@@ -19,10 +21,10 @@ function reducer(state, action) {
       return { ...state, favoritedPhotos: state.favoritedPhotos.filter(id => id !== action.payload) };
       
     case ACTIONS.SET_PHOTO_DATA:
-      return { ...state, photos: action.payload };
+      return { ...state, photoData: action.payload };
       
     case ACTIONS.SET_TOPIC_DATA:
-      return { ...state, topics: action.payload };
+      return { ...state, topicData: action.payload };
       
     case ACTIONS.SELECT_PHOTO:
       return { ...state, selectedPhoto: action.payload };
@@ -32,6 +34,9 @@ function reducer(state, action) {
 
     case ACTIONS.CLOSE_MODAL:
       return { ...state, isModalOpen: false, selectedPhoto: null };
+
+    case ACTIONS.FETCH_BY_TOPIC:
+      return { ...state, photoData: action.payload };
       
     default:
       throw new Error(
@@ -47,10 +52,12 @@ const useApplicationData = () => {
     isModalOpen: false,
     selectedPhoto: null,
     favoritedPhotos: [],
-    photos: [],
-    topics: []
+    photoData: [],
+    topicData: []
   });
-console.log("state", state);
+  
+  
+   console.log("state", state);
   // Existing actions
   const openModal = (photo) => {
     console.log("Modal open function triggered", photo);
@@ -74,14 +81,55 @@ console.log("state", state);
     }
   };
 
-  
+  useEffect(() => {
+    fetch('http://localhost:8001/api/photos') // Fetching from the provided API endpoint
+      .then(response => {
+        if (response.ok) {
+          return response.json(); // Parse the JSON response
+        }
+        throw new Error('Failed to fetch photos.');
+      })
+      .then(data => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:8001/api/topics') 
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Failed to fetch topics.');
+      })
+      .then(data => {
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
+
+  const fetchPhotosByTopic = (topic_id) => {
+    fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
+      .then(response => response.json())
+      .then(data => {
+        dispatch({ type: ACTIONS.FETCH_BY_TOPIC, payload: data });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
 
   return {
-    state, // instead of individual state values
+    state, 
     openModal,
     closeModal,
     updateToFavPhotoIds,
-   
+    fetchPhotosByTopic,
   };
 };
 
