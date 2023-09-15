@@ -3,10 +3,15 @@ import React from 'react';
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photoData }) => {
+const PhotoListItem = ({ photoData, selectedPhoto, onClick, isFavourite }) => {
   return (
     <article className="photo-list__item">
-      <PhotoFavButton />
+      <PhotoFavButton
+        photoData={photoData}
+        selectedPhoto={selectedPhoto}
+        onClick={onClick}
+        isFavourite={isFavourite}
+      />
       <div>
         <img src={photoData.urls.regular} alt="new image" className="photo-list__image" />
       </div>
