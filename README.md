@@ -58,3 +58,8 @@ Note that two different servers will be running during development:
 
 Client-side Webpack development server and
 API server to provide photo data
+
+## screenshots
+
+!["HomeRoute"](https://github.com/ironmaiden59/photolabs-starter/blob/main/docs/HomeRoute.png)
+!["Enlarged_Modal"](https://github.com/ironmaiden59/photolabs-starter/blob/main/docs/Enlarged_modal.png)
