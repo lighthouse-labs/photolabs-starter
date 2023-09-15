@@ -7,7 +7,7 @@ const sampleDataForTopicListItem = {
   label: "Nature",
 };
 
-const TopicListItem = ({ title = 'Nature', link = 'insert link' }) => {
+const TopicListItem = ({ title, link }) => {
   return (
     <div className="topic-list__item">
       <a href={link}><span>{title}</span></a>
