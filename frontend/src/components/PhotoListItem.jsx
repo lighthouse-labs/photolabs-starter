@@ -3,14 +3,17 @@ import React from 'react';
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photoData }) => {
+const PhotoListItem = ({ photoData, isFavorited, toggleFavorite }) => {
     const { urls, location, user } = photoData;
     const { regular: imageSource } = urls;
     const { username, profile } = user;
 
   return (
 <article className='photo-list__item'>
-<PhotoFavButton />
+<PhotoFavButton 
+  isFavorited={isFavorited}
+  toggleFavorite={() => toggleFavorite(photoData.id)} 
+/>
     <img
         src={imageSource}
         alt={`Photo taken in ${location.city}, ${location.country}`}
