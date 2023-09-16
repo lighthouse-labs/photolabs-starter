@@ -6,13 +6,12 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = () => {
   const [favPhotos, setFavPhotos] = useState([]);
-
   const isFavPhotoExist = favPhotos.length > 0;
 
   return (
     <div className="home-route">
       <TopNavigation isFavPhotoExist={isFavPhotoExist} />
-      <PhotoList favPhotos={favPhotos} setFavPhotos={setFavPhotos}/>
+      <PhotoList favPhotos={favPhotos} setFavPhotos={setFavPhotos} />
     </div>
   );
 };
