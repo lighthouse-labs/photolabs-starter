@@ -17,8 +17,12 @@ const HomeRoute = ({ topics, photos }) => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} />
-      <PhotoList photos={photos} createFavorite={createFavorite} deleteFavorite={deleteFavorite}/>
+      <TopNavigationBar topics={topics} isFavPhotoExist={favPhotos.length} />
+      <PhotoList
+        photos={photos}
+        createFavorite={createFavorite}
+        deleteFavorite={deleteFavorite}
+      />
     </div>
   );
 };
