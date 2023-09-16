@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photoData, selectedPhoto, onClick, isFavourite }) => {
+const PhotoListItem = ({ photoData, selectedPhoto, onClick, isFavourite, setModalHandler }) => {
   return (
     <article className="photo-list__item">
       <PhotoFavButton
@@ -12,7 +12,7 @@ const PhotoListItem = ({ photoData, selectedPhoto, onClick, isFavourite }) => {
         onClick={onClick}
         isFavourite={isFavourite}
       />
-      <div>
+      <div onClick={setModalHandler}>
         <img src={photoData.urls.regular} alt="new image" className="photo-list__image" />
       </div>
       <div className="photo-list__user-details">

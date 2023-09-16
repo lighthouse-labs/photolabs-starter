@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/PhotoList.scss';
 import PhotoListItem from './PhotoListItem';
 
-const PhotoList = ({ photos, selectedPhoto, isFavourite }) => {
+const PhotoList = ({ photos, selectedPhoto, isFavourite,setModalHandler }) => {
   const clickHandler = (photoId) => {
     selectedPhoto(photoId);
   };
@@ -17,6 +17,7 @@ const PhotoList = ({ photos, selectedPhoto, isFavourite }) => {
           onClick={() => {
             clickHandler(photo.id);
           }}
+          setModalHandler={setModalHandler}
         />
       </li>
     );

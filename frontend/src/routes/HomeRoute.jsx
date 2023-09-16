@@ -6,7 +6,7 @@ import PhotoList from 'components/PhotoList';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 
-const HomeRoute = () => {
+const HomeRoute = ({ setModalHandler }) => {
   const [selected, setSelected] = useState([]);
 
   const selectedPhoto = (photoDataId) => {
@@ -29,7 +29,12 @@ const HomeRoute = () => {
   return (
     <div className="home-route">
       <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist(selected)} />
-      <PhotoList photos={photos} selectedPhoto={selectedPhoto} isFavourite={isFavourite}>
+      <PhotoList
+        photos={photos}
+        selectedPhoto={selectedPhoto}
+        isFavourite={isFavourite}
+        setModalHandler={setModalHandler}
+      />
     </div>
   );
 };
