@@ -2,12 +2,13 @@ import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
-const PhotoList = ({ photos, onChange }) => {
+const PhotoList = ({ photos, createFavorite, deleteFavorite }) => {
   const renderedPhotos = photos.map((photo) => (
     <PhotoListItem
       key={photo.id}
       photoListData={photo}
-      onChange={onChange}
+      createFavorite={createFavorite}
+      deleteFavorite={deleteFavorite}
     />
   ));
 
