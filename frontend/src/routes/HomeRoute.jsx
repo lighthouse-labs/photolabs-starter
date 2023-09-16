@@ -29,7 +29,7 @@ const HomeRoute = () => {
   return (
     <div className="home-route">
       <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist(selected)} />
-      <PhotoList photos={photos} selectedPhoto={selectedPhoto} isFavourite={isFavourite} />
+      <PhotoList photos={photos} selectedPhoto={selectedPhoto} isFavourite={isFavourite}>
     </div>
   );
 };
