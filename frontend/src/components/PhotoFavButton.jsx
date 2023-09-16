@@ -7,7 +7,7 @@ const PhotoFavButton = function() {
   const [favClick, setFavClick] = useState(false);
 
   const handleClick = () => {
-    return favClick ? setFavClick(false) : setFavClick(true);
+    setFavClick(!favClick);
   };
 
   return (
