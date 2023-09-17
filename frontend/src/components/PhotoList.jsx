@@ -2,7 +2,7 @@ import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
-const PhotoList = ({ photos, favoritedPhotoIds, toggleFavorite, toggleModal }) => {
+const PhotoList = ({ photos, favoritedPhotoIds = [], toggleFavorite, toggleModal }) => {
   return (
     <ul className="photo-list">
       {photos.map((photoData) =>(
