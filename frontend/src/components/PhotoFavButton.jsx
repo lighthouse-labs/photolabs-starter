@@ -1,12 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 const PhotoFavButton = (props) => {
-  // const [isFav, setFav] = useState(false);
-  // const favSwitch = () => setFav((isFav === false) ? true : false);
-
   const { id, favPhotos, setFavPhotos } = props;
   // favPhotos is array contain Photo ids
 

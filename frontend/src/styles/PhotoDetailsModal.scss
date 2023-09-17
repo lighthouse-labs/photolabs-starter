@@ -6,7 +6,7 @@
   left: 50%;
   transform: translate(-50%, -40%);
   height: 80%;
-  width: 55%;
+  width: 70%;
   overflow-y: scroll;
   border-radius: 12px;
 }
@@ -27,6 +27,10 @@
 .photo-details-modal__images {
   margin-left: 36px;
   margin-top: 8px;
+}
+
+.photo-details-modal__images .photo-list {
+  margin-right: 36px;
 }
 
 .photo-details-modal__image {
