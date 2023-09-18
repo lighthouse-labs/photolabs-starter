@@ -3,7 +3,9 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photoData, favPhotos, setFavPhotos, openModal, setSelectedPhoto }) => {
+const PhotoListItem = (props) => {
+  const { photoData, openModal, setSelectedPhoto } = props;
+
   const { id, location, urls, user } = photoData;
   const handlePhotoClick = () => {
     openModal();
@@ -12,7 +14,7 @@ const PhotoListItem = ({ photoData, favPhotos, setFavPhotos, openModal, setSelec
 
   return (
     <li className="photo-list__item">
-      <PhotoFavButton id={id} favPhotos={favPhotos} setFavPhotos={setFavPhotos}/>
+      <PhotoFavButton {...props} id={id} />
       <img className="photo-list__image" src={urls.regular} alt="Image photo" onClick={handlePhotoClick} />
       <section className="photo-list__user-details">
         <img className="photo-list__user-profile" src={user.profile} alt="Profile image"/>
