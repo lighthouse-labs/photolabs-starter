@@ -3,30 +3,26 @@ import React from 'react';
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photoData, selectedPhoto, onClick, isFavourite, setModalHandler }) => {
+const PhotoListItem = ({ photo, selectedPhotoHandler, isFavourite, setModalHandler }) => {
   return (
     <article className="photo-list__item">
       <PhotoFavButton
-        photoData={photoData}
-        selectedPhoto={selectedPhoto}
-        onClick={onClick}
-        isFavourite={isFavourite}
+        clickHandler={() => {
+          selectedPhotoHandler(photo.id);
+        }}
+        isFavourite={isFavourite(photo.id)}
       />
-      <div onClick={setModalHandler}>
-        <img src={photoData.urls.regular} alt="new image" className="photo-list__image" />
+      <div onClick={() => setModalHandler(photo.id)}>
+        <img src={photo.urls.regular} alt="new image" className="photo-list__image" />
       </div>
       <div className="photo-list__user-details">
         <div>
-          <img
-            src={photoData.user.profile}
-            alt="profile image"
-            className="photo-list__user-profile"
-          />
+          <img src={photo.user.profile} alt="profile image" className="photo-list__user-profile" />
         </div>
         <div className="photo-list__user-info">
-          <span>{photoData.username}</span>
+          <span>{photo.user.name}</span>
           <p className="photo-list__user-location">
-            {photoData.location.city},{photoData.location.country}
+            {photo.location.city},{photo.location.country}
           </p>
         </div>
       </div>
