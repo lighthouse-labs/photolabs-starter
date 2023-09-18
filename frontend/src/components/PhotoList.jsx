@@ -5,20 +5,21 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
-  const { favPhotos, setFavPhotos, openModal, selectedPhoto, setSelectedPhoto, photos } = props;
-  console.log(photos);
+  const { photos } = props;
 
   return (
     <ul className="photo-list">
       {photos.map((photo) => (
         <PhotoListItem
+          {...props}
           key={photo.id}
           photoData={photo}
-          favPhotos={favPhotos}
-          setFavPhotos={setFavPhotos}
-          openModal={openModal}
-          selectedPhoto={selectedPhoto}
-          setSelectedPhoto={setSelectedPhoto}
+          // favPhotos={favPhotos}
+          // setFavPhotos={setFavPhotos}
+          // openModal={openModal}
+          // selectedPhoto={selectedPhoto}
+          // setSelectedPhoto={setSelectedPhoto}
+          
         />
       ))}
     </ul>
