@@ -30,12 +30,12 @@
 }
 
 .photo-details-modal__images .photo-list {
-  margin-right: 36px;
+  // margin-right: 36px;
 }
 
 .photo-details-modal__image {
   max-width: 95%;
-  border-radius: 8px;
+  // border-radius: 8px;
 }
 
 .photo-details-modal__top-bar {
@@ -50,6 +50,10 @@
 .photo-details-modal__photographer-details {
   display: flex;
   font-size: 16px;
+  margin-top: 8px;
+  margin-right: 36px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid lightgray;
 }
 
 .photo-details-modal__header {
