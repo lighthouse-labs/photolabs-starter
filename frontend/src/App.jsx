@@ -9,8 +9,6 @@ const App = () => {
   const {
     state,
     toggleFav,
-    favPhotos,
-    setFavPhotos,
     isShown,
     setIsShown,
     selectedPhoto,
@@ -26,8 +24,8 @@ const App = () => {
   
   return (
     <div className="App">
-      <HomeRoute state={state} toggleFav={toggleFav} photos={photos} openModal={openModal} selectedPhoto={selectedPhoto} setSelectedPhoto={setSelectedPhoto} favPhotos={favPhotos} setFavPhotos={setFavPhotos}/>
-      {!!isShown && <PhotoDetailsModal state={state} photos={photos} closeModal={closeModal} isShown={isShown} selectedPhoto={selectedPhoto} favPhotos={favPhotos} setFavPhotos={setFavPhotos}/>}
+      <HomeRoute state={state} toggleFav={toggleFav} photos={photos} openModal={openModal} selectedPhoto={selectedPhoto} setSelectedPhoto={setSelectedPhoto} />
+      {!!isShown && <PhotoDetailsModal state={state} toggleFav={toggleFav} photos={photos} closeModal={closeModal} isShown={isShown} selectedPhoto={selectedPhoto} />}
     </div>
   );
 };

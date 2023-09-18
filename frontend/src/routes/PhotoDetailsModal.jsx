@@ -8,7 +8,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const { closeModal, selectedPhoto, favPhotos, setFavPhotos, photos } = props;
+  const { closeModal, selectedPhoto, photos } = props;
   
   // find similar photos from photos object and pass the data to Photolist component
   const similarPhotosObj = photos.find(photo => photo.id === selectedPhoto.id).similarPhotos;
@@ -20,7 +20,7 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className='photo-details-modal__images'>
-        <PhotoFavButton id={selectedPhoto.id} favPhotos={favPhotos} setFavPhotos={setFavPhotos}/>
+        <PhotoFavButton {...props} id={selectedPhoto.id} />
         <img className="photo-details-modal__image" src={selectedPhoto.urls.full}/>
         <section className="photo-details-modal__photographer-details">
           <img className="photo-list__user-profile" src={selectedPhoto.user.profile} alt="Profile image"/>
