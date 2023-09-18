@@ -4,7 +4,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  const { state, toggleFav, photoData, openModal, setSelectedPhoto } = props;
+  const { photoData, openModal, setSelectedPhoto } = props;
 
   const { id, location, urls, user } = photoData;
   const handlePhotoClick = () => {
