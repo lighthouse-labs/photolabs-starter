@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photoListData, deleteFavorite, createFavorite }) => {
+const PhotoListItem = ({ photoListData, deleteFavorite, createFavorite, onPhotoClick }) => {
   const [favClick, setFavClick] = useState(false);
 
   const handleClick = () => {
@@ -19,8 +19,8 @@ const PhotoListItem = ({ photoListData, deleteFavorite, createFavorite }) => {
   return (
     <li className="photo-list__item">
       <PhotoFavButton onChange={handleClick} value={favClick} />
-      <div>
-        <img className="photo-list__image" src={photoListData.urls.regular} />
+      <div onClick={onPhotoClick}>
+        <img  className="photo-list__image" src={photoListData.urls.regular} />
       </div>
       <div className="photo-list__user-details">
         <img
