@@ -10,9 +10,15 @@
   height: 32px;
   text-align: center;
   border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .photo-list__fav-icon-svg {
-  padding: 7px;
-  top: 2px;
+  // padding: 8px;
+  // top: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
