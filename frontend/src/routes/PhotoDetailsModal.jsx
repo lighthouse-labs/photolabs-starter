@@ -41,18 +41,20 @@ const PhotoDetailsModal = ({
           alt="profile image"
           className="photo-details-modal__image"
         />
-        <div>
-          <img
-            src={clickedPhoto.user.profile}
-            alt="profile image"
-            className="photo-list__user-profile"
-          />
-        </div>
-        <div className="photo-list__user-info">
-          <span>{clickedPhoto.user.name}</span>
-          <p className="photo-list__user-location">
-            {clickedPhoto.location.city},{clickedPhoto.location.country}
-          </p>
+        <div className="photo-list__user-details">
+          <div>
+            <img
+              src={clickedPhoto.user.profile}
+              alt="profile image"
+              className="photo-list__user-profile"
+            />
+          </div>
+          <div className="photo-list__user-info">
+            <span>{clickedPhoto.user.name}</span>
+            <p className="photo-list__user-location">
+              {clickedPhoto.location.city},{clickedPhoto.location.country}
+            </p>
+          </div>
         </div>
       </div>
       <div className="photo-details-modal__images">
