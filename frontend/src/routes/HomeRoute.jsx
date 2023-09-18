@@ -5,8 +5,8 @@ import PhotoList from 'components/PhotoList';
 // import photos from 'mocks/photos';
 
 const HomeRoute = (props) => {
-  const { favPhotos } = props;
-  const isFavPhotoExist = favPhotos.length > 0;
+  const { state, toggleFav, favPhotos } = props;
+  const isFavPhotoExist = state.favPhotos.length > 0;
 
   return (
     <div className="home-route">
