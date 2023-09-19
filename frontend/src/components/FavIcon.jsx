@@ -22,8 +22,8 @@ const FavIcon = ({ displayAlert, selected }) => {
           cx="21"
           cy="4"
           r="2.75"
-          fill="#FFFF00"
-          stroke="#C80000"
+          fill="#32CD32"
+          stroke="#fff"
           strokeWidth="0.5"
         />
       )}

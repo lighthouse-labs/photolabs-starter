@@ -8,7 +8,7 @@ const PhotoDetailsModal = ({
   photos,
   createFavorite,
   deleteFavorite,
-  favPhotos
+  favPhotos,
 }) => {
   //style the top image
   useEffect(() => {
@@ -31,12 +31,13 @@ const PhotoDetailsModal = ({
       <button onClick={onClose} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      
+
       <PhotoList
         photos={photos}
         createFavorite={createFavorite}
         deleteFavorite={deleteFavorite}
         favPhotos={favPhotos}
+        onPhotoClick={() => null}
       />
 
       <div className="photo-details-modal__images">
@@ -46,6 +47,7 @@ const PhotoDetailsModal = ({
           createFavorite={createFavorite}
           deleteFavorite={deleteFavorite}
           favPhotos={favPhotos}
+          onPhotoClick={() => null}
         />
       </div>
     </div>
