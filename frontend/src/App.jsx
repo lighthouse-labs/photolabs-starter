@@ -5,12 +5,11 @@ import './App.scss';
 import useApplicationData from 'hooks/useApplicationData';
 import HomeRoute from 'components/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
+
 // Note: Rendering a single component to build components in isolation
 const App = () => { 
   const { 
-    state: { isModalOpen, selectedPhoto, favoritedPhotoIds }, 
+    state: { isModalOpen, selectedPhoto, favoritedPhotoIds, photoData, topicData  }, 
     updateToFavPhotoIds, 
     setPhotoSelected, 
     onClosePhotoDetailsModal 
@@ -19,8 +18,8 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute 
-        photos={photos} 
-        topics={topics}
+        photos={photoData} 
+        topics={topicData}
         toggleModal={setPhotoSelected} 
         favoritedPhotoIds={favoritedPhotoIds}
         toggleFavorite={updateToFavPhotoIds}
