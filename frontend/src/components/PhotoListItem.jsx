@@ -1,26 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photoListData, deleteFavorite, createFavorite, onPhotoClick }) => {
-  const [favClick, setFavClick] = useState(false);
+const PhotoListItem = ({
+  photoListData,
+  deleteFavorite,
+  createFavorite,
+  onPhotoClick,
+  favPhotos,
+}) => {
+  // update fav photos on each render when favClick changes
 
-  const handleClick = () => {
-    if (!favClick) {
-      createFavorite(photoListData);
+  const handleClick = (photo) => {
+    if (!favPhotos?.includes(photo.id)) {
+      createFavorite(photo.id);
     } else {
-      deleteFavorite(photoListData.id);
+      deleteFavorite(photo.id);
     }
-
-    setFavClick(!favClick);
   };
 
-  // update fav photos on each render when favClick changes
   return (
     <li className="photo-list__item">
-      <PhotoFavButton onChange={handleClick} value={favClick} />
-      <div onClick={onPhotoClick}>
-        <img  className="photo-list__image" src={photoListData.urls.regular} />
+      <PhotoFavButton
+        onChange={handleClick}
+        value={favPhotos?.includes(photoListData.id)}
+        photo={photoListData}
+      />
+      <div onClick={() => onPhotoClick(photoListData)}>
+        <img
+          id="single-image"
+          className="photo-list__image"
+          src={photoListData.urls.regular}
+        />
       </div>
       <div className="photo-list__user-details">
         <img

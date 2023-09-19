@@ -7,6 +7,7 @@ const PhotoList = ({
   createFavorite,
   deleteFavorite,
   onPhotoClick,
+  favPhotos,
 }) => {
   const renderedPhotos = photos.map((photo) => (
     <PhotoListItem
@@ -15,8 +16,10 @@ const PhotoList = ({
       createFavorite={createFavorite}
       deleteFavorite={deleteFavorite}
       onPhotoClick={onPhotoClick}
+      favPhotos={favPhotos}
     />
   ));
+
   return <ul className="photo-list">{renderedPhotos}</ul>;
 };
 

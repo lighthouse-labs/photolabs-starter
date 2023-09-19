@@ -30,13 +30,13 @@
 }
 
 .photo-details-modal__image {
-  max-width: 95%;
+  max-width: 98%;
   border-radius: 8px;
 }
 
 .photo-details-modal__top-bar {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin: 16px;
   margin-top: 8px;

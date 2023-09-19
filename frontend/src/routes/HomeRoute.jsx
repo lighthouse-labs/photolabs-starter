@@ -1,19 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import PhotoList from "../components/PhotoList";
 import TopNavigationBar from "../components/TopNavigationBar";
 import "../styles/HomeRoute.scss";
 
-const HomeRoute = ({ topics, photos, onPhotoClick }) => {
-  const [favPhotos, setFavPhotos] = useState([]);
-
-  const createFavorite = (photo) => {
-    setFavPhotos([...favPhotos, photo]);
-  };
-
-  const deleteFavorite = (id) => {
-    const updatedFavorites = favPhotos.filter((photo) => photo.id !== id);
-    setFavPhotos(updatedFavorites);
-  };
+const HomeRoute = ({ topics, photos, onPhotoClick, deleteFavorite, createFavorite, favPhotos }) => {
 
   return (
     <div className="home-route">
@@ -23,6 +13,7 @@ const HomeRoute = ({ topics, photos, onPhotoClick }) => {
         createFavorite={createFavorite}
         deleteFavorite={deleteFavorite}
         onPhotoClick={onPhotoClick}
+        favPhotos={favPhotos}
       />
     </div>
   );
