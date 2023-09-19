@@ -10,7 +10,6 @@ const PhotoListItem = ({
   favPhotos,
 }) => {
   // update fav photos on each render when favClick changes
-
   const handleClick = (photo) => {
     if (!favPhotos?.includes(photo.id)) {
       createFavorite(photo.id);

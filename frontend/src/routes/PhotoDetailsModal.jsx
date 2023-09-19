@@ -24,8 +24,9 @@ const PhotoDetailsModal = ({
       .querySelector(".photo-details-modal ul li")
       .setAttribute("style", "border: none;margin-right:0");
   }, []);
-
+ 
   const similarPhotos = Object.values(photos[0].similar_photos);
+
   return (
     <div className="photo-details-modal">
       <button onClick={onClose} className="photo-details-modal__close-button">
