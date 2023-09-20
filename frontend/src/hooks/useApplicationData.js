@@ -8,7 +8,8 @@ const initialState = {
   photoData: [],
   topicData: [],
   selectedTopicId: null,
-  error: null
+  error: null,
+  viewFavorites: false
 };
 
 // Action types define the various operations that can modify the state.
@@ -20,7 +21,8 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SET_SELECTED_TOPIC: 'SET_SELECTED_TOPIC',
-  SET_ERROR: 'SET_ERROR'
+  SET_ERROR: 'SET_ERROR',
+  TOGGLE_VIEW_FAVORITES: 'TOGGLE_VIEW_FAVORITES'
 };
 
 // The reducer function processes dispatched actions and produces the next state.
@@ -38,6 +40,8 @@ function reducer(state, action) {
       return { ...state, isModalOpen: !state.isModalOpen };
     case ACTIONS.SET_PHOTO:
       return { ...state, selectedPhoto: action.payload };
+      case ACTIONS.TOGGLE_VIEW_FAVORITES:
+      return { ...state, viewFavorites: !state.viewFavorites };
     case ACTIONS.ADD_TO_FAVORITES:
       return { ...state, favoritedPhotoIds: [...state.favoritedPhotoIds, action.payload] };
     case ACTIONS.REMOVE_FROM_FAVORITES:
@@ -106,14 +110,17 @@ function useApplicationData() {
 
   // Handler functions
   // Toggles the favorited state of a photo by adding or removing its ID from the list.
-  const updateToFavPhotoIds = (photoId) => {
-    if (state.favoritedPhotoIds.includes(photoId)) {
-      dispatch({ type: ACTIONS.REMOVE_FROM_FAVORITES, payload: photoId });
+  const updateToFavPhotoIds = (photoData) => {
+    if (state.favoritedPhotoIds.some(photo => photo.id === photoData.id)) {
+      dispatch({ type: ACTIONS.REMOVE_FROM_FAVORITES, payload: photoData });
     } else {
-      dispatch({ type: ACTIONS.ADD_TO_FAVORITES, payload: photoId });
+      dispatch({ type: ACTIONS.ADD_TO_FAVORITES, payload: photoData });
     }
   };
 
+  const toggleFavoritesView = () => {
+    dispatch({ type: ACTIONS.TOGGLE_VIEW_FAVORITES });
+  };
   // Opens or closes the modal, and optionally sets the displayed photo.
   const togglePhotoModal = (photoData = null) => {
     dispatch({ type: ACTIONS.TOGGLE_MODAL });
@@ -128,7 +135,8 @@ function useApplicationData() {
     state,
     updateToFavPhotoIds,
     togglePhotoModal,
-    setTopicSelected
+    setTopicSelected,
+    toggleFavoritesView   
   };
 }
 
