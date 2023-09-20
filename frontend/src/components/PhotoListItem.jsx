@@ -6,12 +6,12 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({photo, favoritedPhotos, updateToFavPhotoIds, openModal}) => {
   const { username, imageSource, id, location, profile } = photo;
-  console.log(favoritedPhotos, "photolistitem");
+  
   return (
     <div className="photo-list__item">
       <PhotoFavButton photoId={id} favoritedPhotos={favoritedPhotos} updateToFavPhotoIds={updateToFavPhotoIds} />
       <img onClick={() => {
-      console.log("Item clicked, attempting to open modal");
+      
       openModal(photo)}}
   src={photo.urls.regular} 
   alt={`photo ${id}`} 

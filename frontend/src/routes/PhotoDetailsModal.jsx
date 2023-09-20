@@ -5,8 +5,8 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from '../components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ favoritedPhotos, updateToFavPhotoIds, photo, onClose, photos }) => {
-  const similarPhotos = photos.filter(p => p.user.username === photo.user.username && p.id !== photo.id);
+const PhotoDetailsModal = ({ favoritedPhotos, updateToFavPhotoIds, photo, onClose }) => {
+  const similarPhotos = photo.similar_photos;
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={onClose}>

@@ -5,9 +5,9 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton({ photoId, favoritedPhotos, updateToFavPhotoIds }) {
-  console.log(photoId, favoritedPhotos, "Photo");
+  
   const isActive = favoritedPhotos && favoritedPhotos.includes(photoId);
-console.log(isActive, "is active");
+
   const toggleFavoriteStatus = () => {
     
     

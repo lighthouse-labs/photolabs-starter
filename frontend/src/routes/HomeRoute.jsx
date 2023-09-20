@@ -27,3 +27,4 @@ const HomeRoute = ({ openModal, photos, topics, favoritedPhotos, setFavoritedPho
 };
 
 export default HomeRoute; 
+

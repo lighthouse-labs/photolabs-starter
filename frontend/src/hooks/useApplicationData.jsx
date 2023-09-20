@@ -57,10 +57,10 @@ const useApplicationData = () => {
   });
   
   
-   console.log("state", state);
+   
   // Existing actions
   const openModal = (photo) => {
-    console.log("Modal open function triggered", photo);
+    
     // dispatch({ type: ACTIONS.OPEN_MODAL });
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
   };
@@ -71,18 +71,18 @@ const useApplicationData = () => {
 
   // Add or remove a photo from favorites
   const updateToFavPhotoIds = (photoId) => {
-    console.log("does this", photoId);
+    
     if (state.favoritedPhotos.includes(photoId)) {
-      console.log("if");
+      
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photoId });
     } else {
-      console.log("else");
+      
       dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: photoId });
     }
   };
 
   useEffect(() => {
-    fetch('http://localhost:8001/api/photos') // Fetching from the provided API endpoint
+    fetch('/api/photos') // Fetching from the provided API endpoint
       .then(response => {
         if (response.ok) {
           return response.json(); // Parse the JSON response
@@ -98,7 +98,7 @@ const useApplicationData = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8001/api/topics') 
+    fetch('/api/topics') 
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -114,7 +114,7 @@ const useApplicationData = () => {
   }, []);
 
   const fetchPhotosByTopic = (topic_id) => {
-    fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
+    fetch(`/api/topics/photos/${topic_id}`)
       .then(response => response.json())
       .then(data => {
         dispatch({ type: ACTIONS.FETCH_BY_TOPIC, payload: data });

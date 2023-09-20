@@ -1,11 +1,12 @@
 import React from 'react';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.scss';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 import useApplicationData from 'hooks/useApplicationData';
+import LikedPhotosView from 'components/LikedPhotosView';
 
 
 const App = () => {
