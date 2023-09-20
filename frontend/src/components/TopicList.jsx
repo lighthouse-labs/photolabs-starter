@@ -10,7 +10,7 @@ const TopicList = (props) => {
   return (
     <ul className="top-nav-bar__topic-list">
       {topics.map((topic) => (
-        <TopicListItem key={topic.id} topicTitle={topic.title} handleImageFetch={props.handleImageFetch} />
+        <TopicListItem key={topic.id} topicTitle={topic.title} handleImageFetch={props.handleImageFetch} topicId={topic.id} />
       ))}
     </ul>
   );

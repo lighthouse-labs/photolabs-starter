@@ -91,8 +91,14 @@ export const useApplicationData = () => {
   }, []);
 
 
-  const handleImageFetch = (photoId) => {
+  const handleImageFetch = (topicId) => {
+    axios.get(`http://localhost:8001/api/topics/photos/${topicId}`).then((response) =>
 
+    dispatch({
+      type: ACTIONS.SET_PHOTO_DATA,
+      payload: response.data,
+    })
+  );
   }
 
 
@@ -135,6 +141,7 @@ export const useApplicationData = () => {
     state,
     isModalOpen: state.isModalOpen,
     selectedPhoto: state.selectedPhoto,
+    handleImageFetch,
     isFavPhotoExist,
     handleOnPhotoClick,
     handleCloseModal,
