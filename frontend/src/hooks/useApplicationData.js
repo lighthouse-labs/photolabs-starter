@@ -6,7 +6,8 @@ const initialState = {
   selectedPhoto: null,
   favoritedPhotoIds: [],
   photoData: [],
-  topicData: []
+  topicData: [],
+  selectedTopicId: null
 };
 
 // 2. Actions
@@ -16,12 +17,15 @@ export const ACTIONS = {
   ADD_TO_FAVORITES: 'ADD_TO_FAVORITES',
   REMOVE_FROM_FAVORITES: 'REMOVE_FROM_FAVORITES',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA'
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  SET_SELECTED_TOPIC: 'SET_SELECTED_TOPIC'
 };
 
 // 3. Reducer
 function reducer(state, action) {
   switch (action.type) {
+    case ACTIONS.SET_SELECTED_TOPIC:
+    return { ...state, selectedTopicId: action.payload };
     case ACTIONS.SET_PHOTO_DATA:
       return { ...state, photoData: action.payload}
       case ACTIONS.SET_TOPIC_DATA:
@@ -58,6 +62,20 @@ function useApplicationData() {
       })
   }, []);
 
+  useEffect(() => {
+    if (state.selectedTopicId) {
+    fetch(`/api/topics/photos/${state.selectedTopicId}`)
+      .then(res => res.json())
+      .then(data => {
+        dispatch({type: ACTIONS.SET_PHOTO_DATA, payload: data})
+      })
+    }
+  }, [state.selectedTopicId]);
+
+  const setTopicSelected = (topicId) => {
+    dispatch({ type: ACTIONS.SET_SELECTED_TOPIC, payload: topicId });
+  };
+
   const updateToFavPhotoIds = (photoId) => {
     if (state.favoritedPhotoIds.includes(photoId)) {
       dispatch({ type: ACTIONS.REMOVE_FROM_FAVORITES, payload: photoId });
@@ -80,7 +98,8 @@ function useApplicationData() {
     state,
     updateToFavPhotoIds,
     setPhotoSelected,
-    onClosePhotoDetailsModal
+    onClosePhotoDetailsModal,
+    setTopicSelected
   };
 }
 

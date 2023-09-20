@@ -9,7 +9,8 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 // Note: Rendering a single component to build components in isolation
 const App = () => { 
   const { 
-    state: { isModalOpen, selectedPhoto, favoritedPhotoIds, photoData, topicData  }, 
+    state: { isModalOpen, selectedPhoto, favoritedPhotoIds, photoData, topicData }, 
+    setTopicSelected,
     updateToFavPhotoIds, 
     setPhotoSelected, 
     onClosePhotoDetailsModal 
@@ -23,6 +24,7 @@ const App = () => {
         toggleModal={setPhotoSelected} 
         favoritedPhotoIds={favoritedPhotoIds}
         toggleFavorite={updateToFavPhotoIds}
+        topicSelect={setTopicSelected}
       />
       {isModalOpen &&
         <PhotoDetailsModal 
