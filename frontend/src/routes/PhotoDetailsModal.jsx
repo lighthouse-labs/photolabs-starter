@@ -18,8 +18,8 @@ const PhotoDetailsModal = ({ togglePhotoModal, photoData, favoritedPhotoIds, tog
     </button>
     <div className='photo-details-modal__images'>
     <PhotoFavButton 
-  isFavorited={favoritedPhotoIds.includes(photoData.id)}
-  toggleFavoritePhoto={() => toggleFavoritePhoto(photoData.id)} 
+  isFavorited={favoritedPhotoIds.some(photoObj => photoObj.id === photoData.id)}
+  toggleFavoritePhoto={() => toggleFavoritePhoto(photoData)} 
 />
     <img
         src={largerImageSource}

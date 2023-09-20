@@ -9,7 +9,7 @@ const PhotoList = ({ photos, favoritedPhotoIds = [], toggleFavoritePhoto, toggle
         <PhotoListItem 
           key={photoData.id} 
           photoData={photoData}
-          isFavorited={favoritedPhotoIds.includes(photoData.id)}
+          isFavorited={favoritedPhotoIds.some(photoObj => photoObj.id === photoData.id)}
           toggleFavoritePhoto={toggleFavoritePhoto}
           togglePhotoModal={togglePhotoModal}
           isInsideModal={isInsideModal} />
