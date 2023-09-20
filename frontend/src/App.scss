@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+.photo-list--item {
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  margin-right: 16px; //add space between items.
+}
+.user-photo {
+  width: 100%;
+  border-radius: 5px;
+}
+.user-profile {
+  width: 40%;
+  border-radius: 50%;
+}
+// .user-information{
+//   display: flex;
+//   justify-content: center;
+// }
