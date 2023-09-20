@@ -12,7 +12,7 @@ const PhotoListItem = ({ photoData, isFavorited, toggleFavoritePhoto, togglePhot
 <article className='photo-list__item'>
 <PhotoFavButton 
   isFavorited={isFavorited}
-  toggleFavoritePhoto={() => toggleFavoritePhoto(photoData.id)} 
+  toggleFavoritePhoto={() => toggleFavoritePhoto(photoData)} 
 />
     <img
         src={imageSource}
