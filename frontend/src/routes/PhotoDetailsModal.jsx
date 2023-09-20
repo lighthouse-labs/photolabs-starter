@@ -5,7 +5,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({ toggleModal, photoData, favoritedPhotoIds, toggleFavorite }) => {
+const PhotoDetailsModal = ({ togglePhotoModal, photoData, favoritedPhotoIds, toggleFavoritePhoto }) => {
   const { urls, location, user, similar_photos } = photoData;
   const largerImageSource = urls.full;
   const { username, profile } = user;
@@ -13,13 +13,13 @@ const PhotoDetailsModal = ({ toggleModal, photoData, favoritedPhotoIds, toggleFa
 
   return (
     <div className="photo-details-modal">
-    <button className="photo-details-modal__close-button" onClick={toggleModal}>
+    <button className="photo-details-modal__close-button" onClick={togglePhotoModal}>
         <img src={closeSymbol} alt="close symbol" />
     </button>
     <div className='photo-details-modal__images'>
     <PhotoFavButton 
   isFavorited={favoritedPhotoIds.includes(photoData.id)}
-  toggleFavorite={() => toggleFavorite(photoData.id)} 
+  toggleFavoritePhoto={() => toggleFavoritePhoto(photoData.id)} 
 />
     <img
         src={largerImageSource}
@@ -43,9 +43,9 @@ const PhotoDetailsModal = ({ toggleModal, photoData, favoritedPhotoIds, toggleFa
     <h3 className="photo-details-modal__images">Similar Photos</h3>
     <PhotoList 
       photos={similarPhotosArray} 
-      toggleModal={toggleModal}
       favoritedPhotoIds={favoritedPhotoIds}
-      toggleFavorite={toggleFavorite} />   
+      toggleFavoritePhoto={toggleFavoritePhoto}
+      isInsideModal={true} />   
 </div>
   )
 };
