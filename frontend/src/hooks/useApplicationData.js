@@ -1,9 +1,22 @@
 import { useReducer } from 'react';
+import { useEffect } from 'react';
 
 const initialState = {
   isModalVisible: false,
   selectedPhotoData: null,
   favoritedPhotoIds: [],
+  // Added empty arrays
+  photoData: [],
+  topicData: [],
+};
+
+// Added actions
+const ACTIONS = {
+  TOGGLE_FAVORITE: 'TOGGLE_FAVORITE',
+  OPEN_MODAL: 'OPEN_MODAL',
+  CLOSE_MODAL: 'CLOSE_MODAL',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
 };
 
 const reducer = (state, action) => {
@@ -32,6 +45,14 @@ const reducer = (state, action) => {
       selectedPhotoData: null,
       isModalVisible: false,
     }),
+    SET_PHOTO_DATA: () => ({
+      ...state,
+      photoData: action.payload, // Set the photoData from the payload
+    }),
+    SET_TOPIC_DATA: () => ({
+      ...state,
+      topicData: action.payload, // Set the topicData from the payload
+    }),
     default: () => state,
   };
 
@@ -39,19 +60,19 @@ const reducer = (state, action) => {
   return handler();
 };
 
-const useApplicationData = ()=> {
+const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const toggleFavorite = (photoId) => {
-    dispatch({ type: 'TOGGLE_FAVORITE', photoId });
+    dispatch({ type: ACTIONS.TOGGLE_FAVORITE, photoId });
   };
 
   const openModal = (photoData) => {
-    dispatch({ type: 'OPEN_MODAL', photoData });
+    dispatch({ type: ACTIONS.OPEN_MODAL, photoData });
   };
 
   const closeModal = () => {
-    dispatch({ type: 'CLOSE_MODAL' });
+    dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
 
   return {
