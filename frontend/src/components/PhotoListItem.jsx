@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photoData, isFavorited, toggleFavorite, toggleModal }) => {
+const PhotoListItem = ({ photoData, isFavorited, toggleFavoritePhoto, togglePhotoModal, isInsideModal }) => {
     const { urls, location, user } = photoData;
     const { regular: imageSource } = urls;
     const { username, profile } = user;
@@ -12,14 +12,18 @@ const PhotoListItem = ({ photoData, isFavorited, toggleFavorite, toggleModal }) 
 <article className='photo-list__item'>
 <PhotoFavButton 
   isFavorited={isFavorited}
-  toggleFavorite={() => toggleFavorite(photoData.id)} 
+  toggleFavoritePhoto={() => toggleFavoritePhoto(photoData.id)} 
 />
     <img
         src={imageSource}
         alt={`Photo taken in ${location.city}, ${location.country}`}
         className='photo-list__image'
-        onClick={() => toggleModal(photoData)}
-    />
+        onClick={() => {
+            if (!isInsideModal) {
+              togglePhotoModal(photoData);
+            }
+          }}
+        />
     
     <footer className='Photo-footer'>
         <div className='photo-list__user-details'>
