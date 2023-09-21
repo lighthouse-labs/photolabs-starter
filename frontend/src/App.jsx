@@ -15,6 +15,7 @@ const App = () => {
     topicData,
     createFavorite,
     deleteFavorite,
+    selectTopic,
     handleClick,
     handleClose,
   } = useApplicationData();
@@ -32,6 +33,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
+        onSelect={selectTopic}
         topics={topicData}
         photos={photoData}
         onPhotoClick={handleClick}

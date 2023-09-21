@@ -9,11 +9,12 @@ const HomeRoute = ({
   onPhotoClick,
   deleteFavorite,
   createFavorite,
+  onSelect,
   favPhotos,
 }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} isFavPhotoExist={favPhotos.length} />
+      <TopNavigationBar onSelect={onSelect} topics={topics} isFavPhotoExist={favPhotos.length} />
       <PhotoList
         photos={photos}
         createFavorite={createFavorite}
