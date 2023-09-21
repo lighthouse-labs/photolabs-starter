@@ -10,7 +10,9 @@ const PhotoDetailsModal = ({
   deleteFavorite,
   favPhotos,
 }) => {
-  //style the top image
+
+  // Perform side effect in modal component
+  // Directly update the DOM with new styling
   useEffect(() => {
     const mainImage = document.querySelector(
       ".photo-details-modal  #single-image"
@@ -25,8 +27,9 @@ const PhotoDetailsModal = ({
       .querySelector(".photo-details-modal ul li")
       .setAttribute("style", "border: none;margin-right:0");
       
-  }, []);
+  }, [photos]);
  
+  // create an array of similar photos
   const similarPhotos = Object.values(photos[0].similar_photos);
 
   return (

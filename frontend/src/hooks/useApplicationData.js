@@ -1,42 +1,8 @@
 import { useReducer, useEffect } from "react";
+import ACTIONS from "./helper-actions";
+import reducer from "./helper-reducer";
 
-const ACTIONS = {
-  FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
-  FAV_PHOTO_REMOVED: "FAV_PHOTO_REMOVED",
-  SET_PHOTO_DATA: "SET_PHOTO_DATA",
-  SET_TOPIC_DATA: "SET_TOPIC_DATA",
-  SELECT_PHOTO: "SELECT_PHOTO",
-  DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
-  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
-};
-
-const useApplicationData = function() {
-  //reducer function that sets state
-  const reducer = function(state, action) {
-    switch (action.type) {
-    case "FAV_PHOTO_ADDED":
-      return { ...state, favPhotos: [...state.favPhotos, action.id] };
-    case "FAV_PHOTO_REMOVED":
-      return {
-        ...state,
-        favPhotos: state.favPhotos.filter((favId) => favId !== action.id),
-      };
-    case "SELECT_PHOTO":
-      return { ...state, showPhotoDetails: [action.photoDetails] };
-    case "DISPLAY_PHOTO_DETAILS":
-      return { ...state, showModal: action.value };
-    case "SET_PHOTO_DATA":
-      return { ...state, photoData: action.value };
-    case "SET_TOPIC_DATA":
-      return { ...state, topicData: action.value };
-    case "GET_PHOTOS_BY_TOPICS":
-      return { ...state, topicId: action.id };
-    default:
-      throw new Error(
-        `Tried to reduce with unsupported action type: ${action.type}`
-      );
-    }
-  };
+const useApplicationData = () => {
 
   // initialze the reducer with default states
   const [state, dispatch] = useReducer(reducer, {
@@ -57,6 +23,10 @@ const useApplicationData = function() {
     topicData,
     topicId,
   } = state;
+
+  /********************/
+  /* UseEffect Hooks */
+  /*******************/
 
   // Fetch photos from API
   useEffect(() => {
@@ -90,31 +60,36 @@ const useApplicationData = function() {
     }
   }, [topicId]);
 
-  //selectTopic
+  /********************/
+  /* Event Handlers  */
+  /*******************/
+
+  //selectTopic handler
   const selectTopic = (id) => {
     dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, id });
   };
 
-  //Create new favourite
+  //Create new favourite handler
   const createFavorite = (id) => {
     dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, id });
   };
 
-  //Delete new favourite
+  //Delete new favourite handler
   const deleteFavorite = (id) => {
     dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, id });
   };
 
-  //handle click on photo
+  //handle click on photo handler
   const handleClick = (photoDetails) => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, value: true });
     dispatch({ type: ACTIONS.SELECT_PHOTO, photoDetails });
   };
 
-  //handle click on close button of modal
+  //handle click on close button of modal handler
   const handleClose = () => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, value: false });
   };
+
 
   return {
     showModal,
@@ -126,8 +101,7 @@ const useApplicationData = function() {
     deleteFavorite,
     handleClick,
     handleClose,
-    selectTopic,
-    reducer,
+    selectTopic
   };
 };
 

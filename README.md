@@ -1,7 +1,20 @@
 # react-photolabs
-The PhotoLabs project for the Web Development React course programming.
 
-# Photolabs
+Introducing PhotoLabs, your gateway to a world of stunning visuals! 📸
+
+🖼️ Are you looking for high-quality stock photos for your projects? Look no further! PhotoLabs is a sleek and efficient React-based single-page application designed to make your photo exploration effortless and enjoyable.
+
+🌟 With PhotoLabs, you can explore photos in various contexts – whether you need captivating images for your website, blog, or marketing materials, we've got you covered. Our user-friendly interface allows you to seamlessly browse through a diverse collection of images.
+
+# Photolabs Screenshots
+
+## Landing page
+
+[Landing page]()
+
+## Travel topic view
+
+[Travel topic view]()
 
 ## Setup
 
