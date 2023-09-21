@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./src/index.js",
     "error": "TEST_ERROR=true node ./src/index.js",
+    "local": "npx nodemon -L server",
     "reset": "psql -U development -d photolabs_development < ./src/db/schema/create.sql && psql -U development -d photolabs_development < ./src/db/schema/development.sql"
   },
   "author": "",
@@ -16,6 +17,7 @@
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "helmet": "^3.18.0",
+    "morgan": "^1.10.0",
     "pg": "^8.5.0",
     "socket.io": "^2.2.0",
     "ws": "^7.0.0"

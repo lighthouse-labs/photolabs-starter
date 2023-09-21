@@ -18,11 +18,13 @@ const PhotoDetailsModal = ({
 
     mainImage.classList.add("photo-details-modal__image");
     mainImage.classList.remove("photo-list__image");
-    // mainImage.setAttribute("src", `${photos[0].urls.full}`);
-
+    mainImage.setAttribute("src", `${photos[0].urls.full}`);
+    
+    //remove border from image container and and remove margin-right
     document
       .querySelector(".photo-details-modal ul li")
       .setAttribute("style", "border: none;margin-right:0");
+      
   }, []);
  
   const similarPhotos = Object.values(photos[0].similar_photos);

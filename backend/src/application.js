@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const morgan = require("morgan"); 
 
 const express = require("express");
 const bodyparser = require("body-parser");
@@ -31,6 +32,7 @@ function read(file) {
 module.exports = function application(
   ENV,
 ) {
+  app.use(morgan("dev"));
   app.use(cors());
   app.use(helmet());
   app.use(bodyparser.json());

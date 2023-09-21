@@ -30,12 +30,14 @@ const PhotoListItem = ({
           id="single-image"
           className="photo-list__image"
           src={photoListData.urls.regular}
+          alt="photograph"
         />
       </div>
       <div className="photo-list__user-details">
         <img
           className="photo-list__user-profile"
           src={photoListData.user.profile}
+          alt="photograph"
         />
 
         <div className="photo-list__user-info">

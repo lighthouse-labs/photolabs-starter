@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
 const ACTIONS = {
   FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
@@ -10,7 +10,6 @@ const ACTIONS = {
 };
 
 const useApplicationData = function() {
-
   //reducer function that sets state
   const reducer = function(state, action) {
     switch (action.type) {
@@ -25,6 +24,10 @@ const useApplicationData = function() {
       return { ...state, showPhotoDetails: [action.photoDetails] };
     case "DISPLAY_PHOTO_DETAILS":
       return { ...state, showModal: action.value };
+    case "SET_PHOTO_DATA":
+      return { ...state, photoData: action.value };
+    case "SET_TOPIC_DATA":
+      return { ...state, topicData: action.value };
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -37,10 +40,30 @@ const useApplicationData = function() {
     favPhotos: [],
     showPhotoDetails: [],
     showModal: false,
+    photoData: [],
+    topicData: [],
   });
 
   // destructure states
-  const { favPhotos, showPhotoDetails, showModal } = state;
+  const { favPhotos, showPhotoDetails, showModal, photoData, topicData } = state;
+
+  // Fetch photos from API
+  useEffect(() => {
+    fetch("/api/photos")
+      .then((res) => res.json())
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, value: data })
+      );
+  }, []);
+
+  // Fetch topics from API
+  useEffect(() => {
+    fetch("/api/topics")
+      .then((res) => res.json())
+      .then((data) =>
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, value: data })
+      );
+  }, []);
 
   //Create new favourite
   const createFavorite = (id) => {
@@ -54,19 +77,21 @@ const useApplicationData = function() {
 
   //handle clickk on photo
   const handleClick = (photoDetails) => {
-    dispatch({type: ACTIONS.DISPLAY_PHOTO_DETAILS, value:true});
-    dispatch({type: ACTIONS.SELECT_PHOTO, photoDetails});
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, value: true });
+    dispatch({ type: ACTIONS.SELECT_PHOTO, photoDetails });
   };
 
   //handle click on close button of modal
   const handleClose = () => {
-    dispatch({type: ACTIONS.DISPLAY_PHOTO_DETAILS, value:false});
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, value: false });
   };
 
   return {
     showModal,
     showPhotoDetails,
     favPhotos,
+    photoData,
+    topicData,
     createFavorite,
     deleteFavorite,
     handleClick,

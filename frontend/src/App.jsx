@@ -1,7 +1,5 @@
 import React from "react";
 import HomeRoute from "./routes/HomeRoute";
-import photos from "./mocks/photos";
-import topics from "./mocks/topics";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
 
@@ -13,6 +11,8 @@ const App = () => {
     showModal,
     showPhotoDetails,
     favPhotos,
+    photoData,
+    topicData,
     createFavorite,
     deleteFavorite,
     handleClick,
@@ -32,8 +32,8 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        topics={topics}
-        photos={photos}
+        topics={topicData}
+        photos={photoData}
         onPhotoClick={handleClick}
         createFavorite={createFavorite}
         deleteFavorite={deleteFavorite}
