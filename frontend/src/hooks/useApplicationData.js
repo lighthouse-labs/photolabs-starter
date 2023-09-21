@@ -3,7 +3,6 @@ import ACTIONS from "./helper-actions";
 import reducer from "./helper-reducer";
 
 const useApplicationData = () => {
-
   // initialze the reducer with default states
   const [state, dispatch] = useReducer(reducer, {
     favPhotos: [],
@@ -90,7 +89,6 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, value: false });
   };
 
-
   return {
     showModal,
     showPhotoDetails,
@@ -101,7 +99,7 @@ const useApplicationData = () => {
     deleteFavorite,
     handleClick,
     handleClose,
-    selectTopic
+    selectTopic,
   };
 };
 
