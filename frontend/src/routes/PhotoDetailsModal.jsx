@@ -10,6 +10,9 @@ const PhotoDetailsModal = (props) => {
   console.log("Selected photo", selectedPhoto);
   const imageUrl = selectedPhoto.urls.regular;
   const name = selectedPhoto.user.name;
+
+  //const {city, country} = selectedPhoto.location;
+
   const locationCity = selectedPhoto.location.city;
   const locationCountry = selectedPhoto.location.country;
   const similarPhotos = Object.values(selectedPhoto.similar_photos);
