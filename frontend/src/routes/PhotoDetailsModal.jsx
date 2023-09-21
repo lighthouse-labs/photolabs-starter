@@ -16,7 +16,6 @@ const PhotoDetailsModal = (props) => {
   const userName = selectedPhoto.user.username;
   const profileForPhotographer = selectedPhoto.user.profile;
 
-  console.log("Am I here", similarPhotos);
   return (
     <div className="photo-details-modal">
       <button
@@ -51,35 +50,6 @@ const PhotoDetailsModal = (props) => {
         </div>
       </div>
 
-      {/* <div className="photo-details-modal__images">
-        {Object.values(similarPhotos).map((photo) => (
-          <li key={photo.id}>
-            <PhotoFavButton
-              photo={photo}
-              addFavourite={props.toggleFavourite}
-            />
-            <img
-              className="photo-details-modal__image"
-              src={photo.urls.regular}
-              alt="photo_display_similar"
-            />
-
-            <div className="photo-details-modal__photographer-details">
-              <img
-                className="photo-details-modalphotographer-profile"
-                src={photo.user.profile}
-                alt={photo.user.username}
-              />
-              <div className="photo-details-modal__photographer-info">
-                {photo.user.name}
-                <div className="photo-details-modalphotographer-location">
-                  {photo.location.city},{photo.location.country}
-                </div>
-              </div>
-            </div>
-          </li>
-        ))}
-      </div> */}
       <PhotoList
         photos={similarPhotos}
         toggleFavourite={props.toggleFavourite}

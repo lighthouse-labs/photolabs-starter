@@ -2,7 +2,7 @@ import React from "react";
 import PhotoFavButton from "./PhotoFavButton";
 
 import "../styles/PhotoListItem.scss";
-import TopicListItem from "./TopicListItem";
+
 const PhotoListItem = (props) => {
   return (
     <li
@@ -31,6 +31,8 @@ const PhotoListItem = (props) => {
     </li>
   );
 };
+
+/****Default photo item */
 PhotoListItem.defaultProps = {
   imageSource: "Rahul",
   profile: "deepblue",

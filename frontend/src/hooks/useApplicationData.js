@@ -1,13 +1,11 @@
 import { useState, useReducer, useEffect } from "react";
 import axios from "axios";
-import photos from "mocks/photos";
 
 const photoState = "http://localhost:8001/api/photos";
 const topicState = "http://localhost:8001/api/topics";
-const topicStateById = "http://localhost:8001/api/topics/photos/:topic_id";
 
 export const ACTIONS = {
-  GET_PHOTOS_BY_TOPICS:"GET_PHOTOS_BY_TOPICS",
+  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
   FAV_PHOTO_ADDED: "FAV_PHOTO_ADDED",
   FAV_PHOTO_REMOVED: "FAV_PHOTO_REMOVED",
   SET_PHOTO_DATA: "SET_PHOTO_DATA",
@@ -59,11 +57,11 @@ const reducer = (state, action) => {
           (photos) => photos != action.payload
         ),
       };
-      case "GET_PHOTOS_BY_TOPICS":
-        return{
-          ...state,
-          selectedTopic: action.payload,
-        }
+    case "GET_PHOTOS_BY_TOPICS":
+      return {
+        ...state,
+        selectedTopic: action.payload,
+      };
     default:
       return state;
   }
@@ -73,36 +71,45 @@ export const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    axios.get(photoState).then((response) =>
-      dispatch({
-        type: ACTIONS.SET_PHOTO_DATA,
-        payload: response.data,
-      })
-    );
+    axios
+      .get(photoState)
+      .then((response) =>
+        dispatch({
+          type: ACTIONS.SET_PHOTO_DATA,
+          payload: response.data,
+        })
+      )
+      .catch((error) => {
+        console.error("API Error:", error);
+      });
   }, []);
   useEffect(() => {
-    axios.get(topicState).then((response) =>
-
-      dispatch({
-        type: ACTIONS.SET_TOPIC_DATA,
-        payload: response.data,
-      })
-    );
+    axios
+      .get(topicState)
+      .then((response) =>
+        dispatch({
+          type: ACTIONS.SET_TOPIC_DATA,
+          payload: response.data,
+        })
+      )
+      .catch((error) => {
+        console.error("API Error:", error);
+      });
   }, []);
 
-
   const handleImageFetch = (topicId) => {
-    axios.get(`http://localhost:8001/api/topics/photos/${topicId}`).then((response) =>
-
-    dispatch({
-      type: ACTIONS.SET_PHOTO_DATA,
-      payload: response.data,
-    })
-  );
-  }
-
-
-
+    axios
+      .get(`http://localhost:8001/api/topics/photos/${topicId}`)
+      .then((response) =>
+        dispatch({
+          type: ACTIONS.SET_PHOTO_DATA,
+          payload: response.data,
+        })
+      )
+      .catch((error) => {
+        console.error("API Error:", error);
+      });
+  };
 
   const handleOnPhotoClick = (photo) => {
     dispatch({

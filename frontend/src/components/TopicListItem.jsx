@@ -10,10 +10,13 @@ const sampleDataForTopicListItem = {
 
 const TopicListItem = (props) => {
   return (
-    <li className="topic-list__item" onClick={() => {
-      props.handleImageFetch(props.topicId)
-      }}>
-     <span>{props.topicTitle}</span>
+    <li
+      className="topic-list__item"
+      onClick={() => {
+        props.handleImageFetch(props.topicId);
+      }}
+    >
+      <span>{props.topicTitle}</span>
     </li>
   );
 };
