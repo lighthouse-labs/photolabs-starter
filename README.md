@@ -10,11 +10,11 @@ Introducing PhotoLabs, your gateway to a world of stunning visuals! 📸
 
 ## Landing page
 
-[Landing page]()
+![Landing page](https://github.com/ascotlan/photolabs-starter/blob/main/frontend/docs/landing-page.png "Landing page")
 
 ## Travel topic view
 
-[Travel topic view]()
+![Travel topic view](https://github.com/ascotlan/photolabs-starter/blob/main/frontend/docs/photo-topic--travel.png "Landing page")
 
 ## Setup
 
