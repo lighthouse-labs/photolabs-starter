@@ -26,21 +26,21 @@ npm start
 ## File structure
 
 #### backend
-     #### `src`
-     #### `README FILE`
+     #### src
+     #### README FILE
 
 #### frontend
-    #### `src`
-        #### `components`
-        #### `hooks`
-        #### `routes`
-        #### `app.jsx`
-        #### `styles`
+    #### src
+        #### components
+        #### hooks
+        #### routes
+        #### app.jsx
+        #### styles
 
 ## PhotoLab's features
 
  * [**Display**] all photos from API.
- * [** Display**] all topics from API.
+ * [**Display**] all topics from API.
  * User can see [ **larger version**] of photo by clicking on it.
  * User can see [**Similar photos**] of the selected photo.
  * User can [**like**] a photo.
