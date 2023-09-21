@@ -1,8 +1,8 @@
 import { useState, useReducer, useEffect } from "react";
 import axios from "axios";
 
-const photoState = "http://localhost:8001/api/photos";
-const topicState = "http://localhost:8001/api/topics";
+const photoState = "/api/photos";//api/photos
+const topicState = "/api/topics";
 
 export const ACTIONS = {
   GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
