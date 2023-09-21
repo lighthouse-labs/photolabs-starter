@@ -1,8 +1,9 @@
 import { useState, useReducer, useEffect } from "react";
 import axios from "axios";
 
-const photoState = "/api/photos";//api/photos
+const photoState = "/api/photos"; //api/photos
 const topicState = "/api/topics";
+const searchItem = "/api/photos/search";
 
 export const ACTIONS = {
   GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS",
@@ -14,6 +15,7 @@ export const ACTIONS = {
   DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
   TOGGLE_MODAL: "TOGGLE_MODAL",
   SELECTED_PHOTO_DETAIL: "SELECTED_PHOTO_DETAILS",
+  SEARCH_PHOTO: "SEARCH_PHOTO",
 };
 const initialState = {
   isModalOpen: false,
@@ -22,6 +24,7 @@ const initialState = {
   isFavorited: [],
   photos: [], // added property for photos data
   topics: [], // added property for topics data
+  searchPhoto: [],
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -34,6 +37,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         topics: action.payload,
+      };
+    case "SEARCH_PHOTO":
+      return {
+        ...state,
+        searchPhoto: action.payload,
       };
     case "TOGGLE_MODAL":
       return {
@@ -99,10 +107,10 @@ export const useApplicationData = () => {
 
   const handleImageFetch = (topicId) => {
     axios
-      .get(`http://localhost:8001/api/topics/photos/${topicId}`)
+      .get(`api/topics/photos/${topicId}`)
       .then((response) =>
         dispatch({
-          type: ACTIONS.SET_PHOTO_DATA,
+          type: ACTIONS.SEARCH_PHOTO,
           payload: response.data,
         })
       )
@@ -110,6 +118,22 @@ export const useApplicationData = () => {
         console.error("API Error:", error);
       });
   };
+
+  const handleSearch = (photo) => {
+
+    axios
+    .get(`/api/search/${photo}`)
+    .then((response) =>
+      dispatch({
+        type: ACTIONS.SET_PHOTO_DATA,
+        payload: response.data,
+      })
+    )
+    .catch((error) => {
+      console.error("API Error:", error);
+    });
+    console.log(`Searching for: ${photo}`);
+  }
 
   const handleOnPhotoClick = (photo) => {
     dispatch({
@@ -153,6 +177,7 @@ export const useApplicationData = () => {
     handleOnPhotoClick,
     handleCloseModal,
     toggleFavourite,
+    handleSearch,
   };
 };
 //its adding whole array of object(photo) in isfavourited.

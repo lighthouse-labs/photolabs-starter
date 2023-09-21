@@ -12,6 +12,7 @@ const db = require("./db")
 
 const photos = require("./routes/photos");
 const topics = require("./routes/topics");
+const searchPhotos = require("./routes/searchPhotos");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -38,6 +39,7 @@ module.exports = function application(
 
   app.use("/api", photos(db));
   app.use("/api", topics(db));
+  app.use("/api", searchPhotos(db));
 
   if (ENV === "development" || ENV === "test") {
     Promise.all([

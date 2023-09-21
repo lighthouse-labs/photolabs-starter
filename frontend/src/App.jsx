@@ -17,6 +17,7 @@ const App = () => {
     handleOnPhotoClick,
     handleCloseModal,
     toggleFavourite,
+    handleSearch,
   } = useApplicationData();
 
   return (
@@ -28,6 +29,7 @@ const App = () => {
         onPhotoClick={handleOnPhotoClick}
         isFavPhotoExist={isFavPhotoExist}
         toggleFavourite={toggleFavourite}
+        handleSearch={handleSearch}
       />
       {isModalOpen && (
         <PhotoDetailsModal
