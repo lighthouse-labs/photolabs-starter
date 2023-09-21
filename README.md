@@ -1,4 +1,4 @@
-# react-photolabs
+# React-photolabs
 
 Introducing PhotoLabs, your gateway to a world of stunning visuals! 📸
 
@@ -12,9 +12,9 @@ Introducing PhotoLabs, your gateway to a world of stunning visuals! 📸
 
 ![Landing page](https://github.com/ascotlan/photolabs-starter/blob/main/frontend/docs/landing-page.png "Landing page")
 
-## Travel topic view
+## Modal view
 
-![Travel topic view](https://github.com/ascotlan/photolabs-starter/blob/main/frontend/docs/photo-topic--travel.png "Landing page")
+![Modal view](https://github.com/ascotlan/photolabs-starter/blob/main/frontend/docs/modal-view.png "Modal view")
 
 ## Setup
 
