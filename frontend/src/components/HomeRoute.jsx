@@ -10,7 +10,7 @@ const HomeRoute = (props) => {
     toggleFavorite,
     photoData,
     topicData,
-    dispatch,
+    fetchPhotosByTopic,
     setPhotoData,
     setTopicData,
   } = useApplicationData();
@@ -22,7 +22,7 @@ const HomeRoute = (props) => {
     fetch('http://localhost:8001/api/photos')
       .then((response) => response.json())
       .then((data) => {
-        setPhotoData(data); // Set photoData in state
+        setPhotoData(data);
       })
       .catch((error) => console.error('Error fetching photo data:', error));
 
@@ -30,18 +30,17 @@ const HomeRoute = (props) => {
     fetch('http://localhost:8001/api/topics')
       .then((response) => response.json())
       .then((data) => {
-        setTopicData(data); // Set topicData in state
+        setTopicData(data);
       })
       .catch((error) => console.error('Error fetching topic data:', error));
-  }, [photoData, topicData]);
+  }, []);
 
   const handleTopicClick = (topicId) => {
     setSelectedTopic(topicId); // Set the selected topic
-    // Fetch photos for the selected topic
-    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
-      .then((response) => response.json())
+    // Fetch photos for the selected topic using the new function
+    fetchPhotosByTopic(topicId)
       .then((data) => {
-        setPhotoData(data); // Set photoData in state with photos for the selected topic
+        setPhotoData(data);
       })
       .catch((error) => console.error(`Error fetching photos for topic ${topicId}:`, error));
   };
@@ -52,7 +51,7 @@ const HomeRoute = (props) => {
         favoritedCount={favoritedPhotoIds.length}
         favoritedPhotoIds={favoritedPhotoIds}
         toggleFavorite={toggleFavorite}
-        onSelectTopic={handleTopicClick} // Pass the handleTopicClick function as a prop
+        onSelectTopic={handleTopicClick}
         topicData={topicData}
       />
       <PhotoList

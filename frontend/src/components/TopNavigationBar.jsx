@@ -5,9 +5,10 @@ import '../styles/TopNavigationBar.scss';
 
 const TopNavigation = (props) => {
   const isAnyPhotoFavorited = props.favoritedCount > 0;
-
+  const topicData = props.topicData;
+  console.log("TopNavTopicData", topicData);
   const handleTopicClick = (topicId) => {
-    // Call the onSelectTopic function passed from props
+    // Call the onSelectTopic function
     if (props.onSelectTopic) {
       props.onSelectTopic(topicId);
     }
@@ -18,7 +19,9 @@ const TopNavigation = (props) => {
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <div className="top-nav-bar__right">
         <span className='nav-topics'>
-          <TopicList onSelectTopic={handleTopicClick} />
+          <TopicList
+            onSelectTopic={handleTopicClick}
+            topicData={topicData}/>
         </span>
         <span className='nav-fav'>
           <FavBadge isAnyPhotoFavorited={isAnyPhotoFavorited} displayAlert={true} />
