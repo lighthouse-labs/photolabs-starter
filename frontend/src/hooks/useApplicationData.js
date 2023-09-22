@@ -103,6 +103,7 @@ const useApplicationData = () => {
           topicId,
           payload: data,
         });
+        return data;
       })
       .catch((error) => {
         console.error(`Error fetching photos for topic ${topicId}:`, error);

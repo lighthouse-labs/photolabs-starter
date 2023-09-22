@@ -9,8 +9,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = ({ closeModal, isModalVisible, selectedPhotoData, favoritedPhotoIds, toggleFavorite }) => {
   const { id, user, location, urls, similar_photos } = selectedPhotoData || {};
-  console.log('photo data', selectedPhotoData);
-  console.log('favphotoids is', favoritedPhotoIds);
+  console.log('open modal is working');
   const handleButtonClick = () => {
     if (isModalVisible) {
       closeModal(); // Close the modal if it's open
@@ -51,7 +50,7 @@ const PhotoDetailsModal = ({ closeModal, isModalVisible, selectedPhotoData, favo
         <PhotoList
           favoritedPhotoIds={favoritedPhotoIds}
           toggleFavorite={toggleFavorite}
-          photos={Object.values(similar_photos)}
+          photoData={Object.values(similar_photos)}
         />
       </div>
     </div>
