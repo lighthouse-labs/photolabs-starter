@@ -11,8 +11,7 @@ const PhotoDetailsModal = ({
   selectedPhotoHandler,
   photos,
   selectedPhoto,
-  setModalHandler,
-  setClickedPhoto
+  setModalHandler
 }) => {
   //function to get the similar photos
   const getSimilarPhotos = (arr, id) => {
@@ -65,7 +64,6 @@ const PhotoDetailsModal = ({
           selectedPhotoHandler={selectedPhotoHandler}
           isFavourite={isFavourite}
           setModalHandler={setModalHandler}
-          setClickedPhoto={setClickedPhoto}
           similarPhotos={similarPhotos}
         />
       </div>

@@ -3,27 +3,46 @@ import { useReducer, useState } from 'react';
 
 export const ACTIONS = {
   ADD_FAV_PHOTO: 'ADD_FAV_PHOTO',
-  REMOVE_FAV_PHOTO: 'REMOVE_FAV_PHOTO'
+  REMOVE_FAV_PHOTO: 'REMOVE_FAV_PHOTO',
+  OPEN_PHOTO_DETAILS_MODAL: 'OPEN_PHOTO_DETAILS_MODAL',
+  SET_CLICKED_PHOTO: 'SET_CLICKED_PHOTO',
+  CLOSE_PHOTO_DETAILS_MODAL: 'CLOSE_PHOTO_DETAILS_MODAL'
 };
 
 function reducer(state, action) {
-  console.log('action :', action);
   switch (action.type) {
     case ACTIONS.ADD_FAV_PHOTO:
-      // if (!state.favourites.includes(action.photoId)) {
       const newFavourites = [...state.favourites, action.photoId];
       return {
         favourites: newFavourites
       };
-    // }
 
     case ACTIONS.REMOVE_FAV_PHOTO: {
-      // if (state.favourites.includes(action.photoId)) {
-      const newFavourites = [...state.favourites].filter((photoId) => photoId !== action.photoId);
+      const newFavourites = [...state.favourites].filter((id) => id !== action.photoId);
       return {
         favourites: newFavourites
       };
-      // }
+    }
+
+    case ACTIONS.OPEN_PHOTO_DETAILS_MODAL: {
+      return {
+        ...state,
+        isModalOpen: true
+      };
+    }
+    case ACTIONS.SET_CLICKED_PHOTO: {
+      const currentPhoto = photos.find((photo) => photo.id === action.id);
+      console.log('currentPhoto :', currentPhoto, action.id);
+      return {
+        ...state,
+        clickedPhoto: currentPhoto
+      };
+    }
+    case ACTIONS.CLOSE_PHOTO_DETAILS_MODAL: {
+      return {
+        ...state,
+        isModalOpen: false
+      };
     }
     default:
       throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
@@ -32,33 +51,22 @@ function reducer(state, action) {
 
 export const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, {
-    favourites: []
+    favourites: [],
+    isModalOpen: false,
+    clickedPhoto: null
   });
-  //state to contain all the favourited photos
-  // const [favourites, setFavourites] = useState([]);
 
-  //set as state to check if the modal is open or not
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  //setting state to show the currently clicked photo
-  const [clickedPhoto, setClickedPhoto] = useState(null);
-
-  const selectedPhoto = (photoDataId) => {
+  const selectedPhoto = (photoId) => {
     //checks if photoId exists in the selected array, if it does it removes from the array and resets the selected state
-    if (state.favourites.includes(photoDataId)) {
-      // const copyFavourites = [...favourites].filter((photoId) => photoId !== photoDataId);
-      // setFavourites(copyFavourites);
+    if (state.favourites.includes(photoId)) {
       dispatch({
         type: ACTIONS.REMOVE_FAV_PHOTO,
-        // payload: { photoId: photoDataId },
-        photoId: photoDataId
+        photoId: photoId
       });
     } else {
-      // setFavourites((prevState) => [...prevState, photoDataId]);
       dispatch({
         type: ACTIONS.ADD_FAV_PHOTO,
-        // payload: { photoId: photoDataId },
-        photoId: photoDataId
+        photoId: photoId
       });
     }
   };
@@ -67,36 +75,42 @@ export const useApplicationData = () => {
     selectedPhoto(id);
   };
 
-  const isFavourite = (photoDataId) => {
+  const isFavourite = (photoId) => {
     //should return true if the id exists in the selected array
-    return state.favourites.includes(photoDataId);
+    return state.favourites.includes(photoId);
   };
 
-  const isFavPhotoExist = (arr) => arr.length > 0; //checks if any photo has been liked
+  const isFavPhotoExist = () => state.favourites.length > 0; //checks if any photo has been liked
 
   //function to change modal state
   const setModalHandler = (id) => {
-    setIsModalOpen(true);
-    //current photo is the result of a search through photos array to get photo with the selected id
-    const currentPhoto = photos.find((photo) => photo.id === id);
-    setClickedPhoto(currentPhoto);
+    dispatch({
+      type: ACTIONS.OPEN_PHOTO_DETAILS_MODAL,
+      display: true
+    });
+
+    dispatch({
+      type: ACTIONS.SET_CLICKED_PHOTO,
+      id: id
+    });
   };
 
   // function to close modal
   const closeModal = () => {
-    setIsModalOpen(false);
+    dispatch({
+      type: ACTIONS.CLOSE_PHOTO_DETAILS_MODAL
+    });
   };
 
   return {
     favourites: state.favourites,
-    isModalOpen,
-    clickedPhoto,
+    isModalOpen: state.isModalOpen,
+    clickedPhoto: state.clickedPhoto,
     isFavourite,
     isFavPhotoExist,
     setModalHandler,
     selectedPhoto,
     selectedPhotoHandler,
-    setClickedPhoto,
     closeModal,
     photos
   };

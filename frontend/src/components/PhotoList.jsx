@@ -7,7 +7,6 @@ const PhotoList = ({
   selectedPhotoHandler,
   isFavourite,
   setModalHandler,
-  setClickedPhoto,
   similarPhotos
 }) => {
   // console.log('similarPhotos :', similarPhotos);
@@ -21,7 +20,7 @@ const PhotoList = ({
           photo={photo}
           isFavourite={isFavourite}
           selectedPhotoHandler={selectedPhotoHandler}
-          setClickedPhoto={setClickedPhoto}
+          // setClickedPhoto={setClickedPhoto}
           setModalHandler={setModalHandler}
         />
       </li>

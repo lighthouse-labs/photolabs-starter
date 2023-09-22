@@ -13,7 +13,7 @@ const HomeRoute = ({
   isFavourite,
   isFavPhotoExist,
   setModalHandler,
-  setClickedPhoto
+  
 }) => {
   return (
     <div className="home-route">
@@ -24,7 +24,7 @@ const HomeRoute = ({
         selectedPhotoHandler={selectedPhotoHandler}
         isFavourite={isFavourite}
         setModalHandler={setModalHandler}
-        setClickedPhoto={setClickedPhoto}
+        
       />
     </div>
   );
