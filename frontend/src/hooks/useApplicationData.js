@@ -75,11 +75,22 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
 
+  const setPhotoData = (photoData) => {
+    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload:photoData });
+  };
+
+  const setTopicData = (topicData) => {
+    dispatch({ type: ACTIONS.SET_TOPIC_DATA, topicData });
+  };
+
+
   return {
     ...state,
     toggleFavorite,
     openModal,
     closeModal,
+    setPhotoData,
+    setTopicData
   };
 };
 

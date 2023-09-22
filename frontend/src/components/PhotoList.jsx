@@ -4,9 +4,10 @@ import '../styles/PhotoList.scss';
 import photos from "../mocks/photos";
 
 const PhotoList = (props) => {
+  console.log(props, "photolist props");
   return (
     <ul className="photo-list">
-      {photos.map(photoData => (
+      {props.photoData.map(photoData => (
         <PhotoListItem
           key={photoData.id}
           data={photoData}
@@ -17,6 +18,7 @@ const PhotoList = (props) => {
           isModalVisible={props.isModalVisible}
         />
       ))}
+      
     </ul>
   );
 };
