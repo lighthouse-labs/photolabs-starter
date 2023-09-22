@@ -54,6 +54,7 @@ const PhotoDetailsModal = (props) => {
       </div>
 
       <PhotoList
+        className="photo-list"
         photos={similarPhotos}
         toggleFavourite={props.toggleFavourite}
         onPhotoClick={props.onPhotoClick}
