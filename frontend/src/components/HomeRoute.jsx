@@ -27,7 +27,7 @@ const HomeRoute = (props) => {
       .catch((error) => console.error('Error fetching photo data:', error));
 
     // Fetch topic data when the component mounts
-    fetch('/api/topics')
+    fetch('http://localhost:8001/api/topics')
       .then((response) => response.json())
       .then((data) => {
         setTopicData(data); // Set topicData in state
@@ -38,7 +38,7 @@ const HomeRoute = (props) => {
   const handleTopicClick = (topicId) => {
     setSelectedTopic(topicId); // Set the selected topic
     // Fetch photos for the selected topic
-    fetch(`/api/topics/photos/${topicId}`)
+    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
       .then((response) => response.json())
       .then((data) => {
         setPhotoData(data); // Set photoData in state with photos for the selected topic
@@ -53,6 +53,7 @@ const HomeRoute = (props) => {
         favoritedPhotoIds={favoritedPhotoIds}
         toggleFavorite={toggleFavorite}
         onSelectTopic={handleTopicClick} // Pass the handleTopicClick function as a prop
+        topicData={topicData}
       />
       <PhotoList
         favoritedPhotoIds={favoritedPhotoIds}
@@ -62,7 +63,7 @@ const HomeRoute = (props) => {
         isModalVisible={props.isModalVisible}
         photoData={photoData}
       />
-      {/* <div className="topic-list">
+      <div className="topic-list">
         {topicData.map((topic) => (
           <div
             key={topic.id}
@@ -72,7 +73,7 @@ const HomeRoute = (props) => {
             {topic.name}
           </div>
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };

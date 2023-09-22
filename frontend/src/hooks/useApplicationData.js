@@ -80,7 +80,7 @@ const useApplicationData = () => {
   };
 
   const setTopicData = (topicData) => {
-    dispatch({ type: ACTIONS.SET_TOPIC_DATA, topicData });
+    dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload:topicData });
   };
 
 
