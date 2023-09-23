@@ -9,7 +9,6 @@ import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = ({ closeModal, isModalVisible, selectedPhotoData, favoritedPhotoIds, toggleFavorite }) => {
   const { id, user, location, urls, similar_photos } = selectedPhotoData || {};
-  console.log('open modal is working');
   const handleButtonClick = () => {
     if (isModalVisible) {
       closeModal(); // Close the modal if it's open

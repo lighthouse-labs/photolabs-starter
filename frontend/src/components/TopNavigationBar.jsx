@@ -6,7 +6,6 @@ import '../styles/TopNavigationBar.scss';
 const TopNavigation = (props) => {
   const isAnyPhotoFavorited = props.favoritedCount > 0;
   const topicData = props.topicData;
-  console.log("TopNavTopicData", topicData);
   const handleTopicClick = (topicId) => {
     // Call the onSelectTopic function
     if (props.onSelectTopic) {
