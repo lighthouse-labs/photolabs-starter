@@ -6,6 +6,20 @@
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
+  width: 300px;
+  position: relative;
+}
+
+.photo-list__fav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin-top: 16px;
+  margin-left: 16px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 4px;
 }
 
 .photo-image {
@@ -35,8 +49,8 @@
   flex-direction: row;
   align-items: left;
   margin-top: 8px;
-  margin-right: 175px;
   text-align: left;
+  width: 100%;
 }
 
 .text-info {

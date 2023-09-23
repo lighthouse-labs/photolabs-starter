@@ -7,8 +7,8 @@ const PhotoListItem = ({ data, favoritedPhotoIds, toggleFavorite, openModal}) =>
   
 
   return (
-    <div className="photo-list-item">
-      <PhotoFavButton displayAlert={true} favoritedPhotoIds={favoritedPhotoIds}
+    <div className="photo-list__item">
+      <PhotoFavButton displayAlert={false} favoritedPhotoIds={favoritedPhotoIds}
         toggleFavorite={toggleFavorite} photoId={id}/>
       <img src={urls.regular} alt={`Photo by ${user.username}`} className="photo-image" onClick={() => openModal(data)} />
       <div className="photo-details">

@@ -10,7 +10,7 @@ const PhotoFavButton = ({ displayAlert, favoritedPhotoIds, toggleFavorite, photo
   };
 
   return (
-    <div className="photo-list__fav-icon fav-position">
+    <div className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg"><FavIcon selected={Favorite} displayAlert={displayAlert} handleIconClick={handleIconClick} /></div>
     </div>
   );
