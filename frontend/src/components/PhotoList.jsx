@@ -4,13 +4,12 @@ import PhotoListItem from './PhotoListItem';
 
 const PhotoList = ({
   photos,
-  selectedPhotoHandler,
-  isFavourite,
-  setModalHandler,
-  similarPhotos
+  toggleFavourites,
+  openModal,
+  similarPhotos,
+  favourites,
 }) => {
-  // console.log('similarPhotos :', similarPhotos);
-  //consitionally rendering the similar photos when the modal is open
+  
   let displayPhotos = similarPhotos ? similarPhotos : photos;
 
   const photo = displayPhotos.map((photo) => {
@@ -18,10 +17,10 @@ const PhotoList = ({
       <li key={photo.id}>
         <PhotoListItem
           photo={photo}
-          isFavourite={isFavourite}
-          selectedPhotoHandler={selectedPhotoHandler}
-          // setClickedPhoto={setClickedPhoto}
-          setModalHandler={setModalHandler}
+          photoId={photo.id}
+          toggleFavourites={toggleFavourites}
+          openModal={openModal}
+          favourites={favourites}
         />
       </li>
     );

@@ -3,7 +3,9 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
-const FavBadge = ({ isFavPhotoExist }) => {
+const FavBadge = ({ favourites }) => {
+  const isFavPhotoExist = favourites.length > 0;
+
   return (
     <div className="fav-badge">
       <FavIcon displayAlert={!!isFavPhotoExist} selected={true} />

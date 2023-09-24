@@ -4,23 +4,11 @@ import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-const PhotoDetailsModal = ({
-  closeModal,
-  clickedPhoto,
-  isFavourite,
-  selectedPhotoHandler,
-  photos,
-  selectedPhoto,
-  setModalHandler
-}) => {
-  //function to get the similar photos
-  const getSimilarPhotos = (arr, id) => {
-    //manipulating the similar photos to obtain an array ofthe details
-    const found = Object.values(arr.find((item) => item.id === id).similar_photos);
-    return found;
-  };
+const PhotoDetailsModal = ({ closeModal, clickedPhoto, favourites, toggleFavourites }) => {
+  console.log('clickedPhoto', clickedPhoto);
 
-  const similarPhotos = getSimilarPhotos(photos, clickedPhoto.id);
+  const photo = clickedPhoto;
+  const similarPhotos = Object.values(photo.similar_photos);
 
   return (
     <div className="photo-details-modal">
@@ -30,28 +18,23 @@ const PhotoDetailsModal = ({
 
       <div className="photo-details-modal__images">
         <PhotoFavButton
-          isFavourite={isFavourite(clickedPhoto.id)}
-          clickHandler={() => {
-            selectedPhotoHandler(clickedPhoto.id);
-          }}
+          favourites={favourites}
+          photoId={photo.id}
+          toggleFavourites={toggleFavourites}
         />
-        <img
-          src={clickedPhoto.urls.full}
-          alt="profile image"
-          className="photo-details-modal__image"
-        />
+        <img src={photo.urls.full} alt="profile image" className="photo-details-modal__image" />
         <div className="photo-list__user-details">
           <div>
             <img
-              src={clickedPhoto.user.profile}
+              src={photo.user.profile}
               alt="profile image"
               className="photo-list__user-profile"
             />
           </div>
           <div className="photo-list__user-info">
-            <span>{clickedPhoto.user.name}</span>
+            <span>{photo.user.name}</span>
             <p className="photo-list__user-location">
-              {clickedPhoto.location.city},{clickedPhoto.location.country}
+              {photo.location.city},{photo.location.country}
             </p>
           </div>
         </div>
@@ -59,11 +42,8 @@ const PhotoDetailsModal = ({
       <div className="photo-details-modal__images">
         <p className="photo-details-modal__header">Similar Photos</p>
         <PhotoList
-          photos={photos}
-          selectedPhoto={selectedPhoto}
-          selectedPhotoHandler={selectedPhotoHandler}
-          isFavourite={isFavourite}
-          setModalHandler={setModalHandler}
+          toggleFavourites={toggleFavourites}
+          favourites={favourites}
           similarPhotos={similarPhotos}
         />
       </div>

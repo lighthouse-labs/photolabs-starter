@@ -10,12 +10,9 @@ const App = () => {
     favourites,
     isModalOpen,
     clickedPhoto,
-    isFavourite,
-    isFavPhotoExist,
-    setModalHandler,
-    selectedPhoto,
-    selectedPhotoHandler,
+    openModal,
     setClickedPhoto,
+    toggleFavourites,
     closeModal,
     photos
   } = useApplicationData();
@@ -25,23 +22,21 @@ const App = () => {
       <HomeRoute
         photos={photos}
         favourites={favourites}
-        selectedPhoto={selectedPhoto}
-        selectedPhotoHandler={selectedPhotoHandler}
-        isFavourite={isFavourite}
-        isFavPhotoExist={isFavPhotoExist}
-        setModalHandler={setModalHandler}
+        toggleFavourites={toggleFavourites}
+        openModal={openModal}
         setClickedPhoto={setClickedPhoto}
       />
+      {/* closing the modal */}
+      {/* whatever functionality displays the photodetails */}
+      {/* toggle Favourties */}
+      {/* favourites */}
       {isModalOpen && (
         <PhotoDetailsModal
-          selectedPhotoHandler={selectedPhotoHandler}
+          toggleFavourites={toggleFavourites}
           closeModal={closeModal}
+          favourites={favourites}
           clickedPhoto={clickedPhoto}
-          photos={photos}
-          isFavourite={isFavourite}
-          selectedPhoto={selectedPhoto}
-          setModalHandler={setModalHandler}
-          setClickedPhoto={setClickedPhoto}
+          
         />
       )}
     </div>

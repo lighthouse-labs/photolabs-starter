@@ -14,12 +14,14 @@ function reducer(state, action) {
     case ACTIONS.ADD_FAV_PHOTO:
       const newFavourites = [...state.favourites, action.photoId];
       return {
+        ...state,
         favourites: newFavourites
       };
 
     case ACTIONS.REMOVE_FAV_PHOTO: {
       const newFavourites = [...state.favourites].filter((id) => id !== action.photoId);
       return {
+        ...state,
         favourites: newFavourites
       };
     }
@@ -32,7 +34,7 @@ function reducer(state, action) {
     }
     case ACTIONS.SET_CLICKED_PHOTO: {
       const currentPhoto = photos.find((photo) => photo.id === action.id);
-      console.log('currentPhoto :', currentPhoto, action.id);
+      console.log('currentPhoto :', currentPhoto);
       return {
         ...state,
         clickedPhoto: currentPhoto
@@ -56,7 +58,7 @@ export const useApplicationData = () => {
     clickedPhoto: null
   });
 
-  const selectedPhoto = (photoId) => {
+  const toggleFavourites = (photoId) => {
     //checks if photoId exists in the selected array, if it does it removes from the array and resets the selected state
     if (state.favourites.includes(photoId)) {
       dispatch({
@@ -71,34 +73,25 @@ export const useApplicationData = () => {
     }
   };
 
-  const selectedPhotoHandler = (id) => {
-    selectedPhoto(id);
-  };
-
-  const isFavourite = (photoId) => {
-    //should return true if the id exists in the selected array
-    return state.favourites.includes(photoId);
-  };
-
-  const isFavPhotoExist = () => state.favourites.length > 0; //checks if any photo has been liked
-
-  //function to change modal state
-  const setModalHandler = (id) => {
-    dispatch({
-      type: ACTIONS.OPEN_PHOTO_DETAILS_MODAL,
-      display: true
-    });
-
+  //function to open modal
+  const openModal = (id) => {
+    //sets the selected photo to the current item
     dispatch({
       type: ACTIONS.SET_CLICKED_PHOTO,
       id: id
+    });
+    dispatch({
+      type: ACTIONS.OPEN_PHOTO_DETAILS_MODAL,
+      display: true
     });
   };
 
   // function to close modal
   const closeModal = () => {
+    console.log('close button clicked');
     dispatch({
-      type: ACTIONS.CLOSE_PHOTO_DETAILS_MODAL
+      type: ACTIONS.CLOSE_PHOTO_DETAILS_MODAL,
+      display: false
     });
   };
 
@@ -106,11 +99,8 @@ export const useApplicationData = () => {
     favourites: state.favourites,
     isModalOpen: state.isModalOpen,
     clickedPhoto: state.clickedPhoto,
-    isFavourite,
-    isFavPhotoExist,
-    setModalHandler,
-    selectedPhoto,
-    selectedPhotoHandler,
+    openModal,
+    toggleFavourites,
     closeModal,
     photos
   };

@@ -8,23 +8,19 @@ import topics from 'mocks/topics';
 const HomeRoute = ({
   photos,
   favourites,
-  selectedPhoto,
-  selectedPhotoHandler,
-  isFavourite,
-  isFavPhotoExist,
-  setModalHandler,
-  
+  toggleFavourites,
+  openModal,
+	setClickedPhoto
 }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist(favourites)} />
+      <TopNavigationBar topics={topics} favourites={favourites} />
       <PhotoList
         photos={photos}
-        selectedPhoto={selectedPhoto}
-        selectedPhotoHandler={selectedPhotoHandler}
-        isFavourite={isFavourite}
-        setModalHandler={setModalHandler}
-        
+        toggleFavourites={toggleFavourites}
+        openModal={openModal}
+        favourites={favourites}
+        setClickedPhoto={setClickedPhoto}
       />
     </div>
   );
