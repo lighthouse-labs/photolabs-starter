@@ -4,6 +4,7 @@ import FavouritesRoute from "routes/FavouritesRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
 import TopNavigationBar from "./components/TopNavigationBar";
+import Route from "./components/Route";
 
 import "./App.scss";
 
@@ -43,20 +44,24 @@ const App = () => {
           isFavPhotoExist={favPhotos?.length}
         />
       </div>
-      {/* <HomeRoute
-        photos={photoData}
-        onPhotoClick={handleClick}
-        createFavorite={createFavorite}
-        deleteFavorite={deleteFavorite}
-        favPhotos={favPhotos}
-      /> */}
-      <FavouritesRoute
-        photos={favPhotos}
-        onPhotoClick={handleClick}
-        createFavorite={createFavorite}
-        deleteFavorite={deleteFavorite}
-        favPhotos={favPhotos}
-      />
+      <Route path="/">
+        <HomeRoute
+          photos={photoData}
+          onPhotoClick={handleClick}
+          createFavorite={createFavorite}
+          deleteFavorite={deleteFavorite}
+          favPhotos={favPhotos}
+        />
+      </Route>
+      <Route path="/favourites">
+        <FavouritesRoute
+          photos={favPhotos}
+          onPhotoClick={handleClick}
+          createFavorite={createFavorite}
+          deleteFavorite={deleteFavorite}
+          favPhotos={favPhotos}
+        />
+      </Route>
 
       {showModal && modal}
     </div>

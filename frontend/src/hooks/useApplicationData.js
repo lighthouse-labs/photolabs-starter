@@ -1,6 +1,7 @@
 import { useReducer, useEffect } from "react";
 import ACTIONS from "./helper-actions";
 import reducer from "./helper-reducer";
+import useNavigation from "../hooks/use-navigation";
 
 const useApplicationData = () => {
   // initialze the reducer with default states
@@ -22,6 +23,8 @@ const useApplicationData = () => {
     topicData,
     topicId,
   } = state;
+
+  const { navigate } = useNavigation();
 
   /********************/
   /* UseEffect Hooks */
@@ -52,14 +55,12 @@ const useApplicationData = () => {
     fetch("/api/photos/favourites")
       .then((res) => res.json())
       .then((data) => {
-        if (data) {
-          dispatch({ type: ACTIONS.GET_ALL_FAV_PHOTOS, value: data });
-        }
+        dispatch({ type: ACTIONS.GET_ALL_FAV_PHOTOS, value: data });
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, []);
+  }, [favPhotos.length]);
 
   // Fetch photos from API
   useEffect(() => {
@@ -80,6 +81,7 @@ const useApplicationData = () => {
   //selectTopic handler
   const selectTopic = (id) => {
     dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, id });
+    navigate("/");
   };
 
   //Create new favourite handler
@@ -110,8 +112,8 @@ const useApplicationData = () => {
 
   //handle click on photo handler
   const handleClick = (photoDetails) => {
-    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, value: true });
     dispatch({ type: ACTIONS.SELECT_PHOTO, photoDetails });
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, value: true });
   };
 
   //handle click on close button of modal handler
@@ -122,7 +124,7 @@ const useApplicationData = () => {
   //handle click on favourites icon
   const handleFavsClick = () => {
     if (favPhotos.length) {
-      //implement a different route
+      navigate("/favourites");
     }
   };
 

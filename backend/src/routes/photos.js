@@ -82,7 +82,7 @@ module.exports = (db) => {
     const serverUrl = `${protocol}://${host}:${port}`;
 
     db.query(
-    `
+      `
     SELECT 
     json_agg(
         json_build_object(
@@ -134,7 +134,11 @@ module.exports = (db) => {
     JOIN user_account ON user_account.id = photo.user_id
     WHERE photo.favourite = true;`
     ).then(({ rows }) => {
-      response.json(rows[0].photo_data);
+      if (rows[0].photo_data) {
+        response.json(rows[0].photo_data);
+      } else {
+        response.json([]);
+      }
     });
   });
 

@@ -18,7 +18,7 @@ const PhotoListItem = ({
       deleteFavorite(photo.id);
     }
   };
-
+ 
   return (
     <li className="photo-list__item">
       <PhotoFavButton
