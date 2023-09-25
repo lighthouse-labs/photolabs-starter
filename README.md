@@ -5,15 +5,19 @@ The PhotoLabs app was created using react and is a photo-documenting or display 
 ## Photolabs Final Product
 
 **Screenshot of photolabs homepage on load**
+
 !["screenshot of photolabs homepage on load"](https://github.com/Olanrewaju-Ak/photolabs-starter/blob/main/frontend/docs/photolab_homeroute_view.png?raw=true)
 
 **Screenshot of photolabs homepage on load**
+
 !["screenshot of photolabs sorting images by topic"](https://github.com/Olanrewaju-Ak/photolabs-starter/blob/main/frontend/docs/photolab_animal_topic_view.png?raw=true)
 
 **Screenshot of photolabs homepage on load**
+
 !["screenshot of photolabs with modal open"](https://github.com/Olanrewaju-Ak/photolabs-starter/blob/main/frontend/docs/photolab_modal_view.png?raw=true)
 
 **Screenshot of photolabs homepage on load**
+
 !["screenshot of photolabs with modal open showing similar photos"](https://github.com/Olanrewaju-Ak/photolabs-starter/blob/main/frontend/docs/photolab_modal_view_similar_photos.png?raw=true)
 
 ## Setup
@@ -40,6 +44,7 @@ npm start
 ```
 
 ## Dependencies
+
 - express
 - cors
 - dotenv
