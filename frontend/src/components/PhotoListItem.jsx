@@ -1,18 +1,8 @@
 import React from 'react';
-
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({
-  photo,
-  toggleFavourites,
-  openModal,
-  photoId,
-  favourites,
-  
-}) => {
-  
-
+const PhotoListItem = ({ photo, toggleFavourites, openModal, photoId, favourites }) => {
   return (
     <article className="photo-list__item">
       <PhotoFavButton
