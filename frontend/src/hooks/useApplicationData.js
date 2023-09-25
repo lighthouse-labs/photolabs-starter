@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import photos from 'mocks/photos';
 import { useEffect, useReducer, useState } from 'react';
 
 export const ACTIONS = {
@@ -93,19 +92,29 @@ export const useApplicationData = () => {
 
   useEffect(() => {
     //use axios to fetch photo data from database
-    axios.get('/api/photos').then((res) => {
-      dispatch({
-        type: ACTIONS.GET_PHOT0_DATA,
-        data: res.data
+    axios
+      .get('/api/photos')
+      .then((res) => {
+        dispatch({
+          type: ACTIONS.GET_PHOT0_DATA,
+          data: res.data
+        });
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    });
     //use axios to fetch topic data from database
-    axios.get('/api/topics').then((res) => {
-      dispatch({
-        type: ACTIONS.GET_TOPIC_DATA,
-        data: res.data
+    axios
+      .get('/api/topics')
+      .then((res) => {
+        dispatch({
+          type: ACTIONS.GET_TOPIC_DATA,
+          data: res.data
+        });
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    });
   }, []);
 
   //setting photoData state by topic id
@@ -114,15 +123,24 @@ export const useApplicationData = () => {
       type: ACTIONS.SET_SELECTED_TOPIC,
       id: id
     });
-    axios.get(`/api/topics/photos/${id}`).then((res) => {
-      console.log('by topic :', res.data);
-      dispatch({
-        type: ACTIONS.GET_PHOT0_DATA,
-        data: res.data
-      });
-    });
   };
-  console.log(`state.photoData : ${state.photoData},${state.photoData.length}`);
+
+  //set use effect to make axios call when topic id is changed
+  useEffect(() => {
+    if (state.selectedTopic) {
+      axios
+        .get(`/api/topics/photos/${state.selectedTopic}`)
+        .then((res) => {
+          dispatch({
+            type: ACTIONS.GET_PHOT0_DATA,
+            data: res.data
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [state.selectedTopic]);
 
   const toggleFavourites = (photoId) => {
     //checks if photoId exists in the selected array, if it does it removes from the array and resets the selected state
