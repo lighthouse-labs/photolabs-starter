@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import { useApplicationData } from 'hooks/useApplicationData';
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {
   const {
     favourites,
@@ -16,7 +15,8 @@ const App = () => {
     closeModal,
     photos,
     topics,
-		getTopicId
+    getTopicId,
+    selectedTopic
   } = useApplicationData();
 
   return (
@@ -28,12 +28,10 @@ const App = () => {
         toggleFavourites={toggleFavourites}
         openModal={openModal}
         setClickedPhoto={setClickedPhoto}
-				getTopicId = {getTopicId}
+        getTopicId={getTopicId}
+        selectedTopic={selectedTopic}
       />
-      {/* closing the modal */}
-      {/* whatever functionality displays the photodetails */}
-      {/* toggle Favourties */}
-      {/* favourites */}
+
       {isModalOpen && (
         <PhotoDetailsModal
           toggleFavourites={toggleFavourites}

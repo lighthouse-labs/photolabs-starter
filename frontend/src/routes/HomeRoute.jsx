@@ -10,11 +10,17 @@ const HomeRoute = ({
   openModal,
   setClickedPhoto,
   topics,
-  getTopicId
+  getTopicId,
+  selectedTopic
 }) => {
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} favourites={favourites} getTopicId={getTopicId} />
+      <TopNavigationBar
+        topics={topics}
+        favourites={favourites}
+        getTopicId={getTopicId}
+        selectedTopic={selectedTopic}
+      />
       <PhotoList
         photos={photos}
         toggleFavourites={toggleFavourites}

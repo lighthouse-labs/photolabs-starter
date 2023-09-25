@@ -11,7 +11,13 @@
 
   &:hover {
     text-decoration: overline;
+		text-decoration-thickness: 2px;
     color: #111;
     cursor: pointer;
   }
+}
+.topic-list__item-active span {
+  text-decoration: overline;
+  text-decoration-thickness: 2px;
+  color: #111;
 }

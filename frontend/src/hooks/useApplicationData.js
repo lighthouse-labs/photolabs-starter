@@ -187,6 +187,7 @@ export const useApplicationData = () => {
     closeModal,
     photos: state.photoData,
     topics: state.topicData,
-    getTopicId
+    getTopicId,
+    selectedTopic: state.selectedTopic
   };
 };
