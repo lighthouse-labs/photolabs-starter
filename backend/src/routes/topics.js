@@ -24,6 +24,7 @@ module.exports = db => {
       json_agg(
           json_build_object(
           'id', photo.id,
+          'favourite', photo.favourite,
           'urls', json_build_object(
             'full', concat('${serverUrl}/images/', photo.full_url),
             'regular', concat('${serverUrl}/images/', photo.regular_url)
@@ -42,6 +43,7 @@ module.exports = db => {
               json_agg(
                 json_build_object(
                   'id', similar_photo.id,
+                  'favourite', similar_photo.favourite,
                   'urls', json_build_object(
                     'full', concat('${serverUrl}/images/', similar_photo.full_url),
                     'regular', concat('${serverUrl}/images/', similar_photo.regular_url)

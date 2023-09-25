@@ -11,8 +11,9 @@ const PhotoListItem = ({
 }) => {
   // update fav photos on each render when favClick changes
   const handleClick = (photo) => {
-    if (!favPhotos?.includes(photo.id)) {
-      createFavorite(photo.id);
+    const favs = favPhotos?.find((favPhoto) => favPhoto.id === photo.id);
+    if (!favs) {
+      createFavorite(photo);
     } else {
       deleteFavorite(photo.id);
     }
@@ -22,7 +23,7 @@ const PhotoListItem = ({
     <li className="photo-list__item">
       <PhotoFavButton
         onChange={handleClick}
-        value={favPhotos?.includes(photoListData.id)}
+        value={favPhotos?.find((favPhoto) => favPhoto.id === photoListData.id)}
         photo={photoListData}
       />
       <div onClick={() => onPhotoClick(photoListData)}>

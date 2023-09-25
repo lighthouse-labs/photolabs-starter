@@ -1,8 +1,8 @@
 import React from "react";
 import PhotoList from "../components/PhotoList";
-import "../styles/HomeRoute.scss";
+import "../styles/FavouritesRoute.scss";
 
-const HomeRoute = ({
+const FavouritesRoute = ({
   photos,
   onPhotoClick,
   deleteFavorite,
@@ -10,7 +10,7 @@ const HomeRoute = ({
   favPhotos,
 }) => {
   return (
-    <div className="home-route">
+    <div className="favourite-route">
       <PhotoList
         photos={photos}
         createFavorite={createFavorite}
@@ -22,4 +22,4 @@ const HomeRoute = ({
   );
 };
 
-export default HomeRoute;
+export default FavouritesRoute;

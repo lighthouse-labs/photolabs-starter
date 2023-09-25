@@ -1,7 +1,9 @@
 import React from "react";
 import HomeRoute from "./routes/HomeRoute";
+import FavouritesRoute from "routes/FavouritesRoute";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
 import useApplicationData from "hooks/useApplicationData";
+import TopNavigationBar from "./components/TopNavigationBar";
 
 import "./App.scss";
 
@@ -17,6 +19,7 @@ const App = () => {
     deleteFavorite,
     selectTopic,
     handleClick,
+    handleFavsClick,
     handleClose,
   } = useApplicationData();
 
@@ -32,15 +35,29 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute
-        onSelect={selectTopic}
-        topics={topicData}
+      <div className="home-route">
+        <TopNavigationBar
+          onFavsClick={handleFavsClick}
+          onSelect={selectTopic}
+          topics={topicData}
+          isFavPhotoExist={favPhotos?.length}
+        />
+      </div>
+      {/* <HomeRoute
         photos={photoData}
         onPhotoClick={handleClick}
         createFavorite={createFavorite}
         deleteFavorite={deleteFavorite}
         favPhotos={favPhotos}
+      /> */}
+      <FavouritesRoute
+        photos={favPhotos}
+        onPhotoClick={handleClick}
+        createFavorite={createFavorite}
+        deleteFavorite={deleteFavorite}
+        favPhotos={favPhotos}
       />
+
       {showModal && modal}
     </div>
   );

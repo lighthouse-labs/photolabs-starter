@@ -47,6 +47,20 @@ const useApplicationData = () => {
       });
   }, []);
 
+  // Fetch favourite photo id's from API
+  useEffect(() => {
+    fetch("/api/photos/favourites")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          dispatch({ type: ACTIONS.GET_ALL_FAV_PHOTOS, value: data });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, []);
+
   // Fetch photos from API
   useEffect(() => {
     if (topicId) {
@@ -69,13 +83,29 @@ const useApplicationData = () => {
   };
 
   //Create new favourite handler
-  const createFavorite = (id) => {
-    dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, id });
+  const createFavorite = (photo) => {
+    // Post photos favourite status to API
+    fetch(`/api/photos/${photo.id}?liked=true`, {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then(() => dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, value: photo }))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   //Delete new favourite handler
   const deleteFavorite = (id) => {
-    dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, id });
+    // Post photos favourite status to API
+    fetch(`/api/photos/${id}?liked=false`, {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, id: data }))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   //handle click on photo handler
@@ -89,6 +119,13 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, value: false });
   };
 
+  //handle click on favourites icon
+  const handleFavsClick = () => {
+    if (favPhotos.length) {
+      //implement a different route
+    }
+  };
+
   return {
     showModal,
     showPhotoDetails,
@@ -98,6 +135,7 @@ const useApplicationData = () => {
     createFavorite,
     deleteFavorite,
     handleClick,
+    handleFavsClick,
     handleClose,
     selectTopic,
   };
