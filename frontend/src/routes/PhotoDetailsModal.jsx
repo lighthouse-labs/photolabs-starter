@@ -5,8 +5,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = ({ closeModal, clickedPhoto, favourites, toggleFavourites }) => {
-  console.log('clickedPhoto', clickedPhoto);
-
+  
   const photo = clickedPhoto;
   const similarPhotos = Object.values(photo.similar_photos);
 
