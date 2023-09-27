@@ -38,6 +38,7 @@ const App = () => {
           closeModal={closeModal}
           favourites={favourites}
           clickedPhoto={clickedPhoto}
+          openModal={openModal}
         />
       )}
     </div>
