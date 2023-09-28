@@ -94,7 +94,7 @@ const useApplicationData = () => {
 
   const fetchPhotosByTopic = (topicId) => {
     // Make an API request to fetch photos for the specified topic
-    return fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+    return fetch(`/api/topics/photos/${topicId}`)
       .then((response) => response.json())
       .then((data) => {
         // Dispatch an action to update the state with the fetched photos for the topic

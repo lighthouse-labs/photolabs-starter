@@ -19,7 +19,7 @@ const HomeRoute = (props) => {
 
   useEffect(() => {
     // Fetch photo data when the component mounts
-    fetch('http://localhost:8001/api/photos')
+    fetch('/api/photos') //Updated
       .then((response) => response.json())
       .then((data) => {
         setPhotoData(data);
@@ -27,7 +27,7 @@ const HomeRoute = (props) => {
       .catch((error) => console.error('Error fetching photo data:', error));
 
     // Fetch topic data when the component mounts
-    fetch('http://localhost:8001/api/topics')
+    fetch('/api/topics')
       .then((response) => response.json())
       .then((data) => {
         setTopicData(data);
