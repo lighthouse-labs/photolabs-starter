@@ -5,7 +5,7 @@ const PhotoFavButton = ({ displayAlert, favoritedPhotoIds, toggleFavorite, photo
 
   const Favorite = favoritedPhotoIds.includes(photoId); //Check global favorite state
   const handleIconClick = () => {
-    console.log('Favorite button clicked!');
+
     toggleFavorite(photoId); //Add it to favorite ids
   };
 

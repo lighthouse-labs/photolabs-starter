@@ -7,7 +7,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 
 
 
-const PhotoDetailsModal = ({ closeModal, isModalVisible, selectedPhotoData, favoritedPhotoIds, toggleFavorite }) => {
+const PhotoDetailsModal = ({ closeModal, isModalVisible, selectedPhotoData, favoritedPhotoIds, toggleFavorite, photoData }) => {
   const { id, user, location, urls, similar_photos } = selectedPhotoData || {};
   const handleButtonClick = () => {
     if (isModalVisible) {
@@ -15,6 +15,8 @@ const PhotoDetailsModal = ({ closeModal, isModalVisible, selectedPhotoData, favo
     }
   };
 
+  console.log("togglefav in modal", toggleFavorite);
+  console.log("favphotoid modal", favoritedPhotoIds);
 
   return (
     <div className="photo-details-modal">
@@ -29,17 +31,17 @@ const PhotoDetailsModal = ({ closeModal, isModalVisible, selectedPhotoData, favo
             displayAlert={false}
             favoritedPhotoIds={favoritedPhotoIds}
             toggleFavorite={toggleFavorite}
-            photoId={selectedPhotoData.id}
+            photoId={selectedPhotoData?.id}
             className="photo-details-modal__fav"
           />
         </div>
-        <img src={selectedPhotoData.urls.full} alt={`Selected Photo`} className="photo-details-modal__image" />
+        <img src={selectedPhotoData?.urls?.full} alt={`Selected Photo`} className="photo-details-modal__image" />
         
         <div className="photo-details-modal__photographer-details">
-          <img src={user.profile} alt={`Profile of ${user.username}`} className="photo-details-model__profile-image" />
+          <img src={user?.profile} alt={`Profile of ${user?.username}`} className="photo-details-model__profile-image" />
           <div className="text-info">
-            <p className="username">{user.username}</p>
-            <p className="location">{`${location.city}, ${location.country}`}</p>
+            <p className="username">{user?.username}</p>
+            <p className="location">{`${location?.city}, ${location?.country}`}</p>
           </div>
         </div>
       </div>

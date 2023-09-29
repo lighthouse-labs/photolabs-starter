@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useState } from 'react';
 import { useEffect } from 'react';
 
 const initialState = {
@@ -25,6 +25,7 @@ const ACTIONS = {
 const reducer = (state, action) => {
   const actionHandlers = {
     TOGGLE_FAVORITE: () => {
+      console.log("actionhandler togglefav", state);
       const photoId = action.photoId;
       if (state.favoritedPhotoIds.includes(photoId)) {
         return {
@@ -32,10 +33,12 @@ const reducer = (state, action) => {
           favoritedPhotoIds: state.favoritedPhotoIds.filter((id) => id !== photoId),
         };
       } else {
-        return {
+        let result =  {
           ...state,
           favoritedPhotoIds: [...state.favoritedPhotoIds, photoId],
         };
+        console.log("result",result);
+        return result;
       }
     },
     OPEN_MODAL: () => ({
@@ -73,6 +76,7 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const toggleFavorite = (photoId) => {
+    console.log("togglefavorite useappdata", photoId);
     dispatch({ type: ACTIONS.TOGGLE_FAVORITE, photoId });
   };
 
@@ -85,6 +89,7 @@ const useApplicationData = () => {
   };
 
   const setPhotoData = (photoData) => {
+    console.log("photoData useappdata", photoData);
     dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload:photoData });
   };
 
@@ -110,7 +115,7 @@ const useApplicationData = () => {
       });
   };
 
-
+  console.log("state use app data", state);
   return {
     ...state,
     toggleFavorite,
@@ -118,7 +123,7 @@ const useApplicationData = () => {
     closeModal,
     setPhotoData,
     setTopicData,
-    fetchPhotosByTopic
+    fetchPhotosByTopic,
   };
 };
 

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import PhotoList from './PhotoList';
 import TopNavigationBar from './TopNavigationBar';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import "../styles/HomeRoute.scss";
 import useApplicationData from '../hooks/useApplicationData';
 
 const HomeRoute = (props) => {
+
   const {
     favoritedPhotoIds,
     toggleFavorite,
@@ -13,8 +15,15 @@ const HomeRoute = (props) => {
     fetchPhotosByTopic,
     setPhotoData,
     setTopicData,
+    isModalVisible,
+    openModal,
+    closeModal,
+    selectedPhotoData
+    
   } = useApplicationData();
-
+  // const a = useApplicationData();
+  // console.log("a",a);
+  console.log('ismodalvisible', isModalVisible);
   const [selectedTopic, setSelectedTopic] = useState(null);
 
   useEffect(() => {
@@ -57,11 +66,13 @@ const HomeRoute = (props) => {
       <PhotoList
         favoritedPhotoIds={favoritedPhotoIds}
         toggleFavorite={toggleFavorite}
-        openModal={props.openModal}
-        closeModal={props.closeModal}
-        isModalVisible={props.isModalVisible}
+        openModal={openModal}
+        closeModal={closeModal}
+        isModalVisible={isModalVisible}
         photoData={photoData}
-      />
+      >
+       
+      </PhotoList>
       <div className="topic-list">
         {topicData.map((topic) => (
           <div
@@ -73,6 +84,17 @@ const HomeRoute = (props) => {
           </div>
         ))}
       </div>
+      {isModalVisible && (
+        <PhotoDetailsModal
+          favoritedPhotoIds={favoritedPhotoIds}
+          toggleFavorite={toggleFavorite}
+          openModal={openModal}
+          closeModal={closeModal}
+          isModalVisible={isModalVisible}
+          photoData={photoData}
+          selectedPhotoData={selectedPhotoData}
+        />
+      )}
     </div>
   );
 };
