@@ -1,5 +1,6 @@
 import React from 'react';
 import PhotoListItem from './components/PhotoListItem';
+import PhotoFavButton from './components/PhotoFavButton';
 import './App.scss';
 
 const photos = [
@@ -12,6 +13,7 @@ const photos = [
     imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
     username: "Joe Example",
     profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
+    isLiked: false, 
   },
   {
     id: "2",
@@ -22,6 +24,7 @@ const photos = [
     imageSource: `${process.env.PUBLIC_URL}/Image-2-Regular.jpeg`,
     username: "Alice Smith",
     profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
+    isLiked : true,
   },
   {
     id: "3",
@@ -32,8 +35,11 @@ const photos = [
     imageSource: `${process.env.PUBLIC_URL}/Image-3-Regular.jpeg`,
     username: "John Doe",
     profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
+    isLiked : true,
   },
 ];
+
+
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   return (

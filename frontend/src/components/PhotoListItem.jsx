@@ -1,9 +1,11 @@
-import React from "react";
-import "../styles/PhotoListItem.scss";
+import React from 'react';
+import PhotoFavButton from './PhotoFavButton'; 
+import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
   return (
     <div className="photo-list__item">
+      <PhotoFavButton /> 
       <div className="photo-list__image-container">
         <img src={props.imageSource} alt={`Photo by ${props.username}`} className="photo-list__image" />
       </div>
@@ -19,4 +21,5 @@ const PhotoListItem = (props) => {
 };
 
 export default PhotoListItem;
+
 
