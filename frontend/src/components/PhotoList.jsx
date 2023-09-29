@@ -1,5 +1,6 @@
 import React from "react";
 import PhotoListItem from "./PhotoListItem";
+import TopicList from "./TopicList";
 import "../styles/PhotoList.scss";
 
 const sampleDataForPhotoList = [
@@ -66,6 +67,7 @@ const PhotoList = () => {
           username={photo.user.username}
           location={photo.location}
           profile={photo.user.profile}
+          topics={photo.topics}
         />
       ))}
     </ul>
