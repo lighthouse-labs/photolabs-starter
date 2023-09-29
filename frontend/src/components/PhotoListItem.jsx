@@ -6,7 +6,7 @@ const PhotoListItem = (props) => {
   return (
     <div className="photo-list__item">
       <PhotoFavButton /> 
-      <div className="photo-list__image-container">
+      <div className="photo-list__image-container" key={props.photo.id}>
         <img src={props.imageSource} alt={`Photo by ${props.username}`} className="photo-list__image" />
       </div>
       <div className="photo-list__user-details">
@@ -21,5 +21,6 @@ const PhotoListItem = (props) => {
 };
 
 export default PhotoListItem;
+
 
 
