@@ -25,7 +25,7 @@ const ACTIONS = {
 const reducer = (state, action) => {
   const actionHandlers = {
     TOGGLE_FAVORITE: () => {
-      console.log("actionhandler togglefav", state);
+  
       const photoId = action.photoId;
       if (state.favoritedPhotoIds.includes(photoId)) {
         return {
@@ -37,7 +37,7 @@ const reducer = (state, action) => {
           ...state,
           favoritedPhotoIds: [...state.favoritedPhotoIds, photoId],
         };
-        console.log("result",result);
+   
         return result;
       }
     },
@@ -89,7 +89,7 @@ const useApplicationData = () => {
   };
 
   const setPhotoData = (photoData) => {
-    console.log("photoData useappdata", photoData);
+   
     dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload:photoData });
   };
 
@@ -115,7 +115,6 @@ const useApplicationData = () => {
       });
   };
 
-  console.log("state use app data", state);
   return {
     ...state,
     toggleFavorite,

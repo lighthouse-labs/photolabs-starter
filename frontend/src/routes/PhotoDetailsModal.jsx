@@ -15,9 +15,6 @@ const PhotoDetailsModal = ({ closeModal, isModalVisible, selectedPhotoData, favo
     }
   };
 
-  console.log("togglefav in modal", toggleFavorite);
-  console.log("favphotoid modal", favoritedPhotoIds);
-
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={handleButtonClick}>

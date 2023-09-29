@@ -4,9 +4,7 @@ import PhotoFavButton from './PhotoFavButton';
 
 const PhotoListItem = ({ data, favoritedPhotoIds, toggleFavorite, openModal, isModalVisible}) => {
   const { user, location, urls, id} = data;
-  console.log("photolistitem fav photoid", favoritedPhotoIds);
-  
-
+ 
   return (
     <div className="photo-list__item">
       <PhotoFavButton displayAlert={false} favoritedPhotoIds={favoritedPhotoIds}

@@ -21,9 +21,7 @@ const HomeRoute = (props) => {
     selectedPhotoData
     
   } = useApplicationData();
-  // const a = useApplicationData();
-  // console.log("a",a);
-  console.log('ismodalvisible', isModalVisible);
+
   const [selectedTopic, setSelectedTopic] = useState(null);
 
   useEffect(() => {
