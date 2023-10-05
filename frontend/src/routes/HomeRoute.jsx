@@ -41,7 +41,7 @@ const transformTopicData = (topicData) => {
 const transformedTopics = transformTopicData(mockTopics);
 const transformedPhotos = transformPhotoData(mockPhotos);
 
-//SET Modal STAT
+
 
 
 
@@ -65,13 +65,10 @@ const HomeRoute = () => {
     setSelectedPhotoId(id);
     setModalVisible(true);
   };
-  
   const closeModal = () => {
     setSelectedPhotoId(null);
     setModalVisible(false);
   };
-  
-
 
   return (
     <div className="home-route">
