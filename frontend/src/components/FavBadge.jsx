@@ -4,19 +4,10 @@ import FavIcon from './FavIcon';
 import '../styles/FavBadge.scss';
 
 const FavBadge = ({ isFavPhotoExist }) => {
-  console.log("isFavPhotoExist: ", isFavPhotoExist);
-  const Count = () => {
-    return(
-      <div className='count'>
-        {isFavPhotoExist}
-      </div>
-      
-    );
-  } 
-  return (
+  // console.log("isFavPhotoExist: ", isFavPhotoExist);
+    return (
     <div className='fav-badge'>
-      {(isFavPhotoExist === 0) && <FavIcon displayAlert={!!isFavPhotoExist}/>}
-      {(isFavPhotoExist > 0) && <FavIcon selected={isFavPhotoExist} displayAlert={!!isFavPhotoExist}/>}
+      <FavIcon displayAlert={isFavPhotoExist} selected={isFavPhotoExist} />
     </div>
   ) 
 };

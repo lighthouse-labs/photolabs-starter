@@ -4,20 +4,22 @@ import PhotoListItem from "./PhotoListItem";
 import photos from "mocks/photos";
 
 const PhotoList = (props) => {
-  console.log("PhotoList Props: ", props);
+  // console.log("PhotoList Props: ", props);
 
   const renderPhotoListItems = () => {
     return photos.map((photo) => {
       const { id, location, urls: { regular: imageSource }, user: { name, profile }} = photo;
 
       return (
-        <li key={id}>
-          <PhotoListItem 
+        <li key={id} >
+          <PhotoListItem
+            id={id}
             imageSource={imageSource} 
             name={name} 
             profile={profile} 
             location={location}
-            setSelectedCount={props.setSelectedCount}
+            favourites={props.favourites}
+            toggleFavourite={props.toggleFavourite}
           />
         </li>
       );

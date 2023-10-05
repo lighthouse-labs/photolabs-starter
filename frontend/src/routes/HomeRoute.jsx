@@ -6,16 +6,33 @@ import FavBadge from 'components/FavBadge';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = () => {
-  const [selectedCount, setSelectedCount] = useState(0)
+  const [favourites, setFavourites] = useState([]);
+
+const toggleFavourite = function(id) {
+  if (favourites.includes(id)) {
+    setFavourites(prevFavourites => prevFavourites.filter(favId => favId !== id));
+  } else {
+    setFavourites(prevFavourites => [...prevFavourites, id]);
+  }
+};
+
+function isFavPhotoExist() {
+  if (favourites.length === 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
   
   return (
     <div className="home-route">
       <div className='top-nav-bar'>
         <TopNavigation />
         <TopicList/>
-        <FavBadge isFavPhotoExist={selectedCount}/>
+        <FavBadge isFavPhotoExist={isFavPhotoExist()}/>
       </div>
-      <PhotoList setSelectedCount={setSelectedCount}/>
+      <PhotoList favourites={favourites} toggleFavourite={toggleFavourite}/>
     </div>
   );
 };

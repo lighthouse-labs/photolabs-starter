@@ -1,28 +1,22 @@
 import React, { useCallback, useState } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
+import { prettyFormat } from '@testing-library/react';
 
 
 function PhotoFavButton(props) {
-  console.log("FavButton Props: ", props);
-
-  const [localSelected, setLocalSelected] = useState('')
+  // console.log("FavButton Props: ", props);
 
   function handleClick() {
-    console.log('clicked');
+    props.toggleFavourite(props.id)
+  };
 
-    
-    setLocalSelected((prev) => prev === '' ? 'liked' : '')
-
-    localSelected === '' ? 
-    props.setSelectedCount((prev) => prev + 1) : 
-    props.setSelectedCount((prev) => prev - 1);
-  }
+  const colorCheck = props.favourites.includes(props.id);
 
   return (
     <div className="photo-list__fav-icon"  onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon selected={localSelected} />
+        <FavIcon  selected={colorCheck}/>
       </div>
     </div>
   );
