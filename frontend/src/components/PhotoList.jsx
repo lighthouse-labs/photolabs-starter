@@ -4,7 +4,20 @@ import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
   const handlePhotoClick = (id) => {
-    props.openPhotoModal(id); // Trigger the openPhotoModal function when a photo is clicked
+    const selectedPhoto = props.photos.find((photo) => photo.id === id); // Find the selected photo
+    const photoData = {
+      id: selectedPhoto.id,
+      imageSource: `${process.env.PUBLIC_URL}${selectedPhoto.urls.regular}`,
+      username: selectedPhoto.user.username,
+      location: selectedPhoto.location,
+      profile: `${process.env.PUBLIC_URL}${selectedPhoto.user.profile}`,
+      isLiked: props.isLiked(selectedPhoto.id),
+      toggleLike: () => props.toggleLike(selectedPhoto.id),
+      alert: props.alert,
+      setAlert: props.setAlert,
+      setModalVisible: props.setModalVisible, // Pass the setModalVisible function
+  };
+    props.openPhotoModal(id, photoData); // Pass the selected photo data to openPhotoModal
   };
   return (
     <ul className="photo-list">
