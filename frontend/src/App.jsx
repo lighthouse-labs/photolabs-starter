@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState } from 'react';
+
 import HomeRoute from './routes/HomeRoute';
 import mockPhotos from '../src/mocks/photos.js'; // Correct import
 import mockTopics from '../src/mocks/topics.js'; // Correct import
@@ -39,6 +41,7 @@ const transformedTopics = transformTopicData(mockTopics);
 const transformedPhotos = transformPhotoData(mockPhotos);
 
 const App = () => {
+  const [likedPhotos, setLikedPhotos] = useState([]); // Initialize likedPhotos state
   const photos = transformedPhotos; // Use the transformed data
   const topics = transformedTopics;
 
@@ -46,7 +49,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} />
+      <HomeRoute 
+      photos={photos} 
+      topics={topics} 
+      likedPhotos={likedPhotos} // Pass likedPhotos
+      setLikedPhotos={setLikedPhotos}
+      />
     </div>
   );
 };
