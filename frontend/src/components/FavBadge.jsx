@@ -3,12 +3,12 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
-const FavBadge = ({ isFavPhotoExist }) => {
-  
+const FavBadge = ({ displayAlert,selected}) => {
+  //const selected = isFavPhotoExist; // Set the 'selected' prop based on whether there are liked photos
+  console.log('dis',!!displayAlert)
   return (
     <div className='fav-badge'>
-      <FavIcon displayAlert={!!isFavPhotoExist}/>
-      {isFavPhotoExist && <div className="notification-badge" />}
+      <FavIcon displayAlert={!!displayAlert} selected={selected} />
     </div>
   ) 
 };

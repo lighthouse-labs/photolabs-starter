@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import TopicListItem from "./TopicListItem";
 import "../styles/TopicList.scss";
 
 const TopicList = (props) => {
+  // Define state within the functional component
+  const [topiclist, setTopicList] = useState([]);
+
   return (
     <div className="top-nav-bar__topic-list">
       {props.topics.map((topic) => (
@@ -13,3 +16,4 @@ const TopicList = (props) => {
 };
 
 export default TopicList;
+

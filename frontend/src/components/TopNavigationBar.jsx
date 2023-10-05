@@ -1,19 +1,23 @@
 import React from 'react';
-
-import '../styles/TopNavigationBar.scss'
+import '../styles/TopNavigationBar.scss';
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
-const TopNavigation = (props) => {
-  const { likedPhotos } = props;
+
+const TopNavigationBar = (props) => {
+  const clickHandler = () => {
+    props.setAlert(!props.alert);
+  };
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <div className="top-nav-bar">
-        <TopicList topics ={props.topics}/>
+        <TopicList topics={props.topics} />
       </div>
-      <FavBadge isFavPhotoExist={likedPhotos.length > 0}/>
-      </div>
-        );
+      <FavBadge displayAlert={props.likedPhotos.length > 0} selected={props.likedPhotos.length > 0} />
+    </div>
+  );
 };
 
-export default TopNavigation;
+export default TopNavigationBar;
+
