@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import TopNavBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
-import TopicList from '../components/TopicList';
 import '../styles/HomeRoute.scss';
-
+import PhotoDetailsModal from "./PhotoDetailsModal";
 import mockPhotos from '../mocks/photos.js';
 import mockTopics from '../mocks/topics.js';
 
@@ -42,6 +41,10 @@ const transformTopicData = (topicData) => {
 const transformedTopics = transformTopicData(mockTopics);
 const transformedPhotos = transformPhotoData(mockPhotos);
 
+//SET Modal STAT
+
+
+
 const HomeRoute = () => {
   const [likedPhotos, setLikedPhotos] = useState([]);
   const [alert, setAlert] = useState(false);
@@ -55,6 +58,20 @@ const HomeRoute = () => {
       }
     });
   };
+  //SET Modal STAT
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedPhotoId, setSelectedPhotoId] = useState(null);
+  const openPhotoModal = (id) => {
+    setSelectedPhotoId(id);
+    setModalVisible(true);
+  };
+  
+  const closeModal = () => {
+    setSelectedPhotoId(null);
+    setModalVisible(false);
+  };
+  
+
 
   return (
     <div className="home-route">
@@ -64,6 +81,7 @@ const HomeRoute = () => {
         setLikedPhotos={setLikedPhotos}
         alert={alert}
         setAlert={setAlert}
+        
       />
       <PhotoList
         photos={transformedPhotos}
@@ -71,7 +89,14 @@ const HomeRoute = () => {
         setAlert={setAlert}
         isLiked={(photoId) => likedPhotos.includes(photoId)}
         toggleLike={toggleLike}
+        openPhotoModal={openPhotoModal}
       />
+      {modalVisible && selectedPhotoId !== null && (
+        <PhotoDetailsModal
+          selectedPhotoId={selectedPhotoId}
+          closeModal={closeModal} // Pass the closeModal function
+        />
+      )}
     </div>
   );
 };

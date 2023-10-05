@@ -3,6 +3,9 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
+  const handlePhotoClick = (id) => {
+    props.openPhotoModal(id); // Trigger the openPhotoModal function when a photo is clicked
+  };
   return (
     <ul className="photo-list">
       {props.photos.map((photo) => (
@@ -17,6 +20,8 @@ const PhotoList = (props) => {
           toggleLike={() => props.toggleLike(photo.id)}
           alert={props.alert}
           setAlert={props.setAlert}
+          setModalVisible={props.setModalVisible} // Pass the setModalVisible function
+          onClick={() => handlePhotoClick(photo.id)}
         />
       ))}
     </ul>

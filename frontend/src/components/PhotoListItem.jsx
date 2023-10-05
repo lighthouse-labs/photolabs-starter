@@ -4,7 +4,11 @@ import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
   return (
-    <div className="photo-list__item">
+    <div
+      className="photo-list__item"
+      key={props.photo.id}
+      onClick={props.onClick} // Trigger the onClick function when the item is clicked
+    >
       <PhotoFavButton
         isLiked={props.isLiked}
         toggleLike={props.toggleLike}
