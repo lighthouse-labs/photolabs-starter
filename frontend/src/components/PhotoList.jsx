@@ -15,7 +15,8 @@ const PhotoList = (props) => {
       toggleLike: () => props.toggleLike(selectedPhoto.id),
       alert: props.alert,
       setAlert: props.setAlert,
-      setModalVisible: props.setModalVisible, // Pass the setModalVisible function
+      setModalVisible: props.setModalVisible, 
+      similarPhotos : selectedPhoto.similarPhotoIds// Pass the setModalVisible function
   };
     props.openPhotoModal(id, photoData); // Pass the selected photo data to openPhotoModal
   };

@@ -24,6 +24,7 @@ const transformPhotoData = (photoData) => {
         name: photo.user.name,
         profile: photo.user.profile,
       },
+      similarPhotoIds: [2, 3, 4, 5], // Example similar photo IDs
     };
   });
 };
@@ -45,6 +46,9 @@ const HomeRoute = () => {
   const [likedPhotos, setLikedPhotos] = useState([]);
   const [alert, setAlert] = useState(false);
 
+  // State to store similar photos
+  const [similarPhotos, setSimilarPhotos] = useState([]);
+
   const toggleLike = (photoId) => {
     setLikedPhotos((prevLikedPhotos) => {
       if (prevLikedPhotos.includes(photoId)) {
@@ -55,14 +59,24 @@ const HomeRoute = () => {
     });
   };
 
-  // SET Modal STATE
+  // Modal state
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedPhotoId, setSelectedPhotoId] = useState(null);
-  const [selectedPhotoData, setSelectedPhotoData] = useState(null); // Store selected photo data
+  const [selectedPhotoData, setSelectedPhotoData] = useState(null);
 
   const openPhotoModal = (id, photoData) => {
     setSelectedPhotoId(id);
-    setSelectedPhotoData(photoData); // Pass the selected photo data
+    setSelectedPhotoData(photoData);
+
+    // Fetch actual similar photo data based on IDs
+    const similarPhotoIds = photoData.similarPhotoIds || [];
+    const similarPhotosData = transformedPhotos.filter(photo =>
+      similarPhotoIds.includes(photo.id)
+    );
+
+    // Pass similar photo data to the modal
+    setSimilarPhotos(similarPhotosData);
+
     setModalVisible(true);
   };
 
@@ -91,8 +105,9 @@ const HomeRoute = () => {
       {modalVisible && selectedPhotoId !== null && (
         <PhotoDetailsModal
           selectedPhotoId={selectedPhotoId}
-          closeModal={closeModal} // Pass the closeModal function
-          selectedPhotoData={selectedPhotoData} // Pass the selected photo data
+          closeModal={closeModal}
+          selectedPhotoData={selectedPhotoData}
+          similarPhotos={similarPhotos} // Pass similar photos to the modal
         />
       )}
     </div>
