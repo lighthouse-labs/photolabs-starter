@@ -1,22 +1,85 @@
-// useApplicationData.js
-import { useState, useEffect } from 'react';
+import { useReducer, useEffect } from 'react'; // Import useReducer and useEffect
 import mockPhotos from '../mocks/photos.js';
 import mockTopics from '../mocks/topics.js';
 
+// Define action types
+export const ACTIONS = {
+  FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
+  FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  SELECT_PHOTO: 'SELECT_PHOTO',
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+};
+
+// Define your reducer function
+function reducer(state, action) {
+  switch (action.type) {
+    case ACTIONS.FAV_PHOTO_ADDED:
+      // Insert logic for adding a favorite photo to state
+      return {
+        ...state,
+        likedPhotos: [...state.likedPhotos, action.payload.id],
+      };
+
+    case ACTIONS.FAV_PHOTO_REMOVED:
+      // Insert logic for removing a favorite photo from state
+      return {
+        ...state,
+        likedPhotos: state.likedPhotos.filter((id) => id !== action.payload.id),
+      };
+
+    case ACTIONS.SET_PHOTO_DATA:
+      // Insert logic for setting photo data
+      return {
+        ...state,
+        transformedPhotos: action.payload.photos,
+      };
+
+    case ACTIONS.SET_TOPIC_DATA:
+      // Insert logic for setting topic data
+      return {
+        ...state,
+        transformedTopics: action.payload.topics,
+      };
+
+    case ACTIONS.SELECT_PHOTO:
+      // Insert logic for selecting a photo
+      return {
+        ...state,
+        selectedPhotoId: action.payload.id,
+        selectedPhotoData: action.payload.photoData,
+        similarPhotosData: action.payload.similarPhotosData,
+        modalVisible: true,
+      };
+
+    case ACTIONS.DISPLAY_PHOTO_DETAILS:
+      // Insert logic for displaying photo details
+      return {
+        ...state,
+        modalVisible: false,
+      };
+
+    default:
+      throw new Error(`Tried to reduce with unsupported action type: ${action.type}`);
+  }
+}
+
 const useApplicationData = () => {
-  // State for storing transformed photos and topics
-  const [transformedPhotos, setTransformedPhotos] = useState([]);
-  const [transformedTopics, setTransformedTopics] = useState([]);
+  // Initialize your initial state here
+  const initialState = {
+    transformedPhotos: [],
+    transformedTopics: [],
+    likedPhotos: [],
+    alert: false,
+    modalVisible: false,
+    selectedPhotoId: null,
+    selectedPhotoData: null,
+    similarPhotosData: [],
+  };
 
-  // State for managing liked photos, alerts, and other application-specific data
-  const [likedPhotos, setLikedPhotos] = useState([]);
-  const [alert, setAlert] = useState(false);
-
-  // State for modal and selected photo data
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedPhotoId, setSelectedPhotoId] = useState(null);
-  const [selectedPhotoData, setSelectedPhotoData] = useState(null);
-  const [similarPhotosData, setSimilarPhotos] = useState([]);
+  // Use useReducer to manage state
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   // Function to transform photo data
   const transformPhotoData = (photoData) => {
@@ -63,8 +126,9 @@ const useApplicationData = () => {
       const transformedPhotos = transformPhotoData(photoData);
       const transformedTopics = transformTopicData(topicData);
 
-      setTransformedPhotos(transformedPhotos);
-      setTransformedTopics(transformedTopics);
+      // Dispatch actions to update state
+      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: { photos: transformedPhotos } });
+      dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topics: transformedTopics } });
     };
 
     fetchAndTransformData();
@@ -72,56 +136,38 @@ const useApplicationData = () => {
 
   // Function to toggle liked photos
   const toggleLike = (photoId) => {
-    setLikedPhotos((prevLikedPhotos) => {
-      if (prevLikedPhotos.includes(photoId)) {
-        return prevLikedPhotos.filter((id) => id !== photoId);
-      } else {
-        return [...prevLikedPhotos, photoId];
-      }
-    });
+    if (state.likedPhotos.includes(photoId)) {
+      dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photoId } });
+    } else {
+      dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: { id: photoId } });
+    }
   };
 
   // Function to open the photo modal
   const openPhotoModal = (id, photoData) => {
-    setSelectedPhotoId(id);
-    setSelectedPhotoData(photoData);
-
     // Fetch actual similar photo data based on IDs (replace with actual fetching logic)
-    const similarPhotoIds = photoData.similarPhotos|| [];
-    const similarPhotosData = [];
-    // console.log('hok',similarPhotoIds)
-    for (const a of similarPhotoIds) {
-      const similarPhoto = transformedPhotos.find((photo) => photo.id == a);
-      if (similarPhoto) {
-        similarPhotosData.push(similarPhoto);
-        // console.log('hokdata',similarPhoto)
-      }
-    }
-    // Pass similar photo data to the modal
-    setSimilarPhotos(similarPhotosData);
-    
-    setModalVisible(true);
+    const similarPhotoIds = photoData.similarPhotos || [];
+    const similarPhotosData = similarPhotoIds.map((id) =>
+      state.transformedPhotos.find((photo) => photo.id == id)
+    );
+    console.log('data',similarPhotosData)
+    // Dispatch action to select a photo and display details
+    dispatch({
+      type: ACTIONS.SELECT_PHOTO,
+      payload: { id, photoData, similarPhotosData },
+    });
   };
 
   // Function to close the photo modal
   const closeModal = () => {
-    setSelectedPhotoId(null);
-    setModalVisible(false);
+    // Dispatch action to close the modal
+    dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
   };
 
   // Other functions and state updates related to your application's logic
 
   return {
-    transformedPhotos,
-    transformedTopics,
-    likedPhotos,
-    setLikedPhotos,
-    alert,
-    setAlert,
-    similarPhotosData,
-    modalVisible,
-    selectedPhotoId,
-    selectedPhotoData,
+    ...state,
     toggleLike,
     openPhotoModal,
     closeModal,
