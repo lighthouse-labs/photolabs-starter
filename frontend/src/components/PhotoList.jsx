@@ -5,6 +5,7 @@ import "../styles/PhotoList.scss";
 const PhotoList = (props) => {
   const handlePhotoClick = (id) => {
     const selectedPhoto = props.photos.find((photo) => photo.id === id); // Find the selected photo
+    console.log('list',selectedPhoto.similarPhotoIds)
     const photoData = {
       id: selectedPhoto.id,
       imageSource: `${process.env.PUBLIC_URL}${selectedPhoto.urls.regular}`,
@@ -17,6 +18,7 @@ const PhotoList = (props) => {
       setAlert: props.setAlert,
       setModalVisible: props.setModalVisible, 
       similarPhotos : selectedPhoto.similarPhotoIds// Pass the setModalVisible function
+     
   };
     props.openPhotoModal(id, photoData); // Pass the selected photo data to openPhotoModal
   };

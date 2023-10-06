@@ -1,13 +1,14 @@
+// HomeRoute.jsx
 import React, { useState } from 'react';
 import TopNavBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
 import '../styles/HomeRoute.scss';
-import PhotoDetailsModal from "./PhotoDetailsModal";
+import PhotoDetailsModal from './PhotoDetailsModal'; // Corrected import path
 import mockPhotos from '../mocks/photos.js';
 import mockTopics from '../mocks/topics.js';
 
 const transformPhotoData = (photoData) => {
-  return photoData.map((photo, index) => {
+  return photoData.map((photo) => {
     return {
       id: photo.id,
       location: {
@@ -47,7 +48,7 @@ const HomeRoute = () => {
   const [alert, setAlert] = useState(false);
 
   // State to store similar photos
-  const [similarPhotos, setSimilarPhotos] = useState([]);
+  const [similarPhotosData, setSimilarPhotos] = useState([]);
 
   const toggleLike = (photoId) => {
     setLikedPhotos((prevLikedPhotos) => {
@@ -69,16 +70,21 @@ const HomeRoute = () => {
     setSelectedPhotoData(photoData);
 
     // Fetch actual similar photo data based on IDs
-    const similarPhotoIds = photoData.similarPhotoIds || [];
-    const similarPhotosData = transformedPhotos.filter(photo =>
-      similarPhotoIds.includes(photo.id)
-    );
+    const similarPhotoIds = photoData.similarPhotos || [];
+    const similarPhotosData = [];
 
+    for (const a of similarPhotoIds) {
+        const similarPhoto = transformedPhotos.find(photo =>photo.id== a  );
+        if (similarPhoto) {
+            similarPhotosData.push(similarPhoto);
+        }
+    }
     // Pass similar photo data to the modal
     setSimilarPhotos(similarPhotosData);
 
     setModalVisible(true);
-  };
+};
+
 
   const closeModal = () => {
     setSelectedPhotoId(null);
@@ -107,7 +113,11 @@ const HomeRoute = () => {
           selectedPhotoId={selectedPhotoId}
           closeModal={closeModal}
           selectedPhotoData={selectedPhotoData}
-          similarPhotos={similarPhotos} // Pass similar photos to the modal
+          similarPhotos={similarPhotosData} // Pass similar photos to the modal
+          setAlert={setAlert}
+          isLiked={(photoId) => likedPhotos.includes(photoId)}
+          toggleLike={toggleLike}
+          openPhotoModal={openPhotoModal}
         />
       )}
     </div>
