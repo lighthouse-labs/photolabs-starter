@@ -21,7 +21,11 @@ const PhotoDetailsModal = (props) => {
 
       {/* Display similar photos using PhotoList component */}
       <div className="photo-details-modal__similar-photos">
-        <h2>Similar Photos</h2>
+
+        <h2 className="photo-details-modal__header"></h2>
+        <p className="photo-details-modal__header photo-details-modal__line">
+        Similar Photos
+        </p>
         <PhotoList
           photos={props.similarPhotos}
           alert={props.alert}
