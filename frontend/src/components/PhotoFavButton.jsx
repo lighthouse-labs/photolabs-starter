@@ -1,22 +1,23 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
-import { prettyFormat } from '@testing-library/react';
-
 
 function PhotoFavButton(props) {
-  // console.log("FavButton Props: ", props);
+  const [colorCheck, setColorCheck] = useState(props.favourites.includes(props.id));
+  console.log("PhotoFavButton Props ", props);
+
+  useEffect(() => {
+    setColorCheck(props.favourites.includes(props.id));
+  }, [props.favourites, props.id]);
 
   function handleClick() {
-    props.toggleFavourite(props.id)
-  };
-
-  const colorCheck = props.favourites.includes(props.id);
+    props.toggleFavourite(props.id); 
+  }
 
   return (
-    <div className="photo-list__fav-icon"  onClick={handleClick}>
+    <div className="photo-list__fav-icon" onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon  selected={colorCheck}/>
+        <FavIcon selected={colorCheck} />
       </div>
     </div>
   );
