@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import '../styles/PhotoDetailsModal.scss';
-import closeSymbol from '../assets/closeSymbol.svg';
-import PhotoList from '../components/PhotoList';
-import PhotoFavButton from '../components/PhotoFavButton';
+import React from "react";
+import "../styles/PhotoDetailsModal.scss";
+import closeSymbol from "../assets/closeSymbol.svg";
+import PhotoList from "../components/PhotoList";
+import PhotoFavButton from "../components/PhotoFavButton";
 
 const PhotoDetailsModal = (props) => {
- 
-
+  console.log('propsmodal',props);
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={props.closeModal}>
@@ -15,8 +14,7 @@ const PhotoDetailsModal = (props) => {
 
       <div className="photo-details-modal__images">
         <div className="photo-details-modal__image">
-          {/* Display the Favorite button */}
-          <div className="photo-details-modal__like-button" onClick={props.toggleLike}>
+          <div className="photo-details-modal__like-button" onClick={props.onto}>
             <PhotoFavButton
               isLiked={props.isLiked(props.selectedPhotoData.id)}
               toggleLike={() => props.toggleLike(props.selectedPhotoData.id)}
@@ -49,16 +47,15 @@ const PhotoDetailsModal = (props) => {
         </div>
 
         <div className="photo-details-modal__photographer-info">
-          {/* Display similar photos using PhotoList component */}
           <div className="photo-details-modal__similar-photos">
             <h2 className="photo-details-modal__header">Similar Photos</h2>
             <PhotoList
-              photos={props.similarPhotos}
+              photos={props.selectedPhotoData.similarPhotos}             
               alert={props.alert}
-              setAlert={props.setAlert}
+              setAlert={[]}
               isLiked={(photoId) => props.isLiked(photoId)}
               toggleLike={(photoId) => props.toggleLike(photoId)}
-              openPhotoModal={(id, photoData) => props.openPhotoModal(id, photoData)}
+
             />
           </div>
         </div>

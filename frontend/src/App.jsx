@@ -1,15 +1,19 @@
 import React from 'react';
 import HomeRoute from './routes/HomeRoute';
-import useApplicationData from './hooks/useApplicationData'; // Adjust the import path
-
-
+import useApplicationData from './hooks/useApplicationData';
 
 const App = () => {
   const {
-    state,
-    updateToFavPhotoIds,
-    setPhotoSelected,
-    onClosePhotoDetailsModal,
+    likedPhotos,
+    alert,
+    similarPhotosData,
+    modalVisible,
+    selectedPhotoId,
+    selectedPhotoData,
+    toggleLike,
+    openPhotoModal,
+    closeModal,
+    photoData, // Add transformedPhotos from useApplicationData
   } = useApplicationData();
 
   return (
@@ -20,4 +24,3 @@ const App = () => {
 };
 
 export default App;
-
