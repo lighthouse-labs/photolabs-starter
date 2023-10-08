@@ -13,7 +13,8 @@ const App = () => {
     toggleLike,
     openPhotoModal,
     closeModal,
-    photoData, // Add transformedPhotos from useApplicationData
+    photoData,
+    fetchPhotosByTopic, // Add transformedPhotos from useApplicationData
   } = useApplicationData();
 
   return (

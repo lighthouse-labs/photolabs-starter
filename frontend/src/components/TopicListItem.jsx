@@ -1,17 +1,17 @@
 import React from "react";
-
 import "../styles/TopicListItem.scss";
 
-const sampleDataForTopicListItem = {
-  id: "1",
-  slug: "topic-1",
-  label: "Nature",
-};
+const TopicListItem = (props) => {
+  const topicHandler = () => {
+    props.fetchPhotosByTopic(props.id);
+    // console.log('topicid',props.id);
+  };
 
-const TopicListItem = ({slug,title}) => {
   return (
     <div className="topic-list__item">
-      <a href={slug}>{title}</a>
+      <a href={props.slug} key={props.id} onClick={topicHandler}>
+        {props.title}
+      </a>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import TopNavBar from '../components/TopNavigationBar';
 import PhotoList from '../components/PhotoList';
 import '../styles/HomeRoute.scss';
@@ -19,6 +19,7 @@ const HomeRoute = () => {
     closeModal,
     photoData,
     topicData,
+    fetchPhotosByTopic,
   } = useApplicationData();
 
   // Function to handle adding a favorite photo
@@ -37,6 +38,7 @@ const HomeRoute = () => {
         likedPhotos={likedPhotos}
         alert={alert}
         topics={topicData}
+        fetchPhotosByTopic={fetchPhotosByTopic}
       />
       <PhotoList
         photos={photoData}

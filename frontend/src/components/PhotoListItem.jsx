@@ -7,7 +7,7 @@ const PhotoListItem = (props) => {
     <div
       className="photo-list__item"
       key={props.photo.id}
-      onClick={props.onClick} // Trigger the onClick function when the item is clicked
+      onClick={props.onClick} 
     >
       <PhotoFavButton
         isLiked={props.isLiked}

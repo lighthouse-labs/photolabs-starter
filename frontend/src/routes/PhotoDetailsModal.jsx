@@ -5,7 +5,7 @@ import PhotoList from "../components/PhotoList";
 import PhotoFavButton from "../components/PhotoFavButton";
 
 const PhotoDetailsModal = (props) => {
-  console.log('propsmodal',props);
+  // console.log('propsmodal',props);
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button" onClick={props.closeModal}>
@@ -55,7 +55,6 @@ const PhotoDetailsModal = (props) => {
               setAlert={[]}
               isLiked={(photoId) => props.isLiked(photoId)}
               toggleLike={(photoId) => props.toggleLike(photoId)}
-
             />
           </div>
         </div>

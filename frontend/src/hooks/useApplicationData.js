@@ -1,4 +1,3 @@
-
 import { useReducer, useEffect } from "react";
 
 // Define action types
@@ -9,9 +8,10 @@ export const ACTIONS = {
   SET_TOPIC_DATA: "SET_TOPIC_DATA",
   SELECT_PHOTO: "SELECT_PHOTO",
   DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
+  GET_PHOTOS_BY_TOPIC: "GET_PHOTOS_BY_TOPIC",
 };
 
-// Define your reducer function
+// Define reducer function
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
@@ -53,27 +53,34 @@ function reducer(state, action) {
         modalVisible: false,
       };
 
+    case ACTIONS.GET_PHOTOS_BY_TOPIC:
+      return {
+        ...state,
+        photoData: action.payload.photos,
+      };
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
       );
   }
 }
-
+//intilizing 
 const useApplicationData = () => {
   const initialState = {
     photoData: [], // Placeholder for photo data
-    topicData: [], // Placeholder for topic data
+    topicData: [], 
     likedPhotos: [],
     alert: false,
     modalVisible: false,
     selectedPhotoId: null,
     selectedPhotoData: null,
     similarPhotosData: [],
+    selectedTopic: null,
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-
+//functions for managing data
   const transformPhotoData = (photoData) => {
     return photoData.map((photo) => {
       return {
@@ -93,16 +100,6 @@ const useApplicationData = () => {
           profile: photo.user.profile,
         },
         similarPhotoIds: photo.similar_photos, // Example similar photo IDs
-      };
-    });
-  };
-
-  const transformTopicData = (topicData) => {
-    return topicData.map((topic) => {
-      return {
-        id: topic.id,
-        slug: topic.slug,
-        title: topic.title,
       };
     });
   };
@@ -133,10 +130,10 @@ const useApplicationData = () => {
   };
 
   const openPhotoModal = (id, photoData) => {
-    // Fetch actual similar photo data based on IDs (replace with actual fetching logic)
-    selectedPhot=state.photoData.find((photo) => photo.id === id);
-    const similarPhotosData = selectedPhot.similarPhotoIds || [];
-    console.log('simliarphoto and selected',[selectedPhot,similarPhotosData]);
+    
+    const selectedPhoto = state.photoData.find((photo) => photo.id === id);
+    const similarPhotosData = selectedPhoto.similarPhotoIds || [];
+    console.log('similarphoto and selected', [selectedPhoto, similarPhotosData]);
     // Dispatch action to select a photo and display details
     dispatch({
       type: ACTIONS.SELECT_PHOTO,
@@ -149,34 +146,48 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
   };
 
-  useEffect(() => {
-    // Fetch photo data from the API on port 8001
-    fetch("http://localhost:8001/api/photos")
-      .then((response) => response.json())
+  const fetchPhotosByTopic = (topicId) => {
+    fetch(`/api/topics/photos/${topicId}`)
+      .then((res) => res.json())
       .then((data) => {
-        dispatch({
-          type: ACTIONS.SET_PHOTO_DATA,
-          payload: { photos: transformPhotoData(data) },
-        });
+        dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: { photos: transformPhotoData(data) } });
+      })
+      .catch((error) => {
+        console.error("Error fetching photos by topic:", error);
       });
+  };
 
-    // Fetch topic data from the API on port 8001 (similar process)
-    fetch("http://localhost:8001/api/topics")
+  useEffect(() => {
+    // Fetch all photos initially
+    fetch("/api/photos")
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: { photos: transformPhotoData(data) } })
+      })
+      .catch((error) => {
+        console.error("Error fetching all photos:", error);
+      });
+    }, []);
+    useEffect(() => {
+    // Fetch topic data initially
+    fetch("/api/topics")
       .then((response) => response.json())
       .then((data) => {
-        dispatch({
-          type: ACTIONS.SET_TOPIC_DATA,
-          payload: { topics: transformTopicData(data) },
-        });
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topics: data } });
+      })
+      .catch((error) => {
+        console.error("Error fetching topic data:", error);
       });
   }, []);
-  console.log('state',state);
+
+  console.log('state', state);
   return {
     ...state,
     toggleLike,
     handlePhotoClick,
     openPhotoModal,
     closeModal,
+    fetchPhotosByTopic,
   };
 };
 
