@@ -8,31 +8,17 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
   console.log("HomeRoute render");
+  console.log("HomeRoute Props:", props);
 
-  const [favourites, setFavourites] = useState([]);
-  console.log("favourites:", favourites);
-
-  const toggleFavourite = id => {
-    setFavourites(prevFavourites => 
-        prevFavourites.includes(id) ? prevFavourites.filter(favId => favId !=id)
-        : [...prevFavourites, id]
-    );
-};
-function isFavPhotoExist() {
-  if (favourites.length === 0) {
-    return false;
-  } else {
-    return true;
-  }
-}
+  
   return (
     <div className="home-route">
       <div className='top-nav-bar'>
-        <TopNavigation />
-        <TopicList/>
-        <FavBadge isFavPhotoExist={isFavPhotoExist()}/>
+        <TopNavigation homePhotos={props.homePhotos}/>
+        <TopicList topicData={props.topicData} showTopicPhotos={props.showTopicPhotos} />
+        <FavBadge isFavPhotoExist={props.isFavPhotoExist()} favourites={props.favourites}/>
       </div>
-      <PhotoList setShowModal={props.setShowModal} favourites={favourites} toggleFavourite={toggleFavourite} setSelectedImage={props.setSelectedImage}/>
+      <PhotoList setShowModal={props.setShowModal} favourites={props.favourites} toggleFavourite={props.toggleFavourite} setSelectedImage={props.setSelectedImage}  photoData={props.photoData}/>
     </div>
   );
 };
