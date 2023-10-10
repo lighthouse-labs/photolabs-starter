@@ -7,13 +7,32 @@ import PhotoListItem from 'components/PhotoListItem';
 
 const PhotoDetailsModal = (props) => {
   console.log("PhotoDetailsModal Props: ", props);
+  
+  
   function handleClick() {
     props.setShowModal && props.setShowModal(false);
 }
+
 // console.log("PhotoDetailsModal Props ID: ", typeof props.id);
 const similarPhotosArray = Object.values(props.similar_photos || {});
 
-
+const renderPhotoListItem = (photo) => {
+  return (
+      <PhotoListItem
+          key={photo.id}
+          id={photo.id}
+          regular={photo.urls.regular}
+          full={photo.urls.full}
+          name={photo.user.name}
+          location={photo.location}
+          profile={photo.user.profile}
+          favourites={props.favourites}
+          toggleFavourite={props.toggleFavourite}
+          setSelectedImage={props.setSelectedImage}
+          similar_photos={props.similar_photos}
+      />
+  );
+}
 
   return (
     <div className="photo-details-modal" >
@@ -39,19 +58,7 @@ const similarPhotosArray = Object.values(props.similar_photos || {});
             <h4>Similar Photos</h4>
           </div>
             <div className='similar-photo-list'>
-              {similarPhotosArray.map((photo) => (
-              <PhotoListItem
-              key={photo.id}
-              id={photo.id}
-              regular={photo.urls.regular}
-              full={photo.urls.full}
-              name={photo.user.name}
-              location={photo.location}
-              profile={photo.user.profile}
-              favourites={props.favourites}
-              toggleFavourite={props.toggleFavourite}
-              />
-              ))}
+              {similarPhotosArray.map(renderPhotoListItem)}
             </div>
         </header>
       </div>
