@@ -4,14 +4,30 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 const PhotoListItem = (props) => {
-console.log("photoListItem Props: ", props);
+// console.log("photoListItem Props: ", props);
 
 function handleClick() {
-  props.setShowModal ? props.setShowModal((prev) => !prev) : props.setShowModal((prev) => prev)
-  props.setSelectedImage((prev) => ({...prev, id: props.id, regular: props.regular, full: props.full, profile: props.profile, name: props.name, location: {city: props.location.city, country: props.location.country}, favourites: props.favourites, toggleFavourite: props.toggleFavourite, similar_photos: props.similar_photos}))
+  if (props.setShowModal) {
+    props.setShowModal(prev => !prev);
+  }
+
+  const imageDetails = {
+    id: props.id,
+    regular: props.regular,
+    full: props.full,
+    profile: props.profile,
+    name: props.name,
+    location: { 
+      city: props.location.city,
+      country: props.location.country
+    },
+    favourites: props.favourites,
+    toggleFavourite: props.toggleFavourite,
+    similar_photos: props.similar_photos
+  };
+
+  props.setSelectedImage(imageDetails);
 }
-
-
 
   return (
     <div className="photo-list__item">
