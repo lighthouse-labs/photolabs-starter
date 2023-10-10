@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
@@ -34,6 +34,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
+      <Route path="/" element={<Navigate to="/home" replace />} />
         <Route exact path="/home" element={
           <HomeRoute
             setShowModal={toggleShowModal} 
