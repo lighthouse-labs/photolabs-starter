@@ -4,7 +4,6 @@ import FavIcon from './FavIcon';
 import '../styles/FavBadge.scss';
 
 const FavBadge = ({ isFavPhotoExist, favourites }) => {
-  // console.log("isFavPhotoExist: ", isFavPhotoExist);
   const count = favourites.length;
 
     return (

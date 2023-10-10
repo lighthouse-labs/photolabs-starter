@@ -2,9 +2,7 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-
 const PhotoListItem = (props) => {
-// console.log("photoListItem Props: ", props);
 
 function handleClick() {
   if (props.setShowModal) {
@@ -25,7 +23,6 @@ function handleClick() {
     toggleFavourite: props.toggleFavourite,
     similar_photos: props.similar_photos
   };
-
   props.setSelectedImage(imageDetails);
 }
 

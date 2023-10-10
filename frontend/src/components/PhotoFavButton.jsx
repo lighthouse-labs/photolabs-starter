@@ -4,7 +4,6 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
   const [colorCheck, setColorCheck] = useState(props.favourites.includes(props.id));
-  console.log("PhotoFavButton Props ", props);
 
   useEffect(() => {
     setColorCheck(props.favourites.includes(props.id));

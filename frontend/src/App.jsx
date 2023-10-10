@@ -48,10 +48,6 @@ const App = () => {
           />}
         />
       </Routes>
-      {console.log("selected image:", selectedImage)}
-      {console.log("similar photos", selectedImage.similar_photos)}
-      {/* {console.log("Photo Data:", photoData)} */}
-      
       {showModal && 
         <PhotoDetailsModal 
           setShowModal={toggleShowModal}

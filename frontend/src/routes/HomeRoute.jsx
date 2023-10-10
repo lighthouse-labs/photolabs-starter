@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import TopicList from 'components/TopicList';
@@ -7,10 +7,7 @@ import PhotoList from 'components/PhotoList';
 
 
 const HomeRoute = (props) => {
-  console.log("HomeRoute render");
-  console.log("HomeRoute Props:", props);
 
-  
   return (
     <div className="home-route">
       <div className='top-nav-bar'>

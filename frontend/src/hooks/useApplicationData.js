@@ -1,6 +1,5 @@
 const { useReducer, useEffect } = require("react");
 
-
 export const actions = {
   toggle_show_modal: 'toggle_show_modal',
   select_image: 'select_image',
@@ -61,8 +60,6 @@ const useApplicationData = () => {
     .then(data => dispatch({ type: actions.set_photo_data, payload: data }))
     .catch(error => console.error('Error fetching data:', error))
   };
-    
-  
 
   useEffect(() => {
     fetch('http://localhost:8001/api/topics')
@@ -71,7 +68,6 @@ const useApplicationData = () => {
     .catch(error => console.error('Error fetching data:', error));
   }, []);
 
-  
 const showTopicPhotos = (id) => {
     fetch(`http://localhost:8001/api/topics/photos/${id}`)
     .then(response => response.json())
@@ -94,8 +90,6 @@ const showTopicPhotos = (id) => {
   const isFavPhotoExist = () => {
     return state.favourites.length > 0 ? true : false;
   }
-
-
 
   return {
     state,
