@@ -1,5 +1,8 @@
 .fav-badge {
   position: relative;
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
 }
 
 .fav-badge__count { 
@@ -21,4 +24,11 @@ height: 20px;
     position: absolute;
     font-size: 16px;
   }
+}
+
+.favourites-count {
+  margin-right: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  // margin-bottom: 1px;
 }
