@@ -1,13 +1,11 @@
 import React from "react";
 import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
-import photos from "mocks/photos";
-
 const PhotoList = (props) => {
   // console.log("PhotoList Props: ", props);
-
+  
   const renderPhotoListItems = () => {
-    return photos.map((photo) => {
+    return props.photoData.map((photo) => {
       const { id, location, urls: { regular: regular, full: full }, user: { name, profile }, similar_photos: similar_photos} = photo;
 
       return (
