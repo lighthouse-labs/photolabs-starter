@@ -61,7 +61,7 @@ const App = () => {
           favourites={favourites}
           toggleFavourite={toggleFavourite}
           similar_photos={selectedImage.similar_photos}
-          similar_photos_test={getSimilarPhotos()}
+          similar_photos_modal={getSimilarPhotos()}
           setSelectedImage={selectImage}
         />
       }
