@@ -22,7 +22,15 @@ const App = () => {
       topicData
     }
   } = useApplicationData();
-  
+
+  function getSimilarPhotos() {
+    if (selectedImage) {
+      const photo = photoData.find((photo) => photo.id === selectedImage.id)
+      return photo.similar_photos;
+    }
+    return [];
+  }
+
   return (
     <Router>
       <Routes>
@@ -40,7 +48,10 @@ const App = () => {
           />}
         />
       </Routes>
-
+      {console.log("selected image:", selectedImage)}
+      {console.log("similar photos", selectedImage.similar_photos)}
+      {/* {console.log("Photo Data:", photoData)} */}
+      
       {showModal && 
         <PhotoDetailsModal 
           setShowModal={toggleShowModal}
@@ -53,6 +64,7 @@ const App = () => {
           favourites={favourites}
           toggleFavourite={toggleFavourite}
           similar_photos={selectedImage.similar_photos}
+          similar_photos_test={getSimilarPhotos()}
           setSelectedImage={selectImage}
         />
       }
