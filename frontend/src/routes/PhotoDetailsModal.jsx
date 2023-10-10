@@ -6,15 +6,16 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoListItem from 'components/PhotoListItem';
 
 const PhotoDetailsModal = (props) => {
-  console.log("PhotoDetailsModal Props: ", props);
+  // console.log("PhotoDetailsModal Props: ", props);
   
   
   function handleClick() {
     props.setShowModal && props.setShowModal(false);
 }
 
-// console.log("PhotoDetailsModal Props ID: ", typeof props.id);
-const similarPhotosArray = Object.values(props.similar_photos || {});
+console.log("PhotoDetailsModal Props : ", props);
+const similarPhotosArray = props.similar_photos_test;
+// console.log("similarPhotosArray", similarPhotosArray);
 
 const renderPhotoListItem = (photo) => {
   return (
@@ -33,6 +34,7 @@ const renderPhotoListItem = (photo) => {
       />
   );
 }
+// console.log("MOdal similar photos:", props.similar_photos);
 
   return (
     <div className="photo-details-modal" >
@@ -58,8 +60,12 @@ const renderPhotoListItem = (photo) => {
             <h4>Similar Photos</h4>
           </div>
             <div className='similar-photo-list'>
-              {similarPhotosArray.map(renderPhotoListItem)}
+              {similarPhotosArray.map((photo)=> (renderPhotoListItem(photo)))}
+              
             </div>
+            {/* {props.similar_photos_test.map((p) => {console.log(p.id)})} */}
+            {/* {console.log("sPhotosTest:", props.similar_photos_test())} */}
+            
         </header>
       </div>
     </div>
