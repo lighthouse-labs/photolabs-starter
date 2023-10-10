@@ -12,11 +12,12 @@ PhotoLabs allows users to:
 
 ## Demo
 ### Navigate Different Topics
-![Navigate Different Topics]()
-### Like Photos
-![Like Photos]()
+![Navigate Different Topics](https://github.com/B-Rob97/photolabs-starter/blob/main/frontend/assets/gifs/PhotoLabs-TopicNavigation.gif?raw=true)
 ### Modal
-![Modal]()
+![Modal](https://github.com/B-Rob97/photolabs-starter/blob/main/frontend/assets/gifs/PhotoLabs-Modal.gif?raw=true)
+### Like Photos
+![Like Photos](https://github.com/B-Rob97/photolabs-starter/blob/main/frontend/assets/gifs/PhotoLabs-Likes.gif?raw=true)
+
 
 ## Getting Started
 1. Clone this repository onto your local device.
