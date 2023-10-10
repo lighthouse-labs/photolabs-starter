@@ -10,7 +10,6 @@ const PhotoDetailsModal = (props) => {
     props.setShowModal && props.setShowModal(false);
 }
 
-console.log("PhotoDetailsModal Props : ", props);
 const similarPhotosArray = props.similar_photos_test;
 
 const renderPhotoListItem = (photo) => {
