@@ -1,38 +1,61 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Routes } from 'react-router-dom';
- import './App.scss';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
+import useApplicationData from 'hooks/useApplicationData';
 
-
-// Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [selectedImage, setSelectedImage] = useState({})
-  console.log("Selected ID: ", selectedImage);
+
+  const {
+    toggleShowModal,
+    selectImage,
+    toggleFavourite,
+    isFavPhotoExist,
+    showTopicPhotos,
+    homePhotos,
+    state: {
+      showModal,
+      selectedImage,
+      favourites,
+      photoData,
+      topicData
+    }
+  } = useApplicationData();
   
   return (
     <Router>
       <Routes>
-        <Route exact path="/home" element={<HomeRoute setShowModal={setShowModal} setSelectedImage={setSelectedImage}/>} />
+        <Route exact path="/home" element={
+          <HomeRoute
+            setShowModal={toggleShowModal} 
+            setSelectedImage={selectImage}
+            favourites={favourites} 
+            toggleFavourite={toggleFavourite}
+            isFavPhotoExist={isFavPhotoExist}
+            photoData={photoData}
+            topicData={topicData}
+            showTopicPhotos={showTopicPhotos}
+            homePhotos={homePhotos}
+          />}
+        />
       </Routes>
 
-      {showModal && <PhotoDetailsModal 
-      setShowModal={setShowModal}
-      id={selectedImage.id}
-      full={selectedImage.full}
-      regular={selectedImage.regular}
-      name={selectedImage.name}
-      location={selectedImage.location}
-      profile={selectedImage.profile}
-      favourites={selectedImage.favourites}
-      toggleFavourite={selectedImage.toggleFavourite}
-      similar_photos={selectedImage.similar_photos}
-      
-  
-      />}
+      {showModal && 
+        <PhotoDetailsModal 
+          setShowModal={toggleShowModal}
+          id={selectedImage.id}
+          full={selectedImage.full}
+          regular={selectedImage.regular}
+          name={selectedImage.name}
+          location={selectedImage.location}
+          profile={selectedImage.profile}
+          favourites={favourites}
+          toggleFavourite={toggleFavourite}
+          similar_photos={selectedImage.similar_photos}
+          setSelectedImage={selectImage}
+        />
+      }
     </Router>
   );
 }
