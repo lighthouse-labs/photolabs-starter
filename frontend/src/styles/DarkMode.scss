@@ -1,0 +1,57 @@
+.dark-mode-button {
+  border-radius: 50px;
+  border: 1px solid black;
+  background-color: rgb(88, 88, 88);
+  color: white;
+  font-weight: bolder;
+}
+.dark-mode-button-dark-mode {
+  border-radius: 50px;
+  border: 1px solid black;
+  background-color: white;
+  color: rgb(88, 88, 88);
+  font-weight: bolder;
+}
+
+input[type=checkbox]{
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 46px;
+  height: 21px;
+  background: darkgrey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  margin-bottom: 19px;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 5px;
+  width: 10px;
+  height: 14px;
+  background: black;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: white;
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 5px;
+}

@@ -10,6 +10,19 @@
   background-color: #FFFFFF;
 }
 
+.photo-list__item-dark-mode {
+  margin: 24px;
+  padding: 8px;
+  border: 1px black;
+  border-width: 0.5px;
+  border-color: black;
+  border-style: solid;
+  border-radius: 8px;
+  max-width: fit-content;
+  background-color:rgb(76, 76, 76);
+  color: rgb(255, 255, 255);
+}
+
 .photo-list__image {
   user-select: none;
   width: 300px;
@@ -47,4 +60,8 @@
 
 .photo-list__user-location {
   color: #838383;
+}
+
+.photo-list__user-location-dark-mode {
+  color: rgb(255, 255, 255);
 }

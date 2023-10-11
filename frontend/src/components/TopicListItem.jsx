@@ -5,7 +5,8 @@ const TopicListItem = (props) => {
 
   return (
     <div className="topic-list__item">
-      <span onClick={() => props.showTopicPhotos(props.id)} className="topic-list__item span" >{props.title}</span>
+      <span onClick={() => props.showTopicPhotos(props.id)} 
+      className={props.darkMode ? "topic-list__item-dark-mode" :"topic-list__item" }>{props.title}</span>
     </div>
   );
 };

@@ -1,4 +1,12 @@
-.home-route {
-  max-width: 1200px;
+.home-route-light-mode {
+  max-width: 100vw;
   margin: auto;
+}
+
+.home-route-dark-mode {
+  max-width: 100vw;
+  height: 100vw;
+  margin: auto;
+  background-color: rgb(18, 18, 18);
+  color: white;
 }

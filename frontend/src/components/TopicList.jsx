@@ -13,6 +13,7 @@ const TopicList = (props) => {
           slug={slug}
           title={title}
           showTopicPhotos={props.showTopicPhotos}
+          darkMode={props.darkMode}
         />
       ))}
     </div>

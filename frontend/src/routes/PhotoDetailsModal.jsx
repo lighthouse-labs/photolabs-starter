@@ -26,31 +26,32 @@ const renderPhotoListItem = (photo) => {
           toggleFavourite={props.toggleFavourite}
           setSelectedImage={props.setSelectedImage}
           similar_photos={props.similar_photos}
+          darkMode={props.darkMode}
       />
   );
 }
 
   return (
-    <div className="photo-details-modal" >
-
-      <button className="photo-details-modal__close-button" onClick={handleClick} >
-        <img src={closeSymbol} alt="close symbol" />
+    <div>
+      <div className={props.darkMode ? "photo-details-modal-dark-mode": "photo-details-modal"} >
+        <button className={props.darkMode? "photo-details-modal__close-button-dark-mode" : "photo-details-modal__close-button"} onClick={handleClick} >
+        <img className='close-symbol' src={closeSymbol} alt="close symbol" />
       </button>
 
       <div className='photo-details-modal__images'>
 
-        <PhotoFavButton favourites={props.favourites} toggleFavourite={props.toggleFavourite} id={props.id} />
+        <PhotoFavButton favourites={props.favourites} toggleFavourite={props.toggleFavourite} id={props.id} darkMode={props.darkMode}/>
         <img className="photo-details-modal__image" src={props.full} alt="User image" />
-        <header className='photo-details-modal__header'>
+        <header className={props.darkMode?'photo-details-modal__header-dark-mode' : 'photo-details-modal__header'}>
           <div className="photo-details-modal__photographer-details">
             <img className="photo-details-modal__photographer-profile" src={props.profile} alt="Profile" />
             <div className="photo-details-modal__photographer-info">{props.name}
               <div 
-              className="photo-details-modal__photographer-location">{props.location.city}, {props.location.country}
+              className={props.darkMode ? "photo-details-modal__photographer-location-dark-mode" : "photo-details-modal__photographer-location"}>{props.location.city}, {props.location.country}
               </div>
             </div>
           </div>
-          <div className="photo-details-modal__top-bar" >
+          <div className={props.darkMode ? "photo-details-modal__top-bar-dark-mode" : "photo-details-modal__top-bar"} >
             <h4>Similar Photos</h4>
           </div>
             <div className='similar-photo-list'>
@@ -59,6 +60,8 @@ const renderPhotoListItem = (photo) => {
         </header>
       </div>
     </div>
+    </div>
+    
   )
 };
 

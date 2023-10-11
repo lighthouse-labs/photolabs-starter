@@ -10,6 +10,15 @@
   height: 72px;
   
 }
+.top-nav-bar__logo-dark-mode {
+  text-decoration: overline;
+  font-weight: 500;
+  font-size: 24px;
+  color: white;
+  text-underline-position: auto;
+  margin-left: 24px;
+  cursor: pointer;
+}
 
 .top-nav-bar__logo {
   text-decoration: overline;
@@ -19,4 +28,9 @@
   text-underline-position: auto;
   margin-left: 24px;
   cursor: pointer;
+}
+
+.right-icons {
+  display: flex;
+  justify-content: space-between;
 }

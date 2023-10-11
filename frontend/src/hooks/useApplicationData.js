@@ -4,7 +4,8 @@ export const actions = {
   toggle_show_modal: 'toggle_show_modal',
   select_image: 'select_image',
   toggle_favourite: 'toggle_favourite',
-  set_photo_data: 'set_photo_data', 
+  set_photo_data: 'set_photo_data',
+  set_mode: 'set_mode'
 };
 
 function reducer(state, action) {
@@ -29,6 +30,9 @@ function reducer(state, action) {
     case actions.set_topic_data:
       return { ...state, topicData: action.payload };
 
+      case actions.set_mode:
+        return { ...state, darkMode: !state.darkMode };
+
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -42,7 +46,8 @@ const useApplicationData = () => {
     selectedImage: {},
     favourites: [],
     photoData: [],
-    topicData: []
+    topicData: [],
+    darkMode: false
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -91,6 +96,10 @@ const showTopicPhotos = (id) => {
     return state.favourites.length > 0 ? true : false;
   }
 
+  function switchMode() {
+    dispatch({ type: actions.set_mode });
+  }
+
   return {
     state,
     toggleFavourite,
@@ -98,7 +107,8 @@ const showTopicPhotos = (id) => {
     toggleShowModal,
     selectImage,
     showTopicPhotos,
-    homePhotos
+    homePhotos,
+    switchMode
   };
 }
 

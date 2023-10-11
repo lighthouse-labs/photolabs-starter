@@ -22,6 +22,7 @@ const PhotoList = (props) => {
             setSelectedImage={props.setSelectedImage}
             full={full}
             similar_photos={similar_photos}
+            darkMode={props.darkMode}
           />
         </li>
       );

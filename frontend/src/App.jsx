@@ -14,12 +14,14 @@ const App = () => {
     isFavPhotoExist,
     showTopicPhotos,
     homePhotos,
+    switchMode,
     state: {
       showModal,
       selectedImage,
       favourites,
       photoData,
-      topicData
+      topicData,
+      darkMode
     }
   } = useApplicationData();
 
@@ -46,6 +48,8 @@ const App = () => {
             topicData={topicData}
             showTopicPhotos={showTopicPhotos}
             homePhotos={homePhotos}
+            switchMode={switchMode}
+            darkMode={darkMode}
           />}
         />
       </Routes>
@@ -63,6 +67,7 @@ const App = () => {
           similar_photos={selectedImage.similar_photos}
           similar_photos_modal={getSimilarPhotos()}
           setSelectedImage={selectImage}
+          darkMode={darkMode}
         />
       }
     </Router>
