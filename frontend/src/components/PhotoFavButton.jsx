@@ -2,15 +2,27 @@ import React, { useCallback, useState } from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
+import FavBadge from './FavBadge';
 
-function PhotoFavButton() {
+const PhotoFavButton = () => {
+  const [displayAlert, setDisplayAlert] = useState(false);
+  const [selected, setSelected] = useState(false);
+
+  const handleIconClick = () => {
+    if (selected) {
+      setSelected(false);
+    } else {
+      setSelected(true);
+    }
+  };
+
   return (
     <div className="photo-list__fav-icon">
-      <div className="photo-list__fav-icon-svg">
-        {/* Insert React */}
-      </div>
+      {
+        <FavIcon displayAlert= {displayAlert} selected={selected} onClick={handleIconClick}/>
+      }
     </div>
   );
-}
+};
 
 export default PhotoFavButton;
