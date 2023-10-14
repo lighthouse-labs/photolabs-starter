@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import '../styles/HomeRoute.scss';
 import PhotoList from './PhotoList';
 import TopNavigationBar from './TopNavigationBar';
 
 const HomeRoute = (props) => {
+  const [favorites, setFavorites] = useState([]);
+  const addToFavorites = (photo) => {
+    setFavorites([...favorites, photo]);
+  }
+  const {topics, photos} = props;
+
   return (
     <div className="home-route">
-      <TopNavigationBar topics={props.topics}/>
-      {/* { Array.from(Array(3)).map((_, index) => <PhotoListItem key={index}/>) } */}
-      <PhotoList photos={props.photos}/>
+      <TopNavigationBar topics={topics}/>
+      <PhotoList photos={photos} setFavorites={setFavorites}/>
     </div>
   );
 };

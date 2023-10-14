@@ -4,15 +4,17 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 import FavBadge from './FavBadge';
 
-const PhotoFavButton = () => {
+const PhotoFavButton = (props) => {
   const [displayAlert, setDisplayAlert] = useState(false);
   const [selected, setSelected] = useState(false);
+  const {setFavorites, photoId} = props;
 
   const handleIconClick = () => {
     if (selected) {
       setSelected(false);
     } else {
       setSelected(true);
+      setFavorites(photoId);
     }
   };
 

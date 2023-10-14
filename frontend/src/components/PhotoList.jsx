@@ -68,6 +68,7 @@ const PhotoList = (props) => {
         full={full}
         name={name}
         profile={profile}
+        setFavorites={props.setFavorites}
       />
     );
   });
