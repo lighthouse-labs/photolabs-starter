@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PhotoListItem from './components/PhotoListItem';
+import './styles/PhotoList.scss';
 import './App.scss';
 
 const sampleDataForPhotoListItem = {
@@ -16,16 +17,20 @@ const sampleDataForPhotoListItem = {
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+
+  const photos = [sampleDataForPhotoListItem, sampleDataForPhotoListItem, sampleDataForPhotoListItem];
+
   return (
-    <div className="App">
-      <PhotoListItem
-        photoId={sampleDataForPhotoListItem.id}
-        imageSource={sampleDataForPhotoListItem.imageSource}
-        profile={sampleDataForPhotoListItem.profile}
-        username={sampleDataForPhotoListItem.username}
-        city={sampleDataForPhotoListItem.location.city}
-        country={sampleDataForPhotoListItem.location.country}
+    <div className="App photo-list">
+      {photos.map((photo) => 
+       <PhotoListItem key={photo.id}
+        imageSource={photo.imageSource}
+        profile={photo.profile}
+        username={photo.username}
+        city={photo.location.city}
+        country={photo.location.country}
       />
+      )}
     </div>
   );
 };
