@@ -57,8 +57,8 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
-  const photoArray = sampleDataForPhotoList.map(({ id, location: { city, country }, urls: { full, regular }, user: { id: userId, username, name, profile } }, i) => {
+const PhotoList = (props) => {
+  const photoArray = props.photos.map(({ id, location: { city, country }, urls: { full, regular }, user: { id: userId, username, name, profile } }, i) => {
     return (
       <PhotoListItem
         key={i}
