@@ -7,7 +7,7 @@ import FavBadge from './FavBadge';
 const PhotoFavButton = (props) => {
   const [displayAlert, setDisplayAlert] = useState(false);
   const [selected, setSelected] = useState(false);
-  const {setFavorites, removeFromFavorites, photoId} = props;
+  const {setFavorites, removeFromFavorites, isFavPhotoExist, photoId} = props;
 
   const handleIconClick = () => {
     if (selected) {
@@ -20,12 +20,12 @@ const PhotoFavButton = (props) => {
   };
 
   useEffect(() => {
-    if(props.isFavPhotoExist) {
+    if (isFavPhotoExist) {
       setDisplayAlert(true);
     } else {
       setDisplayAlert(false);
     }
-  }, [props.isFavPhotoExist])
+  }, [isFavPhotoExist]);
 
   return (
     <div className="photo-list__fav-icon">
