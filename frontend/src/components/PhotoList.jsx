@@ -67,9 +67,11 @@ const PhotoList = (props) => {
         country={country}
         full={full}
         name={name}
+        regular={regular}
         profile={profile}
         setFavorites={props.setFavorites}
         removeFromFavorites={props.removeFromFavorites}
+        onClick={props.onClick}
       />
     );
   });
