@@ -12,11 +12,12 @@ const PhotoListItem = (props) => {
     name,
     city,
     country,
-    setFavorites
+    setFavorites,
+    removeFromFavorites
   } = props;
 
   return (<div className="photo-list__item">
-    <PhotoFavButton setFavorites={setFavorites} photoId={id}/>
+    <PhotoFavButton setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} photoId={id}/>
     <img className="photo-list__image" src={full} id={id} />
     <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={profile} />

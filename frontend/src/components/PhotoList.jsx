@@ -69,6 +69,7 @@ const PhotoList = (props) => {
         name={name}
         profile={profile}
         setFavorites={props.setFavorites}
+        removeFromFavorites={props.removeFromFavorites}
       />
     );
   });
