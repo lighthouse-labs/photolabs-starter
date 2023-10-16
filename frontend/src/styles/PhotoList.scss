@@ -1,13 +1,11 @@
 .photo-list {
   display: flex;
-  flex-direction: column; 
   flex-wrap: wrap;
   justify-content: space-between;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-//added flex direction ^
 
 .photo-list:after {
   content: "";
