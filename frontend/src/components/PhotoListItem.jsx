@@ -15,17 +15,18 @@ const PhotoListItem = (props) => {
     country,
     setFavorites,
     removeFromFavorites,
-    onClick
+    onClick,
+    isPhotoFavorited
   } = props;
-
+  
   return (<div className="photo-list__item">
-    <PhotoFavButton setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} photoId={id}/>
-    <img className="photo-list__image" src={full} id={id} onClick={()=> onClick({id, city, country, full, regular, profile, name})} />
+    <PhotoFavButton setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} photoId={id} isPhotoFavorited={isPhotoFavorited}/>
+    <img className="photo-list__image" src={full} id={id} onClick={()=> onClick({id, city, country, full, regular, profile, name, setFavorites, removeFromFavorites, isPhotoFavorited})} />
     <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={profile} />
       <div className="photo-list__user-info">
-        <h2>{name}</h2>
-        <h2 className="photo-list__user-location">{city} {country}</h2>
+        {name}
+        <div className="photo-list__user-location">{city} {country}</div>
       </div>
     </div>
   </div>);

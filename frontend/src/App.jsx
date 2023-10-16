@@ -12,7 +12,7 @@ const App = () => {
   const handleClose = () => {
     setModal(null);
   };
-  const handleClick = ({id, city, country, full, profile, name, regular, setFavorites, removeFromFavorites}) => {
+  const handleClick = ({id, city, country, full, profile, name, regular, setFavorites, removeFromFavorites, isPhotoFavorited}) => {
     setModal(<PhotoDetailsModal
       id={id}
       city={city}
@@ -22,6 +22,9 @@ const App = () => {
       name={name}
       regular={regular}
       onClick={handleClose}
+      setFavorites={setFavorites}
+      removeFromFavorites={removeFromFavorites}
+      isPhotoFavorited={isPhotoFavorited}
     />);
   };
   return (

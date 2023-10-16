@@ -6,7 +6,7 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const {onClick, id, city, country, full, profile, name, regular} = props;
+  const {onClick, id, city, country, full, profile, name, regular, setFavorites, removeFromFavorites, isPhotoFavorited} = props;
   const similarPhotos = [{
     id: "1",
     location: {
@@ -47,19 +47,23 @@ const PhotoDetailsModal = (props) => {
       <button className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" onClick={()=> onClick()}/>
       </button>
-      <PhotoFavButton />
-      <img src={full} className="photo-details-modal__image"/>
+      <div className="photo-details-modal__image photo-details-modal__images">
+        <PhotoFavButton setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} photoId={id} isPhotoFavorited={isPhotoFavorited}/></div>
+      <div className="photo-details-modal__top-bar">
+        <img src={full} className="photo-details-modal__image photo-details-modal__images"/>
+      </div>
       <div className="photo-details-modal__photographer-details">
         <img className="photo-details-modal__photographer-profile" src={profile} />
         <div className="photo-details-modal__photographer-info">
-          <h2>{name}</h2>
-          <h2 className="photo-details-modal__photographer-location">{city} {country}</h2>
+          {name}
+          <div className='photo-details-modal__photographer-location'>
+            {city} {country}
+          </div>
         </div>
       </div>
-      <section className="photo-details-modal__header ">Similar Photos
-        <section className="photo-details-modal__images">
-          <PhotoList photos={similarPhotos}/>
-        </section>
+      <section className="photo-details-modal__header">Similar Photos</section>
+      <section className="photo-details-modal__images">
+        <PhotoList photos={similarPhotos} setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} isPhotoFavorited={isPhotoFavorited}/>
       </section>
     </div>
   );

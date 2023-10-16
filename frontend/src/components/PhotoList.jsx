@@ -69,6 +69,7 @@ const PhotoList = (props) => {
         name={name}
         regular={regular}
         profile={profile}
+        isPhotoFavorited={props.isPhotoFavorited}
         setFavorites={props.setFavorites}
         removeFromFavorites={props.removeFromFavorites}
         onClick={props.onClick}
