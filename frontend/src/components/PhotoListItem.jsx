@@ -6,8 +6,6 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
 
-
-
   return (
     <div className="photoListItem photo-list__item">
       <PhotoFavButton onClick={() => setIsFavorited(!isFavorited)}/>

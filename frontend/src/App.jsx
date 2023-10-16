@@ -2,6 +2,7 @@ import React from 'react';
 
 // import PhotoListItem from './components/PhotoListItem';
 import PhotoList from './components/PhotoList';
+import TopicList from 'components/TopicList';
 import './styles/PhotoList.scss';
 import './App.scss';
 
@@ -23,6 +24,7 @@ const App = () => {
 
   return (
     <div className="App photo-list">
+      <TopicList />
       {/* {Array.from(Array(3)).map((_, index) => <PhotoListItem key={index}/>) } as an alternative*/}
       {/* {photos.map((photo) => 
        <PhotoListItem key={photo.id}
