@@ -58,7 +58,7 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = (props) => {
-  const photoArray = props.photos.map(({ id, location: { city, country }, urls: { full, regular }, user: { id: userId, username, name, profile } }, i) => {
+  const photoArray = props.photos.map(({ id, location: { city, country }, urls: { full, regular }, user: { id: userId, username, name, profile }, similar_photos}, i) => {
     return (
       <PhotoListItem
         key={i}
@@ -73,6 +73,7 @@ const PhotoList = (props) => {
         setFavorites={props.setFavorites}
         removeFromFavorites={props.removeFromFavorites}
         onClick={props.onClick}
+        similar_photos={similar_photos}
       />
     );
   });

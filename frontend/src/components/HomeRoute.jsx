@@ -5,24 +5,7 @@ import PhotoList from './PhotoList';
 import TopNavigationBar from './TopNavigationBar';
 
 const HomeRoute = (props) => {
-  const [favorites, setFavorites] = useState(new Set());
-  const addToFavorites = (photo) => {
-    setFavorites((prev) => {
-      const updatedSet = new Set(prev);
-      updatedSet.add(photo);
-      return updatedSet;
-    });
-  };
-
-  const removeFromFavorites = (photo) => {
-    setFavorites((prev) => {
-      const updatedSet = new Set(prev);
-      updatedSet.delete(photo);
-      return updatedSet;
-    });
-  };
-
-  const {topics, photos} = props;
+  const {favorites, topics, photos, selected, displayAlert, addFavPhoto, removeFavPhoto, iconLiked, iconUnliked} = props;
   const isFavPhotoExist = favorites.size > 0 ? true : false;
   const isPhotoFavorited = (photo) => {
     return favorites.has(photo);
@@ -31,7 +14,7 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist}/>
-      <PhotoList photos={photos} setFavorites={addToFavorites} removeFromFavorites={removeFromFavorites} onClick={props.onClick} isPhotoFavorited={isPhotoFavorited}/>
+      <PhotoList photos={photos} selected={selected}  displayAlert={displayAlert} setFavorites={addFavPhoto} removeFromFavorites={removeFavPhoto} onClick={props.onClick} isPhotoFavorited={isPhotoFavorited} iconLiked={iconLiked} iconUnliked={iconUnliked} />
     </div>
   );
 };

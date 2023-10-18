@@ -4,7 +4,6 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-
   const {
     full,
     regular,
@@ -16,12 +15,14 @@ const PhotoListItem = (props) => {
     setFavorites,
     removeFromFavorites,
     onClick,
-    isPhotoFavorited
+    isPhotoFavorited,
+    similar_photos,
+    selected,
+    displayAlert
   } = props;
-
   return (<div className="photo-list__item">
     <PhotoFavButton setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} photoId={id} isPhotoFavorited={isPhotoFavorited}/>
-    <img className="photo-list__image" src={full} id={id} onClick={()=> onClick({id, city, country, full, regular, profile, name, setFavorites, removeFromFavorites, isPhotoFavorited})} />
+    <img className="photo-list__image" src={full} id={id} onClick={()=> onClick({id, city, country, full, regular, profile, name, setFavorites, removeFromFavorites, isPhotoFavorited, similar_photos})} />
     <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={profile} />
       <div className="photo-list__user-info">

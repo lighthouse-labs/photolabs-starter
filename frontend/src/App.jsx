@@ -5,32 +5,19 @@ import HomeRoute from './components/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const [modal, setModal] = useState(null);
-  const handleClose = () => {
-    setModal(null);
-  };
-  const handleClick = ({id, city, country, full, profile, name, regular, setFavorites, removeFromFavorites, isPhotoFavorited}) => {
-    setModal(<PhotoDetailsModal
-      id={id}
-      city={city}
-      country={country}
-      full={full}
-      profile={profile}
-      name={name}
-      regular={regular}
-      onClick={handleClose}
-      setFavorites={setFavorites}
-      removeFromFavorites={removeFromFavorites}
-      isPhotoFavorited={isPhotoFavorited}
-    />);
-  };
+  const {isModalOpen, selectedPhoto, favorites, selected, displayAlert, openModal, closeModal, addFavPhoto, removeFavPhoto, iconLiked, iconUnliked} = useApplicationData();
+
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} onClick={handleClick} />
-      {modal}
+      <HomeRoute photos={photos} topics={topics} favorites={favorites} selected={selected} displayAlert={displayAlert} addFavPhoto={addFavPhoto} removeFavPhoto={removeFavPhoto} onClick={openModal} iconLiked={iconLiked} iconUnliked={iconUnliked} />
+      {isModalOpen && <PhotoDetailsModal
+        {...selectedPhoto}
+        onClick={closeModal}
+      />}
     </div>
   );
 };
