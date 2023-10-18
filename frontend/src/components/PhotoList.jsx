@@ -58,7 +58,7 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
+const PhotoList = (props) => {
   return (
     <ul className="photo-list">
       {photos.map((photo, index) => 
@@ -69,6 +69,8 @@ const PhotoList = () => {
           username={photo.user.username}
           city={photo.location.city}
           country={photo.location.country}
+          favList={props.favList}
+          setFavList={props.setFavList}
         />
       )}
     </ul>
