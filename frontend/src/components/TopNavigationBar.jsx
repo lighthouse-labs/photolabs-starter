@@ -5,13 +5,17 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
 const TopNavigationBar = (props) => {
+
+  const {favList} = props;
+  const isFavPhotoExist = favList[0]
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <TopicList />
       <FavBadge className="fav-badge__count"
-        isFavPhotoExist={props.favList.length > 0}
         favList={props.favList}
+        isFavPhotoExist={isFavPhotoExist}
       />
     </div>
   )

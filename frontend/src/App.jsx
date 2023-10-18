@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HomeRoute from './components/HomeRoute';
+import HomeRoute from './routes/HomeRoute';
 
 import './styles/PhotoList.scss';
 import './App.scss';
