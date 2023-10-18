@@ -3,11 +3,16 @@ import { useState } from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const PhotoListItem = (props) => {
 
+  const handlePhotoClick = () => {
+    props.setShowModal(true)
+  }
+
   return (
-    <div className="photoListItem photo-list__item">
+    <div className="photoListItem photo-list__item" onClick={handlePhotoClick}>
       <PhotoFavButton 
         id={props.id} 
         favList={props.favList}

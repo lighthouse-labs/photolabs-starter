@@ -25,6 +25,8 @@ const HomeRoute = (props) => {
       <PhotoList 
         favList={favList}
         setFavList={setFavList}
+        showModal={props.showModal}
+        setShowModal={props.setShowModal}
       />
     </div>
   );

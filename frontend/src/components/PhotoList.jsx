@@ -72,6 +72,8 @@ const PhotoList = (props) => {
           country={photo.location.country}
           favList={props.favList}
           setFavList={props.setFavList}
+          showModal={props.showModal}
+          setShowModal={props.setShowModal}
         />
       )}
     </ul>
