@@ -64,6 +64,7 @@ const PhotoList = (props) => {
       {photos.map((photo, index) => 
         <PhotoListItem 
           key={index}
+          id={photo.id}
           imageSource={photo.urls.full}
           profile={photo.user.profile}
           username={photo.user.username}
