@@ -19,7 +19,10 @@ const App = () => {
         showModal={showModal}
         setShowModal={setShowModal}
       />
-      {showModal ? <PhotoDetailsModal /> : null}
+      {showModal ? 
+      <PhotoDetailsModal 
+        setShowModal={setShowModal}
+      /> : null}
     </div>
   );
 };
