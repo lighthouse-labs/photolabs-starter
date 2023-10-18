@@ -16,11 +16,7 @@ function PhotoFavButton() {
     <div className="photo-list__fav-icon" onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">
         <FavIcon
-          width={20}
-          height={20}
-          fill={liked ? "red" : ""}
-          outlineWidth={1}
-          stroke={liked ? "" : "red"} 
+        selected={liked}
         />
       </div>
     </div>
