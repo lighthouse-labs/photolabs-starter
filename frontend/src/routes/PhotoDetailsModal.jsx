@@ -6,7 +6,21 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const {onClick, id, city, country, full, profile, name, regular, setFavorites, removeFromFavorites, isPhotoFavorited, similar_photos, toggleFavorite, updateAlert} = props;
+  const {
+    onClick,
+    id,
+    city,
+    country,
+    full,
+    profile,
+    name,
+    setFavorites,
+    removeFromFavorites,
+    isPhotoFavorited,
+    similar_photos,
+    toggleFavorite,
+    updateAlert
+  } = props;
   // convert similar_photos from an object of objects to an array of objects
   const similarPhotos = Object.keys(similar_photos).map(key => (
     {

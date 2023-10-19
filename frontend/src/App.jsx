@@ -9,12 +9,24 @@ import useApplicationData from 'hooks/useApplicationData';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const { isModalOpen, toggleFavorite, updateAlert, selectedPhoto, favorites, selected, displayAlert, openModal, closeModal, addFavPhoto, removeFavPhoto } = useApplicationData();
+  const {
+    isModalOpen,
+    toggleFavorite,
+    updateAlert,
+    selectedPhoto,
+    favorites,
+    selected,
+    displayAlert,
+    openModal,
+    closeModal,
+    addFavPhoto,
+    removeFavPhoto
+  } = useApplicationData();
 
   const isPhotoFavorited = (photo) => {
     return favorites.has(photo);
   };
-  
+
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} favorites={favorites} selected={selected} displayAlert={displayAlert} addFavPhoto={addFavPhoto} removeFavPhoto={removeFavPhoto} onClick={openModal} toggleFavorite={toggleFavorite} updateAlert={updateAlert} />

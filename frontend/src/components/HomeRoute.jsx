@@ -5,7 +5,17 @@ import PhotoList from './PhotoList';
 import TopNavigationBar from './TopNavigationBar';
 
 const HomeRoute = (props) => {
-  const {favorites, topics, photos, selected, displayAlert, addFavPhoto, removeFavPhoto, toggleFavorite, updateAlert} = props;
+  const {
+    favorites,
+    topics,
+    photos,
+    selected,
+    displayAlert,
+    addFavPhoto,
+    removeFavPhoto,
+    toggleFavorite,
+    updateAlert
+  } = props;
   const isFavPhotoExist = favorites.size > 0 ? true : false;
   const isPhotoFavorited = (photo) => {
     return favorites.has(photo);

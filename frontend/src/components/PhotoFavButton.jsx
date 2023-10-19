@@ -5,7 +5,12 @@ import '../styles/PhotoFavButton.scss';
 import FavBadge from './FavBadge';
 
 const PhotoFavButton = (props) => {
-  const {toggleFavorite, updateAlert, photoId, isPhotoFavorited} = props;
+  const {
+    toggleFavorite,
+    updateAlert,
+    photoId,
+    isPhotoFavorited
+  } = props;
   const selected = isPhotoFavorited(photoId);
   let displayAlert = false;
   const handleIconClick = () => {

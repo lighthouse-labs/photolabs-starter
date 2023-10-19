@@ -17,18 +17,24 @@ export const ACTIONS = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-  case ACTIONS.OPEN_MODAL:
+  case ACTIONS.OPEN_MODAL: {
     return { ...state, isModalOpen: true, selectedPhoto: action.payload };
-  case ACTIONS.CLOSE_MODAL:
+  }
+  case ACTIONS.CLOSE_MODAL: {
     return { ...state, isModalOpen: false, selectedPhoto: null };
-  case ACTIONS.FAV_PHOTO_ADDED:
+  }
+  case ACTIONS.FAV_PHOTO_ADDED: {
     return { ...state, favorites: new Set([...state.favorites, action.payload]) };
-  case ACTIONS.FAV_PHOTO_REMOVED:
+  }
+  case ACTIONS.FAV_PHOTO_REMOVED: {
     return {...state, favorites: new Set([...state.favorites].filter(item => item !== action.payload)) };
-  case ACTIONS.ADD_FAV_NOTIFICATION:
+  }
+  case ACTIONS.ADD_FAV_NOTIFICATION: {
     return {...state, displayAlert: state.favorites && state.favorites.size > 0 };
-  default:
+  }
+  default: {
     return state;
+  }
   }
 };
 
