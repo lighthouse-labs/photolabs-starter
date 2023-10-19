@@ -16,12 +16,12 @@ const PhotoListItem = (props) => {
         favList={props.favList}
         setFavList={props.setFavList}
       />
-      <img className="image photo-list__image" src={props.imageSource}></img>
+      <img className="photo-list__image" src={props.imageSource}></img>
       <div className="photo-list__user-details">
-        <img className="profile photo-list__user-profile" src={props.profile}></img>
+        <img className="photo-list__user-profile" src={props.profile}></img>
         <div className="photo-list__user-info">
-          <p className="username"> {props.username} </p>
-          <p className="location photo-list__user-location"> {props.city}, {props.country} </p>
+          <p> {props.username} </p>
+          <p className="photo-list__user-location"> {props.city}, {props.country} </p>
         </div>
       </div>
     </div>

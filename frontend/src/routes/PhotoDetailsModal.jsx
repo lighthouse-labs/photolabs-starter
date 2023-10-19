@@ -2,10 +2,11 @@ import React from 'react';
 import { useState } from "react";
 
 import '../styles/PhotoDetailsModal.scss'
+
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from '../components/PhotoList'
+import PhotoFavButton from 'components/PhotoFavButton';
 import photos from "../mocks/photos.js"
-
 
 
 const PhotoDetailsModal = (props) => {
@@ -34,20 +35,21 @@ const PhotoDetailsModal = (props) => {
       <button className="photo-details-modal__close-button" onClick={handleCloseClick}>
         <img src={closeSymbol} alt="close symbol" />
       </button>
-      <div className="photo-details-modal__top-bar">
-        <img className="largePhoto photo-details-modal__image" src={showModal.imageSource}></img>
-      </div>
-      <div className="profile photo-details-modal__photographer-details">
-        <img className="photo-details-modal__photographer-profile" src={showModal.profile} ></img>
-        <div className="username photo-details-modal__photographer-info">
-          <p> {showModal.username} </p>
-          <p className="photo-details-modal__photographer-location"> {showModal.city}, {showModal.country} </p>
+      <div className="photo-details-modal__images">
+      <PhotoFavButton />
+        <img className="photo-details-modal__image" src={showModal.imageSource}></img>
+        <div className="photo-details-modal__photographer-details">
+          <img className="photo-details-modal__photographer-profile" src={showModal.profile} ></img>
+          <div className="photo-details-modal__photographer-info">
+            <p> {showModal.username} </p>
+            <p className="photo-details-modal__photographer-location"> {showModal.city}, {showModal.country} </p>
+          </div>
         </div>
+          <h1 className="photo-details-modal__header"> Similar Photos </h1>
+          <PhotoList 
+            similarPhotos={similarPhotos}
+            />
       </div>
-      <h1 className="photo-details-modal__header"> Similar Photos </h1>
-      <PhotoList className="photo-details-modal__images"
-        similarPhotos={similarPhotos}
-      />
     </div>
   )
 };
