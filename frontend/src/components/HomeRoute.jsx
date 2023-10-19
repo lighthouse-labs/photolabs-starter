@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import '../styles/HomeRoute.scss';
 import PhotoList from './PhotoList';
 import TopNavigationBar from './TopNavigationBar';
 
 const HomeRoute = (props) => {
-  const {favorites, topics, photos, selected, displayAlert, addFavPhoto, removeFavPhoto, iconLiked, iconUnliked} = props;
+  const {favorites, topics, photos, selected, displayAlert, addFavPhoto, removeFavPhoto, toggleFavorite, updateAlert} = props;
   const isFavPhotoExist = favorites.size > 0 ? true : false;
   const isPhotoFavorited = (photo) => {
     return favorites.has(photo);
@@ -14,7 +14,7 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist}/>
-      <PhotoList photos={photos} selected={selected}  displayAlert={displayAlert} setFavorites={addFavPhoto} removeFromFavorites={removeFavPhoto} onClick={props.onClick} isPhotoFavorited={isPhotoFavorited} iconLiked={iconLiked} iconUnliked={iconUnliked} />
+      <PhotoList photos={photos} selected={selected}  displayAlert={displayAlert} setFavorites={addFavPhoto} removeFromFavorites={removeFavPhoto} onClick={props.onClick} isPhotoFavorited={isPhotoFavorited} toggleFavorite={toggleFavorite} updateAlert={updateAlert} />
     </div>
   );
 };

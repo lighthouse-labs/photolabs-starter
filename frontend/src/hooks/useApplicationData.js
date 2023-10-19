@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useReducer } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
@@ -25,10 +25,6 @@ const reducer = (state, action) => {
     return { ...state, favorites: new Set([...state.favorites, action.payload]) };
   case ACTIONS.FAV_PHOTO_REMOVED:
     return {...state, favorites: new Set([...state.favorites].filter(item => item !== action.payload)) };
-  case ACTIONS.FAV_ICON_LIKED:
-    return { ...state, selected: true };
-  case ACTIONS.FAV_ICON_UNLIKED:
-    return {...state, selected: false };
   case ACTIONS.ADD_FAV_NOTIFICATION:
     return {...state, displayAlert: state.favorites && state.favorites.size > 0 };
   default:
@@ -44,12 +40,6 @@ const useApplicationData = () => {
     displayAlert: false,
     favorites: new Set()
   });
-
-  const isFavPhotoExist = state.favorites.size > 0 ? true : false;
-
-  useEffect(() => {
-    dispatch({ type: ACTIONS.ADD_FAV_NOTIFICATION });
-  }, [isFavPhotoExist]);
 
   const closeModal = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL });
@@ -67,16 +57,18 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photoId });
   };
 
-  const iconLiked = () => {
-    dispatch({ type: ACTIONS.FAV_ICON_LIKED});
-  };
-  
-  const iconUnliked = () => {
-    dispatch({ type: ACTIONS.FAV_ICON_UNLIKED });
+  const updateAlert = () => {
+    dispatch({ type: ACTIONS.ADD_FAV_NOTIFICATION });
+    return state.displayAlert;
   };
 
-  const favPhotoExists = () => {
-    dispatch({ type: ACTIONS.ADD_FAV_NOTIFICATION });
+  const toggleFavorite = (photoId) => {
+    const isFavorited = state.favorites.has(photoId);
+    if (isFavorited) {
+      removeFavPhoto(photoId);
+    } else {
+      addFavPhoto(photoId);
+    }
   };
   
 
@@ -88,9 +80,8 @@ const useApplicationData = () => {
     displayAlert: state.displayAlert,
     addFavPhoto,
     removeFavPhoto,
-    iconLiked,
-    iconUnliked,
-    favPhotoExists,
+    updateAlert,
+    toggleFavorite,
     openModal,
     closeModal
   };

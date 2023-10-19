@@ -6,7 +6,7 @@ import PhotoFavButton from "../components/PhotoFavButton";
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
-  const {onClick, id, city, country, full, profile, name, regular, setFavorites, removeFromFavorites, isPhotoFavorited, similar_photos} = props;
+  const {onClick, id, city, country, full, profile, name, regular, setFavorites, removeFromFavorites, isPhotoFavorited, similar_photos, toggleFavorite, updateAlert} = props;
   // convert similar_photos from an object of objects to an array of objects
   const similarPhotos = Object.keys(similar_photos).map(key => (
     {
@@ -20,7 +20,7 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" onClick={()=> onClick()}/>
       </button>
       <div className="photo-details-modal__images">
-        <PhotoFavButton setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} photoId={id} isPhotoFavorited={isPhotoFavorited}/>
+        <PhotoFavButton setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} photoId={id} isPhotoFavorited={isPhotoFavorited} toggleFavorite={toggleFavorite} updateAlert={updateAlert}/>
         <img src={full} className="photo-details-modal__image"/>
         <div className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={profile} />
@@ -35,7 +35,7 @@ const PhotoDetailsModal = (props) => {
       </div>
       
       <section className="photo-details-modal__images">
-        <PhotoList photos={similarPhotos} setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} isPhotoFavorited={isPhotoFavorited}/>
+        <PhotoList photos={similarPhotos} setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} isPhotoFavorited={isPhotoFavorited} toggleFavorite={toggleFavorite} updateAlert={updateAlert}/>
       </section>
     </div>
   );
