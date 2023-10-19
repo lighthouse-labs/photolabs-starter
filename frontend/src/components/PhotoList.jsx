@@ -59,9 +59,20 @@ const sampleDataForPhotoList = [
 ];
 
 const PhotoList = (props) => {
+
+  const { similarPhotos } = props
+  
+  let photoArray = [];
+
+  if (similarPhotos) {
+    photoArray = similarPhotos
+  } else {
+    photoArray = photos
+  }
+
   return (
     <ul className="photo-list">
-      {photos.map((photo, index) => 
+      {photoArray.map((photo, index) => 
         <PhotoListItem 
           key={index}
           id={photo.id}
