@@ -1,14 +1,12 @@
 import React from "react";
-import { useState } from "react";
 
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
-import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 const PhotoListItem = (props) => {
 
   const handlePhotoClick = () => {
-    props.setShowModal(true)
+    props.setShowModal(props)
   }
 
   return (

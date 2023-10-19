@@ -11,7 +11,7 @@ import './App.scss';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(null);
 
   return (
     <div className="App">
@@ -21,6 +21,7 @@ const App = () => {
       />
       {showModal ? 
       <PhotoDetailsModal 
+        showModal={showModal}
         setShowModal={setShowModal}
       /> : null}
     </div>
