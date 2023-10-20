@@ -13,18 +13,20 @@ const PhotoDetailsModal = (props) => {
   
   const {showModal} = props;
 
-  console.log(
-    'relevant photo details:', 
-    showModal
-  )
+  // console.log(
+  //   'relevant photo details:', 
+  //   showModal
+  // )
 
   const showModalArray = Object.values(showModal);
-  console.log("showModalArray", showModalArray)
+  // console.log("PhotoDetailsModal showModalArray", showModalArray)
+  // console.log("PhotoDetailsModal showModalArray[0]", showModalArray[0])
+
   const selectedPhoto = showModalArray[0];
-  console.log('selectedPhoto', selectedPhoto)
+  // console.log('selectedPhoto', selectedPhoto)
 
   const similarPhotos = photos.filter((photo) => photo.id !== selectedPhoto)
-  console.log("similarPhotos", similarPhotos)
+  // console.log("similarPhotos", similarPhotos)
 
   const handleCloseClick = () => {
     props.setShowModal(false)
@@ -36,7 +38,12 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
-      <PhotoFavButton />
+      <PhotoFavButton 
+        id={props.id} 
+        modalId={showModalArray[0]}
+        favList={props.favList}
+        setFavList={props.setFavList}
+      />
         <img className="photo-details-modal__image" src={showModal.imageSource}></img>
         <div className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={showModal.profile} ></img>

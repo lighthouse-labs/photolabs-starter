@@ -4,16 +4,26 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  const {id, favList, setFavList} = props
+  const {id, favList, setFavList, modalId} = props;
 
   const [liked, setLiked] = useState(false);
 
   const handleClick = () => {
-    console.log('setFavList', setFavList)
-    console.log('id', id)
+    // console.log('PhotoFavButton setFavList', setFavList)
+    // console.log('PhotoFavButton id', id)
+    // console.log('PhotoFavButton favList', favList)
+    // console.log('PhotoFavButton modalId', modalId)
+
     setLiked(true);
 
     let finalFavList = [];
+
+    if (favList.includes(modalId)) {
+      finalFavList = favList.filter(photo => photo !== modalId)
+    } else {
+      finalFavList = favList.push(modalId)
+    }
+
     if (favList.includes(id)) {
       finalFavList = favList.filter(photo => photo !== id)
     } else {

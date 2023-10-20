@@ -6,25 +6,25 @@ import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
 
 const HomeRoute = (props) => {
-
-  const [favList, setFavList] = useState([]);
+  console.log('HomeRoute favList', props.favList)
 
   const favPhotoNotification = () => {
-    if (favList.length > 0) {
-      isFavPhotoExist = true
+    if (props.favList.length > 0) {
+      isFavPhotoExist = 1;
     }
     return isFavPhotoExist;
   }
+  // console.log('isFavPhotoExist', isFavPhotoExist)
 
   return (
     <div className="home-route">
       <TopNavigationBar 
         favBadgeNotification={favPhotoNotification}
-        favList={favList}
+        favList={props.favList}
       />
       <PhotoList 
-        favList={favList}
-        setFavList={setFavList}
+        favList={props.favList}
+        setFavList={props.setFavList}
         showModal={props.showModal}
         setShowModal={props.setShowModal}
       />

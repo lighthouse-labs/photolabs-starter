@@ -11,16 +11,22 @@ import './App.scss';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
+  const [favList, setFavList] = useState([]);
+
   const [showModal, setShowModal] = useState(null);
 
   return (
     <div className="App">
       <HomeRoute 
+        favList={favList}
+        setFavList={setFavList}
         showModal={showModal}
         setShowModal={setShowModal}
       />
       {showModal ? 
       <PhotoDetailsModal 
+        favList={favList}
+        setFavList={setFavList}
         showModal={showModal}
         setShowModal={setShowModal}
       /> : null}
