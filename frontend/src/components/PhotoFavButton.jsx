@@ -14,7 +14,8 @@ const PhotoFavButton = (props) => {
 
   const selected = isPhotoFavorited(photoId);
   let displayAlert = false;
-  
+
+  // on click, update the favorites display alert & toggle favorite heart
   const handleIconClick = () => {
     toggleFavorite(photoId);
     displayAlert = updateAlert();

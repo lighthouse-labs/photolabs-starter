@@ -101,6 +101,7 @@ const useApplicationData = () => {
     return state.displayAlert;
   };
 
+  // if already favorited, remove from favorites - else add to favorites
   const toggleFavorite = (photoId) => {
     const isFavorited = state.favorites.has(photoId);
     if (isFavorited) {
@@ -131,6 +132,7 @@ const useApplicationData = () => {
       .catch((error) => console.error("Error occurred: ", error));
   };
 
+  // fetch + render photos/topics and if the current topic changes, re-render with the right photos
   useEffect(() => {
     fetchPhotos();
     fetchTopics();
