@@ -6,7 +6,8 @@ export const ACTIONS = {
   OPEN_MODAL: 'OPEN_MODAL',
   CLOSE_MODAL: 'CLOSE_MODAL',
   ADD_FAV_NOTIFICATION: 'ADD_FAV_NOTIFICATION',
-  SET_CURRENT_TOPIC: 'SET_CURRENT_TOPIC'
+  SET_CURRENT_TOPIC: 'SET_CURRENT_TOPIC',
+  SET_SEARCH_TERM: 'SET_SEARCH_TERM'
 };
 
 const reducer = (state, action) => {
@@ -35,6 +36,10 @@ const reducer = (state, action) => {
 
   case ACTIONS.SET_CURRENT_TOPIC: {
     return {...state, currentTopic: action.payload };
+  }
+
+  case ACTIONS.SET_CURRENT_TOPIC: {
+    return {...state, searchTerm: action.payload };
   }
 
   default: {

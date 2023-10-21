@@ -12,7 +12,7 @@ const useApplicationData = () => {
     topics: [],
     favorites: new Set(),
     currentTopic: null,
-    fetchingCurrentTopic: false
+    searchTerm: null
   });
 
   const closeModal = () => {
@@ -37,6 +37,10 @@ const useApplicationData = () => {
 
   const setTopicData = (topics) => {
     dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
+  };
+
+  const setSearchTerm = (searchTerm) => {
+    dispatch({ type: ACTIONS.SET_SEARCH_DATA, payload: searchTerm });
   };
 
   const setCurrentTopic = (topic) => {
@@ -106,7 +110,8 @@ const useApplicationData = () => {
     toggleFavorite,
     setCurrentTopic,
     openModal,
-    closeModal
+    closeModal,
+    setSearchTerm
   };
 };
 
