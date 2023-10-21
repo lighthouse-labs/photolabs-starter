@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer, useCallback } from 'react';
 import reducer, { ACTIONS } from '../reducers/reducer';
+import axios from 'axios';
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, {
@@ -63,23 +64,20 @@ const useApplicationData = () => {
   };
 
   const fetchPhotos = useCallback(() => {
-    fetch('/api/photos')
-      .then((res) => res.json())
-      .then((photos) => setPhotoData(photos))
+    axios.get('/api/photos')
+      .then((res) => setPhotoData(res.data))
       .catch((error) => console.error("Error occurred: ", error));
   }, [setPhotoData]);
 
   const fetchTopics = useCallback(() => {
-    fetch('/api/topics')
-      .then((res) => res.json())
-      .then((topics) => setTopicData(topics))
+    axios.get('/api/topics')
+      .then((res) => setTopicData(res.data))
       .catch((error) => console.error("Error occurred: ", error));
   }, [setTopicData]);
 
   const fetchCurrentTopic = useCallback(() => {
-    fetch(`/api/topics/photos/${state.currentTopic}`)
-      .then((res) => res.json())
-      .then((photos) => setPhotoData(photos))
+    axios.get(`/api/topics/photos/${state.currentTopic}`)
+      .then((res) => setPhotoData(res.data))
       .catch((error) => console.error("Error occurred: ", error));
   }, [setPhotoData]);
 
