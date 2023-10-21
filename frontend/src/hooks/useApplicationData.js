@@ -110,25 +110,33 @@ const useApplicationData = () => {
     }
   };
 
-  useEffect(() => {
-
+  const fetchPhotos = () => {
     fetch('http://localhost:8001/api/photos')
       .then((res) => res.json())
       .then((photos) => setPhotoData(photos))
       .catch((error) => console.error("Error occurred: ", error));
+  };
 
+  const fetchTopics = () => {
     fetch('http://localhost:8001/api/topics')
       .then((res) => res.json())
       .then((topics) => setTopicData(topics))
       .catch((error) => console.error("Error occurred: ", error));
-    
-    if (state.currentTopic !== null) {
-      fetch(`http://localhost:8001/api/topics/photos/${state.currentTopic}`)
-        .then((res) => res.json())
-        .then((photos) => setPhotoData(photos))
-        .catch((error) => console.error("Error occurred: ", error));
-    }
+  };
 
+  const fetchCurrentTopic = () => {
+    fetch(`http://localhost:8001/api/topics/photos/${state.currentTopic}`)
+      .then((res) => res.json())
+      .then((photos) => setPhotoData(photos))
+      .catch((error) => console.error("Error occurred: ", error));
+  };
+
+  useEffect(() => {
+    fetchPhotos();
+    fetchTopics();
+    if (state.currentTopic !== null) {
+      fetchCurrentTopic();
+    }
   }, [state.currentTopic]);
   
 
