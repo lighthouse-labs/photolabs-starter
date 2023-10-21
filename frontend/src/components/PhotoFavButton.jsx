@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
@@ -11,8 +11,10 @@ const PhotoFavButton = (props) => {
     photoId,
     isPhotoFavorited
   } = props;
+
   const selected = isPhotoFavorited(photoId);
   let displayAlert = false;
+  
   const handleIconClick = () => {
     toggleFavorite(photoId);
     displayAlert = updateAlert();

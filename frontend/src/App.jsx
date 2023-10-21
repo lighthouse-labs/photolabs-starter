@@ -2,34 +2,31 @@ import React from 'react';
 
 import './App.scss';
 import HomeRoute from './components/HomeRoute';
-// import photos from 'mocks/photos';
-// import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {
   const {
-    isModalOpen,
     toggleFavorite,
     updateAlert,
+    openModal,
+    closeModal,
+    addFavPhoto,
+    removeFavPhoto,
+    setCurrentTopic,
+    isModalOpen,
     selectedPhoto,
     favorites,
     selected,
     displayAlert,
     photos,
-    topics,
-    openModal,
-    closeModal,
-    addFavPhoto,
-    removeFavPhoto,
-    setCurrentTopic
+    topics
   } = useApplicationData();
 
   const isPhotoFavorited = (photo) => {
     return favorites.has(photo);
   };
-  
+
   return (
     <div className="App">
       <HomeRoute photos={photos} topics={topics} favorites={favorites} selected={selected} displayAlert={displayAlert} addFavPhoto={addFavPhoto} removeFavPhoto={removeFavPhoto} onClick={openModal} toggleFavorite={toggleFavorite} updateAlert={updateAlert} setCurrentTopic={setCurrentTopic}/>

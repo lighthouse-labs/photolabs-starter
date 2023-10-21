@@ -17,6 +17,7 @@ const HomeRoute = (props) => {
     updateAlert,
     setCurrentTopic
   } = props;
+
   const isFavPhotoExist = favorites.size > 0 ? true : false;
   const isPhotoFavorited = (photo) => {
     return favorites.has(photo);
