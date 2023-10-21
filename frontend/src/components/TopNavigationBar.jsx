@@ -4,13 +4,14 @@ import '../styles/TopNavigationBar.scss';
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
-const TopNavigation = () => {
+//need to make so isfavphotoexist only true if photos in favPhotos array
+const TopNavigation = (props) => {
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       < TopicList />
-      < FavBadge />
+      < FavBadge isFavPhotoExist={props.favPhotos}/>
     </div>
   )
 }

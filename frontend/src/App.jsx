@@ -1,20 +1,24 @@
-import React, { useReducer, createContext, useState, useEffect } from 'react';
+import React from 'react';
 
-import PhotoList from 'components/PhotoList';
-import TopNavigation from 'components/TopNavigationBar';
 import './App.scss';
-
+import HomeRoute from 'routes/HomeRoute';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from './hooks/useApplicationData';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const favPhotos = [];
+  const {
+    state,
+    toggleFav,
+    openModal,
+    closeModal,
+    addFav,
+  } = useApplicationData()
 
   return (
     <div className="App">
-      < TopNavigation />
-      <div className='home-route'>
-          <PhotoList />
-      </div>
+      < HomeRoute openModal={openModal}/>
+      {state.photo && <PhotoDetailsModal state={state} toggleFav={toggleFav} closeModal={closeModal} /> }
     </div>
   );
 };

@@ -4,8 +4,8 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
   return (
-    <div key={props.key} className="topic-list__item">
-      <ul>{props.title}</ul>
+    <div className="topic-list__item">
+      <ul className={props.id}>{props.title}</ul>
     </div>
   );
 };

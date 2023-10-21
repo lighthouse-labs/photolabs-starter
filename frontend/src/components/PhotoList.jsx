@@ -4,18 +4,11 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 import photos from "mocks/photos";
 
-const PhotoList = () => {
+const PhotoList = ({openModal}) => {
   return (
     <ul className="photo-list">
       {photos.map(photo => (
-        <PhotoListItem
-          key={photo.id}
-          imageSource={photo.urls.full}
-          profile={photo.user.profile}
-          username={photo.user.username}
-          location={photo.location}
-          id={photo.id}
-        />
+        <PhotoListItem key={photo.id} photo={photo} openModal={openModal}/>
       ))}
     </ul>
   );

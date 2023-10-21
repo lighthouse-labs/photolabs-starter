@@ -10,6 +10,7 @@ const TopicList = () => {
       {topics.map(topic => (
         <TopicListItem
           key={topic.id}
+          id={topic.id}
           title={topic.title}
         />
       ))}
