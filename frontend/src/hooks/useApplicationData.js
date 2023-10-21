@@ -60,7 +60,8 @@ const useApplicationData = () => {
     photos: [],
     topics: [],
     favorites: new Set(),
-    currentTopic: null
+    currentTopic: null,
+    fetchingCurrentTopic: false
   });
 
   const closeModal = () => {
@@ -134,10 +135,11 @@ const useApplicationData = () => {
 
   // fetch + render photos/topics and if the current topic changes, re-render with the right photos
   useEffect(() => {
-    fetchPhotos();
     fetchTopics();
     if (state.currentTopic !== null) {
       fetchCurrentTopic();
+    } else {
+      fetchPhotos();
     }
   }, [state.currentTopic]);
   
