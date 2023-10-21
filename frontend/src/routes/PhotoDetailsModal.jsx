@@ -18,7 +18,7 @@ const PhotoDetailsModal = (props) => {
   //   showModal
   // )
 
-  console.log('PhotoDetailsModal liked', liked)
+  // console.log('PhotoDetailsModal liked', liked)
   const showModalArray = Object.values(showModal);
   // console.log("PhotoDetailsModal showModalArray", showModalArray)
   // console.log("PhotoDetailsModal showModalArray[0]", showModalArray[0])

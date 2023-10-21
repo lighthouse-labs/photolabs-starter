@@ -9,21 +9,16 @@ function PhotoFavButton(props) {
   //builds favList array
   const handleClick = () => {
 
-    // const currentId = modalId ? modalId : id;
-    console.log('PhotoFavButton liked', liked)
-    console.log('PhotoFavButton showModal',  showModal)
+    // console.log('PhotoFavButton liked', liked)
+    // console.log('PhotoFavButton showModal',  showModal)
 
     //to toggle liked state of each photo
-    // function handleFavouriteClick(photoId) {
       setLiked((current) => {
         const copy = { ...current };
         copy[id] = !copy[id];
         console.log('PhotoFavButton copy', copy)
         return copy;
       });
-    // }
-    // handleFavouriteClick(id)
-    console.log('PhotoFavButton liked333', liked)
 
     let finalFavList = [];
 
@@ -42,7 +37,7 @@ function PhotoFavButton(props) {
     <div className="photo-list__fav-icon" onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">
         <FavIcon
-        selected={liked && liked[id]}
+        selected={liked[id]}
         />
       </div>
     </div>

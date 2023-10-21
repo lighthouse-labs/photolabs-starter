@@ -14,7 +14,6 @@ const HomeRoute = (props) => {
     }
     return isFavPhotoExist;
   }
-  // console.log('isFavPhotoExist', isFavPhotoExist)
 
   return (
     <div className="home-route">
