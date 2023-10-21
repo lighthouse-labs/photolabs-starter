@@ -1,11 +1,22 @@
-# react-photolabs
-The PhotoLabs project for the Web Development React course programming.
+# Project Description
+PhotoLabs is a single-page application created as part of the React course using a combination of Express and PostgreSQL for the back-end with React and Node.js for the front-end. This project simulates a user's experience using a photo-posting platform that allows for modal-viewing, favoriting, sorting by photo category, and more.
 
-# Photolabs
+# Technology Stack
+- JavaScript
+- React
+- Express
+- Node.js
+- SCSS
+- HTML
+- SQL
 
+# Screenshots
+!["front-page"](./docs/front_page.png)
+!["modal-view"](./docs/modal_view.png)
+!["topic-selected"](./docs/topic_selected.png)
 ## Setup
 
-Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
+Install dependencies with `npm install` in each respective `/frontend` and `/backend` folder.
 
 ## [Frontend] Running Webpack Development Server
 
