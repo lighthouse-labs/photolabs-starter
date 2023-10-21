@@ -25,8 +25,22 @@ const HomeRoute = (props) => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist} setCurrentTopic={setCurrentTopic}/>
-      <PhotoList photos={photos} selected={selected}  displayAlert={displayAlert} setFavorites={addFavPhoto} removeFromFavorites={removeFavPhoto} onClick={props.onClick} isPhotoFavorited={isPhotoFavorited} toggleFavorite={toggleFavorite} updateAlert={updateAlert} />
+      <TopNavigationBar
+        topics={topics}
+        isFavPhotoExist={isFavPhotoExist}
+        setCurrentTopic={setCurrentTopic}
+      />
+      <PhotoList
+        photos={photos}
+        selected={selected}
+        displayAlert={displayAlert}
+        setFavorites={addFavPhoto}
+        removeFromFavorites={removeFavPhoto}
+        onClick={props.onClick}
+        isPhotoFavorited={isPhotoFavorited}
+        toggleFavorite={toggleFavorite}
+        updateAlert={updateAlert}
+      />
     </div>
   );
 };

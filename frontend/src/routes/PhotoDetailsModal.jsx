@@ -21,6 +21,7 @@ const PhotoDetailsModal = (props) => {
     toggleFavorite,
     updateAlert
   } = props;
+
   // convert similar_photos from an object of objects to an array of objects
   const similarPhotos = Object.keys(similar_photos).map(key => (
     {
@@ -28,13 +29,20 @@ const PhotoDetailsModal = (props) => {
       ...similar_photos[key]
     }
   ));
+
   return (
     <div className="photo-details-modal">
       <button className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" onClick={()=> onClick()}/>
       </button>
       <div className="photo-details-modal__images">
-        <PhotoFavButton setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} photoId={id} isPhotoFavorited={isPhotoFavorited} toggleFavorite={toggleFavorite} updateAlert={updateAlert}/>
+        <PhotoFavButton
+          setFavorites={setFavorites}
+          removeFromFavorites={removeFromFavorites}
+          photoId={id} isPhotoFavorited={isPhotoFavorited}
+          toggleFavorite={toggleFavorite}
+          updateAlert={updateAlert}
+        />
         <img src={full} className="photo-details-modal__image"/>
         <div className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={profile} />
@@ -48,7 +56,14 @@ const PhotoDetailsModal = (props) => {
         <section className="photo-details-modal__header">Similar Photos</section>
       </div>
       <section className="photo-details-modal__images">
-        <PhotoList photos={similarPhotos} setFavorites={setFavorites} removeFromFavorites={removeFromFavorites} isPhotoFavorited={isPhotoFavorited} toggleFavorite={toggleFavorite} updateAlert={updateAlert}/>
+        <PhotoList
+          photos={similarPhotos}
+          setFavorites={setFavorites}
+          removeFromFavorites={removeFromFavorites}
+          isPhotoFavorited={isPhotoFavorited}
+          toggleFavorite={toggleFavorite}
+          updateAlert={updateAlert}
+        />
       </section>
     </div>
   );

@@ -29,7 +29,19 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} favorites={favorites} selected={selected} displayAlert={displayAlert} addFavPhoto={addFavPhoto} removeFavPhoto={removeFavPhoto} onClick={openModal} toggleFavorite={toggleFavorite} updateAlert={updateAlert} setCurrentTopic={setCurrentTopic}/>
+      <HomeRoute
+        photos={photos}
+        topics={topics}
+        favorites={favorites}
+        selected={selected}
+        displayAlert={displayAlert}
+        addFavPhoto={addFavPhoto}
+        removeFavPhoto={removeFavPhoto}
+        onClick={openModal}
+        toggleFavorite={toggleFavorite}
+        updateAlert={updateAlert}
+        setCurrentTopic={setCurrentTopic}
+      />
       {isModalOpen && <PhotoDetailsModal
         {...selectedPhoto}
         toggleFavorite={toggleFavorite}
