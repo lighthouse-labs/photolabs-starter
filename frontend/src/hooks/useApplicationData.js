@@ -63,21 +63,21 @@ const useApplicationData = () => {
   };
 
   const fetchPhotos = useCallback(() => {
-    fetch('http://localhost:8001/api/photos')
+    fetch('/api/photos')
       .then((res) => res.json())
       .then((photos) => setPhotoData(photos))
       .catch((error) => console.error("Error occurred: ", error));
   }, [setPhotoData]);
 
   const fetchTopics = useCallback(() => {
-    fetch('http://localhost:8001/api/topics')
+    fetch('/api/topics')
       .then((res) => res.json())
       .then((topics) => setTopicData(topics))
       .catch((error) => console.error("Error occurred: ", error));
   }, [setTopicData]);
 
   const fetchCurrentTopic = useCallback(() => {
-    fetch(`http://localhost:8001/api/topics/photos/${state.currentTopic}`)
+    fetch(`/api/topics/photos/${state.currentTopic}`)
       .then((res) => res.json())
       .then((photos) => setPhotoData(photos))
       .catch((error) => console.error("Error occurred: ", error));
