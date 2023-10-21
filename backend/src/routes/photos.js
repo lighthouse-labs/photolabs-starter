@@ -118,7 +118,7 @@ module.exports = db => {
       OR user_account.fullname ILIKE '%${request.params.searchTerm}%'
       OR photo.city ILIKE '%${request.params.searchTerm}%'
       OR photo.country ILIKE '%${request.params.searchTerm}%'
-      OR topic.title ILIKE '%${request.params.searchTerm}}%';
+      OR topic.title ILIKE '%${request.params.searchTerm}%';
     `).then(({ rows }) => {
       response.json(rows[0].photo_data);
     });
