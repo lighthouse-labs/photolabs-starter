@@ -13,13 +13,18 @@ const App = () => {
 
   const [favList, setFavList] = useState([]);
 
-  const [showModal, setShowModal] = useState(null);
+  const [liked, setLiked] = useState({});
 
+  const [showModal, setShowModal] = useState(null);
+  
+  console.log('APP', liked)
   return (
     <div className="App">
       <HomeRoute 
         favList={favList}
         setFavList={setFavList}
+        liked={liked}
+        setLiked={setLiked}
         showModal={showModal}
         setShowModal={setShowModal}
       />
@@ -27,6 +32,8 @@ const App = () => {
       <PhotoDetailsModal 
         favList={favList}
         setFavList={setFavList}
+        liked={liked}
+        setLiked={setLiked}
         showModal={showModal}
         setShowModal={setShowModal}
       /> : null}

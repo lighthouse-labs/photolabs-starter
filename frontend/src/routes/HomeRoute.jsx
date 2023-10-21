@@ -25,6 +25,8 @@ const HomeRoute = (props) => {
       <PhotoList 
         favList={props.favList}
         setFavList={props.setFavList}
+        liked={props.liked}
+        setLiked={props.setLiked}
         showModal={props.showModal}
         setShowModal={props.setShowModal}
       />

@@ -10,24 +10,26 @@ import photos from "../mocks/photos.js"
 
 
 const PhotoDetailsModal = (props) => {
-  
-  const {showModal} = props;
+
+  const {showModal, liked, setLiked, favList, setFavList } = props;
 
   // console.log(
   //   'relevant photo details:', 
   //   showModal
   // )
 
+  console.log('PhotoDetailsModal liked', liked)
   const showModalArray = Object.values(showModal);
   // console.log("PhotoDetailsModal showModalArray", showModalArray)
   // console.log("PhotoDetailsModal showModalArray[0]", showModalArray[0])
 
   const selectedPhoto = showModalArray[0];
-  // console.log('selectedPhoto', selectedPhoto)
+  console.log('selectedPhoto', selectedPhoto)
 
   const similarPhotos = photos.filter((photo) => photo.id !== selectedPhoto)
-  // console.log("similarPhotos", similarPhotos)
+  console.log("similarPhotos", similarPhotos)
 
+  //handles the close button of the modal
   const handleCloseClick = () => {
     props.setShowModal(false)
   }
@@ -39,10 +41,12 @@ const PhotoDetailsModal = (props) => {
       </button>
       <div className="photo-details-modal__images">
       <PhotoFavButton 
-        id={props.id} 
-        modalId={showModalArray[0]}
-        favList={props.favList}
-        setFavList={props.setFavList}
+        liked={liked}
+        setLiked={setLiked}
+        id={showModalArray[0]} 
+        // modalId={showModalArray[0]}
+        favList={favList}
+        setFavList={setFavList}
       />
         <img className="photo-details-modal__image" src={showModal.imageSource}></img>
         <div className="photo-details-modal__photographer-details">
@@ -55,7 +59,9 @@ const PhotoDetailsModal = (props) => {
           <h1 className="photo-details-modal__header"> Similar Photos </h1>
           <PhotoList 
             similarPhotos={similarPhotos}
-            />
+            liked={liked}
+            setLiked={setLiked}
+          />
       </div>
     </div>
   )

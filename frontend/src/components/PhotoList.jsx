@@ -61,7 +61,7 @@ const sampleDataForPhotoList = [
 const PhotoList = (props) => {
 
   const { similarPhotos } = props
-  
+
   let photoArray = [];
 
   if (similarPhotos) {
@@ -69,6 +69,7 @@ const PhotoList = (props) => {
   } else {
     photoArray = photos
   }
+  console.log("PhotoList", props)
 
   return (
     <ul className="photo-list">
@@ -83,6 +84,8 @@ const PhotoList = (props) => {
           country={photo.location.country}
           favList={props.favList}
           setFavList={props.setFavList}
+          liked={props.liked}
+          setLiked={props.setLiked}
           showModal={props.showModal}
           setShowModal={props.setShowModal}
         />
