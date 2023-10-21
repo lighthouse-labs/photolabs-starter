@@ -22,16 +22,17 @@ const App = () => {
     openModal,
     closeModal,
     addFavPhoto,
-    removeFavPhoto
+    removeFavPhoto,
+    setCurrentTopic
   } = useApplicationData();
 
   const isPhotoFavorited = (photo) => {
     return favorites.has(photo);
   };
-
+  
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} favorites={favorites} selected={selected} displayAlert={displayAlert} addFavPhoto={addFavPhoto} removeFavPhoto={removeFavPhoto} onClick={openModal} toggleFavorite={toggleFavorite} updateAlert={updateAlert} />
+      <HomeRoute photos={photos} topics={topics} favorites={favorites} selected={selected} displayAlert={displayAlert} addFavPhoto={addFavPhoto} removeFavPhoto={removeFavPhoto} onClick={openModal} toggleFavorite={toggleFavorite} updateAlert={updateAlert} setCurrentTopic={setCurrentTopic}/>
       {isModalOpen && <PhotoDetailsModal
         {...selectedPhoto}
         toggleFavorite={toggleFavorite}

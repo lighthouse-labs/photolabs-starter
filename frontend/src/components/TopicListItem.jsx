@@ -12,7 +12,7 @@ const TopicListItem = (props) => {
   const {id, slug, title} = props;
   return (
     <div className="topic-list__item">
-      <span>{title}</span>
+      <span onClick={() => props.setCurrentTopic(id)}>{title}</span>
       {/* Insert React */}
     </div>
   );

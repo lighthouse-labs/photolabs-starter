@@ -1,4 +1,3 @@
-import photos from 'mocks/photos';
 import React, { useEffect, useReducer } from 'react';
 
 export const ACTIONS = {
@@ -13,7 +12,9 @@ export const ACTIONS = {
   OPEN_MODAL: 'OPEN_MODAL',
   CLOSE_MODAL: 'CLOSE_MODAL',
   ADD_FAV_NOTIFICATION: 'ADD_FAV_NOTIFICATION',
-  REMOVE_FAV_NOTIFICATION: 'REMOVE_FAV_NOTIFICATION'
+  REMOVE_FAV_NOTIFICATION: 'REMOVE_FAV_NOTIFICATION',
+  SET_PHOTOS_BY_TOPIC: 'SET_PHOTOS_BY_TOPIC',
+  SET_CURRENT_TOPIC: 'SET_CURRENT_TOPIC'
 };
 
 const reducer = (state, action) => {
@@ -39,6 +40,11 @@ const reducer = (state, action) => {
   case ACTIONS.SET_TOPIC_DATA: {
     return {...state, topics: action.payload };
   }
+
+  case ACTIONS.SET_CURRENT_TOPIC: {
+    return {...state, currentTopic: action.payload };
+  }
+
   default: {
     return state;
   }
@@ -53,7 +59,8 @@ const useApplicationData = () => {
     displayAlert: false,
     photos: [],
     topics: [],
-    favorites: new Set()
+    favorites: new Set(),
+    currentTopic: null
   });
 
   const closeModal = () => {
@@ -80,6 +87,15 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
   };
 
+  const setCurrentTopic = (topic) => {
+    // if the topic in the nav bar is clicked twice, return back to non-selected search
+    if (state.currentTopic !== null && state.currentTopic === topic) {
+      dispatch({ type: ACTIONS.SET_CURRENT_TOPIC, payload: null });
+    } else {
+      dispatch({ type: ACTIONS.SET_CURRENT_TOPIC, payload: topic });
+    }
+  };
+
   const updateAlert = () => {
     dispatch({ type: ACTIONS.ADD_FAV_NOTIFICATION });
     return state.displayAlert;
@@ -98,12 +114,22 @@ const useApplicationData = () => {
 
     fetch('http://localhost:8001/api/photos')
       .then((res) => res.json())
-      .then((photos) => setPhotoData(photos));
+      .then((photos) => setPhotoData(photos))
+      .catch((error) => console.error("Error occurred: ", error));
 
     fetch('http://localhost:8001/api/topics')
       .then((res) => res.json())
-      .then((topics) => setTopicData(topics));
-  }, []);
+      .then((topics) => setTopicData(topics))
+      .catch((error) => console.error("Error occurred: ", error));
+    
+    if (state.currentTopic !== null) {
+      fetch(`http://localhost:8001/api/topics/photos/${state.currentTopic}`)
+        .then((res) => res.json())
+        .then((photos) => setPhotoData(photos))
+        .catch((error) => console.error("Error occurred: ", error));
+    }
+
+  }, [state.currentTopic]);
   
 
   return {
@@ -118,6 +144,7 @@ const useApplicationData = () => {
     removeFavPhoto,
     updateAlert,
     toggleFavorite,
+    setCurrentTopic,
     openModal,
     closeModal
   };

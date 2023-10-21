@@ -14,7 +14,8 @@ const HomeRoute = (props) => {
     addFavPhoto,
     removeFavPhoto,
     toggleFavorite,
-    updateAlert
+    updateAlert,
+    setCurrentTopic
   } = props;
   const isFavPhotoExist = favorites.size > 0 ? true : false;
   const isPhotoFavorited = (photo) => {
@@ -23,7 +24,7 @@ const HomeRoute = (props) => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist}/>
+      <TopNavigationBar topics={topics} isFavPhotoExist={isFavPhotoExist} setCurrentTopic={setCurrentTopic}/>
       <PhotoList photos={photos} selected={selected}  displayAlert={displayAlert} setFavorites={addFavPhoto} removeFromFavorites={removeFavPhoto} onClick={props.onClick} isPhotoFavorited={isPhotoFavorited} toggleFavorite={toggleFavorite} updateAlert={updateAlert} />
     </div>
   );

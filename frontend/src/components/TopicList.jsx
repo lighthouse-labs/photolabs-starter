@@ -29,6 +29,7 @@ const TopicList = (props) => {
         id={id}
         slug={slug}
         title={title}
+        setCurrentTopic={props.setCurrentTopic}
       />
     );
   });
