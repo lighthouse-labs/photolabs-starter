@@ -2,8 +2,8 @@ import React from 'react';
 
 import './App.scss';
 import HomeRoute from './components/HomeRoute';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
+// import photos from 'mocks/photos';
+// import topics from 'mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
@@ -17,6 +17,8 @@ const App = () => {
     favorites,
     selected,
     displayAlert,
+    photos,
+    topics,
     openModal,
     closeModal,
     addFavPhoto,

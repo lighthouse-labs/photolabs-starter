@@ -1,4 +1,5 @@
-import React, { useReducer } from 'react';
+import photos from 'mocks/photos';
+import React, { useEffect, useReducer } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
@@ -32,6 +33,12 @@ const reducer = (state, action) => {
   case ACTIONS.ADD_FAV_NOTIFICATION: {
     return {...state, displayAlert: state.favorites && state.favorites.size > 0 };
   }
+  case ACTIONS.SET_PHOTO_DATA: {
+    return {...state, photos: action.payload };
+  }
+  case ACTIONS.SET_TOPIC_DATA: {
+    return {...state, topics: action.payload };
+  }
   default: {
     return state;
   }
@@ -44,6 +51,8 @@ const useApplicationData = () => {
     selectedPhoto: null,
     selected: false,
     displayAlert: false,
+    photos: [],
+    topics: [],
     favorites: new Set()
   });
 
@@ -63,6 +72,14 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photoId });
   };
 
+  const setPhotoData = (photos) => {
+    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
+  };
+
+  const setTopicData = (topics) => {
+    dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
+  };
+
   const updateAlert = () => {
     dispatch({ type: ACTIONS.ADD_FAV_NOTIFICATION });
     return state.displayAlert;
@@ -76,6 +93,17 @@ const useApplicationData = () => {
       addFavPhoto(photoId);
     }
   };
+
+  useEffect(() => {
+
+    fetch('http://localhost:8001/api/photos')
+      .then((res) => res.json())
+      .then((photos) => setPhotoData(photos));
+
+    fetch('http://localhost:8001/api/topics')
+      .then((res) => res.json())
+      .then((topics) => setTopicData(topics));
+  }, []);
   
 
   return {
@@ -84,6 +112,8 @@ const useApplicationData = () => {
     favorites: state.favorites,
     selected: state.selected,
     displayAlert: state.displayAlert,
+    photos: state.photos,
+    topics: state.topics,
     addFavPhoto,
     removeFavPhoto,
     updateAlert,
