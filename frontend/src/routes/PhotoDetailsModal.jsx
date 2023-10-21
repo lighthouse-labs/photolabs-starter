@@ -63,6 +63,7 @@ const PhotoDetailsModal = (props) => {
           isPhotoFavorited={isPhotoFavorited}
           toggleFavorite={toggleFavorite}
           updateAlert={updateAlert}
+          similarPhotos={similar_photos}
         />
       </section>
     </div>

@@ -29,12 +29,11 @@ const PhotoListItem = (props) => {
       toggleFavorite={toggleFavorite}
       updateAlert={updateAlert}
     />
-    <img className="photo-list__image" src={full} id={id} onClick={()=> onClick({
+    <img className="photo-list__image" src={full} id={id} onClick={onClick ? ()=> onClick({
       id,
       city,
       country,
       full,
-      regular,
       profile,
       name,
       setFavorites,
@@ -43,7 +42,7 @@ const PhotoListItem = (props) => {
       similar_photos,
       toggleFavorite,
       updateAlert
-    })} />
+    }) : null} />
     <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={profile} />
       <div className="photo-list__user-info">

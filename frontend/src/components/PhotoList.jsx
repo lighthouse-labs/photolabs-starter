@@ -10,10 +10,10 @@ const PhotoList = (props) => {
       urls: { full, regular },
       user: { id: userId, username, name, profile },
       similar_photos
-    }, i) => {
+    }) => {
     return (
       <PhotoListItem
-        key={i}
+        key={id}
         id={id}
         city={city}
         country={country}
