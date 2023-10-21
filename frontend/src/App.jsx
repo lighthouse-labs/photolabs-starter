@@ -14,13 +14,14 @@ const App = () => {
     addFavPhoto,
     removeFavPhoto,
     setCurrentTopic,
+    setSearchTerm,
     isModalOpen,
     selectedPhoto,
     favorites,
     selected,
     displayAlert,
     photos,
-    topics
+    topics,
   } = useApplicationData();
 
   const isPhotoFavorited = (photo) => {
@@ -41,6 +42,7 @@ const App = () => {
         toggleFavorite={toggleFavorite}
         updateAlert={updateAlert}
         setCurrentTopic={setCurrentTopic}
+        setSearchTerm={setSearchTerm}
       />
       {isModalOpen && <PhotoDetailsModal
         {...selectedPhoto}

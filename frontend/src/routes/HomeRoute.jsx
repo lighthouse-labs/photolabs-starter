@@ -15,7 +15,8 @@ const HomeRoute = (props) => {
     removeFavPhoto,
     toggleFavorite,
     updateAlert,
-    setCurrentTopic
+    setCurrentTopic,
+    setSearchTerm
   } = props;
 
   const isFavPhotoExist = favorites.size > 0 ? true : false;
@@ -29,9 +30,10 @@ const HomeRoute = (props) => {
         topics={topics}
         isFavPhotoExist={isFavPhotoExist}
         setCurrentTopic={setCurrentTopic}
+        setSearchTerm={setSearchTerm}
       />
       <PhotoList
-        photos={photos}
+        photos={photos ? photos : []}
         selected={selected}
         displayAlert={displayAlert}
         setFavorites={addFavPhoto}

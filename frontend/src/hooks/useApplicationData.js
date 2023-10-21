@@ -40,7 +40,7 @@ const useApplicationData = () => {
   };
 
   const setSearchTerm = (searchTerm) => {
-    dispatch({ type: ACTIONS.SET_SEARCH_DATA, payload: searchTerm });
+    dispatch({ type: ACTIONS.SET_SEARCH_TERM, payload: searchTerm });
   };
 
   const setCurrentTopic = (topic) => {
@@ -85,15 +85,24 @@ const useApplicationData = () => {
       .catch((error) => console.error("Error occurred: ", error));
   }, [setPhotoData]);
 
+  const fetchSearchResult = useCallback(() => {
+    axios.get(`/api/photos/${state.searchTerm}`)
+      .then((res) => {setPhotoData(res.data)})
+      .catch((error) => console.error("Error occurred: ", error));
+  }, [setPhotoData]);
+
   // fetch + render photos/topics and if the current topic changes, re-render with the right photos
   useEffect(() => {
     fetchTopics();
-    if (state.currentTopic !== null) {
+    if (state.searchTerm) {
+      fetchSearchResult();
+    } else
+    if (state.currentTopic) {
       fetchCurrentTopic();
     } else {
       fetchPhotos();
     }
-  }, [state.currentTopic]);
+  }, [state.currentTopic, state.searchTerm]);
   
 
   return {
@@ -104,6 +113,7 @@ const useApplicationData = () => {
     displayAlert: state.displayAlert,
     photos: state.photos,
     topics: state.topics,
+    searchTerm: state.searchTerm,
     addFavPhoto,
     removeFavPhoto,
     updateAlert,

@@ -38,7 +38,7 @@ const reducer = (state, action) => {
     return {...state, currentTopic: action.payload };
   }
 
-  case ACTIONS.SET_CURRENT_TOPIC: {
+  case ACTIONS.SET_SEARCH_TERM: {
     return {...state, searchTerm: action.payload };
   }
 
