@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useCallback } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
@@ -112,26 +112,26 @@ const useApplicationData = () => {
     }
   };
 
-  const fetchPhotos = () => {
+  const fetchPhotos = useCallback(() => {
     fetch('http://localhost:8001/api/photos')
       .then((res) => res.json())
       .then((photos) => setPhotoData(photos))
       .catch((error) => console.error("Error occurred: ", error));
-  };
+  }, [setPhotoData]);
 
-  const fetchTopics = () => {
+  const fetchTopics = useCallback(() => {
     fetch('http://localhost:8001/api/topics')
       .then((res) => res.json())
       .then((topics) => setTopicData(topics))
       .catch((error) => console.error("Error occurred: ", error));
-  };
+  }, [setTopicData]);
 
-  const fetchCurrentTopic = () => {
+  const fetchCurrentTopic = useCallback(() => {
     fetch(`http://localhost:8001/api/topics/photos/${state.currentTopic}`)
       .then((res) => res.json())
       .then((photos) => setPhotoData(photos))
       .catch((error) => console.error("Error occurred: ", error));
-  };
+  }, [setPhotoData]);
 
   // fetch + render photos/topics and if the current topic changes, re-render with the right photos
   useEffect(() => {
