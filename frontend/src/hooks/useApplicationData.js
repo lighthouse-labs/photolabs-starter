@@ -137,7 +137,7 @@ const useApplicationData = () => {
     } else {
       fetchPhotos();
     }
-  }, [state.currentTopic, state.searchTerm, state.displayFavorites]);
+  }, [state.currentTopic, state.searchTerm, state.displayFavorites, state.favorites]);
   
 
   return {

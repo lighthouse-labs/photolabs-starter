@@ -9,6 +9,15 @@
   -moz-box-shadow: 0 4px 6px -6px #222;
   box-shadow: 0 4px 6px -6px #222;
   height: 72px;
+  .top-nav-bar__dark-mode-symbol {
+  img {
+    position: relative;
+    cursor: pointer;
+    width: 20px;
+    height: 17px;
+    left: 375%;
+  }
+}
 }
 
 .top-nav-bar__logo {
