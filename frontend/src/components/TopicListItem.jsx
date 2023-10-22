@@ -6,7 +6,7 @@ const TopicListItem = ({ id, title }) => {
 
   return (
     <div className="topic-list__item">
-      <button className={id} onClick={} >{title}</button>
+      <a className={id} >{title}</a>
     </div>
   );
 };
