@@ -12,7 +12,8 @@ const useApplicationData = () => {
     topics: [],
     favorites: new Set(),
     currentTopic: null,
-    searchTerm: null
+    searchTerm: null,
+    displayFavorites: false
   });
 
   const closeModal = () => {
@@ -57,6 +58,14 @@ const useApplicationData = () => {
     return state.displayAlert;
   };
 
+  const showFavorites = () => {
+    if (state.displayFavorites) {
+      dispatch({ type: ACTIONS.HIDE_FAVORITES });
+    } else {
+      dispatch({ type: ACTIONS.SHOW_FAVORITES });
+    }
+  };
+
   // if already favorited, remove from favorites - else add to favorites
   const toggleFavorite = (photoId) => {
     const isFavorited = state.favorites.has(photoId);
@@ -81,15 +90,38 @@ const useApplicationData = () => {
 
   const fetchCurrentTopic = useCallback(() => {
     axios.get(`/api/topics/photos/${state.currentTopic}`)
-      .then((res) => setPhotoData(res.data))
+    .then((res) => { 
+      if(state.displayFavorites) {
+        const favoritedPhotos = res.data.filter((photo) => state.favorites.has(photo.id));
+        setPhotoData(favoritedPhotos);
+      } else {
+        setPhotoData(res.data);
+      }
+    })
       .catch((error) => console.error("Error occurred: ", error));
   }, [setPhotoData]);
 
-  const fetchSearchResult = useCallback(() => {
+  const fetchSearchResult = useCallback(() => { 
     axios.get(`/api/photos/${state.searchTerm}`)
-      .then((res) => {setPhotoData(res.data)})
+      .then((res) => { 
+        if(state.displayFavorites) {
+          const favoritedPhotos = res.data.filter((photo) => state.favorites.has(photo.id));
+          setPhotoData(favoritedPhotos);
+        } else {
+          setPhotoData(res.data);
+        }
+      })
       .catch((error) => console.error("Error occurred: ", error));
   }, [setPhotoData]);
+
+  const fetchFavorites = useCallback(() => {
+    axios.get('/api/photos')
+      .then((res) => {
+        const favoritedPhotos = res.data.filter((photo) => state.favorites.has(photo.id));
+        setPhotoData(favoritedPhotos);
+    })
+      .catch((error) => console.error("Error occurred: ", error));
+  });
 
   // fetch + render photos/topics and if the current topic changes, re-render with the right photos
   useEffect(() => {
@@ -99,10 +131,13 @@ const useApplicationData = () => {
     } else
     if (state.currentTopic) {
       fetchCurrentTopic();
+    } else 
+    if (state.displayFavorites) {
+      fetchFavorites();
     } else {
       fetchPhotos();
     }
-  }, [state.currentTopic, state.searchTerm]);
+  }, [state.currentTopic, state.searchTerm, state.displayFavorites]);
   
 
   return {
@@ -121,7 +156,8 @@ const useApplicationData = () => {
     setCurrentTopic,
     openModal,
     closeModal,
-    setSearchTerm
+    setSearchTerm,
+    showFavorites
   };
 };
 

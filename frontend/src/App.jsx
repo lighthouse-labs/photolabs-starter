@@ -15,6 +15,8 @@ const App = () => {
     removeFavPhoto,
     setCurrentTopic,
     setSearchTerm,
+    showFavorites,
+    hideFavorites,
     isModalOpen,
     selectedPhoto,
     favorites,
@@ -43,6 +45,8 @@ const App = () => {
         updateAlert={updateAlert}
         setCurrentTopic={setCurrentTopic}
         setSearchTerm={setSearchTerm}
+        showFavorites={showFavorites}
+        hideFavorites={hideFavorites}
       />
       {isModalOpen && <PhotoDetailsModal
         {...selectedPhoto}

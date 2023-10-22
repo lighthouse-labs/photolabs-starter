@@ -9,6 +9,9 @@
   width: 55%;
   overflow-y: scroll;
   border-radius: 12px;
+  .photo-list {
+    justify-content: flex-start;
+  }
 }
 
 .photo-details-modal__close-button {
@@ -75,3 +78,4 @@
   font-size: 12px;
   margin-left: 8px;
 }
+

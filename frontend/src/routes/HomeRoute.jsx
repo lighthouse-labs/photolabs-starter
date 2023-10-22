@@ -16,7 +16,9 @@ const HomeRoute = (props) => {
     toggleFavorite,
     updateAlert,
     setCurrentTopic,
-    setSearchTerm
+    setSearchTerm,
+    showFavorites,
+    hideFavorites
   } = props;
 
   const isFavPhotoExist = favorites.size > 0 ? true : false;
@@ -31,6 +33,8 @@ const HomeRoute = (props) => {
         isFavPhotoExist={isFavPhotoExist}
         setCurrentTopic={setCurrentTopic}
         setSearchTerm={setSearchTerm}
+        showFavorites={showFavorites}
+        hideFavorites={hideFavorites}
       />
       <div className="home-route__images">
         <PhotoList
