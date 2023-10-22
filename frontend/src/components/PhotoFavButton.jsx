@@ -22,17 +22,14 @@ function PhotoFavButton(props) {
 
     let finalFavList = [];
 
-    console.log("modal", modalId)
-
     if (favList.includes(id)) {
       finalFavList = favList.filter(photo => photo !== id)
     } else {
       finalFavList = [...favList, id]
     }
     setFavList(finalFavList);
-
   }
-  console.log('PhotoFavButton liked32313', liked)
+
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">

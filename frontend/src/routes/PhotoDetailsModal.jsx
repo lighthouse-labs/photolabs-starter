@@ -40,14 +40,15 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       <div className="photo-details-modal__images">
-      <PhotoFavButton 
-        liked={liked}
-        setLiked={setLiked}
-        id={showModalArray[0]} 
-        // modalId={showModalArray[0]}
-        favList={favList}
-        setFavList={setFavList}
-      />
+        <div className="photo-details-modal__image">
+          <PhotoFavButton 
+            liked={liked}
+            setLiked={setLiked}
+            id={showModalArray[0]} 
+            favList={favList}
+            setFavList={setFavList}
+          />
+        </div>
         <img className="photo-details-modal__image" src={showModal.imageSource}></img>
         <div className="photo-details-modal__photographer-details">
           <img className="photo-details-modal__photographer-profile" src={showModal.profile} ></img>
