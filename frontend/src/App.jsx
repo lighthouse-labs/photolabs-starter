@@ -9,15 +9,15 @@ import useApplicationData from './hooks/useApplicationData';
 const App = () => {
   const {
     state,
-    toggleFav,
     openModal,
     closeModal,
   } = useApplicationData()
 
+
   return (
     <div className="App">
       < HomeRoute openModal={openModal} photoData={state.photoData} topicData={state.topicData} state={state} />
-      {state.photo && <PhotoDetailsModal state={state} toggleFav={toggleFav} closeModal={closeModal} /> }
+      {state.photo && <PhotoDetailsModal state={state} closeModal={closeModal} /> }
     </div>
   );
 };

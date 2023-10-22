@@ -11,8 +11,6 @@ const initialState = {
 const actionTypes = {
   openModal: 'openModal',
   closeModal: 'closeModal',
-  toggleFav: 'toggleFav',
-  addFav: 'addFav',
   setPhotoData: 'setPhotoData',
   setTopicData: 'setTopicData',
 };
@@ -23,10 +21,6 @@ const appReducer = (state, action) => {
       return {...state, photo: action.payload };
     case 'closeModal':
       return {...state, photo: null };
-    case 'toggleFav':
-      return {...state, isFav: !state.isFav};
-    case 'addFav':
-      return {...state, favPhotos: action.payload};
     case 'setPhotoData':
       return {...state, photoData: action.payload};
     case 'setTopicData':
@@ -52,6 +46,7 @@ const useApplicationData = () => {
       })
   }, []);
 
+    // this should go to /topics/photos/:id
   useEffect(() => {
     fetch(`/api/topics`, {
       method: 'GET'
@@ -69,19 +64,11 @@ const useApplicationData = () => {
   const closeModal = () => {
     dispatch({ type: actionTypes.closeModal });
   };
-  const addFav = (photo) => {
-    dispatch({ type: actionTypes.addFav, payload: photo });
-  };
-  const toggleFav = () => {
-    dispatch({ type: actionTypes.toggleFav });
-  };
 
   return {
     state,
-    addFav,
     openModal,
     closeModal,
-    toggleFav,
   };
 };
 

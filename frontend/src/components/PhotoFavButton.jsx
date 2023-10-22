@@ -4,7 +4,6 @@ import '../styles/PhotoFavButton.scss';
 import FavBadge from './FavBadge';
 
 const PhotoFavButton = ({ photo, state }) => {
-
   const favPic = state.favPhotos;
   const [isFav, setIsFav] = useState(false); //local state to track if fav
 
