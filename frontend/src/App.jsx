@@ -12,12 +12,11 @@ const App = () => {
     toggleFav,
     openModal,
     closeModal,
-    addFav,
   } = useApplicationData()
 
   return (
     <div className="App">
-      < HomeRoute openModal={openModal}/>
+      < HomeRoute openModal={openModal} photoData={state.photoData} topicData={state.topicData} state={state} />
       {state.photo && <PhotoDetailsModal state={state} toggleFav={toggleFav} closeModal={closeModal} /> }
     </div>
   );

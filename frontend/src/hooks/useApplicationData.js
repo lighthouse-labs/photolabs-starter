@@ -1,9 +1,11 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 
 const initialState = {
   photo: null,
   isFav: false,
   favPhotos: [],
+  photoData: [],
+  topicData: [],
 };
 
 const actionTypes = {
@@ -11,18 +13,24 @@ const actionTypes = {
   closeModal: 'closeModal',
   toggleFav: 'toggleFav',
   addFav: 'addFav',
+  setPhotoData: 'setPhotoData',
+  setTopicData: 'setTopicData',
 };
 
 const appReducer = (state, action) => {
   switch (action.type) {
-    case actionTypes.openModal:
+    case 'openModal':
       return {...state, photo: action.payload };
-    case actionTypes.closeModal:
+    case 'closeModal':
       return {...state, photo: null };
-    case actionTypes.toggleFav:
+    case 'toggleFav':
       return {...state, isFav: !state.isFav};
-    case actionTypes.addFav:
+    case 'addFav':
       return {...state, favPhotos: action.payload};
+    case 'setPhotoData':
+      return {...state, photoData: action.payload};
+    case 'setTopicData':
+      return {...state, topicData: action.payload};
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -33,17 +41,39 @@ const appReducer = (state, action) => {
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
+  useEffect(() => {
+    fetch("/api/photos", {
+      method: 'GET'
+    })
+      .then((response) => response.json())
+      .then((photo) => dispatch({ type: actionTypes.setPhotoData, payload: photo }))
+      .catch((error) => {
+        console.log(error);
+      })
+  }, []);
+
+  useEffect(() => {
+    fetch(`/api/topics`, {
+      method: 'GET'
+    })
+      .then(res => res.json())
+      .then(topic => dispatch({ type: actionTypes.setTopicData, payload: topic }))
+      .catch((error) => {
+        console.log(error);
+      })
+   }, [])
+
   const openModal = (photo) => {
     dispatch({ type: actionTypes.openModal, payload: photo });
   };
   const closeModal = () => {
     dispatch({ type: actionTypes.closeModal });
   };
-  const toggleFav = () => {
-    dispatch({ type: actionTypes.toggleFav });
-  };
   const addFav = (photo) => {
     dispatch({ type: actionTypes.addFav, payload: photo });
+  };
+  const toggleFav = () => {
+    dispatch({ type: actionTypes.toggleFav });
   };
 
   return {
