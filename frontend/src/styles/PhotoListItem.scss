@@ -1,25 +1,26 @@
 .photo-list__item {
   margin: 24px;
-  padding: 8px;
+  padding: 16px 16px 16px 16px;
   border-width: 0.5px;
   border-color: lightgray;
   border-style: solid;
   border-radius: 8px;
+  background-color: white;
   max-width: fit-content;
 }
 
 .photo-list__image {
   user-select: none;
-  width: 300px;
-  height: 200px;
+  width: 800px;
+  height: 600px;
   object-fit: cover;
 }
 
 .photo-list__image {
   border-radius: 8px 8px 0px 0px;
   user-select: none;
-  width: 300px;
-  height: 200px;
+  width: 800px;
+  height: 600px;
   object-fit: cover;
 }
 
