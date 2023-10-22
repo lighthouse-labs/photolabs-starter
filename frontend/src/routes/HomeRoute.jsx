@@ -32,17 +32,19 @@ const HomeRoute = (props) => {
         setCurrentTopic={setCurrentTopic}
         setSearchTerm={setSearchTerm}
       />
-      <PhotoList
-        photos={photos ? photos : []}
-        selected={selected}
-        displayAlert={displayAlert}
-        setFavorites={addFavPhoto}
-        removeFromFavorites={removeFavPhoto}
-        onClick={props.onClick}
-        isPhotoFavorited={isPhotoFavorited}
-        toggleFavorite={toggleFavorite}
-        updateAlert={updateAlert}
-      />
+      <div className="home-route__images">
+        <PhotoList
+          photos={photos ? photos : []}
+          selected={selected}
+          displayAlert={displayAlert}
+          setFavorites={addFavPhoto}
+          removeFromFavorites={removeFavPhoto}
+          onClick={props.onClick}
+          isPhotoFavorited={isPhotoFavorited}
+          toggleFavorite={toggleFavorite}
+          updateAlert={updateAlert}
+        />
+      </div>
     </div>
   );
 };
