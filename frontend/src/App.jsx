@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './App.scss';
-import HomeRoute from './routes/HomeRoute';
+import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
 
@@ -16,7 +16,6 @@ const App = () => {
     setCurrentTopic,
     setSearchTerm,
     showFavorites,
-    hideFavorites,
     isModalOpen,
     selectedPhoto,
     favorites,
@@ -24,6 +23,7 @@ const App = () => {
     displayAlert,
     photos,
     topics,
+    displayFavorites
   } = useApplicationData();
 
   const isPhotoFavorited = (photo) => {
@@ -46,7 +46,7 @@ const App = () => {
         setCurrentTopic={setCurrentTopic}
         setSearchTerm={setSearchTerm}
         showFavorites={showFavorites}
-        hideFavorites={hideFavorites}
+        displayFavorites={displayFavorites}
       />
       {isModalOpen && <PhotoDetailsModal
         {...selectedPhoto}

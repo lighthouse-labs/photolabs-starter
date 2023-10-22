@@ -149,6 +149,7 @@ const useApplicationData = () => {
     photos: state.photos,
     topics: state.topics,
     searchTerm: state.searchTerm,
+    displayFavorites: state.displayFavorites,
     addFavPhoto,
     removeFavPhoto,
     updateAlert,
