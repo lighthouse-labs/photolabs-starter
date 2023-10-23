@@ -20,11 +20,42 @@
 }
 }
 
+.top-nav-bar-dark-mode {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #2b2929;
+  color: #FFFFFF;
+  padding: 8px;
+  align-items: center;
+  -webkit-box-shadow: 0 4px 6px -6px #FFFFFF;
+  -moz-box-shadow: 0 4px 6px -6px #FFFFFF;
+  box-shadow: 0 4px 6px -6px #FFFFFF;
+  height: 72px;
+  .top-nav-bar__dark-mode-symbol {
+  img {
+    position: relative;
+    cursor: pointer;
+    width: 20px;
+    height: 17px;
+    left: 375%;
+  }
+}
 .top-nav-bar__logo {
   text-decoration: overline;
   font-weight: 500;
   font-size: 24px;
-  color: #111;
+  color: #FFFFFF;
+  text-underline-position: auto;
+  margin-left: 24px;
+}
+}
+
+.top-nav-bar__logo {
+  text-decoration: overline;
+  font-weight: 500;
+  font-size: 24px;
+  color: #211;
   text-underline-position: auto;
   margin-left: 24px;
 }

@@ -9,7 +9,8 @@ export const ACTIONS = {
   SET_CURRENT_TOPIC: 'SET_CURRENT_TOPIC',
   SET_SEARCH_TERM: 'SET_SEARCH_TERM',
   SHOW_FAVORITES: 'SHOW_FAVORITES',
-  HIDE_FAVORITES: 'HIDE_FAVORITES'
+  HIDE_FAVORITES: 'HIDE_FAVORITES',
+  TOGGLE_DARK_MODE: 'TOGGLE_DARK_MODE'
 };
 
 const reducer = (state, action) => {
@@ -50,6 +51,10 @@ const reducer = (state, action) => {
 
   case ACTIONS.HIDE_FAVORITES: {
     return {...state, displayFavorites: false };
+  }
+
+  case ACTIONS.TOGGLE_DARK_MODE: {
+    return {...state, darkMode: state.darkMode ? false : true};
   }
 
 

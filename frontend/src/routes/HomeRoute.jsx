@@ -18,7 +18,9 @@ const HomeRoute = (props) => {
     setCurrentTopic,
     setSearchTerm,
     showFavorites,
-    displayFavorites
+    displayFavorites,
+    toggleDarkMode,
+    darkMode
   } = props;
 
   const isFavPhotoExist = favorites.size > 0 ? true : false;
@@ -27,7 +29,7 @@ const HomeRoute = (props) => {
   };
 
   return (
-    <div className="home-route">
+    <div className={`home-route${darkMode ? '-dark-mode' : ''}`}>
       <TopNavigationBar
         topics={topics}
         isFavPhotoExist={isFavPhotoExist}
@@ -35,6 +37,8 @@ const HomeRoute = (props) => {
         setSearchTerm={setSearchTerm}
         showFavorites={showFavorites}
         displayFavorites={displayFavorites}
+        toggleDarkMode={toggleDarkMode}
+        darkMode={darkMode}
       />
       <div className="home-route__images">
         <PhotoList
@@ -47,6 +51,7 @@ const HomeRoute = (props) => {
           isPhotoFavorited={isPhotoFavorited}
           toggleFavorite={toggleFavorite}
           updateAlert={updateAlert}
+          darkMode={darkMode}
         />
       </div>
     </div>

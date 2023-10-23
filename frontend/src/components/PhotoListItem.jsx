@@ -19,9 +19,10 @@ const PhotoListItem = (props) => {
     toggleFavorite,
     isPhotoFavorited,
     similar_photos,
+    darkMode
   } = props;
 
-  return (<div className="photo-list__item">
+  return (<div className={`photo-list__item${darkMode ? '-dark-mode' : ''}`}>
     <PhotoFavButton
       setFavorites={setFavorites}
       removeFromFavorites={removeFromFavorites}

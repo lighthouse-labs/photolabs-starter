@@ -1,5 +1,11 @@
 .App {
   background-color: #F5F5F5;
+  color: #000000;
+}
+
+.App-dark-mode {
+  background-color: #000000;
+  color: #FFFFFF;
 }
 
 .App-logo {
@@ -12,6 +18,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+
+
 
 .App-header {
   background-color: #282c34;

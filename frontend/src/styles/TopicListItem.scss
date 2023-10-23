@@ -14,3 +14,20 @@
     color: #111;
   }
 }
+
+.topic-list__item-dark-mode {
+  line-height: 24px;
+  margin-left: 24px;
+
+  span {
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    color: #FFFFFF;
+  
+    &:hover {
+      text-decoration: overline;
+      color: #F5F5F5;
+    }
+  }
+}

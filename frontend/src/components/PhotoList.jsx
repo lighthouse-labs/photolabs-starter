@@ -29,6 +29,7 @@ const PhotoList = (props) => {
         displayAlert={props.displayAlert}
         onClick={props.onClick}
         similar_photos={similar_photos}
+        darkMode={props.darkMode}
       />
     );
   });

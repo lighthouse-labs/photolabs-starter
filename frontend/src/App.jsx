@@ -16,6 +16,7 @@ const App = () => {
     setCurrentTopic,
     setSearchTerm,
     showFavorites,
+    toggleDarkMode,
     isModalOpen,
     selectedPhoto,
     favorites,
@@ -23,7 +24,8 @@ const App = () => {
     displayAlert,
     photos,
     topics,
-    displayFavorites
+    displayFavorites,
+    darkMode
   } = useApplicationData();
 
   const isPhotoFavorited = (photo) => {
@@ -31,13 +33,14 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className={`App${darkMode ? '-dark-mode' : ''}`}>
       <HomeRoute
         photos={photos}
         topics={topics}
         favorites={favorites}
         selected={selected}
         displayAlert={displayAlert}
+        displayFavorites={displayFavorites}
         addFavPhoto={addFavPhoto}
         removeFavPhoto={removeFavPhoto}
         onClick={openModal}
@@ -46,7 +49,8 @@ const App = () => {
         setCurrentTopic={setCurrentTopic}
         setSearchTerm={setSearchTerm}
         showFavorites={showFavorites}
-        displayFavorites={displayFavorites}
+        toggleDarkMode={toggleDarkMode}
+        darkMode={darkMode}
       />
       {isModalOpen && <PhotoDetailsModal
         {...selectedPhoto}
@@ -54,6 +58,7 @@ const App = () => {
         isPhotoFavorited={isPhotoFavorited}
         updateAlert={updateAlert}
         onClick={closeModal}
+        darkMode={darkMode}
       />}
     </div>
   );

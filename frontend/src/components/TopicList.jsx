@@ -4,6 +4,7 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
+  const { darkMode } = props;
   const topics = props.topics.map(({id, slug, title}) => {
     return (
       <TopicListItem
@@ -12,6 +13,7 @@ const TopicList = (props) => {
         slug={slug}
         title={title}
         setCurrentTopic={props.setCurrentTopic}
+        darkMode={darkMode}
       />
     );
   });

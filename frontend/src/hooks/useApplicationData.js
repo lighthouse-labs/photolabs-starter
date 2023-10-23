@@ -13,7 +13,8 @@ const useApplicationData = () => {
     favorites: new Set(),
     currentTopic: null,
     searchTerm: null,
-    displayFavorites: false
+    displayFavorites: false,
+    darkMode: false
   });
 
   const closeModal = () => {
@@ -76,6 +77,10 @@ const useApplicationData = () => {
     }
   };
 
+  const toggleDarkMode = () => {
+    dispatch({ type: ACTIONS.TOGGLE_DARK_MODE });
+  };
+
   const fetchPhotos = useCallback(() => {
     axios.get('/api/photos')
       .then((res) => setPhotoData(res.data))
@@ -90,21 +95,21 @@ const useApplicationData = () => {
 
   const fetchCurrentTopic = useCallback(() => {
     axios.get(`/api/topics/photos/${state.currentTopic}`)
-    .then((res) => { 
-      if(state.displayFavorites) {
-        const favoritedPhotos = res.data.filter((photo) => state.favorites.has(photo.id));
-        setPhotoData(favoritedPhotos);
-      } else {
-        setPhotoData(res.data);
-      }
-    })
+      .then((res) => {
+        if (state.displayFavorites) {
+          const favoritedPhotos = res.data.filter((photo) => state.favorites.has(photo.id));
+          setPhotoData(favoritedPhotos);
+        } else {
+          setPhotoData(res.data);
+        }
+      })
       .catch((error) => console.error("Error occurred: ", error));
   }, [setPhotoData]);
 
   const fetchSearchResult = useCallback(() => { 
     axios.get(`/api/photos/${state.searchTerm}`)
-      .then((res) => { 
-        if(state.displayFavorites) {
+      .then((res) => {
+        if (state.displayFavorites) {
           const favoritedPhotos = res.data.filter((photo) => state.favorites.has(photo.id));
           setPhotoData(favoritedPhotos);
         } else {
@@ -119,7 +124,7 @@ const useApplicationData = () => {
       .then((res) => {
         const favoritedPhotos = res.data.filter((photo) => state.favorites.has(photo.id));
         setPhotoData(favoritedPhotos);
-    })
+      })
       .catch((error) => console.error("Error occurred: ", error));
   });
 
@@ -131,13 +136,14 @@ const useApplicationData = () => {
     } else
     if (state.currentTopic) {
       fetchCurrentTopic();
-    } else 
+    } else
     if (state.displayFavorites) {
       fetchFavorites();
     } else {
       fetchPhotos();
     }
-  }, [state.currentTopic, state.searchTerm, state.displayFavorites, state.favorites]);
+    
+  }, [state.currentTopic, state.searchTerm, state.displayFavorites, state.favorites, state.darkMode]);
   
 
   return {
@@ -150,6 +156,7 @@ const useApplicationData = () => {
     topics: state.topics,
     searchTerm: state.searchTerm,
     displayFavorites: state.displayFavorites,
+    darkMode: state.darkMode,
     addFavPhoto,
     removeFavPhoto,
     updateAlert,
@@ -158,7 +165,8 @@ const useApplicationData = () => {
     openModal,
     closeModal,
     setSearchTerm,
-    showFavorites
+    showFavorites,
+    toggleDarkMode
   };
 };
 
