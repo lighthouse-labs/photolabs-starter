@@ -6,7 +6,7 @@ import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
 
 const HomeRoute = (props) => {
-  console.log('HomeRoute favList', props.favList)
+  // console.log('HomeRoute favList', props.favList)
 
   const favPhotoNotification = () => {
     if (props.favList.length > 0) {

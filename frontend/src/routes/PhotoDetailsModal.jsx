@@ -6,32 +6,30 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from '../components/PhotoList'
 import PhotoFavButton from 'components/PhotoFavButton';
+import useApplicationData from 'hooks/useApplicationData';
 import photos from "../mocks/photos.js"
 
 
 const PhotoDetailsModal = (props) => {
 
-  const {showModal, liked, setLiked, favList, setFavList } = props;
+  const {showModal, liked, setLiked, favList, setFavList, setShowModal} = props;
 
   // console.log(
   //   'relevant photo details:', 
   //   showModal
   // )
 
-  // console.log('PhotoDetailsModal liked', liked)
   const showModalArray = Object.values(showModal);
-  // console.log("PhotoDetailsModal showModalArray", showModalArray)
-  // console.log("PhotoDetailsModal showModalArray[0]", showModalArray[0])
 
   const selectedPhoto = showModalArray[0];
-  console.log('selectedPhoto', selectedPhoto)
+  // console.log('selectedPhoto', selectedPhoto)
 
   const similarPhotos = photos.filter((photo) => photo.id !== selectedPhoto)
-  console.log("similarPhotos", similarPhotos)
+  // console.log("similarPhotos", similarPhotos)
 
   //handles the close button of the modal
   const handleCloseClick = () => {
-    props.setShowModal(false)
+    setShowModal(false)
   }
 
   return (

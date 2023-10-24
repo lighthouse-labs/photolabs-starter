@@ -7,12 +7,12 @@ import FavBadge from './FavBadge';
 
 const TopNavigationBar = (props) => {
 
-  const {favList} = props;
+  const { favList, liked } = props;
   const isFavPhotoExists = (favList.length)
 
   //handleclick to check if favList is built correctly
   const handleClick = () => {
-    console.log('favList', favList)
+    console.log('liked', liked)
   }
 
   return (

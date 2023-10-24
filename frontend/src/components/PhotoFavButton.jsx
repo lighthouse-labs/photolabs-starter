@@ -1,6 +1,7 @@
 import React, { useCallback, useState, useEffect } from 'react';
 
 import FavIcon from './FavIcon';
+import useApplicationData from 'hooks/useApplicationData';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
@@ -9,25 +10,18 @@ function PhotoFavButton(props) {
   //builds favList array
   const handleClick = () => {
 
+    // console.log('PhotoFavButton props', props)
+    console.log('PhotoFavButton {liked[id]}', liked[id])
+
     // console.log('PhotoFavButton liked', liked)
-    // console.log('PhotoFavButton showModal',  showModal)
+    // console.log('PhotoFavButton favList', favList)
 
-    //to toggle liked state of each photo
-      setLiked((current) => {
-        const copy = { ...current };
-        copy[id] = !copy[id];
-        console.log('PhotoFavButton copy', copy)
-        return copy;
-      });
+    //toggles liked state of each photo
+    setLiked(props.id)
 
-    let finalFavList = [];
-
-    if (favList.includes(id)) {
-      finalFavList = favList.filter(photo => photo !== id)
-    } else {
-      finalFavList = [...favList, id]
-    }
-    setFavList(finalFavList);
+    //builds favList array
+    setFavList(id)
+    
   }
 
   return (

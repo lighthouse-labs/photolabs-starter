@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
+import useApplicationData from './hooks/useApplicationData';
 
 import './styles/PhotoList.scss';
 import './App.scss';
@@ -11,30 +12,29 @@ import './App.scss';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const [favList, setFavList] = useState([]);
+  const { state, setFavList, setLiked, setShowModal } = useApplicationData();
 
-  const [liked, setLiked] = useState({});
 
-  const [showModal, setShowModal] = useState(null);
-  
-  console.log('APP', liked)
+  // console.log('APP state', state)
   return (
     <div className="App">
       <HomeRoute 
-        favList={favList}
+        state={state}
+        favList={state.favList}
         setFavList={setFavList}
-        liked={liked}
+        liked={state.liked}
         setLiked={setLiked}
-        showModal={showModal}
+        showModal={state.showModal}
         setShowModal={setShowModal}
       />
-      {showModal ? 
+      {state.showModal ? 
       <PhotoDetailsModal 
-        favList={favList}
+        state={state}
+        favList={state.favList}
         setFavList={setFavList}
-        liked={liked}
+        liked={state.liked}
         setLiked={setLiked}
-        showModal={showModal}
+        showModal={state.showModal}
         setShowModal={setShowModal}
       /> : null}
     </div>

@@ -69,7 +69,7 @@ const PhotoList = (props) => {
   } else {
     photoArray = photos
   }
-  console.log("PhotoList", props)
+  // console.log("PhotoList", props)
 
   return (
     <ul className="photo-list">
