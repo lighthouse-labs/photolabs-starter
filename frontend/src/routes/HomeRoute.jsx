@@ -8,7 +8,7 @@ const HomeRoute = ({state, openModal, topicData, photoData}) => {
 
   return (
     <div className="home-route">
-      < TopNavigation topicData={topicData} state={state} />
+      < TopNavigation topicData={topicData} state={state} photoData={photoData} />
       < PhotoList openModal={openModal} photoData={photoData} state={state} />
     </div>
   );
