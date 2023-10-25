@@ -18,8 +18,8 @@ const App = () => {
 
   return (
     <div className="App">
-      < HomeRoute openModal={openModal} photoData={state.photoData} topicData={state.topicData} state={state} handleFav={handleFav} handleTopicSelect={handleTopicSelect} />
-      {state.photo && <PhotoDetailsModal state={state} closeModal={closeModal} handleFav={handleFav} /> }
+      < HomeRoute openModal={openModal} photoData={state.photoData} topicData={state.topicData} state={state} handleFav={handleFav} handleTopicSelect={handleTopicSelect}/>
+      {state.photo && <PhotoDetailsModal state={state} closeModal={closeModal} handleFav={handleFav}/> }
     </div>
   );
 };

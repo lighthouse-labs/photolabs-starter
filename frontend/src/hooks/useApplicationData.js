@@ -50,7 +50,7 @@ const useApplicationData = () => {
       .catch((error) => {
         console.log(error);
       })
-  }, []);
+  }, [])
 
     // this should go to /topics/photos/:id
   useEffect(() => {
@@ -66,10 +66,10 @@ const useApplicationData = () => {
 
   const openModal = (photo) => {
     dispatch({ type: actionTypes.openModal, payload: photo });
-  };
+  }
   const closeModal = () => {
     dispatch({ type: actionTypes.closeModal });
-  };
+  }
   const handleFav = (photoId) => {
     if (state.favPhotos.includes(photoId)) {
       const favPhotosWithoutSelected = [...state.favPhotos].filter(photo => photo !== photoId);
@@ -77,12 +77,12 @@ const useApplicationData = () => {
     } else {
       dispatch({ type: actionTypes.addFavPhoto, payload: photoId });
     }
-  };
+  }
   const handleTopicSelect = (topicId) => {
     fetch(`/api/topics/photos/${topicId}`)
     .then((res) => res.json())
     .then((data) => dispatch({type: actionTypes.setPhotoData, payload: data}))
-  };
+  }
 
   return {
     state,

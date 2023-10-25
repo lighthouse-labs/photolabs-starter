@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photo, openModal, state }) => {
+const PhotoListItem = ({ photo, openModal, state, handleFav }) => {
 
   return (
     <div>

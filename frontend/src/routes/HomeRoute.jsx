@@ -4,7 +4,7 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = ({state, openModal, topicData, photoData, handleTopicSelect}) => {
+const HomeRoute = ({state, openModal, topicData, photoData, handleFav, handleTopicSelect}) => {
 
   return (
     <div className="home-route">
