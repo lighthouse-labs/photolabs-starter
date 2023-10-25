@@ -8,7 +8,7 @@ const HomeRoute = ({state, openModal, topicData, photoData, handleFav, handleTop
 
   return (
     <div className="home-route">
-      < TopNavigation topicData={topicData} state={state} handleTopicSelect={handleTopicSelect} />
+      < TopNavigation topicData={topicData} state={state} photoData={photoData} handleTopicSelect={handleTopicSelect} />
       < PhotoList openModal={openModal} photoData={photoData} state={state} handleFav={handleFav} />
     </div>
   );
