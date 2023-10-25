@@ -4,12 +4,12 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = ({state, openModal, topicData, photoData}) => {
+const HomeRoute = ({state, openModal, topicData, photoData, handleTopicSelect}) => {
 
   return (
     <div className="home-route">
-      < TopNavigation topicData={topicData} state={state} />
-      < PhotoList openModal={openModal} photoData={photoData} state={state} />
+      < TopNavigation topicData={topicData} state={state} handleTopicSelect={handleTopicSelect} />
+      < PhotoList openModal={openModal} photoData={photoData} state={state} handleFav={handleFav} />
     </div>
   );
 };

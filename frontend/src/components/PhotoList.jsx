@@ -7,7 +7,7 @@ const PhotoList = ({ openModal, photoData, state }) => {
   return (
     <ul className="photo-list">
       {photoData.map((photo) => (
-        < PhotoListItem key={photo.id} photo={photo} openModal={openModal} state={state} />
+        < PhotoListItem key={photo.id} photo={photo} openModal={openModal} state={state} handleFav={handleFav} />
       ))}
     </ul>
   );

@@ -11,13 +11,15 @@ const App = () => {
     state,
     openModal,
     closeModal,
+    handleFav,
+    handleTopicSelect,
   } = useApplicationData()
 
 
   return (
     <div className="App">
-      < HomeRoute openModal={openModal} photoData={state.photoData} topicData={state.topicData} state={state} />
-      {state.photo && <PhotoDetailsModal state={state} closeModal={closeModal} /> }
+      < HomeRoute openModal={openModal} photoData={state.photoData} topicData={state.topicData} state={state} handleFav={handleFav} handleTopicSelect={handleTopicSelect} />
+      {state.photo && <PhotoDetailsModal state={state} closeModal={closeModal} handleFav={handleFav} /> }
     </div>
   );
 };

@@ -13,6 +13,8 @@ const actionTypes = {
   closeModal: 'closeModal',
   setPhotoData: 'setPhotoData',
   setTopicData: 'setTopicData',
+  addFavPhoto: 'addFavPhoto',
+  removeFavPhoto: 'removeFavPhoto',
 };
 
 const appReducer = (state, action) => {
@@ -25,6 +27,10 @@ const appReducer = (state, action) => {
       return {...state, photoData: action.payload};
     case 'setTopicData':
       return {...state, topicData: action.payload};
+    case 'addFavPhoto':
+      return {...state, favPhotos: [...state.favPhotos, action.payload]};
+    case 'removeFavPhoto':
+      return {...state, favPhotos: action.payload}
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -64,11 +70,26 @@ const useApplicationData = () => {
   const closeModal = () => {
     dispatch({ type: actionTypes.closeModal });
   };
+  const handleFav = (photoId) => {
+    if (state.favPhotos.includes(photoId)) {
+      const favPhotosWithoutSelected = [...state.favPhotos].filter(photo => photo !== photoId);
+      dispatch({ type: actionTypes.removeFavPhoto, payload: favPhotosWithoutSelected });
+    } else {
+      dispatch({ type: actionTypes.addFavPhoto, payload: photoId });
+    }
+  };
+  const handleTopicSelect = (topicId) => {
+    fetch(`/api/topics/photos/${topicId}`)
+    .then((res) => res.json())
+    .then((data) => dispatch({type: actionTypes.setPhotoData, payload: data}))
+  };
 
   return {
     state,
     openModal,
     closeModal,
+    handleFav,
+    handleTopicSelect,
   };
 };
 

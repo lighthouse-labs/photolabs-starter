@@ -4,14 +4,13 @@ import '../styles/TopNavigationBar.scss';
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
-//make so when click photofavbutton the topnav favbadge is updated to have a notification
-const TopNavigation = ({ topicData, state }) => {
+const TopNavigation = ({ topicData, state, handleTopicSelect }) => {
 
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      < TopicList topicData={topicData} />
-      < FavBadge selected={state.favPhotos} />
+      < TopicList topicData={topicData} handleTopicSelect={handleTopicSelect} />
+      < FavBadge selected={state.favPhotos.length > 0} displayAlert={state.favPhotos.length > 0} />
     </div>
   )
 }
