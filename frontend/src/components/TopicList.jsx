@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
-const TopicList = ({ topicData }) => {
+const TopicList = ({ topicData, handleTopicSelect }) => {
 
   return (
     <div className="top-nav-bar__topic-list">
@@ -13,6 +13,7 @@ const TopicList = ({ topicData }) => {
           key={topic.id}
           id={topic.id}
           title={topic.title}
+          handleTopicSelect={handleTopicSelect}
         />
       ))}
     </div>

@@ -3,12 +3,12 @@ import React, {useState} from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photo, openModal, state }) => {
+const PhotoListItem = ({ photo, openModal, state, handleFav }) => {
 
   return (
     <div>
       <ul className="photo-list__item">
-        < PhotoFavButton photo={photo} state={state} />
+        < PhotoFavButton photo={photo} state={state} handleFav={handleFav} />
         <img
           src={photo.urls.full}
           className="photo-list__image"

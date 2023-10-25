@@ -3,13 +3,14 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
+import PhotoList from 'components/PhotoList';
 
-const PhotoDetailsModal = ({ state, closeModal }) => {
+const PhotoDetailsModal = ({ state, closeModal, handleFav }) => {
   const photo = state.photo;
   const similarPhotos = photo.similar_photos;
 
   return (
-    <div className="photo-details-modal">
+    <a className="photo-details-modal">
       <div className='photo-details-modal__top-bar'>
         <button className="photo-details-modal__close-button">
           <img src={closeSymbol} alt="close symbol" onClick={closeModal}/>
@@ -17,7 +18,7 @@ const PhotoDetailsModal = ({ state, closeModal }) => {
       </div>
 
       <div className='photo-details-modal__images' >
-        < PhotoFavButton photo={photo} state={state} />
+        < PhotoFavButton photo={photo} state={state} handleFav={handleFav} />
         <img src={photo.urls.full} alt="Selected Photo" className='photo-details-modal__image'/>
         <div className='photo-details-modal__photographer-info' >
           <h2 className="photo-details-modal__photographer-details">{photo.username}</h2>
@@ -29,20 +30,9 @@ const PhotoDetailsModal = ({ state, closeModal }) => {
 
       <h3 className='photo-details-modal__header' >Similar Photos</h3>
       <div className='photo-details-modal__images'>
-        {Object.keys(similarPhotos).map(key => (
-          <div key={key}>
-            < PhotoFavButton photo={photo} state={state} />
-            <img src={similarPhotos[key].urls.full} alt={similarPhotos[key].location.city} className='photo-details-modal__image' />
-            <div className='photo-details-modal__photographer-info' >
-              <h2 className="photo-details-modal__photographer-details">{similarPhotos[key].user.username}</h2>
-              <h2 className="photo-details-modal__photographer-location">
-              {similarPhotos[key].location.city}, {similarPhotos[key].location.country}
-              </h2>
-            </div>
-          </div>
-        ))}
+        <PhotoList photoData={Object.values(similarPhotos)} state={state} handleFav={handleFav} openModal={null}/>
       </div>
-    </div>
+    </a>
   )
 };
 
