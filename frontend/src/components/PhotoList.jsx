@@ -88,6 +88,13 @@ const PhotoList = (props) => {
           setLiked={props.setLiked}
           showModal={props.showModal}
           setShowModal={props.setShowModal}
+          addFavPhoto={props.addFavPhoto}
+          removeFavPhoto={props.removeFavPhoto}
+          displayModal={props.displayModal}
+          reducer={props.reducer}
+          dispatch={props.dispatch}
+          state={props.state}
+
         />
       )}
     </ul>

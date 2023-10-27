@@ -20,6 +20,7 @@ const HomeRoute = (props) => {
       <TopNavigationBar 
         favBadgeNotification={favPhotoNotification}
         favList={props.favList}
+        state={props.state}
       />
       <PhotoList 
         favList={props.favList}
@@ -28,6 +29,13 @@ const HomeRoute = (props) => {
         setLiked={props.setLiked}
         showModal={props.showModal}
         setShowModal={props.setShowModal}
+        addFavPhoto={props.addFavPhoto}
+        removeFavPhoto={props.removeFavPhoto}
+        displayModal={props.displayModal}
+        reducer={props.reducer}
+        dispatch={props.dispatch}
+        state={props.state}
+
       />
     </div>
   );

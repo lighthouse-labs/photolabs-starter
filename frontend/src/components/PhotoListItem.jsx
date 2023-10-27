@@ -7,7 +7,9 @@ const PhotoListItem = (props) => {
 
   const handlePhotoClick = () => {
     console.log("picture", props)
-    props.setShowModal(props)
+    console.log('MODAL STATE', props.state)
+    props.dispatch({ type: 'SHOW_MODAL', payload: props })
+
   }
 
   return (
@@ -19,6 +21,13 @@ const PhotoListItem = (props) => {
         favList={props.favList}
         setFavList={props.setFavList}
         showModal={props.showModal}
+        addFavPhoto={props.addFavPhoto}
+        removeFavPhoto={props.removeFavPhoto}
+        displayModal={props.displayModal}
+        reducer={props.reducer}
+        dispatch={props.dispatch}
+        state={props.state}
+
       />
       <img className="photo-list__image" src={props.imageSource} onClick={handlePhotoClick} ></img>
       <div className="photo-list__user-details">

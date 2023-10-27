@@ -12,10 +12,11 @@ import './App.scss';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const { state, setFavList, setLiked, setShowModal } = useApplicationData();
+  const { state, setFavList, setLiked, setShowModal, reducer, dispatch } = useApplicationData();
 
+  // console.log('APP STATE', state)
+  console.log('APP STATE.FAVLIST', state.favList)
 
-  // console.log('APP state', state)
   return (
     <div className="App">
       <HomeRoute 
@@ -26,6 +27,8 @@ const App = () => {
         setLiked={setLiked}
         showModal={state.showModal}
         setShowModal={setShowModal}
+        reducer={reducer}
+        dispatch={dispatch}
       />
       {state.showModal ? 
       <PhotoDetailsModal 
@@ -36,6 +39,9 @@ const App = () => {
         setLiked={setLiked}
         showModal={state.showModal}
         setShowModal={setShowModal}
+        reducer={reducer}
+        dispatch={dispatch}
+
       /> : null}
     </div>
   );

@@ -1,27 +1,22 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useReducer } from 'react';
 
 import FavIcon from './FavIcon';
 import useApplicationData from 'hooks/useApplicationData';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  const {liked, setLiked, id, modalId, favList, setFavList, showModal } = props;
+  const { state, liked, setLiked, id, modalId, favList, setFavList, showModal } = props;
 
-  //builds favList array
   const handleClick = () => {
 
-    // console.log('PhotoFavButton props', props)
-    console.log('PhotoFavButton {liked[id]}', liked[id])
+    const photoId = props.id;
 
-    // console.log('PhotoFavButton liked', liked)
-    // console.log('PhotoFavButton favList', favList)
-
-    //toggles liked state of each photo
-    setLiked(props.id)
-
-    //builds favList array
-    setFavList(id)
+    //adds or removes photos from favList array of favourited photos
+    props.dispatch({ type: 'UPDATE_FAV_LIST', payload: photoId })
     
+    //toggles like and unlike of photos by photoId
+    props.dispatch({ type: 'TOGGLE_PHOTO_LIKE', payload: photoId })
+
   }
 
   return (
