@@ -18,7 +18,9 @@ const TopNavigationBar = (props) => {
   return (
     <div className="top-nav-bar"> 
       <span className="top-nav-bar__logo" onClick={handleClick} >PhotoLabs</span>
-      <TopicList />
+      <TopicList 
+        topicData={props.topicData}
+      />
       <FavBadge className="fav-badge__count"
         favList={props.favList}
         isFavPhotoExist={isFavPhotoExists}

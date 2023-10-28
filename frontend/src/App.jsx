@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useEffect } from "react";
 
 import HomeRoute from './routes/HomeRoute';
 import PhotoDetailsModal from './routes/PhotoDetailsModal';
@@ -15,7 +15,7 @@ const App = () => {
   const { state, setFavList, setLiked, setShowModal, reducer, dispatch } = useApplicationData();
 
   // console.log('APP STATE', state)
-  console.log('APP STATE.FAVLIST', state.favList)
+  console.log('APP STATE.TOPICDATA', state.topicData)
 
   return (
     <div className="App">
@@ -29,6 +29,9 @@ const App = () => {
         setShowModal={setShowModal}
         reducer={reducer}
         dispatch={dispatch}
+        photoData={state.photoData}
+        topicData={state.topicData}
+
       />
       {state.showModal ? 
       <PhotoDetailsModal 
@@ -41,7 +44,8 @@ const App = () => {
         setShowModal={setShowModal}
         reducer={reducer}
         dispatch={dispatch}
-
+        photoData={state.photoData}
+        topicData={state.topicData}
       /> : null}
     </div>
   );

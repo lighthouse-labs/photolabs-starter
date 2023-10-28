@@ -6,8 +6,8 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
 
   const handlePhotoClick = () => {
-    console.log("picture", props)
-    console.log('MODAL STATE', props.state)
+    // console.log("picture", props)
+    // console.log('MODAL STATE', props.state)
     props.dispatch({ type: 'SHOW_MODAL', payload: props })
 
   }
@@ -27,7 +27,7 @@ const PhotoListItem = (props) => {
         reducer={props.reducer}
         dispatch={props.dispatch}
         state={props.state}
-
+        photoData={props.photoData}
       />
       <img className="photo-list__image" src={props.imageSource} onClick={handlePhotoClick} ></img>
       <div className="photo-list__user-details">

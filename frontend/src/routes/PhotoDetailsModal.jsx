@@ -12,7 +12,7 @@ import photos from "../mocks/photos.js"
 
 const PhotoDetailsModal = (props) => {
 
-  const { state, showModal, liked, setLiked, favList, setFavList, setShowModal, reducer, dispatch } = props;
+  const { state, showModal, liked, setLiked, favList, setFavList, setShowModal, reducer, dispatch, photoData } = props;
 
   // console.log(
   //   'relevant photo details:', 
@@ -23,7 +23,7 @@ const PhotoDetailsModal = (props) => {
 
   const selectedPhoto = showModalArray[0];
 
-  const similarPhotos = photos.filter((photo) => photo.id !== selectedPhoto)
+  const similarPhotos = photoData.filter((photo) => photo.id !== selectedPhoto)
 
   //handles the close button of the modal
   const handleCloseClick = () => {
