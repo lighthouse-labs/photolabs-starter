@@ -30,6 +30,6 @@ cd backend
 npm start
 ```
 ## Screenshots
-!["View of the homepage that loads photos from the API."] (https://github.com/xangelaz/photolabs-starter/blob/main/docs/photolabs_homepage.png?raw=true)
-!["View of all animal related photos after selecting the Animals topic in the navigation bar. Notification appears on the heart icon in the nav bar once a photo is liked from anywhere in the application."] (https://github.com/xangelaz/photolabs-starter/blob/main/docs/photolabs_like.png?raw=true)
-!["Modal view of an image once the user clicks on its thumbnail."] (https://github.com/xangelaz/photolabs-starter/blob/main/docs/photolabs_modal_view.png?raw=true)
+!["View of the homepage that loads photos from the API."](https://github.com/xangelaz/photolabs-starter/blob/main/docs/photolabs_homepage.png?raw=true)
+!["View of all animal related photos after selecting the Animals topic in the navigation bar. Notification appears on the heart icon in the nav bar once a photo is liked from anywhere in the application."](https://github.com/xangelaz/photolabs-starter/blob/main/docs/photolabs_like.png?raw=true)
+!["Modal view of an image once the user clicks on its thumbnail."](https://github.com/xangelaz/photolabs-starter/blob/main/docs/photolabs_modal_view.png?raw=true)
