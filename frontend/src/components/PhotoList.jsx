@@ -5,7 +5,7 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
 
-  const { similarPhotos, photoData } = props
+  const { similarPhotos, photoData } = props;
 
   let photoArray = [];
 
@@ -13,8 +13,7 @@ const PhotoList = (props) => {
     photoArray = similarPhotos
   } else {
     photoArray = photoData
-  }
-  // console.log("PhotoList", props)
+  };
 
   return (
     <ul className="photo-list">
@@ -28,15 +27,8 @@ const PhotoList = (props) => {
           city={photo.location.city}
           country={photo.location.country}
           favList={props.favList}
-          setFavList={props.setFavList}
           liked={props.liked}
-          setLiked={props.setLiked}
           showModal={props.showModal}
-          setShowModal={props.setShowModal}
-          addFavPhoto={props.addFavPhoto}
-          removeFavPhoto={props.removeFavPhoto}
-          displayModal={props.displayModal}
-          reducer={props.reducer}
           dispatch={props.dispatch}
           state={props.state}
           photoData={props.photoData}

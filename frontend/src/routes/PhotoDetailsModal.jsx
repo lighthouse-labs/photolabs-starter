@@ -1,34 +1,24 @@
 import React from 'react';
-import { useState } from "react";
 
 import '../styles/PhotoDetailsModal.scss'
-
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from '../components/PhotoList'
 import PhotoFavButton from 'components/PhotoFavButton';
-import useApplicationData from 'hooks/useApplicationData';
-import photos from "../mocks/photos.js"
-
 
 const PhotoDetailsModal = (props) => {
 
-  const { state, showModal, liked, setLiked, favList, setFavList, setShowModal, reducer, dispatch, photoData } = props;
-
-  // console.log(
-  //   'relevant photo details:', 
-  //   showModal
-  // )
+  const { state, showModal, liked, favList, setFavList, dispatch, photoData } = props;
 
   const showModalArray = Object.values(showModal);
 
   const selectedPhoto = showModalArray[0];
 
-  const similarPhotos = photoData.filter((photo) => photo.id !== selectedPhoto)
+  const similarPhotos = photoData.filter((photo) => photo.id !== selectedPhoto);
 
   //handles the close button of the modal
   const handleCloseClick = () => {
     props.dispatch({ type: 'SHOW_MODAL', payload: false })
-  }
+  };
 
   return (
     <div className="photo-details-modal">
@@ -39,12 +29,10 @@ const PhotoDetailsModal = (props) => {
         <div className="photo-details-modal__image">
           <PhotoFavButton 
             liked={state.liked}
-            setLiked={setLiked}
             id={showModalArray[0]} 
             favList={favList}
             setFavList={setFavList}
             state={state}
-            reducer={reducer}
             dispatch={dispatch}
           />
         </div>
@@ -60,9 +48,7 @@ const PhotoDetailsModal = (props) => {
           <PhotoList 
             similarPhotos={similarPhotos}
             liked={liked}
-            setLiked={setLiked}
             state={state}
-            reducer={reducer}
             dispatch={dispatch}
           />
       </div>

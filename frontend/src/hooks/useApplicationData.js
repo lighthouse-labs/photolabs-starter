@@ -1,17 +1,13 @@
-import { useState, useReducer, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import axios from 'axios';
 
 export const ACTIONS = {
-  // FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED', // provided on Compass
-  // FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED', //provided on Compass
-  UPDATE_FAV_LIST: 'UPDATE_FAV_LIST', //created new
-  TOGGLE_PHOTO_LIKE: 'TOGGLE_PHOTO_LIKE', //created new
-  SHOW_MODAL: 'SHOW_MODAL', //created new
-  SET_PHOTO_DATA: 'SET_PHOTO_DATA', // provided on Compass
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA', // provided on Compass - to be implemented later 
-  SET_SELECTED_TOPIC: 'SET_SELECTED_TOPIC' //provided on Compass later on
-  // SELECT_PHOTO: 'SELECT_PHOTO', // provided on Compass - to be implemented later 
-  // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS' // provided on Compass - to show modal 
+  UPDATE_FAV_LIST: 'UPDATE_FAV_LIST', 
+  TOGGLE_PHOTO_LIKE: 'TOGGLE_PHOTO_LIKE', 
+  SHOW_MODAL: 'SHOW_MODAL', 
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA', 
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA', 
+  SET_SELECTED_TOPIC: 'SET_SELECTED_TOPIC' 
 }
 
 const initialState = {
@@ -50,10 +46,10 @@ function reducer(state, action) {
     case ACTIONS.SET_SELECTED_TOPIC:
       return { ...state, selectedTopic: action.payload };
 
-      default:
-        throw new Error(
-          `Tried to reduce with unsupported action type: ${action.type}`
-          );
+    default:
+      throw new Error(
+        `Tried to reduce with unsupported action type: ${action.type}`
+        );
   }
 }
 
@@ -77,16 +73,23 @@ function useApplicationData() {
   }, [])
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/api/topics/photos/${topicSelected}`)
-    .then((response) => {
+    if (topicSelected > 0) {
+      axios.get(`http://localhost:8001/api/topics/photos/${topicSelected}`)
+      .then((response) => {
+        dispatch({ type: 'SET_PHOTO_DATA', payload: response.data })
+      });
+      //reloads all photos after a topic has been clicked
+    } else {
+      axios.get('http://localhost:8001/api/photos')
+      .then((response) => {
       dispatch({ type: 'SET_PHOTO_DATA', payload: response.data })
     });
+    }
   }, [topicSelected])
   
 
   return { 
     state, 
-    reducer, 
     dispatch
   };
 

@@ -1,13 +1,12 @@
 import React from 'react';
-import { useState } from "react";
 
 import '../styles/HomeRoute.scss';
 import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
 
 const HomeRoute = (props) => {
-  // console.log('HomeRoute topicData', props.topicData)
 
+  //keeps track of if any photo has been favourited to determine badge notification 
   const favPhotoNotification = () => {
     if (props.favList.length > 0) {
       isFavPhotoExist = 1;
@@ -19,24 +18,18 @@ const HomeRoute = (props) => {
     <div className="home-route">
       <TopNavigationBar 
         favBadgeNotification={favPhotoNotification}
-        favList={props.favList}
         state={props.state}
+        favList={props.favList}
         topicData={props.topicData}
         dispatch={props.dispatch}
       />
       <PhotoList 
+        state={props.state}
         favList={props.favList}
         setFavList={props.setFavList}
         liked={props.liked}
-        setLiked={props.setLiked}
         showModal={props.showModal}
-        setShowModal={props.setShowModal}
-        addFavPhoto={props.addFavPhoto}
-        removeFavPhoto={props.removeFavPhoto}
-        displayModal={props.displayModal}
-        reducer={props.reducer}
         dispatch={props.dispatch}
-        state={props.state}
         photoData={props.photoData}
         topicData={props.topicData}
       />

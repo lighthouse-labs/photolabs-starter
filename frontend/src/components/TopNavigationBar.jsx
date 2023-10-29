@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 
 import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
@@ -7,12 +6,13 @@ import FavBadge from './FavBadge';
 
 const TopNavigationBar = (props) => {
 
-  const { state } = props;
+  const { state, dispatch } = props;
 
   const isFavPhotoExists = (state.favList.length)
 
+  //can view all photos again after having selected a specific topic
   const homepageClick = () => {
-    console.log('state.liked', state.liked)
+    dispatch({ type: 'SET_SELECTED_TOPIC', payload: 0 })
   }
 
   return (

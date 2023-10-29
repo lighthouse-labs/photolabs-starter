@@ -5,26 +5,21 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
 
-  const handlePhotoClick = () => {
-    // console.log("picture", props)
-    // console.log('MODAL STATE', props.state)
-    props.dispatch({ type: 'SHOW_MODAL', payload: props })
+  const { dispatch } = props;
 
-  }
+  //enables modal window to appear upon clicking photo
+  const handlePhotoClick = () => {
+    dispatch({ type: 'SHOW_MODAL', payload: props })
+  };
 
   return (
     <div className="photoListItem photo-list__item">
       <PhotoFavButton 
         id={props.id} 
         liked={props.liked}
-        setLiked={props.setLiked}
         favList={props.favList}
         setFavList={props.setFavList}
         showModal={props.showModal}
-        addFavPhoto={props.addFavPhoto}
-        removeFavPhoto={props.removeFavPhoto}
-        displayModal={props.displayModal}
-        reducer={props.reducer}
         dispatch={props.dispatch}
         state={props.state}
         photoData={props.photoData}
