@@ -9,11 +9,11 @@ const PhotoDetailsModal = (props) => {
 
   const { state, showModal, liked, favList, setFavList, dispatch, photoData } = props;
 
+  //create array of photo data and determine id of selected photo
+  //then, determine similar photos by id that are not the same as the modal photo
   const showModalArray = Object.values(showModal);
-
-  const selectedPhoto = showModalArray[0];
-
-  const similarPhotos = photoData.filter((photo) => photo.id !== selectedPhoto);
+  const selectedPhotoId = showModalArray[0];
+  const similarPhotos = photoData.filter((photo) => photo.id !== selectedPhotoId);
 
   //handles the close button of the modal
   const handleCloseClick = () => {

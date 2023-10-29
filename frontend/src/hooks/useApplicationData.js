@@ -16,7 +16,7 @@ const initialState = {
   showModal: null,
   photoData: [],
   topicData: [], 
-  selectedTopic: []
+  selectedTopic: 0
 }
 
 function reducer(state, action) {
@@ -78,7 +78,9 @@ function useApplicationData() {
       .then((response) => {
         dispatch({ type: 'SET_PHOTO_DATA', payload: response.data })
       });
-      //reloads all photos after a topic has been clicked
+
+      //renders all photos from photoData again
+      //useful after the user has clicked on a topic, gets filtered photos, but wants to view all photos again
     } else {
       axios.get('http://localhost:8001/api/photos')
       .then((response) => {

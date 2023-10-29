@@ -7,17 +7,18 @@ const PhotoList = (props) => {
 
   const { similarPhotos, photoData } = props;
 
-  let photoArray = [];
+  let listOfPhotosToDisplay = [];
 
+  //determine when to show all photos from photoData or similar photos
   if (similarPhotos) {
-    photoArray = similarPhotos
+    listOfPhotosToDisplay = similarPhotos
   } else {
-    photoArray = photoData
+    listOfPhotosToDisplay = photoData
   };
 
   return (
     <ul className="photo-list">
-      {photoArray.map((photo, index) => 
+      {listOfPhotosToDisplay.map((photo, index) => 
         <PhotoListItem 
           key={index}
           id={photo.id}

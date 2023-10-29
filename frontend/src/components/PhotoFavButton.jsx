@@ -22,6 +22,7 @@ function PhotoFavButton(props) {
     <div className="photo-list__fav-icon" onClick={handleClick}>
       <div className="photo-list__fav-icon-svg">
         <FavIcon
+        //pass the liked status of photos by id to FavIcon to render heart icon as red or white
         selected={liked[id]}
         />
       </div>

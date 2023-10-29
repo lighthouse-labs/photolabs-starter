@@ -7,7 +7,7 @@ const FavBadge = ({ isFavPhotoExist }) => {
   return (
     <div className='fav-badge'>
       <FavIcon displayAlert={!!isFavPhotoExist}
-        fill={"#C80000"}
+        selected={true}
       />
     </div>
   ) 
