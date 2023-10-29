@@ -9,7 +9,7 @@ export const ACTIONS = {
   SHOW_MODAL: 'SHOW_MODAL', //created new
   SET_PHOTO_DATA: 'SET_PHOTO_DATA', // provided on Compass
   SET_TOPIC_DATA: 'SET_TOPIC_DATA', // provided on Compass - to be implemented later 
-  GET_PHOTOS_BY_TOPIC: 'GET_PHOTO_BY_TOPIC' //provided on Compass later on
+  SET_SELECTED_TOPIC: 'SET_SELECTED_TOPIC' //provided on Compass later on
   // SELECT_PHOTO: 'SELECT_PHOTO', // provided on Compass - to be implemented later 
   // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS' // provided on Compass - to show modal 
 }
@@ -20,7 +20,7 @@ const initialState = {
   showModal: null,
   photoData: [],
   topicData: [], 
-  photosByTopic: null
+  selectedTopic: []
 }
 
 function reducer(state, action) {
@@ -47,8 +47,8 @@ function reducer(state, action) {
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
 
-    case ACTIONS.GET_PHOTOS_BY_TOPIC:
-      return { ...state, photosByTopic: action.payload };
+    case ACTIONS.SET_SELECTED_TOPIC:
+      return { ...state, selectedTopic: action.payload };
 
       default:
         throw new Error(
@@ -60,7 +60,7 @@ function reducer(state, action) {
 function useApplicationData() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [topicSelected, setTopicSelected] = useState("");
+  let topicSelected = state.selectedTopic
 
   useEffect(() => {
     axios.get('http://localhost:8001/api/photos')
@@ -76,20 +76,18 @@ function useApplicationData() {
     });
   }, [])
 
-    useEffect(() => {
-      axios.get(`http://localhost:8001/api/topics/photos/${topicSelected}`)
-      .then((response) => {
-        dispatch({ type: 'SET_PHOTO_DATA', payload: response.data })
-      });
-    }, [topicSelected])
+  useEffect(() => {
+    axios.get(`http://localhost:8001/api/topics/photos/${topicSelected}`)
+    .then((response) => {
+      dispatch({ type: 'SET_PHOTO_DATA', payload: response.data })
+    });
+  }, [topicSelected])
   
 
   return { 
     state, 
     reducer, 
-    dispatch, 
-    topicSelected, 
-    setTopicSelected
+    dispatch
   };
 
 };

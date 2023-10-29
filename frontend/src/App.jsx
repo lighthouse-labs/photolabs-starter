@@ -12,7 +12,7 @@ import './App.scss';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const { state, setFavList, setLiked, setShowModal, reducer, dispatch, topicSelected, setTopicSelected } = useApplicationData();
+  const { state, setFavList, setLiked, setShowModal, reducer, dispatch } = useApplicationData();
 
   // console.log('APP STATE', state)
   console.log('APP STATE.PHOTODATA', state.photoData)
@@ -31,8 +31,6 @@ const App = () => {
         dispatch={dispatch}
         photoData={state.photoData}
         topicData={state.topicData}
-        topicSelected={topicSelected}
-        setTopicSelected={setTopicSelected}
       />
       {state.showModal ? 
       <PhotoDetailsModal 

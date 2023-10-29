@@ -4,13 +4,13 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
 
-  const { topicData, topicId, dispatch, setTopicSelected } = props
+  const { topicData, topicId, dispatch } = props
 
   const handleTopicClick = () => {
 
     // console.log('TOPICLISTITEM TOPICID', topicId)
 
-    setTopicSelected(topicId)
+    dispatch({ type: 'SET_SELECTED_TOPIC', payload: topicId })
 
   }
 

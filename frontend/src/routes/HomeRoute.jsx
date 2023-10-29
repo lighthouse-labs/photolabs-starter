@@ -23,8 +23,6 @@ const HomeRoute = (props) => {
         state={props.state}
         topicData={props.topicData}
         dispatch={props.dispatch}
-        topicSelected={props.topicSelected}
-        setTopicSelected={props.setTopicSelected}
       />
       <PhotoList 
         favList={props.favList}

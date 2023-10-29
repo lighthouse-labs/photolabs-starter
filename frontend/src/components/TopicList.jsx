@@ -18,8 +18,6 @@ const TopicList = (props) => {
           title={topic.title}
           topicData={props.topicData}
           dispatch={props.dispatch}
-          topicSelected={props.topicSelected}
-          setTopicSelected={props.setTopicSelected}
         />
       )} 
     </div>
