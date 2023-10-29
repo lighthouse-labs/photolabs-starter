@@ -40,7 +40,6 @@ const PhotoList = (props) => {
           dispatch={props.dispatch}
           state={props.state}
           photoData={props.photoData}
-
         />
       )}
     </ul>

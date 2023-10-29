@@ -5,17 +5,17 @@ import useApplicationData from 'hooks/useApplicationData';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
-  const { state, liked, setLiked, id, modalId, favList, setFavList, showModal } = props;
+  const { state, dispatch, liked, setLiked, id, modalId, favList, setFavList, showModal } = props;
 
   const handleClick = () => {
 
     const photoId = props.id;
 
     //adds or removes photos from favList array of favourited photos
-    props.dispatch({ type: 'UPDATE_FAV_LIST', payload: photoId })
+    dispatch({ type: 'UPDATE_FAV_LIST', payload: photoId })
     
     //toggles like and unlike of photos by photoId
-    props.dispatch({ type: 'TOGGLE_PHOTO_LIKE', payload: photoId })
+    dispatch({ type: 'TOGGLE_PHOTO_LIKE', payload: photoId })
 
   }
 

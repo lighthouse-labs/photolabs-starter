@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useState, useReducer, useEffect } from "react";
 import axios from 'axios';
 
 export const ACTIONS = {
@@ -9,6 +9,7 @@ export const ACTIONS = {
   SHOW_MODAL: 'SHOW_MODAL', //created new
   SET_PHOTO_DATA: 'SET_PHOTO_DATA', // provided on Compass
   SET_TOPIC_DATA: 'SET_TOPIC_DATA', // provided on Compass - to be implemented later 
+  GET_PHOTOS_BY_TOPIC: 'GET_PHOTO_BY_TOPIC' //provided on Compass later on
   // SELECT_PHOTO: 'SELECT_PHOTO', // provided on Compass - to be implemented later 
   // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS' // provided on Compass - to show modal 
 }
@@ -18,11 +19,13 @@ const initialState = {
   liked: {},
   showModal: null,
   photoData: [],
-  topicData: []
+  topicData: [], 
+  photosByTopic: null
 }
 
 function reducer(state, action) {
   switch (action.type) {
+
     case ACTIONS.UPDATE_FAV_LIST: 
       let newFavList = []
       newFavList = [...state.favList, action.payload]
@@ -44,6 +47,9 @@ function reducer(state, action) {
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
 
+    case ACTIONS.GET_PHOTOS_BY_TOPIC:
+      return { ...state, photosByTopic: action.payload };
+
       default:
         throw new Error(
           `Tried to reduce with unsupported action type: ${action.type}`
@@ -54,26 +60,36 @@ function reducer(state, action) {
 function useApplicationData() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [topicSelected, setTopicSelected] = useState("");
 
   useEffect(() => {
     axios.get('http://localhost:8001/api/photos')
     .then((response) => {
       dispatch({ type: 'SET_PHOTO_DATA', payload: response.data })
     });
-   }, [])
+  }, [])
 
-   useEffect(() => {
+  useEffect(() => {
     axios.get('http://localhost:8001/api/topics')
     .then((response) => {
-      console.log('topics', response.data)
       dispatch({ type: 'SET_TOPIC_DATA', payload: response.data })
     });
-   }, [])
+  }, [])
+
+    useEffect(() => {
+      axios.get(`http://localhost:8001/api/topics/photos/${topicSelected}`)
+      .then((response) => {
+        dispatch({ type: 'SET_PHOTO_DATA', payload: response.data })
+      });
+    }, [topicSelected])
+  
 
   return { 
     state, 
     reducer, 
-    dispatch
+    dispatch, 
+    topicSelected, 
+    setTopicSelected
   };
 
 };

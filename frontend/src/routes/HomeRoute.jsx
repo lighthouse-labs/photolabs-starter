@@ -6,7 +6,7 @@ import TopNavigationBar from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
 
 const HomeRoute = (props) => {
-  console.log('HomeRoute topicData', props.topicData)
+  // console.log('HomeRoute topicData', props.topicData)
 
   const favPhotoNotification = () => {
     if (props.favList.length > 0) {
@@ -22,6 +22,9 @@ const HomeRoute = (props) => {
         favList={props.favList}
         state={props.state}
         topicData={props.topicData}
+        dispatch={props.dispatch}
+        topicSelected={props.topicSelected}
+        setTopicSelected={props.setTopicSelected}
       />
       <PhotoList 
         favList={props.favList}
