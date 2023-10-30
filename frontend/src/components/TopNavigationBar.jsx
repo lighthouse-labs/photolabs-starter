@@ -3,6 +3,8 @@ import React from 'react';
 import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
+import DarkIcon from './DarkIcon';
+import DarkModeButton from './DarkModeButton';
 
 const TopNavigationBar = (props) => {
 
@@ -25,6 +27,10 @@ const TopNavigationBar = (props) => {
       <FavBadge className="fav-badge__count"
         favList={props.favList}
         isFavPhotoExist={isFavPhotoExists}
+      />
+      <DarkModeButton className="dark-mode"
+        darkMode={props.darkMode}
+        dispatch={dispatch}
       />
     </div>
   )

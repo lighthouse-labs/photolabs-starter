@@ -2,6 +2,14 @@
   margin: 24px;
 }
 
+.App.dark,
+  .App.dark button {
+    margin: 0px;
+    background: #0f0f0f;
+    border-color: white;
+    color: white;
+  }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
