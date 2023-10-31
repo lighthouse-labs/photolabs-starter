@@ -17,6 +17,7 @@ const TopicList = (props) => {
           title={topic.title}
           topicData={props.topicData}
           dispatch={props.dispatch}
+          darkModeValue={props.darkModeValue}
         />
       )} 
     </div>

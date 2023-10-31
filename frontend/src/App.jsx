@@ -10,10 +10,10 @@ import './App.scss';
 const App = () => {
 
   const { state, dispatch } = useApplicationData();
-  const dark = (state.darkMode === false) ? '' : 'dark';
+  const darkModeValue = (state.darkMode === false) ? '' : 'dark';
 
   return (
-    <div className={`App ${dark}`}>
+    <div className={`App ${darkModeValue}`}>
       <HomeRoute 
         state={state}
         favList={state.favList}
@@ -23,6 +23,7 @@ const App = () => {
         topicData={state.topicData}
         dispatch={dispatch}
         darkMode={state.darkMode}
+        darkModeValue={darkModeValue}
       />
       {state.showModal ? 
       <PhotoDetailsModal 

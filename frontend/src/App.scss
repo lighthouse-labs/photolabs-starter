@@ -3,11 +3,12 @@
 }
 
 .App.dark,
-  .App.dark button {
+  .App.dark {
     margin: 0px;
+    padding: 24px;
     background: #0f0f0f;
-    border-color: white;
-    color: white;
+    border-color: rgb(246, 60, 60);
+    color: rgb(255, 255, 255);
   }
 
 .App-logo {
