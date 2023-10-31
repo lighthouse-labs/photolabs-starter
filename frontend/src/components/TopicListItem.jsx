@@ -11,7 +11,7 @@ const TopicListItem = (props) => {
   }
   
   return (
-    <div className={`topicListItem topic-list__item `} onClick={handleTopicClick} >
+    <div className="topic-list__item" onClick={handleTopicClick} >
       <span className={`label topic-list__item span ${darkModeValue}`}> {props.title} </span>
     </div>
   );
