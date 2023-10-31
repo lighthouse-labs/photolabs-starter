@@ -31,7 +31,7 @@ const PhotoDetailsModal = ({
           <div>
             <img
               src={photo.user.profile}
-              alt="profile image"
+              alt="profile image" 
               className="photo-list__user-profile"
             />
           </div>
