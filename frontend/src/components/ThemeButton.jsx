@@ -1,7 +1,6 @@
 import React from 'react';
 import LightButton from '../assets/icons8-sun-32.png';
 import DarkButton from '../assets/icons8-dark-mode-30.png';
-import '../styles/ThemeButton.scss';
 
 const ThemeButton = ({ themeToggler, darkTheme }) => {
   return (
