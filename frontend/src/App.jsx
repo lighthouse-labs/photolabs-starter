@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
@@ -19,6 +19,11 @@ const App = () => {
     selectedTopic
   } = useApplicationData();
 
+  const [darkTheme, setDarkTheme] = useState(false);
+  const themeToggler = () => {
+    setDarkTheme(!darkTheme);
+  };
+
   return (
     <div className="App">
       <HomeRoute
@@ -30,6 +35,8 @@ const App = () => {
         setClickedPhoto={setClickedPhoto}
         getTopicId={getTopicId}
         selectedTopic={selectedTopic}
+        themeToggler={themeToggler}
+        darkTheme={darkTheme}
       />
 
       {isModalOpen && (
@@ -39,6 +46,8 @@ const App = () => {
           favourites={favourites}
           clickedPhoto={clickedPhoto}
           openModal={openModal}
+          themeToggler={themeToggler}
+          darkTheme={darkTheme}
         />
       )}
     </div>

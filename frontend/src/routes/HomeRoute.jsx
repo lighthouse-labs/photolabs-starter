@@ -11,15 +11,19 @@ const HomeRoute = ({
   setClickedPhoto,
   topics,
   getTopicId,
-  selectedTopic
+  selectedTopic,
+  darkTheme,
+  themeToggler
 }) => {
   return (
-    <div className="home-route">
+    <div className={darkTheme ? 'home-route dark' : 'home-route'}>
       <TopNavigationBar
         topics={topics}
         favourites={favourites}
         getTopicId={getTopicId}
         selectedTopic={selectedTopic}
+        themeToggler={themeToggler}
+        darkTheme={darkTheme}
       />
       <PhotoList
         photos={photos}
@@ -27,6 +31,7 @@ const HomeRoute = ({
         openModal={openModal}
         favourites={favourites}
         setClickedPhoto={setClickedPhoto}
+        darkTheme={darkTheme}
       />
     </div>
   );

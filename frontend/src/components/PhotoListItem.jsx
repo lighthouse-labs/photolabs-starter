@@ -2,9 +2,9 @@ import React from 'react';
 import '../styles/PhotoListItem.scss';
 import PhotoFavButton from './PhotoFavButton';
 
-const PhotoListItem = ({ photo, toggleFavourites, openModal, photoId, favourites }) => {
+const PhotoListItem = ({ photo, toggleFavourites, openModal, photoId, favourites, darkTheme }) => {
   return (
-    <article className="photo-list__item">
+    <article className={darkTheme ? 'photo-list__item dark' : 'photo-list__item'}>
       <PhotoFavButton
         toggleFavourites={toggleFavourites}
         photoId={photoId}

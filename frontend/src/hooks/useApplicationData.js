@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 
 export const ACTIONS = {
   ADD_FAV_PHOTO: 'ADD_FAV_PHOTO',

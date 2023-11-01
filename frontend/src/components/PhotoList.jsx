@@ -8,8 +8,8 @@ const PhotoList = ({
   openModal,
   similarPhotos,
   favourites,
+  darkTheme
 }) => {
-  
   let displayPhotos = similarPhotos ? similarPhotos : photos;
 
   const photo = displayPhotos.map((photo) => {
@@ -21,12 +21,13 @@ const PhotoList = ({
           toggleFavourites={toggleFavourites}
           openModal={openModal}
           favourites={favourites}
+          darkTheme={darkTheme}
         />
       </li>
     );
   });
 
-  return <ul className="photo-list">{photo}</ul>;
+  return <ul className={darkTheme ? 'photo-list dark' : 'photo-list'}>{photo}</ul>;
 };
 
 export default PhotoList;

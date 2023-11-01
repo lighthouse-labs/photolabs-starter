@@ -7,17 +7,21 @@
   font-size: 18px;
   text-decoration: none;
   font-weight: 500;
-  color: #2b2b2b;
+  
 
   &:hover {
     text-decoration: overline;
-		text-decoration-thickness: 2px;
-    color: #111;
+    text-decoration-thickness: 2px;
+  
     cursor: pointer;
   }
 }
 .topic-list__item-active span {
   text-decoration: overline;
   text-decoration-thickness: 2px;
-  color: #111;
+ 
+}
+
+.dark {
+  color: white;
 }
