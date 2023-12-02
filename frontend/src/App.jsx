@@ -1,13 +1,51 @@
-import React from 'react';
+import React, { useState } from "react";
 
-import PhotoListItem from './components/PhotoListItem';
-import './App.scss';
+// import PhotoList from "./components/PhotoList";
+// import TopicList from "./components/TopicList";
+// import TopNavigationBar from "components/TopNavigationBar";
 
-// Note: Rendering a single component to build components in isolation
+import "./App.scss";
+import HomeRoute from "./routes/HomeRoute.jsx";
+import PhotoDetailsModal from "./routes/PhotoDetailsModal";
+import photosData from "./mocks/photos";
+import topicsData from "./mocks/topics";
+
+// import HomeRoute from "routes/HomeRoute";
+
 const App = () => {
+  const [photos, setPhotos] = useState(photosData);
+  const [topics, setTopics] = useState(topicsData);
+
+  // State for modal and clicked photo
+  const [openModal, setOpenModal] = useState(false);
+  const [clickedPhoto, setClickedPhoto] = useState(null);
+
+  // Close modal
+  const closeModal = () => {
+    setOpenModal(false);
+    setClickedPhoto(null);
+  };
+
+  // Handler when photo is clicked
+  const photoClickHandler = (photoId) => {
+    setClickedPhoto(photoId); //clicked photo
+    setOpenModal(true); //Modal window is opened
+  };
+
   return (
     <div className="App">
-      <PhotoListItem/>
+      <HomeRoute
+        photos={photos}
+        topics={topics}
+        photoClickHandler={photoClickHandler}
+      />
+      {openModal && (
+        <PhotoDetailsModal
+          clickedPhoto={clickedPhoto}
+          closeModal={closeModal}
+          photos={photos}
+        />
+      )}
     </div>
   );
 };
