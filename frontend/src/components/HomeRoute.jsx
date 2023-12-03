@@ -5,7 +5,7 @@ import PhotoList from "./PhotoList";
 
 const HomeRoute = (props) => {
   const { photos, topics } = props;
-
+  console.log(photos);
   return (
     <div className="home-route">
       <TopNavigation topics={topics} />

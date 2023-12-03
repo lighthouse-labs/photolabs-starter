@@ -8,11 +8,6 @@ const PhotoFavButton = (props) => {
   // const [isFavoriteb, setIsFavoriteb] = useState(false);
   const { toggleFavoritePhoto, isPhotoFavorite } = props;
 
-  // const handleClick = () => {
-  //   toggleFavoritePhoto(photoId);
-  //   setIsFavoriteb(!isFavorite);
-  // };
-
   return (
     <div className="photo-list__fav-icon" onClick={toggleFavoritePhoto}>
       <div className="photo-list__fav-icon-svg">

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../styles/PhotoListItem.scss";
 import "../styles/PhotoFavButton.scss";
-import { assertClassImplements } from "@babel/types";
 
 import PhotoFavButton from "./PhotoFavButton";
 

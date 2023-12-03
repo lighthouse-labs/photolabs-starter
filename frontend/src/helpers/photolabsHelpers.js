@@ -44,4 +44,13 @@ export const toggleFavorites = (photoArr, photoId) => {
 
   return updatedPhotos;
 };
+
+// const addPhotoFavorite = (photoId) => {
+//   const updatedPhotos = photoHelpers.addFavoriteToPhotos(
+//     favoritePhotos,
+//     photoId
+//   );
+//   setFavoritePhotos(updatedPhotos);
+//   return favoritePhotos[photoId].isFavorite;
+// };
 // export default { addFavoriteToPhotos };

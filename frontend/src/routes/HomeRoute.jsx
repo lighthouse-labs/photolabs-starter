@@ -10,25 +10,22 @@ import "../styles/HomeRoute.scss";
 const HomeRoute = (props) => {
   const {
     topics,
-    photoClickHandler,
-    favoritePhotos,
+    photos,
     toggleFavoritePhoto,
     isPhotoFavorite,
+    photoClickHandler,
+    checkFavorites,
   } = props;
-
-  const checkFavorites = () => {
-    return favoritePhotos.some((el) => el.isFavorite === true);
-  };
 
   return (
     <div className="home-route">
       <TopNavigation
         topics={topics}
-        favoritePhotos={favoritePhotos}
+        photos={photos}
         checkFavorites={checkFavorites}
       />
       <PhotoList
-        favoritePhotos={favoritePhotos}
+        photos={photos}
         toggleFavoritePhoto={toggleFavoritePhoto}
         isPhotoFavorite={isPhotoFavorite}
         photoClickHandler={photoClickHandler}
