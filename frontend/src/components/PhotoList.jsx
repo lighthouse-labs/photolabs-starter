@@ -59,16 +59,20 @@ import PhotoListItem from "./PhotoListItem";
 // ];
 
 const PhotoList = (props) => {
-  const { photos, addPhotoFavorite, photoClickHandler } = props;
+  const {
+    photoClickHandler,
+    favoritePhotos,
+    toggleFavoritePhoto,
+    isPhotoFavorite,
+  } = props;
 
-  const photosList = photos.map((photo) => (
+  const photosList = favoritePhotos.map((photo) => (
     <PhotoListItem
       key={photo.id}
       {...photo}
-      addPhotoFavorite={() => {
-        addPhotoFavorite(photo.id);
-      }}
+      toggleFavoritePhoto={() => toggleFavoritePhoto(photo.id)}
       photoClickHandler={() => photoClickHandler(photo.id)}
+      isPhotoFavorite={() => isPhotoFavorite(photo.id)}
     />
   ));
 

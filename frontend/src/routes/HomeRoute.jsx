@@ -8,30 +8,29 @@ import * as photoHelpers from "../helpers/photolabsHelpers";
 import "../styles/HomeRoute.scss";
 
 const HomeRoute = (props) => {
-  const { photos, topics, photoClickHandler } = props;
+  const {
+    topics,
+    photoClickHandler,
+    favoritePhotos,
+    toggleFavoritePhoto,
+    isPhotoFavorite,
+  } = props;
 
-  const [favoritePhotos, setfavoritePhotos] = useState(photos); //Add isfavorite to photos
-  // console.log("home", photolabs);
-
-  const addPhotoFavorite = (photoId) => {
-    const updatedPhotos = photoHelpers.addFavoriteToPhotos(
-      updatedPhotos,
-      photoId
-    );
-
-    setfavoritePhotos(updatedPhotos);
-  };
-
-  const checkFavorites = (favoritePhotos) => {
-    return favoritePhotos.some((photo) => photo.isFavorite === true);
+  const checkFavorites = () => {
+    return favoritePhotos.some((el) => el.isFavorite === true);
   };
 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} checkFavorites={checkFavorites} />
+      <TopNavigation
+        topics={topics}
+        favoritePhotos={favoritePhotos}
+        checkFavorites={checkFavorites}
+      />
       <PhotoList
-        photos={photos}
-        addPhotoFavorite={addPhotoFavorite}
+        favoritePhotos={favoritePhotos}
+        toggleFavoritePhoto={toggleFavoritePhoto}
+        isPhotoFavorite={isPhotoFavorite}
         photoClickHandler={photoClickHandler}
       />
     </div>

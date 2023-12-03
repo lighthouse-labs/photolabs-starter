@@ -9,8 +9,10 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
   return (
     <li className="photo-list__item">
-      <PhotoFavButton onClick={props.addPhotoFavorite} />
-
+      <PhotoFavButton
+        toggleFavoritePhoto={props.toggleFavoritePhoto}
+        isPhotoFavorite={props.isPhotoFavorite}
+      />
       <img
         className="photo-list__image"
         src={props.urls.regular}

@@ -25,7 +25,7 @@ export const addFavoriteToPhotos = (photoArr, photoId) => {
     if (Number(photo.id) === Number(photoId)) {
       return { ...photo, isFavorite: true };
     } else {
-      return { ...photo };
+      return { ...photo, isFavorite: false };
     }
   });
 
@@ -36,11 +36,11 @@ export const checkFavorites = (photoArr) => {
   return photoArr.some((el) => el.isFavorite === true);
 };
 
-const toggleFavorites = (photoArr, id) => {
-  const updatedPhoto = { ...photoArr[id] };
+export const toggleFavorites = (photoArr, photoId) => {
+  const updatedPhoto = { ...photoArr[photoId] };
   updatedPhoto.isFavorite = !updatedPhoto.isFavorite;
 
-  const updatedPhotos = { ...photoArr, [id]: updatedPhoto };
+  const updatedPhotos = { ...photoArr, [photoId]: updatedPhoto };
 
   return updatedPhotos;
 };
