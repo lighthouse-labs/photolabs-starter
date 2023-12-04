@@ -1,11 +1,10 @@
-import React, { useCallback, useState } from "react";
+import React from "react";
 
 import FavIcon from "./FavIcon";
 
 import "../styles/PhotoFavButton.scss";
 
 const PhotoFavButton = (props) => {
-  // const [isFavoriteb, setIsFavoriteb] = useState(false);
   const { toggleFavoritePhoto, isPhotoFavorite } = props;
 
   return (

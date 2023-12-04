@@ -3,7 +3,6 @@ import React from "react";
 import "../styles/TopNavigationBar.scss";
 import TopicList from "./TopicList";
 import FavBadge from "./FavBadge";
-// import { checkFavorites } from "helpers/photolabsHelpers";
 
 const TopNavigation = (props) => {
   const { topics, numFavorites, setTopic } = props;
