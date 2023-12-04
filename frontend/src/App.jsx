@@ -5,7 +5,6 @@ import HomeRoute from "./routes/HomeRoute.jsx";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 
 import { useApplicationData } from "./hooks/useApplicationData";
-import * as photoHelpers from "./helpers/photolabsHelpers";
 
 const App = () => {
   const {
