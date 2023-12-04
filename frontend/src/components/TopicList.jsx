@@ -23,10 +23,15 @@ const sampleDataForTopicList = [
 ];
 
 const TopicList = (props) => {
-  const { topics } = props;
+  const { topics, setTopic } = props;
   const topicList = topics.map((topic) => {
     return (
-      <TopicListItem key={topic.id} slug={topic.slug} title={topic.title} />
+      <TopicListItem
+        key={topic.id}
+        slug={topic.slug}
+        title={topic.title}
+        onClick={() => setTopic(topic.id)}
+      />
     );
   });
 

@@ -14,7 +14,8 @@ const HomeRoute = (props) => {
     toggleFavoritePhoto,
     isPhotoFavorite,
     photoClickHandler,
-    checkFavorites,
+    numFavorites,
+    setTopic,
   } = props;
 
   return (
@@ -22,7 +23,8 @@ const HomeRoute = (props) => {
       <TopNavigation
         topics={topics}
         photos={photos}
-        checkFavorites={checkFavorites}
+        numFavorites={numFavorites}
+        setTopic={setTopic}
       />
       <PhotoList
         photos={photos}

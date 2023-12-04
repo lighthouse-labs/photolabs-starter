@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 
-// import PhotoList from "./components/PhotoList";
-// import TopicList from "./components/TopicList";
-// import TopNavigationBar from "components/TopNavigationBar";
-
 import "./App.scss";
 import HomeRoute from "./routes/HomeRoute.jsx";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
-
-import photoData from "./mocks/photos";
-import topicData from "./mocks/topics";
 
 import { useApplicationData } from "./hooks/useApplicationData";
 import * as photoHelpers from "./helpers/photolabsHelpers";
@@ -20,12 +13,13 @@ const App = () => {
     topics,
     toggleFavoritePhoto,
     isPhotoFavorite,
-    checkFavorites,
+    numFavorites,
     photoClickHandler,
     openModal,
     isOpenModal,
     clickedPhoto,
     closeModal,
+    setTopic,
   } = useApplicationData();
 
   return (
@@ -36,15 +30,18 @@ const App = () => {
         isPhotoFavorite={isPhotoFavorite}
         toggleFavoritePhoto={toggleFavoritePhoto}
         photoClickHandler={photoClickHandler}
-        checkFavorites={checkFavorites}
+        numFavorites={numFavorites}
+        setTopic={setTopic}
       />
       {isOpenModal && (
         <PhotoDetailsModal
           photos={photos}
           closeModal={closeModal}
           isPhotoFavorite={isPhotoFavorite}
+          toggleFavoritePhoto={toggleFavoritePhoto}
           clickedPhoto={clickedPhoto}
           openModal={openModal}
+          photoClickHandler={photoClickHandler}
         />
       )}
     </div>

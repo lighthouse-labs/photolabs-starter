@@ -5,7 +5,14 @@ import closeSymbol from "../assets/closeSymbol.svg";
 import PhotoList from "components/PhotoList";
 
 const PhotoDetailsModal = (props) => {
-  const { closeModal, clickedPhoto, photos, isPhotoFavorite } = props;
+  const {
+    closeModal,
+    clickedPhoto,
+    photos,
+    isPhotoFavorite,
+    toggleFavoritePhoto,
+    photoClickHandler,
+  } = props;
   const photoId = clickedPhoto;
 
   const photo = photos.find((photo) => Number(photo.id) === Number(photoId));
@@ -47,6 +54,8 @@ const PhotoDetailsModal = (props) => {
           <PhotoList
             photos={Object.values(photo.similar_photos)}
             isPhotoFavorite={isPhotoFavorite}
+            toggleFavoritePhoto={toggleFavoritePhoto}
+            photoClickHandler={photoClickHandler}
           />
         </div>
       </div>

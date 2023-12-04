@@ -1,61 +1,103 @@
-import { useReducer } from "react";
-import photosData from "../mocks/photos";
-import topicsData from "../mocks/topics";
+import { useReducer, useEffect } from "react";
+import axios from "axios";
 
 export const ACTIONS = {
-  FAV_PHOTO_TOGGLE: "FAV_PHOTO_ADDED_REMOVED", //add/remove from favorites
-  SET_PHOTO_DATA: "SET_PHOTO_DATA",
-  SET_TOPIC_DATA: "SET_TOPIC_DATA",
-  DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
+  SET_TOPIC_DATA: "SET_TOPIC_DATA", //fetch topics
   OPEN_MODAL: "OPEN_MODAL",
   CLOSE_MODAL: "CLOSE_MODAL",
+  GET_PHOTOS_BY_TOPICS: "GET_PHOTOS_BY_TOPICS", //photos by topic
+  SET_TOPIC: "SET_TOPIC", //set topicId
+  ADD_FAVORITE: "ADD_FAVORITE",
+  REMOVE_FAVORITE: "REMOVE_FAVORITE",
 
   // FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
 
   // SELECT_PHOTO: 'SELECT_PHOTO',
+
+  // FAV_PHOTO_TOGGLE: "FAV_PHOTO_ADDED_REMOVED", //add/remove from favorites
+  SET_PHOTO_DATA: "SET_PHOTO_DATA",
+  // DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
 };
 
 const reducer = (state, action) => {
+  let favorites;
+
   switch (action.type) {
-    case ACTIONS.FAV_PHOTO_TOGGLE:
-      return {
-        ...state,
-        photos: state.photos.map((photo) =>
-          photo.id === action.payload
-            ? { ...photo, isFavorite: !photo.isFavorite }
-            : photo
-        ),
-      };
+    case ACTIONS.ADD_FAVORITE:
+      favorites = [...state.favorites, action.photoId];
+      return { ...state, favorites };
+    case ACTIONS.REMOVE_FAVORITE:
+      favorites = state.favorites.filter((id) => id !== action.photoId);
+      return { ...state, favorites };
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return { ...state, topicId: action.payload };
     case ACTIONS.SET_PHOTO_DATA:
-      return { ...state, photos: action.payload };
+      return { ...state, photos: action.payload }; //state for photos after fetching by topics
     case ACTIONS.SET_TOPIC_DATA:
-      return { ...state, topics: action.payload };
+      return { ...state, topics: action.topics };
     case ACTIONS.OPEN_MODAL:
       return { ...state, openModal: true, clickedPhoto: action.payload };
     case ACTIONS.CLOSE_MODAL:
       return { ...state, openModal: false, clickedPhoto: null };
-
+    case ACTIONS.SET_TOPIC:
+      return { ...state, topicId: action.topicId }; //set topicId from setTopic
     default:
       return state;
   }
 };
 
-const initialState = {
-  photos: photosData,
-  topics: topicsData,
-  openModal: false,
-  clickedPhoto: null,
-};
-
 export const useApplicationData = () => {
+  const initialState = {
+    photos: [],
+    topics: [],
+    favorites: [],
+    topicId: 1, //load first page
+    openModal: false,
+    clickedPhoto: null,
+  };
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const setPhotos = (photos) => {
-    dispatch({ type: ACTIONS.SET_PHOTOS, payload: photos });
-  };
+  // useEffect(() => {
+  //   // const photosPromise = axios.get("/api/photos");
+  //   const topicsPromise = axios.get("/api/topics");
+  //   const promises = [photosPromise, topicsPromise];
+  //   Promise.all(promises)
+  //     .then((arrOfRes) => {
+  //       const [photosData, topicsData] = arrOfRes;
+  //       dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photosData.data });
+  //       dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicsData.data });
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
-  const setTopics = (topics) => {
-    dispatch({ type: ACTIONS.SET_TOPICS, payload: topics });
+  // GET TOPICS
+  useEffect(() => {
+    axios
+      .get(`/api/topics`)
+      .then((res) => {
+        const topics = res.data;
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, topics });
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  //GET PHOTOS by TOPIC
+  useEffect(() => {
+    axios
+      .get(`api/topics/photos/${state.topicId}`)
+      .then((res) => {
+        if (res.data) {
+          dispatch({
+            type: ACTIONS.SET_PHOTO_DATA,
+            payload: res.data,
+          });
+        }
+      })
+      .catch((err) => console.log(err));
+  }, [state.topicId]);
+
+  const setTopic = (topicId) => {
+    dispatch({ type: ACTIONS.SET_TOPIC, topicId }); //get photos by topic
   };
 
   const openModal = (photoId) => {
@@ -65,26 +107,23 @@ export const useApplicationData = () => {
   const closeModal = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
-
+  // ADD and REMOVE favrites
   const toggleFavoritePhoto = (photoId) => {
-    dispatch({ type: ACTIONS.FAV_PHOTO_TOGGLE, payload: photoId }); //add and remove favorites
+    if (isPhotoFavorite(photoId)) {
+      return dispatch({ type: ACTIONS.REMOVE_FAVORITE, photoId });
+    }
+    dispatch({ type: ACTIONS.ADD_FAVORITE, photoId });
   };
 
   // check if selected photo is favorite
   const isPhotoFavorite = (photoId) => {
-    const photo = state.photos.find(
-      (photo) => Number(photo.id) === Number(photoId)
-    );
-    return photo ? !!photo.isFavorite : false;
-  };
-  // for heart in TopNavigationBar (to check if any of photo is favorite)
-  const checkFavorites = () => {
-    return state.photos.some((el) => el.isFavorite === true);
+    return state.favorites.includes(photoId);
   };
   // which photo is clicked and open modal
   const photoClickHandler = (photoId) => {
     openModal(photoId);
   };
+
   return {
     photos: state.photos,
     topics: state.topics,
@@ -94,7 +133,8 @@ export const useApplicationData = () => {
     closeModal,
     toggleFavoritePhoto,
     isPhotoFavorite,
-    checkFavorites,
+    numFavorites: state.favorites.length, //falsy if no length
     photoClickHandler,
+    setTopic,
   };
 };

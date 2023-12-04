@@ -6,12 +6,12 @@ import FavBadge from "./FavBadge";
 // import { checkFavorites } from "helpers/photolabsHelpers";
 
 const TopNavigation = (props) => {
-  const { topics, checkFavorites } = props;
+  const { topics, numFavorites, setTopic } = props;
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={topics} />
-      <FavBadge isFavPhotoExist={checkFavorites()} />
+      <TopicList topics={topics} setTopic={setTopic} />
+      <FavBadge isFavPhotoExist={numFavorites} />
     </div>
   );
 };
