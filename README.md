@@ -4,9 +4,9 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 
 ## Final Product
 
-!["Screenshot of Topics_page"](https://github.com/EkaterinaEg/pholabs-starter/blob/main/docs/Photolabs_likes.png)
-!["Screenshot of Modal"](https://github.com/EkaterinaEg/pholabs-starter/blob/main/docs/Photolabs_modal.png)
-!["Screenshot of Likes"](https://github.com/EkaterinaEg/pholabs-starter/blob/main/docs/Photolabs_likes.png)
+!["Screenshot of Topics_page"](https://github.com/EkaterinaEg/photolabs-starter/blob/main/docs/Photolabs_likes.png)
+!["Screenshot of Modal"](https://github.com/EkaterinaEg/photolabs-starter/blob/main/docs/Photolabs_modal.png)
+!["Screenshot of Likes"](https://github.com/EkaterinaEg/photolabs-starter/blob/main/docs/Photolabs_likes.png)
 
 ## Functional Requirements
 
