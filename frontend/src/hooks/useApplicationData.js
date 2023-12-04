@@ -9,14 +9,7 @@ export const ACTIONS = {
   SET_TOPIC: "SET_TOPIC", //set topicId
   ADD_FAVORITE: "ADD_FAVORITE",
   REMOVE_FAVORITE: "REMOVE_FAVORITE",
-
-  // FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
-
-  // SELECT_PHOTO: 'SELECT_PHOTO',
-
-  // FAV_PHOTO_TOGGLE: "FAV_PHOTO_ADDED_REMOVED", //add/remove from favorites
-  SET_PHOTO_DATA: "SET_PHOTO_DATA",
-  // DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
+  SET_PHOTO_DATA: "SET_PHOTO_DATA", //fetch photos by topicId
 };
 
 const reducer = (state, action) => {
@@ -57,19 +50,6 @@ export const useApplicationData = () => {
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // useEffect(() => {
-  //   // const photosPromise = axios.get("/api/photos");
-  //   const topicsPromise = axios.get("/api/topics");
-  //   const promises = [photosPromise, topicsPromise];
-  //   Promise.all(promises)
-  //     .then((arrOfRes) => {
-  //       const [photosData, topicsData] = arrOfRes;
-  //       dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photosData.data });
-  //       dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicsData.data });
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
   // GET TOPICS
   useEffect(() => {
     axios
@@ -97,16 +77,9 @@ export const useApplicationData = () => {
   }, [state.topicId]);
 
   const setTopic = (topicId) => {
-    dispatch({ type: ACTIONS.SET_TOPIC, topicId }); //get photos by topic
+    dispatch({ type: ACTIONS.SET_TOPIC, topicId }); //define topic clicked
   };
 
-  const openModal = (photoId) => {
-    dispatch({ type: ACTIONS.OPEN_MODAL, payload: photoId });
-  };
-
-  const closeModal = () => {
-    dispatch({ type: ACTIONS.CLOSE_MODAL });
-  };
   // ADD and REMOVE favrites
   const toggleFavoritePhoto = (photoId) => {
     if (isPhotoFavorite(photoId)) {
@@ -122,6 +95,13 @@ export const useApplicationData = () => {
   // which photo is clicked and open modal
   const photoClickHandler = (photoId) => {
     openModal(photoId);
+  };
+  const openModal = (photoId) => {
+    dispatch({ type: ACTIONS.OPEN_MODAL, payload: photoId });
+  };
+
+  const closeModal = () => {
+    dispatch({ type: ACTIONS.CLOSE_MODAL });
   };
 
   return {
