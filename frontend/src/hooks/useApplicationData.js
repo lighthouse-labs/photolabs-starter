@@ -1,127 +1,99 @@
 import { useReducer } from "react";
 import photosData from "../mocks/photos";
 import topicsData from "../mocks/topics";
-import * as photoHelpers from "../helpers/photolabsHelpers";
 
 export const ACTIONS = {
-  FAV_PHOTO_TOGGLE: "FAV_PHOTO_ADDED_REMOVED",
-  CHECK_FAV_PHOTO: "CHECK_FAV_PHOTO",
-  IS_ANY_FAV_PHOTO: "IS_ANY_FAV_PHOTO",
+  FAV_PHOTO_TOGGLE: "FAV_PHOTO_ADDED_REMOVED", //add/remove from favorites
+  SET_PHOTO_DATA: "SET_PHOTO_DATA",
+  SET_TOPIC_DATA: "SET_TOPIC_DATA",
+  DISPLAY_PHOTO_DETAILS: "DISPLAY_PHOTO_DETAILS",
   OPEN_MODAL: "OPEN_MODAL",
   CLOSE_MODAL: "CLOSE_MODAL",
 
   // FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
-  // SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  // SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+
   // SELECT_PHOTO: 'SELECT_PHOTO',
-  // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
 };
-const reducer = function (state, action) {
+
+const reducer = (state, action) => {
   switch (action.type) {
-    case ACTIONS.FAV_PHOTO_TOGGLE: {
-      const updatedPhotos = state.photos.map((photo) =>
-        photo.id === action.payload.photoId
-          ? { ...photo, isFavorite: !photo.isFavorite }
-          : photo
-      );
-      return {
-        // ...state,
-        updatedPhotos,
-      };
-    }
-    case ACTIONS.CHECK_FAV_PHOTO: {
-      const photo = state.photos.find(
-        (photo) => photo.id === action.payload.photoId
-      );
-
-      const isPhotoFavorite = photo ? !!photo.isFavorite : false;
-      return {
-        // ...state,
-        isPhotoFavorite,
-      };
-      // isPhotoFavorite: photo ? !!photo.isFavorite : false,
-    }
-    case ACTIONS.IS_ANY_FAV_PHOTO: {
-      const isAnyFavorite = state.photos.some((el) => el.isFavorite);
-
-      return {
-        // ...state,
-        isAnyFavorite,
-      };
-    }
-    case ACTIONS.OPEN_MODAL: {
+    case ACTIONS.FAV_PHOTO_TOGGLE:
       return {
         ...state,
-        clickedPhoto: action.payload.photoId,
-        isOpenModal: true,
+        photos: state.photos.map((photo) =>
+          photo.id === action.payload
+            ? { ...photo, isFavorite: !photo.isFavorite }
+            : photo
+        ),
       };
-    }
-    case ACTIONS.CLOSE_MODAL: {
-      return {
-        ...state,
-        isOpenModal: false,
-        clickedPhoto: null,
-      };
-    }
+    case ACTIONS.SET_PHOTO_DATA:
+      return { ...state, photos: action.payload };
+    case ACTIONS.SET_TOPIC_DATA:
+      return { ...state, topics: action.payload };
+    case ACTIONS.OPEN_MODAL:
+      return { ...state, openModal: true, clickedPhoto: action.payload };
+    case ACTIONS.CLOSE_MODAL:
+      return { ...state, openModal: false, clickedPhoto: null };
+
     default:
-      throw new Error(
-        `Tried to reduce with unsupported action type: ${action.type}`
-      );
+      return state;
   }
 };
 
+const initialState = {
+  photos: photosData,
+  topics: topicsData,
+  openModal: false,
+  clickedPhoto: null,
+};
+
 export const useApplicationData = () => {
-  const initialState = {
-    photo: photosData,
-    topic: topicsData,
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const setPhotos = (photos) => {
+    dispatch({ type: ACTIONS.SET_PHOTOS, payload: photos });
   };
 
-  const [photos, dispatchPhotos] = useReducer(reducer, initialState.photo);
-  const [topics, dispatchTopics] = useReducer(reducer, initialState.topic);
+  const setTopics = (topics) => {
+    dispatch({ type: ACTIONS.SET_TOPICS, payload: topics });
+  };
 
-  // const [photos, dispatchPhotos] = useReducer(reducer, initialState.photosData);
+  const openModal = (photoId) => {
+    dispatch({ type: ACTIONS.OPEN_MODAL, payload: photoId });
+  };
 
-  // const [topics, dispatchTopics] = useReducer(reducer, initialState.topicsData);
-
-  // const photos = { state: photoData, dispatch: setPhotoData };
-
-  // const topics = { state: topicData, dispatch: setTopicData };
-
-  const [modal, setModal] = useReducer(reducer, {
-    isOpenModal: false,
-    clickedPhoto: null,
-  });
+  const closeModal = () => {
+    dispatch({ type: ACTIONS.CLOSE_MODAL });
+  };
 
   const toggleFavoritePhoto = (photoId) => {
-    dispatchPhotos({ type: ACTIONS.FAV_PHOTO_TOGGLE, payload: { photoId } });
+    dispatch({ type: ACTIONS.FAV_PHOTO_TOGGLE, payload: photoId }); //add and remove favorites
   };
+
+  // check if selected photo is favorite
   const isPhotoFavorite = (photoId) => {
-    dispatchPhotos({ type: ACTIONS.CHECK_FAV_PHOTO, payload: { photoId } });
+    const photo = state.photos.find(
+      (photo) => Number(photo.id) === Number(photoId)
+    );
+    return photo ? !!photo.isFavorite : false;
   };
-
+  // for heart in TopNavigationBar (to check if any of photo is favorite)
   const checkFavorites = () => {
-    dispatchPhotos({ type: ACTIONS.IS_ANY_FAV_PHOTO });
+    return state.photos.some((el) => el.isFavorite === true);
   };
-  // Close modal
-  const closeModal = () => {
-    setModal({ type: ACTIONS.CLOSE_MODAL });
-  };
-
-  // Handler when photo is clicked
+  // which photo is clicked and open modal
   const photoClickHandler = (photoId) => {
-    setModal({ type: ACTIONS.OPEN_MODAL, payload: { photoId } });
+    openModal(photoId);
   };
-
-  // return photo ? photo.isFavorite : false;
-
   return {
-    photos,
-    topics,
-    modal,
-    setModal,
+    photos: state.photos,
+    topics: state.topics,
+    isOpenModal: state.openModal,
+    clickedPhoto: state.clickedPhoto,
+    openModal,
+    closeModal,
     toggleFavoritePhoto,
     isPhotoFavorite,
-    closeModal,
     checkFavorites,
     photoClickHandler,
   };
