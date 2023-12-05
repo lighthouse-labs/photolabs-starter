@@ -75,7 +75,6 @@ export const useApplicationData = () => {
   const onTopicClick = (topicId) => {
     axios.get(`/api/topics/photos/${topicId}`)
       .then((photos) => {
-        console.log("topics", photos.data)
         dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: photos.data });
       })
       .catch((error) => {
