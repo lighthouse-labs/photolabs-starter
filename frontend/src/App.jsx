@@ -10,15 +10,16 @@ import { useApplicationData } from 'hooks/useApplicationData';
 const App = () => {
 
   const {
-    state: { modal, photoDetails, liked, photos, topics },
+    state: { modal, photoDetails, liked, photos, topics, photosByTopic},
     updateToFavPhotoIds: toggleLike,
     setPhotoSelected: toggleModal,
     closeModal,
+    onTopicClick
   } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute toggleModal={toggleModal} liked={liked} toggleLike={toggleLike} photos={photos} topics={topics}/>
+      <HomeRoute toggleModal={toggleModal} liked={liked} toggleLike={toggleLike} photos={photos} topics={topics} photosByTopic={photosByTopic} onTopicClick={onTopicClick}/>
       {modal && <PhotoDetailsModal closeModal={closeModal} photoDetails={photoDetails} liked={liked} toggleLike={toggleLike}/>}
     </div>
   );

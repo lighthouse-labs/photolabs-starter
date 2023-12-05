@@ -7,7 +7,7 @@ function PhotoFavButton(props) {
   const { isLiked, toggleLike } = props;
 
   return (
-    <div className='photo-list__fav-icon' onClick={() => { toggleLike() }}>
+    <div className='photo-list__fav-icon'>
       <div className="photo-list__fav-icon-svg">
         <FavIcon selected={isLiked} />
       </div>

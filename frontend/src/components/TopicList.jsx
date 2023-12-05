@@ -5,7 +5,7 @@ import TopicListItem from "./TopicListItem";
 const TopicList = (props) => {
 
   const topicsList = props.topics.map((item) => {
-    return <span key={item.id}>
+    return <span key={item.id} onClick={() => {props.onTopicClick(item.id)}}>
       {item.title}</span>
   })
 

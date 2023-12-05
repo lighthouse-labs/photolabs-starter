@@ -9,12 +9,12 @@ import TopNavigation from 'components/TopNavigationBar';
 
 const HomeRoute = (props) => {
 
-  const {liked, toggleLike, photos, topics} = props;
+  const {liked, toggleLike, photos, topics, photosByTopic, onTopicClick, toggleModal} = props;
 
   return (
     <div className="home-route">
-      <TopNavigation notifications={liked} topics={topics}/>
-      <PhotoList liked={liked} toggleLike={toggleLike} toggleModal={(photoId) => {props.toggleModal(photoId)}} photos={photos}/>
+      <TopNavigation notifications={liked} topics={topics} onTopicClick={ onTopicClick} toggleModal={toggleModal}/>
+      <PhotoList liked={liked} toggleLike={toggleLike} toggleModal={(photoId) => {toggleModal(photoId)}} photos={photos}/>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import FavIcon from 'components/FavIcon';
 const PhotoDetailsModal = (props) => {
 
   const { photoDetails, liked, toggleLike } = props;
+  console.log("photoDeatials", photoDetails)
   
   return (
     <div className="photo-details-modal">
