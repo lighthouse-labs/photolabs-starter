@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import React from 'react';
 import '../styles/HomeRoute.scss';
 import PhotoList from 'components/PhotoList';
@@ -9,7 +8,7 @@ import TopNavigation from 'components/TopNavigationBar';
 
 const HomeRoute = (props) => {
 
-  const {liked, toggleLike, photos, topics, photosByTopic, onTopicClick, toggleModal} = props;
+  const {liked, toggleLike, photos, topics, onTopicClick, toggleModal} = props;
 
   return (
     <div className="home-route">

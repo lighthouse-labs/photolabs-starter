@@ -1,5 +1,4 @@
 import { useReducer, useEffect } from 'react'
-import photos from "mocks/photos";
 import axios from 'axios'
 
 export const useApplicationData = () => {
@@ -82,13 +81,7 @@ export const useApplicationData = () => {
       });
   }
 
-  const toggleFavModal = () => {
-
-  }
-  //1. create new component 2. modal has photolist of liked id of filter
-
   const toggleModal = (detail) => {
-    console.log("details", detail)
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: detail });
     dispatch({ type: ACTIONS.DISPLAY_MODAL, payload: true });
   }
@@ -99,7 +92,6 @@ export const useApplicationData = () => {
 
 
   const toggleLike = (photoId) => {
-    console.log('Liked Photos:', photoId);
     if (state.liked.includes(photoId)) {
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photoId });
     } else {

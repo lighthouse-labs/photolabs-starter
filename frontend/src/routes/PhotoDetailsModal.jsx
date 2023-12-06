@@ -3,8 +3,6 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
-import PhotoListItem from 'components/PhotoListItem';
-import FavIcon from 'components/FavIcon';
 
 const PhotoDetailsModal = (props) => {
 
