@@ -3,6 +3,7 @@ import React from "react";
 import "./App.scss";
 import HomeRoute from "./routes/HomeRoute.jsx";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
+import PhotoFavoritesModal from "./routes/PhotoFavoritesModal";
 
 import { useApplicationData } from "./hooks/useApplicationData";
 
@@ -10,15 +11,23 @@ const App = () => {
   const {
     photos,
     topics,
-    toggleFavoritePhoto,
+    favorites,
     isPhotoFavorite,
     numFavorites,
     photoClickHandler,
-    openModal,
+    // openModal,
     isOpenModal,
     clickedPhoto,
-    closeModal,
+    // closeModal,
     setTopic,
+    toggleModal,
+
+    // openFavoritesModal,
+    toggleFavoritePhoto,
+    // closeFavoritesModal,
+    isOpenFavoritesModal,
+    getFavoritePhotos,
+    toggleFavoritesModal,
   } = useApplicationData();
 
   return (
@@ -31,16 +40,28 @@ const App = () => {
         photoClickHandler={photoClickHandler}
         numFavorites={numFavorites}
         setTopic={setTopic}
+        toggleFavoritesModal={toggleFavoritesModal}
       />
+
       {isOpenModal && (
         <PhotoDetailsModal
           photos={photos}
-          closeModal={closeModal}
+          // closeModal={closeModal}
           isPhotoFavorite={isPhotoFavorite}
           toggleFavoritePhoto={toggleFavoritePhoto}
           clickedPhoto={clickedPhoto}
-          openModal={openModal}
+          toggleModal={toggleModal}
+          // openModal={openFavoritesModal}
           photoClickHandler={photoClickHandler}
+        />
+      )}
+      {isOpenFavoritesModal && (
+        <PhotoFavoritesModal
+          // closeModal={closeFavoritesModal}
+          isPhotoFavorite={isPhotoFavorite}
+          toggleFavoritePhoto={toggleFavoritePhoto}
+          getFavoritePhotos={getFavoritePhotos}
+          toggleFavoritesModal={toggleFavoritesModal}
         />
       )}
     </div>

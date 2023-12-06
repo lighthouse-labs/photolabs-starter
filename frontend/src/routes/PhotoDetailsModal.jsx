@@ -6,12 +6,12 @@ import PhotoList from "components/PhotoList";
 
 const PhotoDetailsModal = (props) => {
   const {
-    closeModal,
     clickedPhoto,
     photos,
     isPhotoFavorite,
     toggleFavoritePhoto,
     photoClickHandler,
+    toggleModal,
   } = props;
   const photoId = clickedPhoto;
 
@@ -21,7 +21,7 @@ const PhotoDetailsModal = (props) => {
     <div className="photo-details-modal">
       <button
         className="photo-details-modal__close-button"
-        onClick={closeModal}
+        onClick={toggleModal}
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
@@ -55,7 +55,7 @@ const PhotoDetailsModal = (props) => {
             photos={Object.values(photo.similar_photos)}
             isPhotoFavorite={isPhotoFavorite}
             toggleFavoritePhoto={toggleFavoritePhoto}
-            photoClickHandler={photoClickHandler}
+            // photoClickHandler={photoClickHandler}
           />
         </div>
       </div>

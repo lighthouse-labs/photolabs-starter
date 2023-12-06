@@ -14,6 +14,8 @@ const HomeRoute = (props) => {
     photoClickHandler,
     numFavorites,
     setTopic,
+    displayFavorites,
+    toggleFavoritesModal,
   } = props;
 
   return (
@@ -23,6 +25,8 @@ const HomeRoute = (props) => {
         photos={photos}
         numFavorites={numFavorites}
         setTopic={setTopic}
+        displayFavorites={displayFavorites}
+        toggleFavoritesModal={toggleFavoritesModal}
       />
       <PhotoList
         photos={photos}
