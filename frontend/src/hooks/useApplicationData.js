@@ -99,6 +99,7 @@ export const useApplicationData = () => {
 
 
   const toggleLike = (photoId) => {
+    console.log('Liked Photos:', photoId);
     if (state.liked.includes(photoId)) {
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: photoId });
     } else {
