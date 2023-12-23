@@ -1,7 +1,12 @@
 import React from 'react';
 
-import PhotoListItem from './components/PhotoListItem';
+import PhotoList from 'components/PhotoList';
 import './App.scss';
+import TopicListItem from 'components/TopicListItem';
+import TopicList from 'components/TopicList';
+import TopNavigationBar from './components/TopNavigationBar';
+import HomeRoute from './components/HomeRoute';
+
 
 const sampleDataForPhotoListItem = [ 
   {
@@ -40,7 +45,7 @@ const sampleDataForPhotoListItem = [
 const App = () => {
   return (
     <div className="App">
-      <PhotoListItem dataList={sampleDataForPhotoListItem}/>
+      <HomeRoute />
     </div>
   );
 };

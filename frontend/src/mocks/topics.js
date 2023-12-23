@@ -1,27 +1,27 @@
 const topics = [
   {
     "id": "1",
-    "slug": "topic-1",
+    "slug": "nature",
     "title": "Nature"
   },  
   {
     "id": "2",
-    "slug": "topic-2",
+    "slug": "travel",
     "title": "Travel"
   },
   {
     "id": "3",
-    "slug": "topic-3",
+    "slug": "people",
     "title": "People"
   },
   {
     "id": "4",
-    "slug": "topic-4",
+    "slug": "fashion",
     "title": "Fashion"
   },  
   {
     "id": "5",
-    "slug": "topic-5",
+    "slug": "animals",
     "title": "Animals"
   }
 ];
