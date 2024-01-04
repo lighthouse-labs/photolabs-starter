@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({onCloseClick}) => {
+const PhotoDetailsModal = ({onCloseClick, data}) => {
   return (
     <div className="photo-details-modal">
       <button 
@@ -12,6 +12,7 @@ const PhotoDetailsModal = ({onCloseClick}) => {
       >
         <img src={closeSymbol} alt="close symbol" />
       </button>
+      {console.log(data)}
     </div>
   )
 };
