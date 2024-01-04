@@ -3,6 +3,7 @@ import PhotoList from "./PhotoList";
 import "../styles/HomeRoute.scss";
 import { useState } from 'react';
 import PhotoDetailsModal from "../routes/PhotoDetailsModal";
+import photos from "mocks/photos";
 
 const HomeRoute = () => {
 
@@ -29,6 +30,7 @@ const HomeRoute = () => {
       <PhotoList 
         addFavouritePhoto={addFavouritePhoto}
         onPhotoClick={handleModalToggle}
+        photos={photos}
       />
       {isModalOpen ? <PhotoDetailsModal onCloseClick={handleModalToggle} data={selectedPhotoData}/> : null}
     </div>
