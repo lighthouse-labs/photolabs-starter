@@ -12,11 +12,12 @@ const HomeRoute = () => {
     setFavouritedPhotos([...favouritedPhotos, photo]);
   };
 
-  const [isModelOpen, setIsModelOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleModel = () => {
-    setIsModelOpen(true);
+  const handleModalToggle = () => {
+    setIsModalOpen(!isModalOpen);
   }
+
   
   return (
     <div className="home-route">
@@ -25,9 +26,9 @@ const HomeRoute = () => {
       />
       <PhotoList 
         addFavouritePhoto={addFavouritePhoto}
-        onPhotoClick={handleModel}
+        onPhotoClick={handleModalToggle}
       />
-      {isModelOpen && <PhotoDetailsModal />}
+      {isModalOpen ? <PhotoDetailsModal onCloseClick={handleModalToggle}/> : null}
     </div>
   );
 };
