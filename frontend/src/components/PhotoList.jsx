@@ -4,7 +4,7 @@ import "../styles/PhotoList.scss";
 import PhotoListItem from "./PhotoListItem";
 import photos from "mocks/photos";
 
-const PhotoList = ({addFavouritePhoto}) => {
+const PhotoList = ({addFavouritePhoto, onPhotoClick}) => {
   return (
     <ul className="photo-list">
       { photos.map((data) => (
@@ -12,6 +12,7 @@ const PhotoList = ({addFavouritePhoto}) => {
           data={data} 
           key={data.id} 
           addFavouritePhoto={addFavouritePhoto}
+          onPhotoClick={onPhotoClick}
         />
       ))}
     </ul>
