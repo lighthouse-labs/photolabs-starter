@@ -12,7 +12,7 @@ const HomeRoute = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleFavouritePhotos = (photo) => {
-    const isPhotoFavourited = favouritedPhotos.some(favPhoto => favPhoto === photo)
+    const isPhotoFavourited = favouritedPhotos.some(favPhoto => favPhoto.id === photo.id)
 
     if(isPhotoFavourited) {
       setFavouritedPhotos(favouritedPhotos.filter(favPhoto => favPhoto.id !== photo.id))
