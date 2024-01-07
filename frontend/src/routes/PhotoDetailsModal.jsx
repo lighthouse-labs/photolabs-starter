@@ -4,7 +4,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = ({onCloseClick, data}) => {
+const PhotoDetailsModal = ({onCloseClick, data, favouritedPhotos, handleFavouritePhotos}) => {
 
   const similarPhotos = Object.values(data.similar_photos)
 
@@ -18,7 +18,11 @@ const PhotoDetailsModal = ({onCloseClick, data}) => {
       </div>
 
       <div className='photo-details-modal__images'>
-        <PhotoFavButton data={data}/>
+        <PhotoFavButton 
+          data={data}
+          favouritedPhotos={favouritedPhotos}
+          handleFavouritePhotos={handleFavouritePhotos}
+        />
         <img className='photo-details-modal__image' src={data.urls.full}/>
         <div className='photo-details-modal__photographer-details'>
             <img className='photo-details-modal__photographer-profile' src={data.user.profile}/>
@@ -34,6 +38,8 @@ const PhotoDetailsModal = ({onCloseClick, data}) => {
         <h3 className='photo-details-modal__header'>Similar Photos</h3>
         <PhotoList 
           photos={similarPhotos}
+          favouritedPhotos={favouritedPhotos}
+          handleFavouritePhotos={handleFavouritePhotos}
         />
       </div>
 
