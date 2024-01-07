@@ -5,8 +5,6 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = ({favouritedPhotos, handleFavouritePhotos, photos, onPhotoClick}) => {
 
-  console.log(favouritedPhotos)
-
   return (
     <ul className="photo-list">
       { photos.map((data) => (

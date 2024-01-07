@@ -9,6 +9,10 @@
   width: 55%;
   overflow-y: scroll;
   border-radius: 12px;
+
+  @media(max-width: 768px) {
+    width: 95%;
+  }
 }
 
 .photo-details-modal__close-button {
@@ -31,7 +35,7 @@
 
 .photo-details-modal__image {
   max-width: 95%;
-  border-radius: 8px;
+  margin-bottom: 8px;
 }
 
 .photo-details-modal__top-bar {
