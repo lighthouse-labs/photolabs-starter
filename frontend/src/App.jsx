@@ -4,6 +4,7 @@ import PhotoListItem from './components/PhotoListItem';
 import PhotoList from 'components/PhotoList';
 import './App.scss';
 import PhotoFavButton from 'components/PhotoFavButton';
+import TopicList from 'components/TopicList';
 // import { sampleDataForPhotoList } from './components/PhotoListItem';
 
 // const sampleDataForPhotoList = {
@@ -31,6 +32,7 @@ const App = () => {
         ))} */}
 
       <PhotoList/>
+      <TopicList/>
       
     </div>
   );
