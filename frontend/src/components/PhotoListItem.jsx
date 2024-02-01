@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photo: { imageSource, username, profile, location: { city, country } } }) => {
+const PhotoListItem = ({ photoData: { urls: { full }, user: {name}, user: {profile}, location: { city, country } } }) => {
   // const img = props.imageSource;
   // const name = props.username;
   // const profile = props.profile;
@@ -11,11 +12,14 @@ const PhotoListItem = ({ photo: { imageSource, username, profile, location: { ci
   return (
     <div className="photo-list__item">
       {/* <h5>PhotoListItem Comp</h5> */}
-      <img className="photo-list__image" src={imageSource} alt="Image" />
 
+      <PhotoFavButton />
+
+      <img className="photo-list__image" src={`${full}`} alt="Image" />
+      
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={profile} alt="Profile Image" />
-        <div className="photo-list__user-info">{username}</div>
+        <img className="photo-list__user-profile" src={`${profile}`} alt="Profile Image" />
+        <div className="photo-list__user-info">{`${name}`}</div>
         <div className="photo-list__user-info photo-list__user-location">
           {`${city}, ${country}`}
         </div>

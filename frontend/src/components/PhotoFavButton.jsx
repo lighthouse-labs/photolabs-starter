@@ -8,13 +8,13 @@ function PhotoFavButton() {
   const [isFav, setIsFav] = useState(false);
 
   const toggleFav = () => {
-    setIsFav(!isFav)
+    setIsFav(prevIsFav => !prevIsFav)
   };
 
   return (
     <div className={`photo-list__fav-icon ${isFav ? 'photo-list__fav-icon-svg' : ''}`} onClick={toggleFav}>
       <div className="photo-list__fav-icon-svg">
-        <FavIcon isFav={FavIcon}/>
+        <FavIcon isFav={isFav}/>
       </div>
     </div>
   );
