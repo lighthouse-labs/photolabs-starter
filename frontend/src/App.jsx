@@ -3,6 +3,7 @@ import React from 'react';
 import PhotoListItem from './components/PhotoListItem';
 import PhotoList from 'components/PhotoList';
 import './App.scss';
+import PhotoFavButton from 'components/PhotoFavButton';
 // import { sampleDataForPhotoList } from './components/PhotoListItem';
 
 const sampleDataForPhotoList = {
@@ -18,14 +19,17 @@ const sampleDataForPhotoList = {
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  //making PhotoListItem to be displayed 3 times
   const photos = new Array(3).fill(sampleDataForPhotoList);
   return (
     <div className="App">
       {photos.map((photoData, index) => (
-        <PhotoListItem photo={photoData} key={index} />
-      ))}
-
-      {/* <PhotoList/> */}
+        <div key={index}>
+          <PhotoListItem photo={photoData} />
+          <PhotoFavButton />
+          </div>
+        ))}
+      {/* <PhotoList/> */ }
     </div>
   );
 };
