@@ -5,6 +5,9 @@ import PhotoList from 'components/PhotoList';
 import './App.scss';
 import PhotoFavButton from 'components/PhotoFavButton';
 import TopicList from 'components/TopicList';
+import TopNavigation from 'components/TopNavigationBar';
+import TopNavigationBar from 'components/TopNavigationBar';
+
 // import { sampleDataForPhotoList } from './components/PhotoListItem';
 
 // const sampleDataForPhotoList = {
@@ -31,9 +34,10 @@ const App = () => {
           </div>
         ))} */}
 
-      <PhotoList/>
-      <TopicList/>
+      {/* <PhotoList/>
+      <TopicList/> */}
       
+     <TopNavigationBar/>
     </div>
   );
 };
