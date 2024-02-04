@@ -6,7 +6,7 @@ import TopicListItem from "./TopicListItem";
 
 
 const TopicList = ({ topics }) => {
-  console.log('Topics:', topics);
+  // console.log('Topics:', topics);
   return (
     <div className="top-nav-bar__topic-list">
       {topics.map(topic => (

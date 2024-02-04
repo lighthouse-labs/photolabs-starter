@@ -2,16 +2,16 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photo: { urls:{ full, regular }, user, location: { city, country } } }) => {
-const name = user.name;
-const profile = user.profile; 
-// const fullUrl = urls.full;
+const PhotoListItem = ({ photo, toggleFavorite, isFavorite }) => {
+
+const { urls:{ full, regular }, user, location: { city, country }, id } = photo;
+const { name, profile } = user;
 
   return (
     <div className="photo-list__item">
       {/* <h5>PhotoListItem Comp</h5> */}
 
-      <PhotoFavButton />
+      <PhotoFavButton isFavorite={isFavorite} toggleFavorite={toggleFavorite} id={id}/>
 
       <img className="photo-list__image" src={`${full}`} alt="Image" />
       
