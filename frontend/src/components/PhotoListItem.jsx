@@ -7,13 +7,16 @@ const PhotoListItem = ({ photo, toggleFavorite, isFavorite, updateDisplayModal }
 const { urls:{ full, regular }, user, location: { city, country }, id } = photo;
 const { name, profile } = user;
 
+const handleClick = () => {
+  updateDisplayModal(photo);
+};
+
   return (
     <div className="photo-list__item">
-      {/* <h5>PhotoListItem Comp</h5> */}
 
       <PhotoFavButton isFavorite={isFavorite} toggleFavorite={toggleFavorite} id={id}/>
 
-      <img onClick={updateDisplayModal} className="photo-list__image" src={`${full}`} alt="Image"/>
+      <img onClick={handleClick} className="photo-list__image" src={`${full}`} alt="Image"/>
       
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={`${profile}`} alt="Profile Image" />

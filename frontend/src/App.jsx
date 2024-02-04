@@ -11,9 +11,11 @@ import { useState } from 'react';
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const [displayModal, setDisplayModal] = useState(false);
-  const updateDisplayModal = () => {
-    setDisplayModal(!displayModal)
+  const [displayModal, setDisplayModal] = useState(0);
+
+  const updateDisplayModal = (props) => {
+    // setDisplayModal(!displayModal)
+    displayModal ? setDisplayModal(0) : setDisplayModal(props);
   }
 
 
@@ -21,7 +23,7 @@ const App = () => {
     <div className="App">
 
       <HomeRoute photos={photos} topics={topics} updateDisplayModal={updateDisplayModal}/>
-      {displayModal && <PhotoDetailsModal updateDisplayModal={updateDisplayModal}/>}
+      {displayModal && <PhotoDetailsModal updateDisplayModal={updateDisplayModal} modalData={displayModal}/>}
     </div>
   );
 };
