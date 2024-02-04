@@ -7,6 +7,7 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import TopicList from 'components/TopicList';
 import TopNavigation from 'components/TopNavigationBar';
 import TopNavigationBar from 'components/TopNavigationBar';
+import HomeRoute from 'components/HomeRoute';
 
 // import { sampleDataForPhotoList } from './components/PhotoListItem';
 
@@ -36,8 +37,9 @@ const App = () => {
 
       {/* <PhotoList/>
       <TopicList/> */}
+      <HomeRoute />
       
-     <TopNavigationBar/>
+     {/* <TopNavigationBar/> */}
     </div>
   );
 };
