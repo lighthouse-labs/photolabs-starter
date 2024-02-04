@@ -7,8 +7,6 @@ const HomeRoute = ({photos, topics}) => {
 
   const [favorite, setFavorite] = useState([]);
 
-  const presentFavorites = [];
-
   const toggleFavorite = (id) => {
     setFavorite((presentFavorites) => {
       if(presentFavorites.includes(id)) {
