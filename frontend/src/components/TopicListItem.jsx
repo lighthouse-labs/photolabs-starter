@@ -1,12 +1,10 @@
 import React from "react";
-
 import "../styles/TopicListItem.scss";
 
-
-const TopicListItem = ({topicItem: {title}}) => {
+const TopicListItem = ({ title }) => {
   return (
     <div className="topic-list__item">
-      <div className="topic-list__item span ">{title}</div>
+      { title }
     </div>
   );
 };

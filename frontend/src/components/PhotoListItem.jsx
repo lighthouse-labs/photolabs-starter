@@ -2,11 +2,10 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photoData: { urls:{ full, regular }, user, location: { city, country } } }) => {
+const PhotoListItem = ({ photo: { urls:{ full, regular }, user, location: { city, country } } }) => {
 const name = user.name;
 const profile = user.profile; 
 // const fullUrl = urls.full;
-
 
   return (
     <div className="photo-list__item">
