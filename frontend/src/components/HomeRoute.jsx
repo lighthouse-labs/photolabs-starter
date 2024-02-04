@@ -1,15 +1,17 @@
 import React from 'react';
-import TopNavigationBar from "./TopNavigationBar";
-import PhotoList from "./PhotoListItem";
+
+import "../styles/HomeRoute.scss";
+import TopNavigationBar from 'components/TopNavigationBar';
+import PhotoList from 'components/PhotoList';
 
 const HomeRoute = () => {
 
   return (
-    <div>
+    <div className='home-route'>
     <TopNavigationBar />
     <PhotoList />
     </div>
   );
-}
+};
 
 export default HomeRoute;
