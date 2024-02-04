@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../styles/HomeRoute.scss";
 import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 const HomeRoute = ({photos, topics}) => {
 
@@ -21,6 +22,7 @@ const HomeRoute = ({photos, topics}) => {
     <div className='home-route'>
     <TopNavigationBar topics={topics} isFavorite={favorite}/>
     <PhotoList photos={photos} toggleFavorite={toggleFavorite} isFavorite={favorite}/>
+    <PhotoDetailsModal/>
     </div>
   );
 };
