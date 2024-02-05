@@ -7,7 +7,7 @@ const PhotoListItem = ({ photo, favorite, toggleFavorite, updateDisplayModal, si
 
   const { urls: { full, regular }, user, location: { city, country }, id } = photo;
   const { name, profile } = user;
-  
+
 
   const handleClick = () => {
     updateDisplayModal(photo);
@@ -15,24 +15,28 @@ const PhotoListItem = ({ photo, favorite, toggleFavorite, updateDisplayModal, si
 
   return (
     <div className="photo-list__item">
-      <PhotoFavButton favorite={favorite} toggleFavorite={toggleFavorite} id={id} />
-      {photo.modalState ? (
-        <>
-          <img onClick={() => updateDisplayModal(photo)} className="photo-details-modal__image" src={full} alt="Image" />
-          <div className='photo-details-modal__photographer-details'>
-            <img className="photo-details-modal__photographer-profile" src={profile} alt="Profile Image" />
-            <div className="photo-details-modal__photographer-info ">{name}
-              <span className="photo-details-modal__photographer-location">{city}, {country}</span>
-            </div>
 
+      <PhotoFavButton favorite={favorite} toggleFavorite={toggleFavorite} id={id} />
+
+      {/* {photo.modalState ? ( */}
+        <div>
+          <img onClick={() => updateDisplayModal(photo)} className="photo-list__image" src={regular} alt="Image" />
+
+          <div className='photo-list__user-details'>
+            <img className="photo-list__user-profile" src={profile} alt="Profile Image" />
+            <div>
+              <div className="photo-list__user-info">{name}
+                <div className="photo-list__user-info photo-list__user-location">{city}, {country}</div>
+              </div>
+            </div>
             <div><img src={similarPhotoes} className="photo-details-modal__images" /></div>
           </div>
-        </>
-      ) : (
-        <img onClick={handleClick} className="photo-list__image" src={full} alt="Image" />
-      )}
+        </div>
+      {/* ) : ( */}
+        {/* <img onClick={handleClick} className="photo-list__image" src={full} alt="Image" /> */}
+      {/* )} */}
     </div>
   );
-}
+};
 
 export default PhotoListItem;

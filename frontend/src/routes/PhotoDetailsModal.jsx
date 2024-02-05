@@ -22,29 +22,26 @@ const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleF
       </button>
 
       <div className='photo-details-modal__images'>
+        <PhotoFavButton toggleFavorite={toggleFavorite} favorite={favorite} id={id} />
         <div>
-          <img className='photo-details-modal__image' src={full} alt="Photo" />
-
+          <img className='photo-details-modal__image' src={regular} alt="Photo" />
           <div className='photo-details-modal__photographer-details'>
             <img className='photo-details-modal__photographer-profile' src={`${profile}`} alt="Profile Image" />
-
             <div className="photo-details-modal__photographer-info">{`${name}`}</div>
             <div className='photo-details-modal__photographer-location'> {`${city}, ${country}`}</div>
           </div>
-
+          <div className="photo-details-modal__header">Similar Photos</div>
           <div className='photo-details-modal__images'>
 
-            <PhotoList similarPhotoes={similarPhotoes} 
-            displayModal={displayModal} 
-            favorite={favorite} 
-            toggleFavorite={toggleFavorite} 
-            updateDisplayModal={updateDisplayModal} />
+            <PhotoList similarPhotoes={similarPhotoes}
+              displayModal={displayModal}
+              favorite={favorite}
+              toggleFavorite={toggleFavorite}
+              updateDisplayModal={updateDisplayModal} />
 
-            {/* <PhotoFavButton toggleFavorite={toggleFavorite} favorite={favorite} id={id}/> */}
-
-            <PhotoListItem photo={displayModal} 
-            toggleFavorite={toggleFavorite} 
-            favorite={favorite}/>
+            <PhotoListItem photo={displayModal}
+              toggleFavorite={toggleFavorite}
+              favorite={favorite} />
           </div>
         </div>
       </div>

@@ -50,7 +50,8 @@ export const useApplicationData = () => {
     const modalState = state.displayModal ? false : props;
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: modalState });
   };
-  return { ...state, toggleFavorite, updateDisplayModal }
+  // return { ...state, toggleFavorite, updateDisplayModal }
+  return { favorite: state.favorite, displayModal: state.displayModal, toggleFavorite, updateDisplayModal };
 };
 
 
