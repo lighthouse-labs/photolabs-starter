@@ -1,8 +1,8 @@
 import React from 'react';
-
 import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
 import FavBadge from './FavBadge';
+
 
 const TopNavigationBar = ({ topics, favorite }) => {
   return (

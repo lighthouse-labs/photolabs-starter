@@ -5,35 +5,19 @@ import photos from "mocks/photos";
 import topics from "mocks/topics";
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import { useState } from 'react';
+import { useApplicationData } from 'hooks/useApplicationData'
 
 
-
-// Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const [favorite, setFavorite] = useState([]);
+  //Favorites and DisplayModal moved to Custom Hook useApplicationData
 
-  const toggleFavorite = (id) => {
-    setFavorite((presentFavorites) => {
-      if (presentFavorites.includes(id)) {
-        return presentFavorites.filter(favoriteId => favoriteId !== id);
-      } else {
-        return [...presentFavorites, id]
-      }
-    })
-  }
-
-
-  const [displayModal, setDisplayModal] = useState(null);
-
-  const updateDisplayModal = (props) => {
-    const modalProps = { ...props, modalState: true };
-    displayModal ? setDisplayModal(null) : setDisplayModal(modalProps);
-  }
+  //Importing useApplicationData custom hook
+  const { favorite, toggleFavorite, displayModal, updateDisplayModal } = useApplicationData();
 
   return (
-    <div className="App">
 
+    <div className="App">
       <HomeRoute
         photos={photos}
         topics={topics}

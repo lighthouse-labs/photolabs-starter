@@ -12,7 +12,6 @@ const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleF
 
   const { urls: { full, regular }, user, location: { city, country }, id, similar_photos } = displayModal;
   const { name, profile } = user;
-  // const { photo2, photo3, photo4, photo5 } = similar_photos;
 
   const similarPhotoes = Object.values(displayModal.similar_photos)
 
