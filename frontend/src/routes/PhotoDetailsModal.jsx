@@ -3,6 +3,8 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import PhotoFavButton from 'components/PhotoFavButton';
+import PhotoListItem from 'components/PhotoListItem';
 // import photos from 'mocks/photos';
 
 const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleFavorite }) => {
@@ -11,6 +13,8 @@ const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleF
   const { urls: { full, regular }, user, location: { city, country }, id, similar_photos } = displayModal;
   const { name, profile } = user;
   // const { photo2, photo3, photo4, photo5 } = similar_photos;
+
+  const similarPhotoes = Object.values(displayModal.similar_photos)
 
   return (
     <div className="photo-details-modal">
@@ -30,7 +34,18 @@ const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleF
           </div>
 
           <div className='photo-details-modal__images'>
-            <PhotoList displayModal={displayModal} favorite={favorite} toggleFavorite={toggleFavorite} updateDisplayModal={updateDisplayModal} />
+
+            <PhotoList similarPhotoes={similarPhotoes} 
+            displayModal={displayModal} 
+            favorite={favorite} 
+            toggleFavorite={toggleFavorite} 
+            updateDisplayModal={updateDisplayModal} />
+
+            {/* <PhotoFavButton toggleFavorite={toggleFavorite} favorite={favorite} id={id}/> */}
+
+            <PhotoListItem photo={displayModal} 
+            toggleFavorite={toggleFavorite} 
+            favorite={favorite}/>
           </div>
         </div>
       </div>

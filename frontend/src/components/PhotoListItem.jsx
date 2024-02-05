@@ -2,11 +2,12 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-const PhotoListItem = ({ photo, favorite, toggleFavorite, displayModal, updateDisplayModal }) => {
+const PhotoListItem = ({ photo, favorite, toggleFavorite, updateDisplayModal, similarPhotoes }) => {
 
 
   const { urls: { full, regular }, user, location: { city, country }, id } = photo;
   const { name, profile } = user;
+  
 
   const handleClick = () => {
     updateDisplayModal(photo);
@@ -20,10 +21,11 @@ const PhotoListItem = ({ photo, favorite, toggleFavorite, displayModal, updateDi
           <img onClick={() => updateDisplayModal(photo)} className="photo-details-modal__image" src={full} alt="Image" />
           <div className='photo-details-modal__photographer-details'>
             <img className="photo-details-modal__photographer-profile" src={profile} alt="Profile Image" />
-            <div className="photo-details-modal__photographer-info">
-              {name}
+            <div className="photo-details-modal__photographer-info ">{name}
               <span className="photo-details-modal__photographer-location">{city}, {country}</span>
             </div>
+
+            <div><img src={similarPhotoes} className="photo-details-modal__images" /></div>
           </div>
         </>
       ) : (
