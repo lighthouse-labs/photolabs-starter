@@ -17,11 +17,11 @@ export const useApplicationData = () => {
   }
 
   //DisplayModal
-  const [displayModal, setDisplayModal] = useState(null);
+  const [displayModal, setDisplayModal] = useState(false);
 
   const updateDisplayModal = (props) => {
     const modalProps = { ...props, modalState: true };
-    displayModal ? setDisplayModal(null) : setDisplayModal(modalProps);
+    displayModal ? setDisplayModal(false) : setDisplayModal(modalProps);
   }
 
   return { favorite, toggleFavorite, displayModal, updateDisplayModal };

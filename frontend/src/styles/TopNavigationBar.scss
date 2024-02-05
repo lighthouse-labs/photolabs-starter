@@ -11,10 +11,15 @@
 }
 
 .top-nav-bar__logo {
-  text-decoration: overline;
+  text-decoration: none;
+  text-decoration-color: #FF5733;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 26px;
   color: #111;
   text-underline-position: auto;
   margin-left: 24px;
+}
+
+.top-nav-bar__logo:hover {
+  color: #5023ab; /* Darken color on hover */
 }

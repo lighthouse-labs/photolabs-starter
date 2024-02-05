@@ -21,7 +21,7 @@ const PhotoList = ({ photos, favorite, toggleFavorite, updateDisplayModal, simil
           toggleFavorite={toggleFavorite}
           favorite={favorite}
           updateDisplayModal={updateDisplayModal}
-          modalState />
+          />
       }))}
     </ul>
   );

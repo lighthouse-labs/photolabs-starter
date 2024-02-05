@@ -7,7 +7,7 @@ import FavBadge from './FavBadge';
 const TopNavigationBar = ({ topics, favorite }) => {
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
+      <span className="top-nav-bar__logo"><i>Photo</i><b>Labs</b>📸</span>
       <div> <TopicList topics={topics} /> </div>
       <div> <FavBadge favorite={favorite} /> </div>
     </div>
