@@ -3,13 +3,14 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
-const FavBadge = ({ isFavorite }) => {
+const FavBadge = ({ favorite }) => {
+  const isFavorite = favorite.length > 0;
   return (
     <div className='fav-badge'>
-      {isFavorite.length > 0 ? <FavIcon displayAlert={isFavorite.length > 0} selected={true}/> :
-       <FavIcon/>} 
+      {isFavorite ? (<FavIcon displayAlert={isFavorite} selected={true} />) :
+        (<FavIcon />)}
     </div>
-  ) 
+  )
 };
 
 export default FavBadge;

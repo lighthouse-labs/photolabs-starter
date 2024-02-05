@@ -4,24 +4,12 @@ import TopNavigationBar from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
-const HomeRoute = ({photos, topics, updateDisplayModal}) => {
-
-  const [favorite, setFavorite] = useState([]);
-
-  const toggleFavorite = (id) => {
-    setFavorite((presentFavorites) => {
-      if(presentFavorites.includes(id)) {
-        return presentFavorites.filter(favoriteId => favoriteId !== id);
-      } else {
-        return [...presentFavorites, id]
-      }
-    })
-  }
+const HomeRoute = ({ photos, topics, updateDisplayModal, favorite, toggleFavorite }) => {
 
   return (
     <div className='home-route'>
-    <TopNavigationBar topics={topics} isFavorite={favorite}/>
-    <PhotoList photos={photos} toggleFavorite={toggleFavorite} isFavorite={favorite} updateDisplayModal={updateDisplayModal}/>
+      <TopNavigationBar topics={topics} favorite={favorite} />
+      <PhotoList photos={photos} toggleFavorite={toggleFavorite} favorite={favorite} updateDisplayModal={updateDisplayModal} />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 // import photos from 'mocks/photos';
 
-const PhotoDetailsModal = ({ updateDisplayModal, displayModal, isFavorite }) => {
+const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleFavorite }) => {
   console.log('Modal data is:', displayModal);
 
   const { urls: { full, regular }, user, location: { city, country }, id, similar_photos } = displayModal;
@@ -28,9 +28,9 @@ const PhotoDetailsModal = ({ updateDisplayModal, displayModal, isFavorite }) => 
             <div className="photo-details-modal__photographer-info">{`${name}`}</div>
             <div className='photo-details-modal__photographer-location'> {`${city}, ${country}`}</div>
           </div>
-          
+
           <div className='photo-details-modal__images'>
-            {/* <PhotoList modalData={displayModal} isFavorite={isFavorite} toggleFavorite={toggleFavorite}/> */}
+            <PhotoList displayModal={displayModal} favorite={favorite} toggleFavorite={toggleFavorite} updateDisplayModal={updateDisplayModal} />
           </div>
         </div>
       </div>
