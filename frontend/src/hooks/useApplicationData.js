@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useReducer } from 'react';
+import { useEffect } from 'react';
 
 //Add level actions
 export const ACTIONS = {
@@ -11,6 +12,14 @@ export const ACTIONS = {
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
 }
 
+const initialState = {
+  favorite: [],
+  displayModal: false,
+  photoData: [],
+  topicData: []
+};
+
+
 // Refactoring using useState =>
 const reducer = (state, action) => {
   switch (action.type) {
@@ -21,20 +30,53 @@ const reducer = (state, action) => {
         ...state, favorite: state.favorite.filter(id => id !== action.payload)
       };
     case ACTIONS.DISPLAY_PHOTO_DETAILS:
-      return { ...state, displayModal: action.payload };
+      return {
+        ...state, displayModal: action.payload
+      };
+    case ACTIONS.SET_PHOTO_DATA:
+      return { ...state, photoData: action.payload };
+    case ACTIONS.SET_TOPIC_DATA:
+      return { ...state, topicData: action.payload };
     default:
       return state;
   }
 };
 
 export const useApplicationData = () => {
-  const initialState = {
-    favorite: [],
-    displayModal: false
-  };
-
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    async function getPhotos() {
+      try {
+        const response = await fetch("/api/photos");
+        if (!response.ok) {
+          throw new Error('Failed to fetch photoes');
+        }
+        const data = await response.json();
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+      } catch (error) {
+        console.log('Error fething photoData is:', error);
+      }
+    }
+    getPhotos();
+
+    async function getTopics() {
+      try {
+        const response = await fetch('/api/topics');
+        if (!response.ok) {
+          throw new Error('Failed to fetch topics');
+        }
+        const data = await response.json();
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data });
+      } catch (error) {
+        console.log('Error fething topicData is:', error);
+      }
+    }
+    getTopics();
+  }, []);
+
+
 
   const toggleFavorite = id => {
     const actionType = state.favorite.includes(id);
@@ -50,33 +92,6 @@ export const useApplicationData = () => {
     const modalState = state.displayModal ? false : props;
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS, payload: modalState });
   };
-  // return { ...state, toggleFavorite, updateDisplayModal }
-  return { favorite: state.favorite, displayModal: state.displayModal, toggleFavorite, updateDisplayModal };
+ 
+  return { favorite: state.favorite, displayModal: state.displayModal, toggleFavorite, updateDisplayModal, photoData: state.photoData, topicData: state.topicData };
 };
-
-
-// export const useApplicationData = () => {
-
-//   //Favotires
-//   const [favorite, setFavorite] = useState([]);
-
-//   const toggleFavorite = (id) => {
-//     setFavorite((presentFavorites) => {
-//       if (presentFavorites.includes(id)) {
-//         return presentFavorites.filter(favoriteId => favoriteId !== id);
-//       } else {
-//         return [...presentFavorites, id]
-//       }
-//     })
-//   }
-
-//   //DisplayModal
-//   const [displayModal, setDisplayModal] = useState(false);
-
-//   const updateDisplayModal = (props) => {
-//     const modalProps = { ...props, modalState: true };
-//     displayModal ? setDisplayModal(false) : setDisplayModal(modalProps);
-//   }
-
-//   return { favorite, toggleFavorite, displayModal, updateDisplayModal };
-// };
