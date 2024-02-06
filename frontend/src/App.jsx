@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.scss';
 import HomeRoute from 'components/HomeRoute';
-// import photos from "mocks/photos";
-// import topics from "mocks/topics";
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import { useState } from 'react';
 import { useApplicationData } from 'hooks/useApplicationData'
@@ -13,7 +11,7 @@ const App = () => {
   //Favorites and DisplayModal moved to Custom Hook useApplicationData
 
   //Importing useApplicationData custom hook
-  const { favorite, toggleFavorite, displayModal, updateDisplayModal, photoData, topicData } = useApplicationData();
+  const { favorite, toggleFavorite, displayModal, updateDisplayModal, photoData, topicData, handleTopicClick, photoByTopic } = useApplicationData();
 
   return (
 
@@ -23,7 +21,9 @@ const App = () => {
         topics={topicData}
         updateDisplayModal={updateDisplayModal}
         favorite={favorite}
-        toggleFavorite={toggleFavorite} />
+        toggleFavorite={toggleFavorite}
+        handleTopicClick={handleTopicClick}
+        photoByTopic={photoByTopic} />
 
       {displayModal && <PhotoDetailsModal
         updateDisplayModal={updateDisplayModal}

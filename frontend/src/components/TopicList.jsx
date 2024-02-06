@@ -3,12 +3,12 @@ import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
 
 
-const TopicList = ({ topics }) => {
+const TopicList = ({ topics, photoByTopic }) => {
 
   return (
     <div className="top-nav-bar__topic-list">
       {topics.map(topic => (
-        <TopicListItem title={topic.title} key={topic.id}/>
+        <TopicListItem key={topic.id} photoByTopic={photoByTopic} topic={topic}/>
       ))}
     </div>
   );

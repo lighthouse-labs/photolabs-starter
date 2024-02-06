@@ -4,10 +4,8 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = ({ photo, favorite, toggleFavorite, updateDisplayModal, similarPhotoes }) => {
 
-
   const { urls: { full, regular }, user, location: { city, country }, id } = photo;
   const { name, profile } = user;
-
 
   const handleClick = () => {
     updateDisplayModal(photo);
@@ -18,9 +16,8 @@ const PhotoListItem = ({ photo, favorite, toggleFavorite, updateDisplayModal, si
 
       <PhotoFavButton favorite={favorite} toggleFavorite={toggleFavorite} id={id} />
 
-      {/* {photo.modalState ? ( */}
         <div>
-          <img onClick={() => updateDisplayModal(photo)} className="photo-list__image" src={regular} alt="Image" />
+          <img onClick={() => handleClick(photo)} className="photo-list__image" src={regular} alt="Image" />
 
           <div className='photo-list__user-details'>
             <img className="photo-list__user-profile" src={profile} alt="Profile Image" />
@@ -32,9 +29,6 @@ const PhotoListItem = ({ photo, favorite, toggleFavorite, updateDisplayModal, si
             <div><img src={similarPhotoes} className="photo-details-modal__images" /></div>
           </div>
         </div>
-      {/* ) : ( */}
-        {/* <img onClick={handleClick} className="photo-list__image" src={full} alt="Image" /> */}
-      {/* )} */}
     </div>
   );
 };

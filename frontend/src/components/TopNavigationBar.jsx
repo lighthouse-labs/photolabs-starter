@@ -4,11 +4,12 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
 
-const TopNavigationBar = ({ topics, favorite }) => {
+const TopNavigationBar = ({ topics, favorite, photoByTopic }) => {
+
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo"><i>Photo</i><b>Labs</b>📸</span>
-      <div> <TopicList topics={topics} /> </div>
+      <div> <TopicList topics={topics} photoByTopic={photoByTopic} /> </div>
       <div> <FavBadge favorite={favorite} /> </div>
     </div>
   )
