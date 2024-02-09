@@ -5,15 +5,15 @@ PhotoLabs is a single page application build with React, designed for users to b
 ## Application Features
 
 * By clicking on an image, users can view a photo in full size within a modal, including smaller sized related photos diplayed below.
-* Using the top navigation bar with photo topics, users can filter photoes by preference.
+* Using the top navigation bar with photo topics, users can filter photos by preference.
 * By clicking on the heart icon on a selected photo, users can favorite an image. The notification about a favorited photo will be displyed on the heart icon of the top navigation bar.
-* 
+* Clicking on the logo redirects the user to the home page.
 
 ## Final Product
 
 ![Home Page](https://  "Home Page View")
-![Modal View Page](https:// "Modal View with selected photo")
-![Modal View Page](https:// "Modal View with smaller-sized photos")
+![Modal View Page lg](https:// "Modal View with selected photo")
+![Modal View Page sm](https:// "Modal View with smaller-sized photos")
 
 ## Setup
 
