@@ -15,6 +15,7 @@ const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleF
   const similarPhotoes = Object.values(displayModal.similar_photos)
 
   return (
+
     <div className="photo-details-modal">
       <button onClick={updateDisplayModal} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
@@ -29,7 +30,7 @@ const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleF
             <div className="photo-details-modal__photographer-info">{`${name}`}</div>
             <div className='photo-details-modal__photographer-location'> {`${city}, ${country}`}</div>
           </div>
-          <div className="photo-details-modal__header">Similar Photos</div>
+          <div className="photo-details-modal__header"><b>Similar Photos 📸</b></div>
           <div className='photo-details-modal__images'>
 
             <PhotoList similarPhotoes={similarPhotoes}

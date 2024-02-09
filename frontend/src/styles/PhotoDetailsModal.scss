@@ -1,5 +1,4 @@
 .photo-details-modal {
-  background-color: #FCF8E8;
   box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
   position: absolute;
   top: 55%;
@@ -9,10 +8,12 @@
   width: 55%;
   overflow-y: scroll;
   border-radius: 12px;
+  background-image: url('https://images.unsplash.com/photo-1694327875197-252cfe16f668?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
 }
 
 .photo-details-modal__close-button {
-  background-color: #FCF8E8;
+  background-color: #E0F4FF;
   border: none;
   color: white;
   text-align: center;
@@ -22,6 +23,7 @@
   cursor: pointer;
   margin-left: 16px;
   margin-top: 16px;
+  border-radius: 100px;
 }
 
 .photo-details-modal__close-button:hover {
@@ -30,6 +32,7 @@
 
 .photo-details-modal__images {
   margin-left: 36px;
+  margin-right: 30px;
   margin-top: 8px;
 }
 
@@ -56,7 +59,7 @@
 }
 
 .photo-details-modal__header {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   color: #1e1e1e;
   margin-top: 24px;

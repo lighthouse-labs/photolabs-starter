@@ -18,7 +18,6 @@ const PhotoListItem = ({ photo, favorite, toggleFavorite, updateDisplayModal, si
 
         <div>
           <img onClick={() => handleClick(photo)} className="photo-list__image" src={regular} alt="Image" />
-
           <div className='photo-list__user-details'>
             <img className="photo-list__user-profile" src={profile} alt="Profile Image" />
             <div>

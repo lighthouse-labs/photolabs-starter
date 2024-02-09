@@ -8,18 +8,29 @@
   -moz-box-shadow: 0 4px 6px -6px #222;
   box-shadow: 0 4px 6px -6px #222;
   height: 72px;
+  font-weight: 500;
+  font-size: 18px;
+  background-image: url('https://images.unsplash.com/photo-1694327875197-252cfe16f668?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
 }
 
 .top-nav-bar__logo {
   text-decoration: none;
   text-decoration-color: #FF5733;
   font-weight: 500;
-  font-size: 26px;
+  font-size: 30px;
   color: #111;
   text-underline-position: auto;
   margin-left: 24px;
 }
 
 .top-nav-bar__logo:hover {
-  color: #5023ab; /* Darken color on hover */
+  color: #5023ab; 
+}
+
+.top-nav-bar:hover {
+  color: #5023ab;
+  cursor: pointer;
+  
 }

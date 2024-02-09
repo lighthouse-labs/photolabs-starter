@@ -45,8 +45,8 @@ const reducer = (state, action) => {
         console.error('Error updating topicData:', error);
         return state;
       }
-      case ACTIONS.GET_PHOTOS_BY_TOPICS:
-        return { ...state, photoData: action.payload }
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return { ...state, photoData: action.payload }
     default:
       return state;
   }
@@ -93,13 +93,13 @@ export const useApplicationData = () => {
   async function photoByTopic(id) {
     try {
       const response = await axios.get(`/api/topics/photos/${id}`);
-      dispatch({type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: response.data});   
+      dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: response.data });
     }
     catch (error) {
       console.error(error);
     }
   };
-  
+
 
   const toggleFavorite = (id) => {
     const actionType = state.favorite.includes(id);
