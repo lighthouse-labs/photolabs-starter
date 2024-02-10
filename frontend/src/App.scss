@@ -1,12 +1,14 @@
 .App {
   margin: 24px;
-  background-color: #FFFBE9;  
   border-radius: 7px;
   background-image: url('https://images.unsplash.com/photo-1694327875197-252cfe16f668?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;
   background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Set height to 100% of the viewport height */
+  overflow: auto;
 }
-
 
 .App-logo {
   height: 40vmin;
@@ -54,4 +56,8 @@
   margin-right: 10px;
   border-radius: 99px;
   cursor: pointer;
+}
+
+.sm-btn:hover {
+  transform: scale(1.1);
 }

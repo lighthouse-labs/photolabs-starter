@@ -8,7 +8,7 @@ const HomeRoute = ({ photos, topics, updateDisplayModal, favorite, toggleFavorit
 
   return (
     <div className='home-route'>
-      <TopNavigationBar topics={topics} favorite={favorite} photoByTopic={photoByTopic} />
+      {/* <TopNavigationBar topics={topics} favorite={favorite} photoByTopic={photoByTopic} /> */}
       <PhotoList photos={photos} toggleFavorite={toggleFavorite} favorite={favorite} updateDisplayModal={updateDisplayModal} />
     </div>
   );

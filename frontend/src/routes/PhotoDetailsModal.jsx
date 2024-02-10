@@ -5,7 +5,7 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoListItem from 'components/PhotoListItem';
 
-const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleFavorite }) => {
+const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleFavorite, darkMode }) => {
 
   const { urls: { full, regular }, user, location: { city, country }, id, similar_photos } = displayModal;
   const { name, profile } = user;
@@ -14,7 +14,7 @@ const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleF
 
   return (
 
-    <div className="photo-details-modal dark-mode">
+    <div className={`photo-details-modal ${darkMode ? 'dark-mode' : ''}`}>
       <button onClick={updateDisplayModal} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>

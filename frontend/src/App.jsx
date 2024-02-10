@@ -4,7 +4,7 @@ import HomeRoute from 'components/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import { useState } from 'react';
 import { useApplicationData } from 'hooks/useApplicationData'
-
+import TopNavigationBar from './components/TopNavigationBar';
 
 const App = () => {
 
@@ -17,13 +17,12 @@ const App = () => {
   };
 
   //Persiting Dark Mode
-  //localStorage stores true/false toggling dark/light modes
+  // localStorage stores true/false toggling dark/light modes
   useEffect(() => {
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
-
-  //Favorites and DisplayModal moved to Custom Hook useApplicationData
+   //Favorites and DisplayModal moved to Custom Hook useApplicationData
 
   //Importing useApplicationData custom hook
   const { favorite, toggleFavorite, displayModal, updateDisplayModal, photoData, topicData, handleTopicClick, photoByTopic } = useApplicationData();
@@ -31,8 +30,15 @@ const App = () => {
   return (
 
     <div className={`App ${darkMode ? 'dark-mode' : ''}`}>
-      <button className="sm-btn" onClick={toggleDarkMode}>{darkMode ? 'Light' : 'Dark'}</button>
-      
+
+      <TopNavigationBar
+        darkMode={darkMode}
+        toggleDarkMode={toggleDarkMode}
+        topics={topicData}
+        photoByTopic={photoByTopic}
+        favorite={favorite}
+      />
+
       <HomeRoute
         photos={photoData}
         topics={topicData}
@@ -42,11 +48,13 @@ const App = () => {
         handleTopicClick={handleTopicClick}
         photoByTopic={photoByTopic} />
 
+
       {displayModal && <PhotoDetailsModal
         updateDisplayModal={updateDisplayModal}
         displayModal={displayModal}
         favorite={favorite}
-        toggleFavorite={toggleFavorite} />}
+        toggleFavorite={toggleFavorite} 
+        darkMode={darkMode}/>}
     </div>
   );
 };
