@@ -7,7 +7,6 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoListItem from 'components/PhotoListItem';
 
 const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleFavorite }) => {
-  console.log('Modal data is:', displayModal);
 
   const { urls: { full, regular }, user, location: { city, country }, id, similar_photos } = displayModal;
   const { name, profile } = user;
