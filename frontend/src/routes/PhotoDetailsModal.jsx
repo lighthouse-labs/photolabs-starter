@@ -1,5 +1,4 @@
 import React from 'react';
-
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
@@ -15,7 +14,7 @@ const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleF
 
   return (
 
-    <div className="photo-details-modal">
+    <div className="photo-details-modal dark-mode">
       <button onClick={updateDisplayModal} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
