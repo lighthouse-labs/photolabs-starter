@@ -5,7 +5,7 @@ import HomeRoute from "./routes/HomeRoute.jsx";
 import PhotoDetailsModal from "./routes/PhotoDetailsModal";
 import PhotoFavoritesModal from "./routes/PhotoFavoritesModal";
 
-import { useApplicationData } from "./hooks/useApplicationData";
+import {useApplicationData} from "./hooks/useApplicationData";
 
 const App = () => {
   const {
@@ -28,6 +28,8 @@ const App = () => {
     isOpenFavoritesModal,
     getFavoritePhotos,
     toggleFavoritesModal,
+    searchInput,
+    setSearchInput
   } = useApplicationData();
 
   return (
@@ -41,6 +43,8 @@ const App = () => {
         numFavorites={numFavorites}
         setTopic={setTopic}
         toggleFavoritesModal={toggleFavoritesModal}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
 
       {isOpenModal && (

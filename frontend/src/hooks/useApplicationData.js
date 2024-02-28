@@ -12,10 +12,13 @@ export const ACTIONS = {
   SET_PHOTO_DATA: "SET_PHOTO_DATA", //fetch photos by topicId
   FAVORITES_MODAL_ON: "OPEN_FAVORITES_MODAL",
   FAVORITES_MODAL_OFF: "CLOSE_FAVORITES_MODAL",
+  GET_PHOTOS_BY_FILTER: "GET_PHOTOS_BY_FILTER", //photos by search
+  SET_SEARCH_INPUT: "SET_SEARCH_INPUT", // Action to set search input value
 };
 
 const reducer = (state, action) => {
   let favorites;
+  let filtered;
 
   switch (action.type) {
     case ACTIONS.ADD_FAVORITE:
@@ -40,6 +43,10 @@ const reducer = (state, action) => {
       return { ...state, openFavoritesModal: true };
     case ACTIONS.FAVORITES_MODAL_OFF:
       return { ...state, openFavoritesModal: false };
+
+    case ACTIONS.SET_SEARCH_INPUT:
+      return { ...state, searchInput: action.searchInput };
+
     default:
       return state;
   }
@@ -54,6 +61,9 @@ export const useApplicationData = () => {
     openModal: false,
     clickedPhoto: null,
     openFavoritesModal: false,
+
+    searchInput: "", // Initial value for search input
+    searchedPhotos: [], // Photos based on search input
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -70,22 +80,48 @@ export const useApplicationData = () => {
 
   //GET PHOTOS by TOPIC
   useEffect(() => {
-    axios
-      .get(`api/topics/photos/${state.topicId}`)
-      .then((res) => {
-        if (res.data) {
-          dispatch({
-            type: ACTIONS.SET_PHOTO_DATA,
-            payload: res.data,
-          });
-        }
-      })
-      .catch((err) => console.log(err));
-  }, [state.topicId]);
+    if (
+      state.topicId &&
+      (!state.searchInput || state.searchInput.trim() === "")
+    ) {
+      axios
+        .get(`api/topics/photos/${state.topicId}`)
+        .then((res) => {
+          if (res.data) {
+            dispatch({
+              type: ACTIONS.SET_PHOTO_DATA,
+              payload: res.data,
+            });
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [state.topicId, state.searchInput]);
 
   const setTopic = (topicId) => {
     dispatch({ type: ACTIONS.SET_TOPIC, topicId }); //define topic clicked
   };
+
+  useEffect(() => {
+    if (state.searchInput) {
+      const filteredPhotos = state.photos.filter((photo) => {
+        const usernameMatch = photo.user.username
+          .toLowerCase()
+          .includes(state.searchInput.toLowerCase());
+        const cityMatch = photo.location.city
+          .toLowerCase()
+          .includes(state.searchInput.toLowerCase());
+        const countryMatch = photo.location.country
+          .toLowerCase()
+          .includes(state.searchInput.toLowerCase());
+        return usernameMatch || cityMatch || countryMatch;
+      });
+      dispatch({
+        type: ACTIONS.SET_PHOTO_DATA,
+        payload: filteredPhotos,
+      });
+    }
+  }, [state.searchInput]);
 
   // ADD and REMOVE favorites
   const toggleFavoritePhoto = (photoId) => {
@@ -126,6 +162,7 @@ export const useApplicationData = () => {
     }
     dispatch({ type: ACTIONS.FAVORITES_MODAL_ON });
   };
+
   const getFavoritePhotos = () => {
     const photos = [];
     for (const id of state.favorites) {
@@ -134,6 +171,10 @@ export const useApplicationData = () => {
       photo && photos.push(photo);
     }
     return photos;
+  };
+
+  const setSearchInput = (searchInput) => {
+    dispatch({ type: ACTIONS.SET_SEARCH_INPUT, searchInput });
   };
 
   return {
@@ -153,5 +194,7 @@ export const useApplicationData = () => {
     toggleFavoritesModal,
     isOpenFavoritesModal: state.openFavoritesModal,
     getFavoritePhotos,
+    searchInput: state.searchInput,
+    setSearchInput,
   };
 };

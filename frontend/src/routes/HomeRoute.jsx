@@ -2,6 +2,7 @@ import React from "react";
 
 import TopNavigation from "../components/TopNavigationBar";
 import PhotoList from "../components/PhotoList";
+import SearchBar from "../components/SearchBar";
 
 import "../styles/HomeRoute.scss";
 
@@ -16,6 +17,8 @@ const HomeRoute = (props) => {
     setTopic,
     displayFavorites,
     toggleFavoritesModal,
+    searchInput,
+    setSearchInput
   } = props;
 
   return (
@@ -28,6 +31,7 @@ const HomeRoute = (props) => {
         displayFavorites={displayFavorites}
         toggleFavoritesModal={toggleFavoritesModal}
       />
+      <SearchBar photos={photos} searchInput={searchInput} setSearchInput={setSearchInput} />
       <PhotoList
         photos={photos}
         toggleFavoritePhoto={toggleFavoritePhoto}
