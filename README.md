@@ -8,6 +8,7 @@ PhotoLabs is a single page application built with React, designed for users to b
 * Using the top navigation bar with photo topics, users can filter photos by preference.
 * By clicking on the heart icon on a selected photo, users can favorite an image. The notification about a favorited photo will be displyed on the heart icon of the top navigation bar.
 * Clicking on the page logo redirects the user to the home page.
+* Dark mode can be activated by clicking on the 'dark' button.
 
 
 ## Final Product
@@ -15,6 +16,7 @@ PhotoLabs is a single page application built with React, designed for users to b
 ![Home Page](https://github.com/Vhkan/photoLabs/blob/main/documents/homeView.png "Home Page View")
 ![Modal View Page lg](https://github.com/Vhkan/photoLabs/blob/main/documents/modalView.Lg.png "Modal View with selected photo")
 ![Modal View Page sm](https://github.com/Vhkan/photoLabs/blob/main/documents/modalViewSm.png "Modal View with smaller-sized photos")
+![Dark Mode View](https://github.com/Vhkan/photoLabs/blob/choose-your-own-adventure/documents/darkModeView.png "Dark Mode")
 
 ## Setup
 
