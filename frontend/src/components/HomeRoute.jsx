@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import "../styles/HomeRoute.scss";
-import TopNavigationBar from 'components/TopNavigationBar';
-import PhotoList from 'components/PhotoList';
-import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import TopNavigationBar from './TopNavigationBar';
+import PhotoList from './PhotoList';
+import PhotoDetailsModal from '../routes/PhotoDetailsModal';
 
 const HomeRoute = ({ photos, topics, updateDisplayModal, favorite, toggleFavorite, photoByTopic }) => {
 

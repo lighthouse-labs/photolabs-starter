@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import './App.scss';
-import HomeRoute from 'components/HomeRoute';
-import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+// import HomeRoute from 'components/HomeRoute';
+// import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import { useState } from 'react';
-import { useApplicationData } from 'hooks/useApplicationData'
+import { useApplicationData } from './hooks/useApplicationData'
 import TopNavigationBar from './components/TopNavigationBar';
+import HomeRoute from './components/HomeRoute'
+import PhotoDetailsModal from './routes/PhotoDetailsModal'
 
 const App = () => {
 

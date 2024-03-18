@@ -1,9 +1,9 @@
 import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
-import PhotoList from 'components/PhotoList';
-import PhotoFavButton from 'components/PhotoFavButton';
-import PhotoListItem from 'components/PhotoListItem';
+import PhotoList from '../components/PhotoList';
+import PhotoFavButton from '../components/PhotoFavButton';
+import PhotoListItem from '../components/PhotoListItem';
 
 const PhotoDetailsModal = ({ updateDisplayModal, displayModal, favorite, toggleFavorite, darkMode }) => {
 

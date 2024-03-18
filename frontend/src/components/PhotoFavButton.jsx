@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
+// import PhotoDetailsModal from "../routes/PhotoDetailsModal";
 
 function PhotoFavButton({ toggleFavorite, id, favorite }) {
   return (

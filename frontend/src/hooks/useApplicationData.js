@@ -23,6 +23,7 @@ const initialState = {
 
 
 // Refactoring using useState =>
+//A function that takes the current state and action, returns a new state based on the action type.
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
@@ -52,10 +53,12 @@ const reducer = (state, action) => {
   }
 };
 
+//Custom hook utilizes useReducer to manage the application's state with the defined reducer function and initialState.
 export const useApplicationData = () => {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  //useEffect is used to fetch initial photo and topic data from the API when the component mounts.
   useEffect(() => {
 
     async function getPhotos() {
