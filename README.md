@@ -7,11 +7,11 @@ The PhotoLabs project for the Web Development React course programming.
 
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
 
-## [Frontend] Running Webpack Development Server
+## [Frontend] Running Vite Development Server
 
 ```sh
 cd frontend
-npm start
+npm run dev
 ```
 
 ## [Backend] Running Backend Servier
