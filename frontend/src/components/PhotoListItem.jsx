@@ -1,7 +1,7 @@
 import "../styles/PhotoListItem.scss";
 
 const sampleDataForPhotoListItem = {
-  id: "1",
+  id: 1,
   location: {
     city: "Montreal",
     country: "Canada",
@@ -11,7 +11,6 @@ const sampleDataForPhotoListItem = {
     regular: "/Image-1-Regular.jpeg",
   },
   user: {
-    id: "1",
     username: "exampleuser",
     name: "Joe Example",
     profile: "/profile-1.jpg",
