@@ -36,4 +36,5 @@ export default [
       'react/prop-types': 0
     },
   },
+  { languageOptions: { globals: globals.jest } },
 ]
