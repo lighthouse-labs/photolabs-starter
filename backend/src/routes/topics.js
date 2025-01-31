@@ -13,7 +13,7 @@ module.exports = db => {
     });
   });
   
-  router.get("/topics/photos/:id", (request, response) => {
+  router.get("/topics/:id/photos", (request, response) => {
     const protocol = request.protocol;
     const host = request.hostname;
     const port = process.env.PORT || 8001;

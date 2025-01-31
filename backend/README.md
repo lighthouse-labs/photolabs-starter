@@ -22,12 +22,12 @@ PGPORT=5432
 
 ## Seeding
 
-Run a the development server with `npm start` in the Host environment. We are only using vagrant for `psql` this week.
+Run the development server with `npm start`.
 
 Both of these achieve the same result.
 
 - Make a `GET` request to `/api/debug/reset` with `curl http://localhost:8001/api/debug/reset`.
-- Use the browser to navigate to `http://localhost:8001/api/debug/reset`.
+- Use the browser to navigate to [http://localhost:8001/api/debug/reset](http://localhost:8001/api/debug/reset).
 
 ## Run The Server
 
@@ -40,3 +40,21 @@ Running the server so it returns an error when saving/deleting for testing the c
 ```sh
 npm run error
 ```
+
+## Endpoints
+
+### Retrieve all photos
+
+[/api/photos](http://localhost:8001/api/photos)
+
+### Retrieve all topics
+
+[/api/topics](http://localhost:8001/api/topics)
+
+### Retrieve photos for a specific topic
+
+[/api/topics/:id/photos](http://localhost:8001/api/topics/:id/photos)
+
+### Reset the database
+
+[/api/debug/reset](http://localhost:8001/api/debug/reset)
