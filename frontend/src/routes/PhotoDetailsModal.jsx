@@ -1,5 +1,3 @@
-import React from 'react';
-
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
